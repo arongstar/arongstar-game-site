@@ -411,5 +411,95 @@
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
     "alt": "흙길 양옆으로 큰 잎의 바나나 나무가 줄지어 서 있고, 바나나 송이마다 파란 봉지가 씌워진 농장 사이를 두 사람이 자전거로 달리는 모습",
     "note": "Banana plantation, Panabo City, Davao region, Mindanao, Philippines, 11 Feb 2010"
+  },
+  "global/city": {
+    "src": "/images/global/city.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Cityscape_of_Tokyo,_view_from_Tokyo_Skytree_(2016-01-04_by_louisredon_@Pixabay_1141165).jpg",
+    "author": "louisredon (Pixabay)",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "alt": "높은 곳에서 내려다본 일본 도쿄로, 크고 작은 빌딩과 집들이 지평선 끝까지 빽빽하게 들어서 있다",
+    "note": "Tokyo, Japan, view from Tokyo Skytree, January 2016. Hazy distance; no crop."
+  },
+  "global/greenland": {
+    "src": "/images/global/greenland.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Kulusuk-winter.jpg",
+    "author": "Algkalv",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "alt": "눈 덮인 높은 산과 얼어붙은 바다를 배경으로 알록달록한 작은 집들이 눈밭 위에 모여 있는 그린란드의 쿨루수크 마을",
+    "note": "Kulusuk, East Greenland, February 2010. Substitution: Kulusuk instead of Ilulissat/Nuuk/Uummannaq (only clearly snowy settlement found). 16:9 source."
+  },
+  "global/seaice": {
+    "src": "/images/global/seaice.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Ponds_on_the_Ocean,_ICESCAPE.jpg",
+    "author": "NASA Goddard Space Flight Center (ICESCAPE mission)",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "alt": "북극 바다의 바다 얼음 위에 녹은 물이 고여 하늘색 웅덩이가 곳곳에 생겼고, 그 위에서 두 사람이 작게 보이며 조사를 하고 있다",
+    "note": "Chukchi Sea, Arctic Ocean, 12 July 2011 (NASA ICESCAPE). Commons lists PD-USGov-NASA and Flickr CC BY 2.0; used as public domain. Two scientists appear tiny, not identifiable."
+  },
+  "global/plastic": {
+    "src": "/images/global/plastic.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:004_Beach_pollution_in_Tenerife_-_Atlantic_Ocean_beach_plastic_garbage_debris.jpg",
+    "author": "Marek Ślusarczyk (Tupungato)",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "alt": "검은 자갈 해변 곳곳에 물병, 컵, 뚜껑 같은 플라스틱 쓰레기가 흩어져 있고 왼쪽 위로 바닷물이 밀려온다",
+    "note": "Tenerife, Canary Islands, Spain, November 2012. No animals, no brand logos readable. Saved at JPEG q60 to stay under 350 KB."
+  },
+  "global/tuvalu": {
+    "src": "/images/global/tuvalu.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Tuvalu_Inaba-21.jpg",
+    "author": "INABA Tomoaki",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "alt": "짙푸른 바다 한가운데 낮고 가느다란 산호섬이 둥글게 이어져 있고, 그 안쪽에 옅은 청록색 석호가 펼쳐져 있다",
+    "note": "Aerial view of an atoll in Tuvalu (exact atoll not stated on Commons; likely on approach to Funafuti), May 2011. Source is 1280×850."
+  },
+  "global/drought": {
+    "src": "/images/global/drought.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Drought_-_Spain_(P-058734-00-30).jpg",
+    "author": "European Commission – Audiovisual Service / Jorge Guerrero (FACTSTORY)",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "alt": "물이 빠져 바닥이 갈라지고 마른 풀이 자란 저수지에 미끄럼틀이 달린 페달 보트와 선착장이 메마른 땅 위에 놓여 있다",
+    "note": "La Viñuela reservoir, Málaga, Spain, 19 August 2022. Dried-up reservoir bed with stranded pedal boats and pier."
+  },
+  "global/renewable": {
+    "src": "/images/global/renewable.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:2012-05-28_Fotoflug_Cuxhaven_Wilhelmshaven_DSCF9604.jpg",
+    "author": "Martina Nolte",
+    "license": "CC BY-SA 3.0 DE",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/",
+    "alt": "초록 들판 사이에 태양광 패널이 여러 줄로 늘어서 있고, 그 옆에 커다란 풍력 발전기 한 대가 서 있는 모습을 하늘에서 내려다본 사진",
+    "note": "Photovoltaic station near Hooksiel, Lower Saxony, Germany, aerial, 28 May 2012. Wind turbine + solar panels in one frame."
+  },
+  "global/deforestation": {
+    "src": "/images/global/deforestation.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:SOBREVVO_EM_RONDONIA_DIA_07-08-2020_(FOTO_BRUNO_KELLY)_(1)_(50224385336).jpg",
+    "author": "Bruno Kelly / Amazônia Real",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "alt": "빽빽한 열대 우림과 나무를 모두 베어 낸 넓은 맨땅이 곧은 경계선을 사이에 두고 맞닿아 있는 모습을 하늘에서 내려다본 사진",
+    "note": "Cleared land (cattle pasture and soy field) next to rainforest near Porto Velho, Rondônia, Brazil, 7 August 2020. Aerial; no fire/smoke."
+  },
+  "global/refugeecamp": {
+    "src": "/images/global/refugeecamp.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:An_Aerial_View_of_the_Za'atri_Refugee_Camp.jpg",
+    "author": "U.S. Department of State",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "alt": "메마른 땅 위에 천막과 조립식 집들이 끝이 보이지 않을 만큼 빽빽하게 늘어서 있는 난민 캠프를 하늘에서 내려다본 모습",
+    "note": "Za'atari camp for Syrian refugees, Jordan, 18 July 2013, from a helicopter. People only as tiny dots."
+  },
+  "global/farmland": {
+    "src": "/images/global/farmland.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Banaue_Philippines_Batad-Rice-Terraces-02.jpg",
+    "author": "CEphoto, Uwe Aranas",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "alt": "산비탈을 계단처럼 깎아 만든 논이 겹겹이 이어지고, 그 사이에 지붕을 맞댄 집들이 오밀조밀 모여 있는 마을",
+    "note": "Batad village and rice terraces, Banaue, Ifugao, Philippines, November 2008. Substitution: Philippines instead of Java/Bangladesh/Vietnam delta — no suitable aerial of lowland paddies with villages found; Batad shows paddies tightly surrounding a village."
   }
 }
