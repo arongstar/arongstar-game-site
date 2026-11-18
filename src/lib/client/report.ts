@@ -65,7 +65,7 @@ export function renderReport() {
       h('div', { class: 'std-code' }, `[${sd.code}] ${sd.short}`),
       h('div', { class: 'std-reached' },
         t ? h('span', { class: `std-badge tier-${t}` }, `${TIERS[t].emoji} ${TIERS[t].name}`) : h('span', { class: 'std-badge none' }, '🚶 탐험 중'),
-        t ? h('span', null, '단계까지 해냈어요!') : h('span', { class: 'muted' }, `한 단계에서 문제를 ${MIN}개 넘게 풀고 처음에 ${PASS * 100}% 이상 맞히면 단계가 채워져요.`),
+        t ? h('span', null, '단계까지 해냈어요!') : h('span', { class: 'muted' }, `한 단계에서 문제를 ${MIN}개 이상 풀고 처음에 ${PASS * 100}% 이상 맞히면 단계가 채워져요.`),
       ),
       t ? h('p', { class: 'std-level-text' }, sd.levels[t], ' ', h('span', { class: 'lvl-ref' }, `(성취수준 ${t} 참고)`)) : null,
     );

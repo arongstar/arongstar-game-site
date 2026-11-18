@@ -410,3 +410,4 @@ textarea:focus, input[type='text']:focus { outline: none; border-color: var(--pr
   .step.wide-visual .chart-grid.n3 { grid-template-columns: repeat(3, 1fr); }
 }
 .step.wide-visual .step-panel .options.short { grid-template-columns: repeat(3, 1fr); }
+.fb-answer { font-weight: 800; color: var(--primary-strong); }

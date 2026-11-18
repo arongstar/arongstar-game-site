@@ -286,6 +286,7 @@ export function startMission() {
           'div',
           { class: 'fb ' + (correct ? 'fb-ok' : 'fb-reveal') },
           h('strong', null, title),
+          !correct ? h('p', { class: 'fb-answer' }, '정답: ', answerText(st)) : null,
           st.explain ? h('p', null, st.explain) : null,
           added.length
             ? h('p', { class: 'fb-card' }, '🃏 새 지형 카드: ', added.map((id) => data.atlas[id]?.name).join(', '))
@@ -440,6 +441,14 @@ export function startMission() {
 
     panel.append(hintBtn ?? '', hintBox, fb, actions);
     return wrap;
+  }
+
+  function answerText(st: any): string {
+    if (st.type === 'choice') return st.answer;
+    if (st.type === 'multi') return st.answers.join(' / ');
+    if (st.type === 'pickmonth') return st.answer.map((m: number) => `${m}월`).join(', ');
+    if (st.type === 'pin') return (data.atlas[st.answer] ?? data.climate[st.answer])?.name ?? '';
+    return '바구니에 바르게 옮겨 둔 카드를 확인해 보세요';
   }
 
   function hasVisual(st: any) {

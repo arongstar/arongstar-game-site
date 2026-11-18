@@ -1,0 +1,262 @@
+{
+  "landforms/sognefjord": {
+    "src": "/images/landforms/sognefjord.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Sognefjord-Norway-April-2011.jpg",
+    "author": "Acediscovery",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "alt": "높고 가파른 산 절벽 사이로 바닷물이 깊숙이 들어와 길게 이어진 노르웨이의 송네 피오르"
+  },
+  "landforms/sahara": {
+    "src": "/images/landforms/sahara.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Libya_5230_Wan_Caza_Dunes_Luca_Galuzzi_2007.jpg",
+    "author": "Luca Galuzzi (Lucag)",
+    "license": "CC BY-SA 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5/",
+    "alt": "바람에 쌓인 모래 언덕이 끝없이 이어진 리비아의 사하라 사막",
+    "note": "Wan Caza dunes, Fezzan, Libya"
+  },
+  "landforms/huanghe": {
+    "src": "/images/landforms/huanghe.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Yellow_River_-_panoramio.jpg",
+    "author": "fading",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "alt": "초록빛 산 사이로 누런 흙탕물이 넓게 흐르는 중국의 황허강",
+    "note": "Exact location on the Yellow River not stated on Commons"
+  },
+  "landforms/maunaloa": {
+    "src": "/images/landforms/maunaloa.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Mauna_Loa_from_Mauna_Kea.JPG",
+    "author": "Kevstan",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "alt": "돌밭 너머로 꼭대기가 완만하고 옆으로 넓게 퍼진 방패 모양의 마우나로아 화산",
+    "note": "Viewed from the summit of Mauna Kea"
+  },
+  "landforms/elarco": {
+    "src": "/images/landforms/elarco.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:El_Arco,_Cabo_San_Lucas,_México,_2024-12-22,_DD_03.jpg",
+    "author": "Diego Delso",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "alt": "바닷물에 깎여 가운데에 구멍이 뚫린 커다란 바위 아치, 멕시코 카보산루카스의 엘 아르코"
+  },
+  "landforms/himalaya": {
+    "src": "/images/landforms/himalaya.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Himalayas,_Ama_Dablam,_Nepal.jpg",
+    "author": "Vyacheslav Argenberg",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "alt": "하얀 눈으로 덮인 뾰족한 봉우리들이 높이 솟아 있는 네팔의 히말라야산맥",
+    "note": "Ama Dablam, Khumbu region, Nepal"
+  },
+  "landforms/abyssinia": {
+    "src": "/images/landforms/abyssinia.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Simienské_hory.jpg",
+    "author": "Ondřej Žváček",
+    "license": "CC BY 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.5/",
+    "alt": "꼭대기가 평평한 고원 끝이 깎아지른 절벽이 되어 깊은 골짜기로 이어지는 에티오피아 고원(시미엔산맥)",
+    "note": "Simien Mountains, Ethiopia"
+  },
+  "landforms/parinacota": {
+    "src": "/images/landforms/parinacota.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Parinacota_over_Lake_Chungará_(16035002833).jpg",
+    "author": "S.Liberona",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "alt": "눈 덮인 원뿔 모양의 파리나코타 화산이 잔잔한 호수 물에 거울처럼 비친 모습"
+  },
+  "landforms/amazon": {
+    "src": "/images/landforms/amazon.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Amazon_CIAT_(2).jpg",
+    "author": "Neil Palmer/CIAT",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "alt": "빽빽한 열대 우림 사이로 아주 넓은 강물이 흐르는 아마존강",
+    "note": "Aerial view near Manaus, Brazil"
+  },
+  "landforms/nile": {
+    "src": "/images/landforms/nile.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Vallee_fertile_du_Nil_a_Louxor.jpg",
+    "author": "Bionet",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "alt": "사막 한가운데로 흐르는 나일강을 따라 초록색 농경지가 띠처럼 이어진 모습을 하늘에서 본 사진",
+    "note": "Aerial view of the Nile valley near Luxor/Qena, Egypt"
+  },
+  "landforms/horseshoe": {
+    "src": "/images/landforms/horseshoe.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:USA_10187_Horseshoe_Bend_Luca_Galuzzi_2007.jpg",
+    "author": "Luca Galuzzi (Lucag)",
+    "license": "CC BY-SA 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5/",
+    "alt": "콜로라도강이 붉은 바위 협곡을 말굽 모양으로 휘감아 흐르는 홀스슈 벤드"
+  },
+  "landforms/victoria": {
+    "src": "/images/landforms/victoria.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Cataratas_Victoria,_Zambia-Zimbabue,_2018-07-27,_DD_05.jpg",
+    "author": "Diego Delso",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "alt": "넓은 강물이 좁고 깊은 협곡 속으로 한꺼번에 떨어지며 물보라와 무지개가 생긴 빅토리아 폭포를 하늘에서 본 모습",
+    "note": "Aerial view"
+  },
+  "landforms/fundy": {
+    "src": "/images/landforms/fundy.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Flowerpot_sea_stacks_and_the_Bay_of_Fundy_at_low_tide,_Hopewell_Rocks,_Hopewell_Cape,_New_Brunswick.jpg",
+    "author": "Z3lvs",
+    "license": "CC0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "alt": "바닷물이 빠져 바닥이 넓게 드러난 펀디만 해안과 숲이 자란 화분 모양의 바위들",
+    "note": "Hopewell Rocks, New Brunswick"
+  },
+  "landforms/makena": {
+    "src": "/images/landforms/makena.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Makena_Beach_(Big_Beach)_Maui_(44826052075).jpg",
+    "author": "dronepicr",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "alt": "검은 용암 바위 너머로 길게 이어진 모래사장과 푸른 바다가 펼쳐진 하와이 마우이섬의 마케나 해변"
+  },
+  "landforms/portcampbell": {
+    "src": "/images/landforms/portcampbell.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Princetown_(AU),_Port_Campbell_National_Park,_Twelve_Apostles_--_2019_--_1017.jpg",
+    "author": "Dietmar Rabich",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "alt": "파도에 깎여 바다 위에 기둥처럼 남은 바위들과 해안 절벽, 오스트레일리아의 12사도 바위"
+  },
+  "life/himalaya-terrace": {
+    "src": "/images/life/himalaya-terrace.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Paddy_fields_Bahundanda_Nepal.jpg",
+    "author": "Till Niermann",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "alt": "산비탈을 계단처럼 깎아 층층이 만든 네팔의 계단식 논",
+    "note": "Near Bahundanda, Nepal"
+  },
+  "life/himalaya-yak": {
+    "src": "/images/life/himalaya-yak.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Machermo,_Yaks,_Nepal.jpg",
+    "author": "Vyacheslav Argenberg",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "alt": "눈 덮인 히말라야 봉우리를 뒤로하고 등에 짐을 실은 채 산길을 걷는 야크",
+    "note": "Near Machermo, Khumbu, Nepal"
+  },
+  "life/abyssinia-coffee": {
+    "src": "/images/life/abyssinia-coffee.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:The_start_of_your_morning_coffee_(5984450578).jpg",
+    "author": "DFID - UK Department for International Development",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "alt": "에티오피아의 농부가 커피나무 가지를 잡고 열매가 익었는지 살펴보는 모습",
+    "note": "Smallholder coffee farmer near Awassa, southern Ethiopia"
+  },
+  "life/parinacota-llama": {
+    "src": "/images/life/parinacota-llama.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Parinacota_volcano.jpg",
+    "author": "mtchm",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "alt": "눈 덮인 파리나코타 화산 아래 호숫가 풀밭에서 풀을 뜯는 라마와 알파카들",
+    "note": "Lauca National Park, Chile"
+  },
+  "life/maunaloa-observatory": {
+    "src": "/images/life/maunaloa-observatory.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Mauna_Loa_Observatory_north_flank_of_Mauna_Loa.jpg",
+    "author": "Brian Vasel/NOAA",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "alt": "마우나로아 화산의 거친 용암 지대 위에 자리 잡은 마우나로아 관측소 건물들을 하늘에서 본 모습"
+  },
+  "life/huanghe-loess": {
+    "src": "/images/life/huanghe-loess.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Cave_houses_shanxi_1.jpg",
+    "author": "Meier&Poehlmann",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "alt": "황토 언덕을 계단처럼 깎고 그 비탈에 아치 모양 동굴집(야오둥)을 지어 모여 사는 중국 산시성의 마을",
+    "note": "Traditional cave houses in Lingshi County, Shanxi (Loess Plateau); not directly on the Yellow River bank"
+  },
+  "life/amazon-stilt": {
+    "src": "/images/life/amazon-stilt.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Brazil-00312_-_High_and_still_on_stilts_(48963899241).jpg",
+    "author": "Dennis G. Jarvis",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "alt": "아마존강 기슭에 기둥을 세워 바닥을 높게 지은 집들과 강가에 올려놓은 배",
+    "note": "Riverside (ribeirinho) settlement in the Brazilian Amazon"
+  },
+  "life/nile-farm": {
+    "src": "/images/life/nile-farm.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Farmers_on_the_Nile_-_panoramio_(1).jpg",
+    "author": "David Broad",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "alt": "나일강 바로 옆 초록 밭에서 소 두 마리로 밭을 갈며 농사짓는 사람들"
+  },
+  "life/victoria-tourism": {
+    "src": "/images/life/victoria-tourism.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Cataratas_Victoria_46.jpg",
+    "author": "LBM1948",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "alt": "빅토리아 폭포에서 피어오르는 물보라 속에서 우비를 입고 폭포를 구경하는 관광객과 학생들",
+    "note": "Zimbabwe side of the falls"
+  },
+  "life/sognefjord-cruise": {
+    "src": "/images/life/sognefjord-cruise.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:00_7320_Geirangerfjorden_-_Cruise_ship.jpg",
+    "author": "W. Bulach",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "alt": "눈 덮인 높은 산 아래 노르웨이 피오르의 잔잔한 물 위에 떠 있는 커다란 크루즈 유람선",
+    "note": "Geirangerfjord (not Sognefjord)"
+  },
+  "life/fundy-tide": {
+    "src": "/images/life/fundy-tide.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Parc_Provincial_Hopewell_Rocks_-_Sea_Stack_-_Low_Tide-_New_Brunswick_(2).jpg",
+    "author": "Mhsheikholeslami",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "alt": "바닷물이 빠져 드러난 바다 밑바닥을 걸으며 화분 모양 바위를 구경하는 사람들"
+  },
+  "life/elarco-boat": {
+    "src": "/images/life/elarco-boat.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:El_Arco_Cabo_San_Lucas_www.GeoTravellers.com_-_panoramio.jpg",
+    "author": "GeoTravellers",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "alt": "엘 아르코 바위 아치 앞 바다를 지나가는, 관광객을 태운 파란 지붕의 보트"
+  },
+  "life/portcampbell-erosion": {
+    "src": "/images/life/portcampbell-erosion.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:London_Arch_01.jpg",
+    "author": "Bernard Gagnon",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "alt": "파도에 깎여 육지와 떨어진 채 바다 위에 홀로 서 있는 바위 아치, 런던 아치",
+    "note": "London Arch (formerly London Bridge)"
+  },
+  "life/sahara-oasis": {
+    "src": "/images/life/sahara-oasis.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Oasis_in_Libya.jpg",
+    "author": "Sfivat",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "alt": "높은 모래 언덕 아래에 야자나무와 풀이 자라고 맑은 물이 고인 사하라 사막의 오아시스",
+    "note": "Um el Ma lake, Ubari Sand Sea (Fezzan), Libya"
+  },
+  "life/sahara-mudhouse": {
+    "src": "/images/life/sahara-mudhouse.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Ghadames_-_Altstadt_mit_Palmenhain.jpg",
+    "author": "Franzfoto",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "alt": "야자나무 숲 사이에 흙벽돌로 두껍게 지은 리비아 가다메스 옛 마을의 집",
+    "note": "Ghadames old town, Libya"
+  }
+}
