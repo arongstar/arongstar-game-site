@@ -96,6 +96,10 @@ const stepBase = {
   bars: z
     .object({ title: z.string(), unit: z.string(), items: z.array(z.object({ label: z.string(), value: z.number() })), note: z.string().optional() })
     .optional(),
+  // 나이별 인구 구성 (나라별 가로 막대: 0~14세 / 15~64세 / 65세 이상, %)
+  agebars: z
+    .object({ title: z.string(), items: z.array(z.object({ label: z.string(), young: z.number(), adult: z.number(), old: z.number() })), note: z.string().optional() })
+    .optional(),
   // 상황 카드 (그림 대신 이모지와 짧은 글)
   card: z.object({ emoji: z.string(), title: z.string(), text: z.string() }).optional(),
 };
@@ -152,6 +156,10 @@ const step = z.discriminatedUnion('type', [
     customer: z.object({ emoji: z.string(), name: z.string(), place: z.string(), says: z.string() }),
     features: z.array(fitOption).min(3),
     plan: z.boolean().default(true), // 상품 이름·광고 문구 적기
+    // 계획 적기 칸 이름 (캠페인 등 다른 기획에 쓸 때)
+    planLabels: z
+      .object({ title: z.string(), name: z.string(), slogan: z.string(), when: z.string(), save: z.string(), emoji: z.string() })
+      .optional(),
   }),
 ]);
 

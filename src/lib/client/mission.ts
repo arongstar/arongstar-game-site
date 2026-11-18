@@ -305,6 +305,7 @@ export function startMission() {
     if (st.card) visual.append(h('div', { class: 'sit-card' }, h('div', { class: 'sit-emoji', 'aria-hidden': 'true' }, st.card.emoji), h('div', null, h('div', { class: 'sit-title' }, st.card.title), h('p', null, st.card.text))));
     if (st.table) visual.append(tableView(st.table));
     if (st.bars) visual.append(barsView(st.bars));
+    if (st.agebars) visual.append(ageBarsView(st.agebars));
     if (st.photo) visual.append(photoFigure(st.photo));
     if (st.photos) {
       const g = h('div', { class: 'ph-grid n' + st.photos.length });
@@ -470,7 +471,7 @@ export function startMission() {
   }
 
   function hasVisual(st: any) {
-    return !!(st.photo || st.photos || st.chart || st.charts || st.sun || st.table || st.bars || st.card || st.type === 'pin' || st.type === 'build');
+    return !!(st.photo || st.photos || st.chart || st.charts || st.sun || st.table || st.bars || st.agebars || st.card || st.type === 'pin' || st.type === 'build');
   }
 
   function chartFor(id: string, hiddenTitle?: string) {
@@ -605,6 +606,27 @@ export function startMission() {
         ),
       )),
       b.note ? h('small', { class: 'ph-credit' }, b.note) : null,
+    );
+  }
+
+  // 나이별 인구 구성 막대
+  function ageBarsView(a: any) {
+    return h('figure', { class: 'agebars' },
+      h('figcaption', { class: 'chart-title' }, a.title),
+      h('div', { class: 'age-legend' },
+        h('span', { class: 'lg-young' }, '0~14세 (어린이)'),
+        h('span', { class: 'lg-adult' }, '15~64세 (일하는 나이)'),
+        h('span', { class: 'lg-old' }, '65세 이상 (노인)')),
+      h('div', { class: 'age-list' }, a.items.map((i: any) =>
+        h('div', { class: 'age-row' },
+          h('span', { class: 'age-label' }, i.label),
+          h('span', { class: 'age-track' },
+            h('span', { class: 'seg young', style: { width: i.young + '%' } }, i.young >= 8 ? `${i.young}%` : ''),
+            h('span', { class: 'seg adult', style: { width: i.adult + '%' } }, `${i.adult}%`),
+            h('span', { class: 'seg old', style: { width: i.old + '%' } }, i.old >= 8 ? `${i.old}%` : '')),
+          h('span', { class: 'age-old' }, `노인 ${i.old}%`),
+        ))),
+      a.note ? h('small', { class: 'ph-credit' }, a.note) : null,
     );
   }
 
@@ -863,17 +885,19 @@ export function startMission() {
     const when = h('input', { type: 'text', maxlength: 60, placeholder: '예) 10월~4월, 항구 앞 가게에서' }) as HTMLInputElement;
     const saved = h('span', { class: 'note-saved', 'aria-live': 'polite' });
     const feats = st.features.filter((f: any) => f.fit).map((f: any) => f.text);
+    const L = st.planLabels ?? { title: '🛍️ 판매 계획 세우기 (선택)', name: '상품 이름', slogan: '광고 문구', when: '언제·어디서 팔까?', save: '상품 카드 저장', emoji: '🛍️' };
+    if (st.planLabels) { name.placeholder = ''; slogan.placeholder = ''; when.placeholder = ''; }
     return h('div', { class: 'plan-box' },
-      h('h3', null, '🛍️ 판매 계획 세우기 (선택)'),
-      h('label', null, '상품 이름', name),
-      h('label', null, '광고 문구', slogan),
-      h('label', null, '언제·어디서 팔까?', when),
+      h('h3', null, L.title),
+      h('label', null, L.name, name),
+      h('label', null, L.slogan, slogan),
+      h('label', null, L.when, when),
       h('div', { class: 'note-actions' },
         h('button', { class: 'btn', type: 'button', onclick: () => {
           if (!name.value.trim()) return name.focus();
-          store.addProduct({ unit: data.unitId, customer: `${st.customer.emoji} ${st.customer.name} (${st.customer.place})`, name: name.value.trim(), slogan: slogan.value.trim(), when: when.value.trim(), features: feats });
-          saved.textContent = '📦 상품 카드를 저장했어요!';
-        } }, '상품 카드 저장'),
+          store.addProduct({ unit: data.unitId, customer: `${st.customer.emoji} ${st.customer.name} (${st.customer.place})`, name: name.value.trim(), slogan: slogan.value.trim(), when: when.value.trim(), features: feats, emoji: L.emoji });
+          saved.textContent = `📦 ${L.save.replace(' 저장', '')}를 저장했어요!`;
+        } }, L.save),
         saved,
       ),
     );

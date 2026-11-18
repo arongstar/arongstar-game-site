@@ -166,6 +166,7 @@ export interface Product {
   slogan: string;
   when: string;
   features: string[];
+  emoji?: string;
   at: number;
 }
 export function getProducts(unit: string): Product[] {

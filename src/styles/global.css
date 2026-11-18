@@ -518,3 +518,19 @@ textarea:focus, input[type='text']:focus { outline: none; border-color: var(--pr
 .bi-price { font-weight: 900; color: var(--primary-strong); white-space: nowrap; }
 .fb-detail.ok { color: var(--ok); }
 .draft-note { background: #fff3cf; border: 2px dashed #e0b84a; border-radius: 14px; padding: 12px 14px; font-size: 0.95rem; }
+
+/* ───── 나이별 인구 구성 ───── */
+.agebars { margin: 0; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 10px 12px; }
+.age-legend { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 0.82rem; color: var(--muted); margin: 2px 0 8px; }
+.age-legend span::before { content: ''; display: inline-block; width: 14px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
+.lg-young::before { background: #6cc28a; }
+.lg-adult::before { background: #74aee3; }
+.lg-old::before { background: #e9a23b; }
+.age-list { display: grid; gap: 8px; }
+.age-row { display: grid; grid-template-columns: 76px 1fr 78px; gap: 8px; align-items: center; font-weight: 700; font-size: 0.95rem; }
+.age-track { display: flex; height: 26px; border-radius: 6px; overflow: hidden; background: var(--surface-2); }
+.age-track .seg { display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: #fff; font-weight: 800; white-space: nowrap; overflow: hidden; }
+.seg.young { background: #4fae72; }
+.seg.adult { background: #5a9ad6; }
+.seg.old { background: #d98d24; }
+.age-old { font-size: 0.85rem; color: #a2621a; text-align: right; }

@@ -119,14 +119,14 @@ export function renderReport() {
     for (const pr of products) {
       pg.append(h('div', { class: 'product-card' },
         h('div', { class: 'pc-customer' }, pr.customer),
-        h('div', { class: 'pc-name' }, '🛍️ ', pr.name),
+        h('div', { class: 'pc-name' }, pr.emoji ?? '🛍️', ' ', pr.name),
         pr.slogan ? h('div', { class: 'pc-slogan' }, '“', pr.slogan, '”') : null,
         h('ul', null, pr.features.map((f) => h('li', null, f))),
         pr.when ? h('div', { class: 'pc-when' }, '🗓️ ', pr.when) : null,
         h('button', { class: 'btn ghost small no-print', onclick: () => { store.deleteProduct(pr.id); renderReport(); } }, '지우기'),
       ));
     }
-    root.append(h('h2', { class: 'sec-title' }, '🛍️ 내가 기획한 상품'), pg);
+    root.append(h('h2', { class: 'sec-title' }, '📦 내가 만든 기획 카드'), pg);
   }
 
   root.append(h('p', { class: 'muted', style: { marginTop: '24px', fontSize: '0.85rem' } },
