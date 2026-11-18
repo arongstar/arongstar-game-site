@@ -7,9 +7,9 @@ import * as store from './store';
 import type { Tier, StepResult } from './store';
 
 const TIERS: Record<Tier, { emoji: string; name: string; desc: string }> = {
-  C: { emoji: '🧭', name: '살펴보기', desc: '사진·지도·그래프를 살펴보고 특징을 찾아요' },
-  B: { emoji: '🔎', name: '조사하기', desc: '자료를 조사해 생활 모습과 그 까닭을 설명해요' },
-  A: { emoji: '🏅', name: '분석하기', desc: '여러 자료를 비교·분석하고 새로운 곳에 적용해요' },
+  C: { emoji: '🧭', name: '살펴보기', desc: '사진·지도·그래프 같은 자료를 살펴보고 특징과 사례를 찾아요' },
+  B: { emoji: '🔎', name: '조사하기', desc: '자료를 조사해 까닭과 관계를 설명해요' },
+  A: { emoji: '🏅', name: '분석하기', desc: '여러 자료를 비교·분석하고 새로운 상황에 적용해요' },
 };
 const LABELS = ['가', '나', '다', '라'];
 
@@ -122,7 +122,7 @@ export function startMission() {
   // 지형 도감 카드 모음
   function dexGrid() {
     const have = new Set(store.getCards(data.unitId));
-    const ids = Object.keys(data.atlas);
+    const ids = Object.keys(data.atlas).filter((id) => !data.atlas[id].place);
     const sec = h(
       'section',
       { class: 'dex' },
@@ -302,6 +302,9 @@ export function startMission() {
 
     // 자료 보여 주기
     if (st.sun) visual.append(sunSim());
+    if (st.card) visual.append(h('div', { class: 'sit-card' }, h('div', { class: 'sit-emoji', 'aria-hidden': 'true' }, st.card.emoji), h('div', null, h('div', { class: 'sit-title' }, st.card.title), h('p', null, st.card.text))));
+    if (st.table) visual.append(tableView(st.table));
+    if (st.bars) visual.append(barsView(st.bars));
     if (st.photo) visual.append(photoFigure(st.photo));
     if (st.photos) {
       const g = h('div', { class: 'ph-grid n' + st.photos.length });
@@ -446,6 +449,10 @@ export function startMission() {
 
     if (st.type === 'shop') shopView(st, panel, actions, fb, judge, () => done);
 
+    if (st.type === 'order') orderView(st, panel, actions, judge, () => done);
+
+    if (st.type === 'budget') budgetView(st, panel, actions, fb, judge, () => done);
+
     panel.append(hintBtn ?? '', hintBox, fb, actions);
     return wrap;
   }
@@ -457,11 +464,13 @@ export function startMission() {
     if (st.type === 'pin') return (data.atlas[st.answer] ?? data.climate[st.answer])?.name ?? '';
     if (st.type === 'build') return st.parts.map((p: any) => `${p.label} — ${p.options.filter((o: any) => o.fit).map((o: any) => o.text).join(' 또는 ')}`).join(' / ');
     if (st.type === 'shop') return st.features.filter((f: any) => f.fit).map((f: any) => f.text).join(' / ');
+    if (st.type === 'order') return st.items.join(' → ');
+    if (st.type === 'budget') return `${st.budget.toLocaleString()}원 안에서, 꼭 필요한 것(${st.items.filter((i: any) => i.need).map((i: any) => i.text).join(', ')})을 먼저 고르기`;
     return '바구니에 바르게 옮겨 둔 카드를 확인해 보세요';
   }
 
   function hasVisual(st: any) {
-    return !!(st.photo || st.photos || st.chart || st.charts || st.sun || st.type === 'pin' || st.type === 'build');
+    return !!(st.photo || st.photos || st.chart || st.charts || st.sun || st.table || st.bars || st.card || st.type === 'pin' || st.type === 'build');
   }
 
   function chartFor(id: string, hiddenTitle?: string) {
@@ -569,6 +578,128 @@ export function startMission() {
     st.bins.forEach((b: string) => bins.append(binEls[b]));
     actions.append(confirm);
     render();
+  }
+
+  // 표 자료
+  function tableView(tb: any) {
+    return h('figure', { class: 'data-table' },
+      tb.title ? h('figcaption', { class: 'chart-title' }, tb.title) : null,
+      h('div', { class: 'tbl-scroll' }, h('table', { class: 'tbl' },
+        h('thead', null, h('tr', null, tb.head.map((x: string) => h('th', null, x)))),
+        h('tbody', null, tb.rows.map((r: string[]) => h('tr', null, r.map((c) => h('td', null, c))))),
+      )),
+      tb.note ? h('small', { class: 'ph-credit' }, tb.note) : null,
+    );
+  }
+
+  // 막대그래프 자료
+  function barsView(b: any) {
+    const max = Math.max(...b.items.map((i: any) => i.value));
+    return h('figure', { class: 'bars' },
+      h('figcaption', { class: 'chart-title' }, b.title),
+      h('div', { class: 'bars-list' }, b.items.map((i: any) =>
+        h('div', { class: 'bar-row' },
+          h('span', { class: 'bar-label' }, i.label),
+          h('span', { class: 'bar-track' }, h('span', { class: 'bar-fill', style: { width: `${Math.max(1.5, (i.value / max) * 100)}%` } })),
+          h('span', { class: 'bar-val' }, `${i.value.toLocaleString()}${b.unit}`),
+        ),
+      )),
+      b.note ? h('small', { class: 'ph-credit' }, b.note) : null,
+    );
+  }
+
+  // 순서대로 놓기 — 카드를 차례로 누르면 1, 2, 3… 칸에 들어가요
+  function orderView(st: any, panel: HTMLElement, actions: HTMLElement, judge: any, isDone: () => boolean) {
+    panel.append(h('p', { class: 'q-sub' }, '먼저 일어난 것부터 차례로 눌러요. 칸에 놓인 카드를 누르면 다시 빠져요.'));
+    const n = st.items.length;
+    const slots: (string | null)[] = Array(n).fill(null);
+    const locked: boolean[] = Array(n).fill(false);
+    const pool = shuffle(st.items as string[]);
+    const slotBox = h('ol', { class: 'order-slots' });
+    const poolBox = h('div', { class: 'tray' });
+    const confirm = h('button', { class: 'btn primary', disabled: true }, '확인') as HTMLButtonElement;
+    function render() {
+      slotBox.replaceChildren(...slots.map((s0, i) =>
+        h('li', { class: 'order-slot' + (s0 ? ' filled' : '') + (locked[i] ? ' right' : '') },
+          h('span', { class: 'order-no' }, String(i + 1)),
+          s0 ? h('button', { class: 'sort-card', disabled: locked[i] || isDone(), onclick: () => { slots[i] = null; render(); } }, s0) : h('span', { class: 'order-empty' }, '여기에 놓여요'),
+        )));
+      const used = new Set(slots.filter(Boolean));
+      poolBox.replaceChildren(...pool.filter((p) => !used.has(p)).map((p) =>
+        h('button', { class: 'sort-card', disabled: isDone(), onclick: () => { const i = slots.indexOf(null); if (i >= 0) { slots[i] = p; render(); } } }, p)));
+      if (!poolBox.childElementCount) poolBox.append(h('span', { class: 'tray-empty' }, '모두 놓았어요! [확인]을 눌러 보세요.'));
+      poolBox.hidden = isDone();
+      confirm.disabled = slots.includes(null) || isDone();
+    }
+    confirm.onclick = () => {
+      const ok = slots.every((s0, i) => s0 === st.items[i]);
+      judge(ok, () => {
+        slots.forEach((s0, i) => { if (s0 === st.items[i]) locked[i] = true; else slots[i] = null; });
+        render();
+      }, () => {
+        st.items.forEach((x: string, i: number) => { slots[i] = x; locked[i] = true; });
+        render();
+      });
+      if (isDone()) { slots.forEach((_, i) => (locked[i] = true)); render(); confirm.remove(); }
+    };
+    panel.append(slotBox, poolBox);
+    actions.append(confirm);
+    render();
+  }
+
+  // 예산 안에서 고르기
+  function budgetView(st: any, panel: HTMLElement, actions: HTMLElement, fb: HTMLElement, judge: any, isDone: () => boolean) {
+    const sel = new Set<number>();
+    const sumOut = h('b');
+    const meterFill = h('span', { class: 'budget-fill' });
+    const meter = h('div', { class: 'budget-meter' },
+      h('div', { class: 'budget-text' }, '쓴 돈 ', sumOut, ` / 예산 ${st.budget.toLocaleString()}원`),
+      h('span', { class: 'budget-track' }, meterFill));
+    const box = h('div', { class: 'budget-items' });
+    const confirm = h('button', { class: 'btn primary', disabled: true }, '이렇게 살래요') as HTMLButtonElement;
+    const total = () => [...sel].reduce((a, i) => a + st.items[i].price, 0);
+    function update() {
+      const t0 = total();
+      sumOut.textContent = `${t0.toLocaleString()}원`;
+      const pct = Math.min(100, (t0 / st.budget) * 100);
+      meterFill.style.width = pct + '%';
+      meter.classList.toggle('over', t0 > st.budget);
+      confirm.disabled = sel.size === 0 || isDone();
+    }
+    st.items.forEach((it: any, i: number) => {
+      const b = h('button', { class: 'budget-item', 'aria-pressed': 'false', onclick: () => {
+        if (isDone()) return;
+        sel.has(i) ? sel.delete(i) : sel.add(i);
+        b.classList.toggle('on', sel.has(i));
+        b.setAttribute('aria-pressed', String(sel.has(i)));
+        update();
+      } },
+        h('span', { class: 'bi-emoji', 'aria-hidden': 'true' }, it.emoji),
+        h('span', { class: 'bi-text' }, it.text, it.note ? h('small', null, it.note) : null),
+        h('span', { class: 'bi-price' }, `${it.price.toLocaleString()}원`),
+      );
+      box.append(b);
+    });
+    confirm.onclick = () => {
+      const t0 = total();
+      const missing = st.items.filter((it: any, i: number) => it.need && !sel.has(i));
+      const ok = t0 <= st.budget && missing.length === 0;
+      judge(ok, () => {
+        fb.append(h('p', { class: 'fb-detail' },
+          t0 > st.budget ? `예산보다 ${(t0 - st.budget).toLocaleString()}원 더 썼어요. ` : '',
+          missing.length ? `꼭 필요한 것을 빠뜨렸어요: ${missing.map((m: any) => m.text).join(', ')}` : ''));
+      }, () => {
+        box.querySelectorAll('.budget-item').forEach((el, i) => st.items[i].need && el.classList.add('right'));
+      });
+      if (isDone()) {
+        box.querySelectorAll('.budget-item').forEach((el) => ((el as HTMLButtonElement).disabled = true));
+        if (ok) fb.append(h('p', { class: 'fb-detail ok' }, `💰 남은 돈 ${(st.budget - t0).toLocaleString()}원`));
+        confirm.remove();
+      }
+    };
+    panel.append(meter, box);
+    actions.append(confirm);
+    update();
   }
 
   // 기후에 맞는 집·옷 꾸미기

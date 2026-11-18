@@ -107,7 +107,9 @@ const cats = ['지식·이해', '과정·기능', '가치·태도'] as const;
         </tbody>
       </table>
     </div>
-    <p class="muted" style="font-size:0.85rem">출처: 한국교육과정평가원 「2022 개정 교육과정에 따른 초등학교 5~6학년군 성취 수준」</p>
+    {u.levelsDraft
+      ? <p class="draft-note">⚠ 이 단원의 성취수준은 평가원 원문을 확인하지 못해, 성취기준의 동사(이해·탐색·탐구)에 맞추어 만든 <b>초안</b>이에요. 교사용 지도서의 「성취 기준별 성취 수준」·「영역별 성취 수준」으로 바꿔 주세요. (파일: <code>src/content/units/{unit.id}.yaml</code>)</p>
+      : <p class="muted" style="font-size:0.85rem">출처: {u.levelsSource ?? '한국교육과정평가원 「2022 개정 교육과정에 따른 초등학교 5~6학년군 성취 수준」'}</p>}
 
     <h2>📖 게임별 운영 안내</h2>
     {games.map((g) => {

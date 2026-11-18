@@ -130,6 +130,7 @@ export function renderReport() {
   }
 
   root.append(h('p', { class: 'muted', style: { marginTop: '24px', fontSize: '0.85rem' } },
+    unit.levelsDraft ? '※ 이 단원의 성취수준 문장은 초안이에요. ' : '',
     '※ 탐험 단계는 게임 기록으로 계산한 참고 자료예요. 성취수준은 선생님의 관찰, 발표, 활동지와 함께 판단해요. 가치·태도는 질문 수첩(질문 1개 이상 → 살펴보기, 3개 이상 → 조사하기, 스스로 조사한 답 → 분석하기)으로 보여 줘요.'));
 }
 

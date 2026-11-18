@@ -9,6 +9,7 @@ export async function reportData(unit: Unit) {
     domain: unit.data.domain,
     standards: unit.data.standards,
     domainLevels: unit.data.domainLevels,
+    levelsDraft: unit.data.levelsDraft,
     games: Object.fromEntries(
       games.map((g) => [
         g.id,

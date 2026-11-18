@@ -60,6 +60,11 @@ const units = defineCollection({
       }),
     ),
     atlas: z.array(atlasItem).default([]),
+    // 지도 문제에 쓰는 장소 (나라·도시 등)
+    places: z.array(z.object({ id: z.string(), name: z.string(), lat: z.number(), lon: z.number() })).default([]),
+    // 성취수준이 평가원 원문이 아닌 초안이면 true (선생님용 페이지와 리포트에 안내가 보여요)
+    levelsDraft: z.boolean().default(false),
+    levelsSource: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });
@@ -85,6 +90,14 @@ const stepBase = {
   hideChartName: z.boolean().default(false), // 그래프 위에 도시 이름을 숨길지 (맞히기 문제)
   collect: z.array(z.string()).default([]), // 맞히면 도감에 들어갈 지형 카드 id
   sun: z.boolean().default(false), // 위도별 햇볕 시뮬레이터를 함께 보여 줄지
+  // 표 자료
+  table: z.object({ title: z.string().optional(), head: z.array(z.string()), rows: z.array(z.array(z.string())), note: z.string().optional() }).optional(),
+  // 막대그래프 자료
+  bars: z
+    .object({ title: z.string(), unit: z.string(), items: z.array(z.object({ label: z.string(), value: z.number() })), note: z.string().optional() })
+    .optional(),
+  // 상황 카드 (그림 대신 이모지와 짧은 글)
+  card: z.object({ emoji: z.string(), title: z.string(), text: z.string() }).optional(),
 };
 
 // 꾸미기(집·옷)와 상점 문제의 보기
@@ -122,6 +135,15 @@ const step = z.discriminatedUnion('type', [
     target: z.enum(['house', 'clothes']),
     scene: z.enum(['열대', '건조', '온대', '냉대', '한대', '고산']).optional(), // 배경 그림
     parts: z.array(z.object({ label: z.string(), options: z.array(fitOption).min(2) })).min(1),
+  }),
+  // 순서대로 놓기
+  z.object({ type: z.literal('order'), ...stepBase, items: z.array(z.string()).min(3) }), // items 는 정답 순서
+  // 예산 안에서 고르기 (합리적 선택)
+  z.object({
+    type: z.literal('budget'),
+    ...stepBase,
+    budget: z.number(),
+    items: z.array(z.object({ text: z.string(), emoji: z.string(), price: z.number(), need: z.boolean().default(false), note: z.string().optional() })).min(3),
   }),
   // 세계 상점: 손님에게 알맞은 상품 기능을 모두 고르고 판매 계획 세우기
   z.object({
@@ -190,9 +212,18 @@ const games = defineCollection({
       template: z.literal('zoomout'),
       mode: z.literal('board').default('board'),
       ...gameBase,
+      ask: z.string().default('여기는 어디일까요? 어떤 지형일까요?'),
+      vote: z.string().default('🙋 여기에 가 보고 싶은 사람?'),
+      voteTitle: z.string().default('🙋 우리 반이 가장 가 보고 싶은 곳'),
+      outro: z.string().default('이 단원에서 이곳들의 지형과 사람들의 생활 모습을 하나씩 탐험해 봐요!'),
       rounds: z.array(
         z.object({
-          atlas: z.string(), // 단원 atlas 의 지형 id
+          atlas: z.string().optional(), // 단원 atlas 의 지형 id
+          // atlas 대신 직접 적기
+          photo: z.string().optional(),
+          name: z.string().optional(),
+          tag: z.string().optional(),
+          desc: z.string().optional(),
           focus: z.tuple([z.number(), z.number()]), // 처음 확대할 곳 (사진 왼쪽 위 기준 %)
           question: z.string().optional(), // 정답 공개 뒤 함께 생각할 질문
         }),

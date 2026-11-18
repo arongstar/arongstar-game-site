@@ -77,7 +77,7 @@ export function startZoomout() {
     const s0 = st!;
     if (s0.idx >= s0.order.length) return finish();
     const r = data.rounds[s0.order[s0.idx]];
-    const a = data.atlas[r.atlas];
+    const a = r;
     let level = 0;
     let revealed = false;
 
@@ -102,15 +102,18 @@ export function startZoomout() {
       revealed = true;
       apply();
       const pts = POINTS[level];
-      const map = s('svg', { viewBox: data.map.viewBox, class: 'map-svg zo-map', 'aria-label': '위치' });
-      map.append(s('rect', { x: 0, y: 0, width: 1000, height: 500, class: 'sea' }), s('path', { d: data.map.path, class: 'land' }));
-      const pin = s('g', { transform: `translate(${a.x} ${a.y})`, class: 'pin right' });
-      pin.append(s('circle', { r: 14, class: 'pin-c' }));
-      map.append(pin);
-      const voteOut = h('b', null, String(s0.votes[r.atlas] ?? 0));
+      let map: SVGElement | null = null;
+      if (a.x !== undefined) {
+        map = s('svg', { viewBox: data.map.viewBox, class: 'map-svg zo-map', 'aria-label': '위치' });
+        map.append(s('rect', { x: 0, y: 0, width: 1000, height: 500, class: 'sea' }), s('path', { d: data.map.path, class: 'land' }));
+        const pin = s('g', { transform: `translate(${a.x} ${a.y})`, class: 'pin right' });
+        pin.append(s('circle', { r: 14, class: 'pin-c' }));
+        map.append(pin);
+      }
+      const voteOut = h('b', null, String(s0.votes[r.key] ?? 0));
       const vote = (d: number) => {
-        s0.votes[r.atlas] = Math.max(0, (s0.votes[r.atlas] ?? 0) + d);
-        voteOut.textContent = String(s0.votes[r.atlas]);
+        s0.votes[r.key] = Math.max(0, (s0.votes[r.key] ?? 0) + d);
+        voteOut.textContent = String(s0.votes[r.key]);
         save();
       };
       const awardRow = h('div', { class: 'bd-award' },
@@ -126,15 +129,15 @@ export function startZoomout() {
       );
       side.replaceChildren(
         h('div', { class: 'zo-answer' },
-          h('span', { class: `zo-type t-${a.type}` }, a.type),
+          a.tag ? h('span', { class: `zo-type t-${a.tag}` }, a.tag) : null,
           h('h2', null, a.name),
-          h('p', { class: 'zo-country' }, '📍 ', a.country),
+          a.sub ? h('p', { class: 'zo-country' }, '📍 ', a.sub) : null,
           map,
-          h('p', null, a.feature),
+          h('p', null, a.desc),
         ),
         awardRow,
         h('div', { class: 'zo-talk' },
-          h('div', { class: 'zo-vote' }, '🙋 여기에 가 보고 싶은 사람? ',
+          h('div', { class: 'zo-vote' }, data.vote, ' ',
             h('button', { class: 'btn small ghost', onclick: () => vote(-1), 'aria-label': '한 명 빼기' }, '－'), voteOut,
             h('button', { class: 'btn small', onclick: () => vote(1), 'aria-label': '한 명 더하기' }, '＋')),
           h('p', null, '💬 ', r.question ?? '이곳에 대해 더 알고 싶은 것을 말해 보세요. 탐험 질문 수첩에 적어 두어요!'),
@@ -144,7 +147,7 @@ export function startZoomout() {
     }
 
     side.append(
-      h('p', { class: 'zo-ask' }, '여기는 어디일까요? 어떤 지형일까요?'),
+      h('p', { class: 'zo-ask' }, data.ask),
       levelOut,
       zoomBtn,
       h('button', { class: 'btn primary big', onclick: reveal }, '정답 공개'),
@@ -178,9 +181,9 @@ export function startZoomout() {
         h('p', null, `우리 반이 함께 모은 점수 ${total.toLocaleString()}점`),
         h('ol', { class: 'zo-rank' }, ranked.map((t) => h('li', { style: { borderColor: TEAM_COLORS[t.i] } }, `${TEAM_EMOJI[t.i]} ${t.name}`, h('b', null, `${t.score}점`)))),
         top.length
-          ? h('div', null, h('h2', null, '🙋 우리 반이 가장 가 보고 싶은 곳'), h('ol', { class: 'zo-top' }, top.map(([id, v]) => h('li', null, `${data.atlas[id].name} (${v}명)`))))
+          ? h('div', null, h('h2', null, data.voteTitle), h('ol', { class: 'zo-top' }, top.map(([id, v]) => h('li', null, `${data.rounds.find((x: any) => x.key === id)?.name ?? id} (${v}명)`))))
           : null,
-        h('p', { class: 'muted' }, '이 단원에서 이곳들의 지형과 사람들의 생활 모습을 하나씩 탐험해 봐요!'),
+        h('p', { class: 'muted' }, data.outro),
         h('div', { class: 'bd-setup-actions' }, h('button', { class: 'btn primary big', onclick: () => { st = null; save(); setup(); } }, '새로 하기')),
         h('a', { class: 'bd-back', href: data.unitUrl }, '← 탐험 지도로'),
       ),

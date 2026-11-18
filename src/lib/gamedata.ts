@@ -106,6 +106,11 @@ export function missionData(game: Game, unit: Unit) {
   const cityIds = new Set<string>();
   let needsMap = g.style === 'dex';
   const atlas = atlasFor(unit);
+  // 지도 문제용 장소도 atlas 처럼 쓸 수 있게
+  for (const pl of unit.data.places) {
+    const [x, y] = project(pl.lon, pl.lat);
+    atlas[pl.id] ??= { id: pl.id, name: pl.name, x, y, place: true };
+  }
 
   const stages = g.stages.map((s) => ({
     ...s,
@@ -184,13 +189,29 @@ export function stepCounts(game: Game) {
 export function zoomoutData(game: Game, unit: Unit) {
   if (game.data.template !== 'zoomout') throw new Error('zoomout 게임이 아니에요');
   const atlas = atlasFor(unit);
-  for (const r of game.data.rounds) if (!atlas[r.atlas]) throw new Error(`atlas 에 없는 지형: ${r.atlas}`);
+  // 라운드마다 보여 줄 내용: 단원 atlas 의 지형이거나, 직접 적은 사진·이름
+  const rounds = game.data.rounds.map((r) => {
+    if (r.atlas) {
+      const a = atlas[r.atlas];
+      if (!a) throw new Error(`atlas 에 없는 지형: ${r.atlas}`);
+      return { key: r.atlas, focus: r.focus, question: r.question, name: a.name, tag: a.type, sub: a.country, desc: a.feature, photo: a.photo, x: a.x, y: a.y };
+    }
+    if (!r.photo || !r.name) throw new Error('zoomout 라운드에는 atlas 또는 photo·name 이 필요해요');
+    return { key: r.photo, focus: r.focus, question: r.question, name: r.name, tag: r.tag ?? '', sub: '', desc: r.desc ?? '', photo: photo(r.photo, r.name) };
+  }).filter((r) => {
+    // 사진을 찾지 못한 장면은 빼고 진행
+    if (!r.photo) console.warn(`[줌아웃] 사진이 없어 뺀 장면: ${r.name}`);
+    return !!r.photo;
+  });
   return {
     id: game.id,
     title: game.data.title,
     emoji: game.data.emoji,
-    rounds: game.data.rounds,
-    atlas,
+    ask: game.data.ask,
+    vote: game.data.vote,
+    voteTitle: game.data.voteTitle,
+    outro: game.data.outro,
+    rounds,
     map: { path: landPath(), viewBox: MAP_VIEWBOX },
     unitUrl: url(`/u/${unit.id}/`),
   };
