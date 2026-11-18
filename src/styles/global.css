@@ -411,3 +411,69 @@ textarea:focus, input[type='text']:focus { outline: none; border-color: var(--pr
 }
 .step.wide-visual .step-panel .options.short { grid-template-columns: repeat(3, 1fr); }
 .fb-answer { font-weight: 800; color: var(--primary-strong); }
+
+/* ───── 햇볕 시뮬레이터 ───── */
+.sun-sim { margin: 0; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 10px 12px; }
+.sun-svg { width: 100%; height: auto; display: block; }
+.sun-svg .sun-sun { fill: #ffcf3f; }
+.sun-svg .sun-earth { fill: #cfe8f0; stroke: #7fb6c9; stroke-width: 2; }
+.sun-svg .sun-lat { stroke: #9cc3d1; stroke-width: 1; stroke-dasharray: 3 3; }
+.sun-svg .sun-eq { stroke: #e08a3c; stroke-width: 1.6; stroke-dasharray: 6 4; }
+.sun-svg .sun-label { font-size: 12px; fill: #5b6a70; font-weight: 700; }
+.sun-svg .sun-hit { fill: none; stroke: #e4572e; stroke-width: 6; stroke-linecap: round; }
+.sun-svg .sun-marker { fill: #e4572e; }
+.sun-control { display: flex; align-items: center; gap: 10px; font-weight: 700; margin-top: 6px; }
+.sun-range { flex: 1; height: 36px; accent-color: #f2a516; }
+.sun-presets { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.sun-read { display: grid; gap: 4px; margin-top: 8px; font-size: 0.98rem; }
+.sun-power { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.sun-power-bar { flex: 1; min-width: 120px; height: 12px; border-radius: 6px; background: var(--surface-2); overflow: hidden; display: inline-block; }
+.sun-power-fill { display: block; height: 100%; border-radius: 6px; transition: width .2s, background .2s; }
+
+/* ───── 집·옷 꾸미기 ───── */
+.art { margin: 0; background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.art-svg { width: 100%; height: auto; display: block; }
+.art-cap { font-weight: 800; padding: 6px 12px; }
+.part-row { padding: 10px 12px; border-radius: 14px; border: 2px solid var(--line); margin-bottom: 10px; background: #fbfaf6; }
+.part-row.good { border-color: #9fd3b3; background: var(--ok-soft); }
+.part-row.bad { border-color: #f2b78f; background: #fff0e6; }
+.part-label { font-family: var(--font-title); font-size: 1.15rem; color: var(--primary-strong); margin-bottom: 6px; }
+.part-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.part-opt { min-height: 48px; padding: 8px 14px; border-radius: 12px; border: 2px solid var(--line); background: #fff; font-weight: 700; font-size: 0.98rem; cursor: pointer; text-align: left; }
+.part-opt.on { border-color: var(--primary); background: var(--primary-soft); }
+.part-opt.wrong { border-color: var(--bad); background: var(--bad-soft); }
+.part-opt.right { border-color: var(--ok); background: var(--ok-soft); }
+.part-why { margin: 8px 0 0; font-size: 0.95rem; font-weight: 600; }
+
+/* ───── 세계 상점 ───── */
+.customer { display: flex; gap: 14px; align-items: center; background: #fff7e8; border: 2px solid #f0d49a; border-radius: 18px; padding: 12px 16px; margin-bottom: 12px; }
+.cu-emoji { font-size: 3rem; line-height: 1; }
+.cu-name { font-weight: 800; font-size: 1.1rem; }
+.cu-place { font-weight: 600; color: var(--muted); font-size: 0.92rem; }
+.cu-says { margin: 4px 0 0; }
+.opt-body { display: flex; flex-direction: column; gap: 2px; }
+.opt-why { font-size: 0.88rem; font-weight: 600; color: var(--muted); }
+.plan-box { margin-top: 12px; background: #fffaf0; border: 2px dashed #e6c77c; border-radius: 16px; padding: 12px 14px; }
+.plan-box h3 { margin: 0 0 4px; font-size: 1.15rem; }
+.plan-box label { display: block; font-weight: 700; margin-top: 8px; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.product-card { background: #fff; border: 2px solid #f0d49a; border-radius: 18px; padding: 14px; }
+.pc-customer { font-size: 0.88rem; color: var(--muted); font-weight: 700; }
+.pc-name { font-family: var(--font-title); font-size: 1.35rem; margin: 4px 0; }
+.pc-slogan { font-weight: 700; color: #a2441d; }
+.product-card ul { margin: 6px 0; padding-left: 18px; font-size: 0.92rem; }
+.pc-when { font-size: 0.92rem; }
+
+/* ───── 빙고 (학생 태블릿) ───── */
+.bg-card { max-width: 760px; margin: 0 auto; }
+.bg-grid { display: grid; gap: 8px; margin: 14px 0; }
+.bg-cell { aspect-ratio: 1; border-radius: 16px; border: 3px dashed var(--line); background: var(--surface); font-weight: 800; font-size: clamp(0.9rem, 2.6vw, 1.25rem); cursor: pointer; padding: 6px; line-height: 1.25; }
+.bg-cell.filled { border-style: solid; border-color: #b7cfd6; background: #f3f9fb; }
+.bg-grid.play .bg-cell { border-color: #9fc3cc; }
+.bg-cell.marked { background: #ffe8a8; border-color: #f2a516; position: relative; }
+.bg-cell.marked::after { content: ''; position: absolute; inset: 14%; border: 6px solid rgb(228 87 46 / 0.75); border-radius: 50%; }
+.bg-bank { display: flex; flex-wrap: wrap; gap: 8px; }
+.bg-chip { min-height: 46px; padding: 6px 14px; border-radius: 999px; border: 2px solid var(--primary); background: #fff; font-weight: 800; cursor: pointer; }
+.bg-chip.used, .bg-chip:disabled { opacity: 0.35; cursor: default; }
+.bg-lines { font-size: 1.2rem; font-weight: 800; color: var(--primary-strong); }
+.bg-cheer { position: fixed; left: 50%; top: 40%; transform: translate(-50%, -50%); background: #f2a516; color: #fff; font-family: var(--font-title); font-size: 3rem; padding: 18px 36px; border-radius: 24px; box-shadow: 0 10px 30px rgb(0 0 0 / 0.25); z-index: 90; animation: pop .3s ease-out; }

@@ -1,6 +1,8 @@
 // 개인 태블릿용 미션 게임 (지형 도감 · 이 마을에 살려면? · 기후 그래프 탐정)
 import { h, s, shuffle, readJSON, photoFigure } from './dom';
 import { climateChart, markMonth } from './chart';
+import { sunSim } from './sun';
+import { houseArt, clothesArt } from './art';
 import * as store from './store';
 import type { Tier, StepResult } from './store';
 
@@ -299,6 +301,7 @@ export function startMission() {
     }
 
     // 자료 보여 주기
+    if (st.sun) visual.append(sunSim());
     if (st.photo) visual.append(photoFigure(st.photo));
     if (st.photos) {
       const g = h('div', { class: 'ph-grid n' + st.photos.length });
@@ -439,6 +442,10 @@ export function startMission() {
 
     if (st.type === 'pin') pinView(st, visual, panel, judge);
 
+    if (st.type === 'build') buildView(st, visual, panel, actions, fb, judge, () => done);
+
+    if (st.type === 'shop') shopView(st, panel, actions, fb, judge, () => done);
+
     panel.append(hintBtn ?? '', hintBox, fb, actions);
     return wrap;
   }
@@ -448,11 +455,13 @@ export function startMission() {
     if (st.type === 'multi') return st.answers.join(' / ');
     if (st.type === 'pickmonth') return st.answer.map((m: number) => `${m}월`).join(', ');
     if (st.type === 'pin') return (data.atlas[st.answer] ?? data.climate[st.answer])?.name ?? '';
+    if (st.type === 'build') return st.parts.map((p: any) => `${p.label} — ${p.options.filter((o: any) => o.fit).map((o: any) => o.text).join(' 또는 ')}`).join(' / ');
+    if (st.type === 'shop') return st.features.filter((f: any) => f.fit).map((f: any) => f.text).join(' / ');
     return '바구니에 바르게 옮겨 둔 카드를 확인해 보세요';
   }
 
   function hasVisual(st: any) {
-    return !!(st.photo || st.photos || st.chart || st.charts || st.type === 'pin');
+    return !!(st.photo || st.photos || st.chart || st.charts || st.sun || st.type === 'pin' || st.type === 'build');
   }
 
   function chartFor(id: string, hiddenTitle?: string) {
@@ -560,6 +569,183 @@ export function startMission() {
     st.bins.forEach((b: string) => bins.append(binEls[b]));
     actions.append(confirm);
     render();
+  }
+
+  // 기후에 맞는 집·옷 꾸미기
+  function buildView(st: any, visual: HTMLElement, panel: HTMLElement, actions: HTMLElement, fb: HTMLElement, judge: any, isDone: () => boolean) {
+    const chosen: (number | null)[] = st.parts.map(() => null);
+    const locked: boolean[] = st.parts.map(() => false);
+    const artBox = h('div', { class: 'art-box' });
+    const drawArt = () => {
+      const looks = chosen.map((c, i) => (c === null ? '' : st.parts[i].options[c].look ?? '')).filter(Boolean);
+      artBox.replaceChildren(st.target === 'house' ? houseArt(looks, st.scene) : clothesArt(looks, st.scene));
+    };
+    visual.prepend(h('figure', { class: 'art' }, artBox, h('figcaption', { class: 'art-cap' }, st.target === 'house' ? '🏠 내가 꾸민 집' : '👕 내가 고른 옷차림')));
+    panel.append(h('p', { class: 'q-sub' }, '부분마다 하나씩 골라 꾸민 뒤 [완성!]을 눌러요.'));
+    const rows: HTMLElement[] = [];
+    const whyEls: HTMLElement[] = [];
+    st.parts.forEach((part: any, pi: number) => {
+      const btns = h('div', { class: 'part-opts' });
+      const why = h('p', { class: 'part-why', hidden: true });
+      whyEls.push(why);
+      part.options.forEach((o: any, oi: number) => {
+        btns.append(h('button', {
+          class: 'part-opt',
+          'aria-pressed': 'false',
+          'data-oi': oi,
+          onclick: () => {
+            if (isDone() || locked[pi]) return;
+            chosen[pi] = oi;
+            btns.querySelectorAll('.part-opt').forEach((b) => {
+              const on = Number((b as HTMLElement).dataset.oi) === oi;
+              b.classList.toggle('on', on);
+              b.setAttribute('aria-pressed', String(on));
+              b.classList.remove('wrong');
+            });
+            why.hidden = true;
+            rows[pi].classList.remove('bad');
+            drawArt();
+            confirm.disabled = chosen.some((c) => c === null);
+          },
+        }, o.text));
+      });
+      const row = h('div', { class: 'part-row' }, h('div', { class: 'part-label' }, part.label), btns, why);
+      rows.push(row);
+      panel.append(row);
+    });
+    const confirm = h('button', { class: 'btn primary', disabled: true }, '완성!') as HTMLButtonElement;
+    const showWhy = (pi: number, cls: string) => {
+      const o = st.parts[pi].options[chosen[pi]!];
+      whyEls[pi].textContent = (o.fit ? '✔ ' : '✖ ') + o.why;
+      whyEls[pi].hidden = false;
+      rows[pi].classList.add(cls);
+    };
+    confirm.onclick = () => {
+      const bad = chosen.map((c, i) => (st.parts[i].options[c!].fit ? -1 : i)).filter((i) => i >= 0);
+      judge(
+        bad.length === 0,
+        () => {
+          chosen.forEach((_, i) => {
+            if (!bad.includes(i)) { locked[i] = true; showWhy(i, 'good'); }
+            else {
+              showWhy(i, 'bad');
+              rows[i].querySelector('.part-opt.on')?.classList.add('wrong');
+            }
+          });
+          fb.append(h('p', { class: 'fb-detail' }, `✖ 표시한 ${bad.length}곳을 다시 골라 보세요.`));
+        },
+        () => {
+          // 알맞은 보기로 바꿔서 보여 주기
+          chosen.forEach((c, i) => {
+            if (!st.parts[i].options[c!].fit) {
+              const fitIdx = st.parts[i].options.findIndex((o: any) => o.fit);
+              rows[i].querySelector('.part-opt.on')?.classList.add('wrong');
+              chosen[i] = fitIdx;
+              rows[i].querySelector(`.part-opt[data-oi="${fitIdx}"]`)?.classList.add('right');
+            }
+            showWhy(i, 'good');
+          });
+          drawArt();
+        },
+      );
+      if (isDone()) {
+        chosen.forEach((_, i) => { if (whyEls[i].hidden) showWhy(i, 'good'); });
+        panel.querySelectorAll('.part-opt').forEach((b) => ((b as HTMLButtonElement).disabled = true));
+        confirm.remove();
+      }
+    };
+    actions.append(confirm);
+    drawArt();
+  }
+
+  // 세계 상점: 손님에게 알맞은 상품 기능 고르기 + 판매 계획
+  function shopView(st: any, panel: HTMLElement, actions: HTMLElement, fb: HTMLElement, judge: any, isDone: () => boolean) {
+    const c = st.customer;
+    panel.append(
+      h('div', { class: 'customer' },
+        h('div', { class: 'cu-emoji', 'aria-hidden': 'true' }, c.emoji),
+        h('div', null, h('div', { class: 'cu-name' }, c.name, h('span', { class: 'cu-place' }, ' 📍 ', c.place)), h('p', { class: 'cu-says' }, '“', c.says, '”')),
+      ),
+      h('p', { class: 'q-sub' }, '손님에게 알맞은 상품 기능을 모두 골라 [확인]을 눌러요.'),
+    );
+    const sel = new Set<number>();
+    const box = h('div', { class: 'options multi' });
+    const btns: HTMLButtonElement[] = [];
+    const feats = shuffle(st.features.map((f: any, i: number) => ({ ...f, i })));
+    for (const f of feats) {
+      const why = h('span', { class: 'opt-why', hidden: true }, f.why);
+      const b = h('button', {
+        class: 'opt check',
+        'aria-pressed': 'false',
+        'data-i': f.i,
+        onclick: () => {
+          if (isDone()) return;
+          sel.has(f.i) ? sel.delete(f.i) : sel.add(f.i);
+          b.classList.toggle('on', sel.has(f.i));
+          b.setAttribute('aria-pressed', String(sel.has(f.i)));
+          confirm.disabled = sel.size === 0;
+        },
+      }, h('span', { class: 'box', 'aria-hidden': 'true' }), h('span', { class: 'opt-body' }, h('span', null, f.text), why)) as HTMLButtonElement;
+      btns.push(b);
+      box.append(b);
+    }
+    panel.append(box);
+    const fits = new Set<number>(st.features.map((f: any, i: number) => (f.fit ? i : -1)).filter((i: number) => i >= 0));
+    const revealWhy = (only?: Set<number>) =>
+      btns.forEach((b) => {
+        const i = Number(b.dataset.i);
+        if (!only || only.has(i)) (b.querySelector('.opt-why') as HTMLElement).hidden = false;
+      });
+    const confirm = h('button', { class: 'btn primary', disabled: true }, '확인') as HTMLButtonElement;
+    confirm.onclick = () => {
+      const ok = sel.size === fits.size && [...sel].every((i) => fits.has(i));
+      const wrongSel = new Set([...sel].filter((i) => !fits.has(i)));
+      judge(
+        ok,
+        () => {
+          revealWhy(wrongSel);
+          btns.forEach((b) => wrongSel.has(Number(b.dataset.i)) && b.classList.add('wrong'));
+          const missing = [...fits].filter((i) => !sel.has(i)).length;
+          fb.append(h('p', { class: 'fb-detail' }, wrongSel.size ? `손님에게 맞지 않는 기능이 ${wrongSel.size}개 있어요. ` : '', missing ? `알맞은 기능을 ${missing}개 더 찾아보세요.` : ''));
+        },
+        () => {},
+      );
+      if (isDone()) {
+        btns.forEach((b) => {
+          const i = Number(b.dataset.i);
+          b.classList.remove('wrong');
+          if (fits.has(i)) b.classList.add('right');
+          else if (sel.has(i)) b.classList.add('wrong');
+          b.disabled = true;
+        });
+        revealWhy();
+        confirm.remove();
+        if (st.plan) fb.append(planForm(st));
+      }
+    };
+    actions.append(confirm);
+  }
+
+  function planForm(st: any) {
+    const name = h('input', { type: 'text', maxlength: 30, placeholder: '예) 바람막이 털장갑 「따끈손」' }) as HTMLInputElement;
+    const slogan = h('input', { type: 'text', maxlength: 60, placeholder: '예) 영하 20℃ 바닷바람도 끄떡없어요!' }) as HTMLInputElement;
+    const when = h('input', { type: 'text', maxlength: 60, placeholder: '예) 10월~4월, 항구 앞 가게에서' }) as HTMLInputElement;
+    const saved = h('span', { class: 'note-saved', 'aria-live': 'polite' });
+    const feats = st.features.filter((f: any) => f.fit).map((f: any) => f.text);
+    return h('div', { class: 'plan-box' },
+      h('h3', null, '🛍️ 판매 계획 세우기 (선택)'),
+      h('label', null, '상품 이름', name),
+      h('label', null, '광고 문구', slogan),
+      h('label', null, '언제·어디서 팔까?', when),
+      h('div', { class: 'note-actions' },
+        h('button', { class: 'btn', type: 'button', onclick: () => {
+          if (!name.value.trim()) return name.focus();
+          store.addProduct({ unit: data.unitId, customer: `${st.customer.emoji} ${st.customer.name} (${st.customer.place})`, name: name.value.trim(), slogan: slogan.value.trim(), when: when.value.trim(), features: feats });
+          saved.textContent = '📦 상품 카드를 저장했어요!';
+        } }, '상품 카드 저장'),
+        saved,
+      ),
+    );
   }
 
   // 세계 지도에서 위치 고르기

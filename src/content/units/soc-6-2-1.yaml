@@ -47,7 +47,7 @@ topics:
     lessons:
       - no: '1'
         title: 단원 도입
-        soon: [{ title: '줌아웃! 여기는 어디?', emoji: 🔭, mode: board }]
+        games: [zoomout]
       - no: '2'
         title: 세계 여러 지역의 지형 경관을 알아볼까요
         games: [landform-dex]
@@ -68,26 +68,25 @@ topics:
     lessons:
       - no: '8'
         title: 세계의 기후 분포를 알아볼까요
-        soon: [{ title: '햇볕 따라 기후 지도', emoji: ☀️, mode: solo }]
+        games: [sun-climate]
       - no: '9'
         title: 열대 기후와 건조 기후 지역의 생활 모습을 알아볼까요
-        games: [climate-detective]
-        soon: [{ title: '기후 맞춤 생활 꾸리기', emoji: 🏠, mode: solo }]
+        games: [climate-detective, climate-life]
       - no: '10'
         title: 온대 기후와 냉대 기후 지역의 생활 모습을 알아볼까요
-        games: [climate-detective]
+        games: [climate-detective, climate-life]
       - no: '11'
         title: 한대 기후와 고산 기후 지역의 생활 모습을 알아볼까요
-        games: [climate-detective]
+        games: [climate-detective, climate-life]
       - no: '12'
         title: 기후에 따른 사람들의 다양한 생활 모습을 조사해 볼까요 (재미있게 확인해요)
         games: [quizshow-climate]
       - no: '13'
         title: 생각을 펼쳐요 — 자연환경을 고려한 상품의 판매 계획 세우기
-        soon: [{ title: '세계 상점 기획자', emoji: 🛍️, mode: solo }]
+        games: [world-shop]
       - no: '14'
         title: 생각 그물을 완성해요 · 교실 놀이를 함께해요
-        soon: [{ title: '탐험 빙고', emoji: 🎯, mode: board }]
+        games: [bingo]
 
 # 교과서에 나오는 지형 15곳 (지형 도감 카드)
 atlas:

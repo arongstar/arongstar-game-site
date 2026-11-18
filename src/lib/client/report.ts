@@ -112,6 +112,23 @@ export function renderReport() {
   for (const n of notes) list.append(h('li', { class: 'note-item' }, h('div', { class: 'nq' }, '❓ ', n.q), n.a ? h('div', null, '💡 ', n.a) : null));
   root.append(h('h2', { class: 'sec-title' }, '📓 탐험 질문 수첩'), list);
 
+  // 세계 상점 기획자에서 만든 상품 카드
+  const products = store.getProducts(unit.id);
+  if (products.length) {
+    const pg = h('div', { class: 'product-grid' });
+    for (const pr of products) {
+      pg.append(h('div', { class: 'product-card' },
+        h('div', { class: 'pc-customer' }, pr.customer),
+        h('div', { class: 'pc-name' }, '🛍️ ', pr.name),
+        pr.slogan ? h('div', { class: 'pc-slogan' }, '“', pr.slogan, '”') : null,
+        h('ul', null, pr.features.map((f) => h('li', null, f))),
+        pr.when ? h('div', { class: 'pc-when' }, '🗓️ ', pr.when) : null,
+        h('button', { class: 'btn ghost small no-print', onclick: () => { store.deleteProduct(pr.id); renderReport(); } }, '지우기'),
+      ));
+    }
+    root.append(h('h2', { class: 'sec-title' }, '🛍️ 내가 기획한 상품'), pg);
+  }
+
   root.append(h('p', { class: 'muted', style: { marginTop: '24px', fontSize: '0.85rem' } },
     '※ 탐험 단계는 게임 기록으로 계산한 참고 자료예요. 성취수준은 선생님의 관찰, 발표, 활동지와 함께 판단해요. 가치·태도는 질문 수첩(질문 1개 이상 → 살펴보기, 3개 이상 → 조사하기, 스스로 조사한 답 → 분석하기)으로 보여 줘요.'));
 }

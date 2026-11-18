@@ -1,0 +1,480 @@
+template: mission
+style: builder
+unit: soc-6-2-1
+title: 기후 맞춤 생활 꾸리기
+emoji: 🏠
+summary: 도시의 기후 그래프를 보고 그 기후에 알맞은 집과 옷을 직접 꾸며요. 고른 까닭이 맞는지 하나하나 확인해요.
+story: 세계 곳곳에서 집과 옷을 주문받았어요! 기후 그래프를 꼼꼼히 읽고, 그곳 날씨에 꼭 맞는 집을 짓고 옷을 골라 주세요.
+lessons: ['9', '10', '11']
+standards: [6사10-02]
+minutes: 12
+teacherGuide:
+  - 9차시(열대·건조), 10차시(온대·냉대), 11차시(한대·고산)로 나뉘어 있어요. 기후 그래프 탐정과 같은 차시에 이어서 하면 좋아요.
+  - 부분(지붕·벽·바닥·창, 옷·머리)마다 하나씩 고르면 그림이 바뀌어요. [완성!]을 누르면 고른 것마다 알맞은 까닭이나 맞지 않는 까닭이 나와요.
+  - 🏅 분석하기에서는 도시 이름을 가린 '비밀 도시'의 기후 그래프만 보고 집과 옷을 정해요.
+stages:
+  # ════════════ 열대·건조 ════════════
+  - id: tropical-dry
+    title: 열대·건조 마을 주문서
+    emoji: 🌴
+    lesson: '9'
+    intro: 쿠알라룸푸르와 카이로에서 주문이 들어왔어요.
+    steps:
+      - type: build
+        lv: C
+        std: 6사10-02
+        cat: 지식·이해
+        target: house
+        scene: 열대
+        chart: kualalumpur
+        q: 쿠알라룸푸르(열대 기후)에 알맞은 집을 지어 보세요.
+        hint: 그래프를 보면 일 년 내내 덥고 비가 아주 많이 와요.
+        parts:
+          - label: 지붕
+            options:
+              - { text: "경사가 급한 지붕", look: "roof-thatch", fit: true, why: "비가 많이 와도 빗물이 빨리 흘러내려요." }
+              - { text: "평평한 지붕", look: "roof-flat", fit: false, why: "비가 많이 오면 빗물이 지붕에 고여요." }
+          - label: 바닥
+            options:
+              - { text: "땅에서 띄운 바닥", look: "floor-raised", fit: true, why: "땅의 습기와 열기, 벌레를 피하고 바람이 잘 통해요." }
+              - { text: "땅에 붙인 바닥", look: "floor-ground", fit: false, why: "습기가 올라오고 큰비에 물이 들어올 수 있어요." }
+          - label: 벽
+            options:
+              - { text: "얇은 나무 벽", look: "wall-thin", fit: true, why: "바람이 잘 통해 덥고 습한 공기를 식혀 줘요." }
+              - { text: "두꺼운 흙벽", look: "wall-mud", fit: false, why: "바람이 잘 통하지 않아 집 안이 덥고 습해져요." }
+      - type: build
+        lv: C
+        std: 6사10-02
+        cat: 지식·이해
+        target: clothes
+        scene: 건조
+        chart: cairo
+        q: 카이로(건조 기후)에 사는 사람에게 알맞은 옷차림을 골라 보세요.
+        hint: 비가 거의 오지 않고 햇볕이 아주 강해요.
+        parts:
+          - label: 옷
+            options:
+              - { text: "온몸을 덮는 헐렁하고 긴 옷", look: "body-robe", fit: true, why: "강한 햇볕을 가리고, 헐렁해서 옷 안으로 바람이 통해요." }
+              - { text: "두꺼운 털옷", look: "body-fur", fit: false, why: "연평균 기온이 22℃가 넘는 곳이라 너무 더워요." }
+          - label: 머리
+            options:
+              - { text: "머리와 얼굴을 감싸는 천", look: "head-veil", fit: true, why: "뜨거운 햇볕과 모래바람을 막아 줘요." }
+              - { text: "아무것도 쓰지 않기", look: "head-none", fit: false, why: "강한 햇볕에 머리가 뜨거워지고 모래바람을 그대로 맞아요." }
+      - type: choice
+        lv: C
+        std: 6사10-02
+        cat: 지식·이해
+        photo: life/amazon-stilt
+        q: 덥고 비가 많은 열대 기후 지역에서 볼 수 있는 집의 모습은?
+        options: [기둥 위에 바닥을 띄워 지은 집, 눈 벽돌로 지은 둥근 집, 두꺼운 통나무로 지은 집]
+        answer: 기둥 위에 바닥을 띄워 지은 집
+
+      - type: build
+        lv: B
+        std: 6사10-02
+        cat: 지식·이해
+        target: house
+        scene: 열대
+        chart: kualalumpur
+        q: 쿠알라룸푸르의 기후를 조사해서 알맞은 집을 지어 보세요.
+        parts:
+          - label: 지붕
+            options:
+              - { text: "경사가 급한 지붕", look: "roof-thatch", fit: true, why: "비가 많이 와도 빗물이 빨리 흘러내려요." }
+              - { text: "평평한 지붕", look: "roof-flat", fit: false, why: "연 강수량이 2,800mm가 넘어서 빗물이 고여요." }
+              - { text: "둥근 눈 지붕", look: "roof-dome", fit: false, why: "눈이 오는 아주 추운 곳의 집이에요." }
+          - label: 바닥
+            options:
+              - { text: "땅에서 띄운 바닥", look: "floor-raised", fit: true, why: "땅의 습기와 열기, 벌레를 피하고 바람이 잘 통해요." }
+              - { text: "땅에 붙인 바닥", look: "floor-ground", fit: false, why: "습기가 올라오고 큰비에 물이 들어올 수 있어요." }
+          - label: 벽
+            options:
+              - { text: "얇은 나무 벽", look: "wall-thin", fit: true, why: "바람이 잘 통해 덥고 습한 공기를 식혀 줘요." }
+              - { text: "두꺼운 흙벽", look: "wall-mud", fit: false, why: "바람이 잘 통하지 않아 집 안이 덥고 습해져요." }
+              - { text: "두꺼운 통나무 벽", look: "wall-log", fit: false, why: "추위를 막는 벽이라 일 년 내내 더운 곳에는 맞지 않아요." }
+          - label: 창
+            options:
+              - { text: "큰 창", look: "window-big", fit: true, why: "바람이 잘 드나들어 집 안이 시원해요." }
+              - { text: "작은 창", look: "window-small", fit: false, why: "바람이 잘 통하지 않아 덥고 습해요." }
+      - type: build
+        lv: B
+        std: 6사10-02
+        cat: 지식·이해
+        target: house
+        scene: 건조
+        chart: cairo
+        q: 카이로의 기후를 조사해서 알맞은 집을 지어 보세요.
+        parts:
+          - label: 지붕
+            options:
+              - { text: "평평한 지붕", look: "roof-flat", fit: true, why: "비가 거의 오지 않아 평평해도 괜찮고, 지붕 위를 마당처럼 쓰기도 해요." }
+              - { text: "경사가 급한 지붕", look: "roof-steep", fit: false, why: "비가 거의 오지 않아 빗물을 흘려보낼 필요가 적어요." }
+          - label: 벽
+            options:
+              - { text: "두꺼운 흙벽", look: "wall-mud", fit: true, why: "두꺼운 흙벽이 낮의 뜨거운 열기를 막아 줘요. 나무가 적어 흙을 많이 써요." }
+              - { text: "얇은 나무 벽", look: "wall-thin", fit: false, why: "뜨거운 열기가 그대로 들어오고, 사막에서는 나무를 구하기도 어려워요." }
+          - label: 창
+            options:
+              - { text: "작은 창", look: "window-small", fit: true, why: "뜨거운 햇볕과 모래바람이 덜 들어와요." }
+              - { text: "큰 창", look: "window-big", fit: false, why: "뜨거운 햇볕과 모래바람이 많이 들어와요." }
+          - label: 바닥
+            options:
+              - { text: "땅에 붙인 바닥", look: "floor-ground", fit: true, why: "땅이 습하지 않아 바닥을 띄울 필요가 없어요." }
+              - { text: "땅에서 띄운 바닥", look: "floor-raised", fit: false, why: "습기나 큰물을 피할 일이 거의 없는 곳이에요." }
+      - type: choice
+        lv: B
+        std: 6사10-02
+        cat: 지식·이해
+        charts: [kualalumpur, cairo]
+        q: 쿠알라룸푸르와 카이로의 집 지붕이 다른 가장 큰 까닭은?
+        options:
+          - 비가 내리는 양이 크게 다르기 때문에
+          - 두 도시의 인구가 다르기 때문에
+          - 두 도시의 겨울 추위가 다르기 때문에
+        answer: 비가 내리는 양이 크게 다르기 때문에
+        explain: 쿠알라룸푸르는 한 해에 2,800mm가 넘게, 카이로는 25mm쯤 비가 내려요.
+
+      - type: build
+        lv: A
+        std: 6사10-02
+        cat: 과정·기능
+        target: house
+        scene: 열대
+        chart: abuja
+        hideChartName: true
+        q: 이름을 가린 '비밀 도시'의 기후 그래프만 보고 알맞은 집을 지어 보세요.
+        hint: 기온은 어떤지, 비는 언제 많이 오고 언제 거의 오지 않는지 살펴보세요.
+        parts:
+          - label: 지붕
+            options:
+              - { text: "경사가 급한 지붕", look: "roof-thatch", fit: true, why: "5~10월에는 한 달에 150~300mm가 넘는 비가 와요." }
+              - { text: "평평한 지붕", look: "roof-flat", fit: false, why: "비가 많이 오는 시기에 빗물이 고여요." }
+          - label: 벽
+            options:
+              - { text: "두꺼운 흙벽", look: "wall-mud", fit: true, why: "비가 거의 없는 건기(11~3월)의 뜨거운 열기를 막아 줘요." }
+              - { text: "두꺼운 통나무 벽", look: "wall-log", fit: false, why: "일 년 내내 25℃가 넘는 곳이라 추위를 막을 벽은 필요 없어요." }
+          - label: 창
+            options:
+              - { text: "작은 창", look: "window-small", fit: true, why: "강한 햇볕과 건기의 뜨거운 바람이 덜 들어와요." }
+              - { text: "아주 큰 유리창", look: "window-big", fit: false, why: "강한 햇볕이 많이 들어와 집 안이 뜨거워져요." }
+        explain: 비밀 도시는 나이지리아의 수도 아부자예요. 이곳에는 흙벽에 풀이나 짚으로 지붕을 얹은 전통 집이 있어요.
+      - type: multi
+        lv: A
+        std: 6사10-02
+        cat: 과정·기능
+        chart: abuja
+        hideChartName: true
+        q: 비밀 도시의 집을 정할 때 근거가 된 그래프 속 사실을 모두 고르세요.
+        options:
+          - 일 년 내내 평균 기온이 25℃가 넘는다
+          - 5~10월에는 비가 아주 많이 온다
+          - 11~3월에는 비가 거의 오지 않는 건기가 있다
+          - 겨울에 0℃ 아래로 내려간다
+        answers:
+          - 일 년 내내 평균 기온이 25℃가 넘는다
+          - 5~10월에는 비가 아주 많이 온다
+          - 11~3월에는 비가 거의 오지 않는 건기가 있다
+      - type: choice
+        lv: A
+        std: 6사10-02
+        cat: 지식·이해
+        q: 오늘 지은 집들을 비교·분석해 내린 결론으로 가장 알맞은 것은?
+        options:
+          - 사람들은 기온과 강수량에 맞추어 지붕 모양, 벽 재료, 창 크기를 다르게 만든다
+          - 세계 어디서나 집은 같은 모양이 가장 좋다
+          - 집 모양은 기후와 관계없이 유행에 따라 정한다
+        answer: 사람들은 기온과 강수량에 맞추어 지붕 모양, 벽 재료, 창 크기를 다르게 만든다
+
+  # ════════════ 온대·냉대 ════════════
+  - id: temperate-cold
+    title: 온대·냉대 마을 주문서
+    emoji: 🍁
+    lesson: '10'
+    intro: 로마와 키루나에서 주문이 들어왔어요.
+    steps:
+      - type: build
+        lv: C
+        std: 6사10-02
+        cat: 지식·이해
+        target: clothes
+        scene: 냉대
+        chart: kiruna
+        q: 키루나(냉대 기후)의 겨울에 알맞은 옷차림을 골라 보세요.
+        hint: 1월 평균 기온이 -12℃쯤이에요.
+        parts:
+          - label: 옷
+            options:
+              - { text: "두꺼운 겨울 외투", look: "body-coat", fit: true, why: "영하로 내려가는 긴 겨울을 따뜻하게 지낼 수 있어요." }
+              - { text: "얇은 반소매 옷", look: "body-thin", fit: false, why: "영하의 추위를 막지 못해요." }
+          - label: 머리
+            options:
+              - { text: "털실 모자", look: "head-knit", fit: true, why: "머리와 귀를 따뜻하게 지켜 줘요." }
+              - { text: "아무것도 쓰지 않기", look: "head-none", fit: false, why: "추운 바람에 머리와 귀가 시려요." }
+      - type: build
+        lv: C
+        std: 6사10-02
+        cat: 지식·이해
+        target: house
+        scene: 냉대
+        chart: kiruna
+        q: 키루나에 알맞은 집을 지어 보세요.
+        parts:
+          - label: 지붕
+            options:
+              - { text: "경사가 급한 지붕", look: "roof-steep", fit: true, why: "쌓인 눈이 미끄러져 내려가 지붕이 무거워지지 않아요." }
+              - { text: "평평한 지붕", look: "roof-flat", fit: false, why: "눈이 두껍게 쌓여 지붕이 무거워져요." }
+          - label: 벽
+            options:
+              - { text: "두꺼운 통나무 벽", look: "wall-log", fit: true, why: "두꺼운 나무벽이 추위를 막아요. 둘레에 바늘잎나무 숲이 많아 나무를 구하기 쉬워요." }
+              - { text: "얇은 나무 벽", look: "wall-thin", fit: false, why: "찬 바람이 들어와 집 안이 추워요." }
+      - type: choice
+        lv: C
+        std: 6사10-02
+        cat: 지식·이해
+        photo: clothes/sami
+        q: 사진은 키루나 근처에 사는 사미족의 전통 옷차림이에요. 이 옷을 만드는 재료로 가장 알맞은 것은?
+        options: [두꺼운 양털 천, 얇은 모시 천, 바람이 잘 통하는 그물 천]
+        answer: 두꺼운 양털 천
+        explain: 사미족은 따뜻한 양털과 순록 가죽으로 옷을 만들어 길고 추운 겨울을 지내요.
+
+      - type: build
+        lv: B
+        std: 6사10-02
+        cat: 지식·이해
+        target: house
+        scene: 온대
+        chart: rome
+        q: 로마의 기후를 조사해서 알맞은 집을 지어 보세요.
+        hint: 여름이 덥고 건조하며, 겨울에도 0℃ 아래로 잘 내려가지 않아요.
+        parts:
+          - label: 벽
+            options:
+              - { text: "두꺼운 돌벽", look: "wall-stone", fit: true, why: "덥고 건조한 여름의 뜨거운 햇볕과 열기를 막아 집 안을 시원하게 해요." }
+              - { text: "얇은 나무 벽", look: "wall-thin", fit: false, why: "여름 열기가 그대로 들어와요." }
+          - label: 창
+            options:
+              - { text: "작은 창", look: "window-small", fit: true, why: "여름 햇볕이 덜 들어와 시원해요." }
+              - { text: "아주 큰 창", look: "window-big", fit: false, why: "뜨거운 여름 햇볕이 많이 들어와요." }
+          - label: 지붕
+            options:
+              - { text: "완만한 기와지붕", look: "roof-gentle", fit: true, why: "눈이 많이 오지 않아 완만한 지붕이면 충분해요." }
+              - { text: "둥근 눈 지붕", look: "roof-dome", fit: false, why: "눈과 얼음이 많은 아주 추운 곳의 지붕이에요." }
+      - type: build
+        lv: B
+        std: 6사10-02
+        cat: 지식·이해
+        target: clothes
+        scene: 냉대
+        chart: kiruna
+        q: 키루나의 겨울 그래프를 조사해서 알맞은 옷차림을 골라 보세요.
+        parts:
+          - label: 옷
+            options:
+              - { text: "두꺼운 겨울 외투", look: "body-coat", fit: true, why: "일곱 달 동안 이어지는 영하의 추위를 막아 줘요." }
+              - { text: "온몸을 덮는 얇고 헐렁한 옷", look: "body-robe", fit: false, why: "햇볕을 가리는 사막 옷이라 추위를 막지 못해요." }
+              - { text: "얇은 반소매 옷", look: "body-thin", fit: false, why: "영하의 추위를 막지 못해요." }
+          - label: 머리
+            options:
+              - { text: "털실 모자", look: "head-knit", fit: true, why: "머리와 귀를 따뜻하게 지켜 줘요." }
+              - { text: "챙 넓은 밀짚모자", look: "head-sunhat", fit: false, why: "햇볕을 가리는 모자라 추위는 막지 못해요." }
+      - type: choice
+        lv: B
+        std: 6사10-02
+        cat: 지식·이해
+        q: 키루나 같은 냉대 기후 지역에서 나무로 집을 많이 짓는 까닭은?
+        options:
+          - 바늘잎나무 숲이 넓어 나무를 구하기 쉽고, 두꺼운 나무벽이 추위를 막아 주기 때문에
+          - 비가 거의 오지 않아 흙이 부족하기 때문에
+          - 나무집이 바람을 잘 통하게 해 시원하기 때문에
+        answer: 바늘잎나무 숲이 넓어 나무를 구하기 쉽고, 두꺼운 나무벽이 추위를 막아 주기 때문에
+
+      - type: build
+        lv: A
+        std: 6사10-02
+        cat: 과정·기능
+        target: house
+        scene: 냉대
+        chart: kiruna
+        hideChartName: true
+        q: "'비밀 도시'의 기후 그래프를 분석해 알맞은 집을 지어 보세요."
+        parts:
+          - label: 지붕
+            options:
+              - { text: "경사가 급한 지붕", look: "roof-steep", fit: true, why: "0℃ 아래인 달이 일곱 달이나 돼 눈이 많이 쌓여요. 경사가 급하면 눈이 미끄러져 내려가요." }
+              - { text: "평평한 지붕", look: "roof-flat", fit: false, why: "긴 겨울 동안 눈이 쌓여 지붕이 무거워져요." }
+          - label: 벽
+            options:
+              - { text: "두꺼운 통나무 벽", look: "wall-log", fit: true, why: "1월 평균 기온이 -12℃쯤이라 추위를 막는 두꺼운 벽이 필요해요." }
+              - { text: "두꺼운 흙벽", look: "wall-mud", fit: false, why: "뜨거운 열기를 막는 건조 기후의 벽이라, 눈과 추위가 많은 곳에서는 쉽게 상해요." }
+              - { text: "얇은 나무 벽", look: "wall-thin", fit: false, why: "찬 바람이 들어와 집 안이 추워요." }
+          - label: 창
+            options:
+              - { text: "작은 창", look: "window-small", fit: true, why: "집 안의 따뜻한 공기가 덜 빠져나가요." }
+              - { text: "큰 창", look: "window-big", fit: false, why: "창으로 집 안의 열이 많이 빠져나가요." }
+        explain: 비밀 도시는 스웨덴의 키루나예요.
+      - type: multi
+        lv: A
+        std: 6사10-02
+        cat: 지식·이해
+        charts: [rome, kiruna]
+        q: 로마의 집과 키루나의 집을 비교해 분석한 것으로 알맞은 것을 모두 고르세요.
+        options:
+          - 두 집 모두 벽이 두껍지만 까닭이 다르다. 로마는 여름 더위를, 키루나는 겨울 추위를 막기 위해서다
+          - 키루나의 지붕이 더 가파른 까닭은 눈이 많이 쌓이기 때문이다
+          - 두 집 모두 그곳의 기후에 맞추어 지었다
+          - 로마는 눈이 많이 와서 벽을 두껍게 만든다
+        answers:
+          - 두 집 모두 벽이 두껍지만 까닭이 다르다. 로마는 여름 더위를, 키루나는 겨울 추위를 막기 위해서다
+          - 키루나의 지붕이 더 가파른 까닭은 눈이 많이 쌓이기 때문이다
+          - 두 집 모두 그곳의 기후에 맞추어 지었다
+
+  # ════════════ 한대·고산 ════════════
+  - id: polar-highland
+    title: 한대·고산 마을 주문서
+    emoji: 🧊
+    lesson: '11'
+    intro: 누크와 키토에서 주문이 들어왔어요.
+    steps:
+      - type: build
+        lv: C
+        std: 6사10-02
+        cat: 지식·이해
+        target: clothes
+        scene: 한대
+        chart: nuuk
+        q: 누크(한대 기후)에 사는 사람에게 알맞은 옷차림을 골라 보세요.
+        parts:
+          - label: 옷
+            options:
+              - { text: "동물 털과 가죽으로 만든 두꺼운 옷", look: "body-fur", fit: true, why: "매서운 추위와 바람을 막아 줘요." }
+              - { text: "얇은 반소매 옷", look: "body-thin", fit: false, why: "가장 따뜻한 달도 10℃가 안 되는 곳이라 너무 추워요." }
+          - label: 머리
+            options:
+              - { text: "털이 달린 모자(후드)", look: "head-hood", fit: true, why: "얼굴과 귀를 찬 바람으로부터 지켜 줘요." }
+              - { text: "챙 넓은 밀짚모자", look: "head-sunhat", fit: false, why: "추위를 막지 못해요." }
+      - type: build
+        lv: C
+        std: 6사10-02
+        cat: 지식·이해
+        target: clothes
+        scene: 고산
+        chart: quito
+        q: 키토(고산 기후)에 사는 사람에게 알맞은 옷차림을 골라 보세요.
+        hint: 일 년 내내 14℃쯤으로 봄처럼 서늘하고, 높은 곳이라 햇볕이 강해요.
+        parts:
+          - label: 옷
+            options:
+              - { text: "걸치는 망토 판초", look: "body-poncho", fit: true, why: "쌀쌀한 아침저녁에 걸치고, 낮에 따뜻해지면 벗기 쉬워요." }
+              - { text: "동물 털로 만든 두꺼운 옷", look: "body-fur", fit: false, why: "일 년 내내 14℃쯤이라 너무 더워요." }
+          - label: 머리
+            options:
+              - { text: "챙 넓은 모자", look: "head-sunhat", fit: true, why: "높은 곳은 햇볕이 강해 모자로 가려 줘요." }
+              - { text: "아무것도 쓰지 않기", look: "head-none", fit: false, why: "강한 햇볕을 그대로 받아요." }
+      - type: choice
+        lv: C
+        std: 6사10-02
+        cat: 지식·이해
+        photo: clothes/andes
+        q: 사진 속 판초와 털실 모자 차림은 어느 기후 지역에서 볼 수 있을까요?
+        options: [높고 서늘한 고산 기후 지역, 덥고 습한 열대 기후 지역, 비가 거의 오지 않는 건조 기후 지역]
+        answer: 높고 서늘한 고산 기후 지역
+
+      - type: build
+        lv: B
+        std: 6사10-02
+        cat: 지식·이해
+        target: house
+        scene: 한대
+        chart: nuuk
+        q: 누크의 기후를 조사해서 알맞은 집을 지어 보세요.
+        parts:
+          - label: 지붕
+            options:
+              - { text: "경사가 급한 지붕", look: "roof-steep", fit: true, why: "눈이 쌓이지 않고 미끄러져 내려가요." }
+              - { text: "평평한 지붕", look: "roof-flat", fit: false, why: "눈이 쌓여 지붕이 무거워져요." }
+          - label: 벽
+            options:
+              - { text: "두꺼운 나무 벽", look: "wall-log", fit: true, why: "두꺼운 벽이 일 년 내내 이어지는 추위를 막아요." }
+              - { text: "얇은 나무 벽", look: "wall-thin", fit: false, why: "찬 바람이 들어와 너무 추워요." }
+          - label: 창
+            options:
+              - { text: "작은 창", look: "window-small", fit: true, why: "집 안의 열이 덜 빠져나가요." }
+              - { text: "큰 창", look: "window-big", fit: false, why: "창으로 집 안의 열이 많이 빠져나가요." }
+      - type: build
+        lv: B
+        std: 6사10-02
+        cat: 지식·이해
+        target: clothes
+        scene: 고산
+        chart: quito
+        q: 키토의 기후를 조사해서 알맞은 옷차림을 골라 보세요. 알맞은 것이 여러 개일 수도 있어요.
+        parts:
+          - label: 옷
+            options:
+              - { text: "걸치는 망토 판초", look: "body-poncho", fit: true, why: "쌀쌀한 아침저녁에 걸치고, 낮에 따뜻해지면 벗기 쉬워요." }
+              - { text: "동물 털로 만든 두꺼운 옷", look: "body-fur", fit: false, why: "일 년 내내 14℃쯤이라 너무 더워요." }
+              - { text: "얇은 반소매 옷만 입기", look: "body-thin", fit: false, why: "아침저녁에는 기온이 꽤 내려가서 얇은 옷만으로는 추워요." }
+          - label: 머리
+            options:
+              - { text: "챙 넓은 모자", look: "head-sunhat", fit: true, why: "높은 곳은 햇볕이 강해 모자로 가려 줘요." }
+              - { text: "털실 모자", look: "head-knit", fit: true, why: "쌀쌀한 아침저녁에 머리와 귀를 따뜻하게 해 줘요." }
+              - { text: "얼굴을 감싸는 천", look: "head-veil", fit: false, why: "모래바람이 부는 사막에서 쓰는 천이에요." }
+      - type: choice
+        lv: B
+        std: 6사10-02
+        cat: 지식·이해
+        photo: clothes/inuit
+        q: 북극 가까운 지역의 사람들이 전통적으로 동물 털과 가죽으로 옷을 만들어 입은 까닭은?
+        options:
+          - 아주 춥고 농사가 어려워, 사냥한 동물에서 따뜻한 옷감을 얻었기 때문에
+          - 동물 털옷이 가장 시원하기 때문에
+          - 비가 많이 와서 옷이 빨리 마르게 하려고
+        answer: 아주 춥고 농사가 어려워, 사냥한 동물에서 따뜻한 옷감을 얻었기 때문에
+
+      - type: build
+        lv: A
+        std: 6사10-02
+        cat: 과정·기능
+        target: clothes
+        scene: 고산
+        chart: quito
+        hideChartName: true
+        q: "'비밀 도시'의 기후 그래프를 분석해 알맞은 옷차림을 골라 보세요."
+        hint: 기온 꺾은선이 달마다 얼마나 변하나요? 몇 ℃쯤인가요?
+        parts:
+          - label: 옷
+            options:
+              - { text: "걸치는 망토 판초", look: "body-poncho", fit: true, why: "일 년 내내 14℃쯤으로 서늘해, 걸쳤다 벗었다 하기 쉬운 옷이 알맞아요." }
+              - { text: "온몸을 덮는 얇고 헐렁한 옷", look: "body-robe", fit: false, why: "뜨거운 사막의 햇볕을 가리는 옷이라 서늘한 곳에서는 추워요." }
+              - { text: "동물 털로 만든 두꺼운 옷", look: "body-fur", fit: false, why: "영하로 내려가지 않는 곳이라 너무 더워요." }
+          - label: 머리
+            options:
+              - { text: "챙 넓은 모자", look: "head-sunhat", fit: true, why: "높은 곳은 햇볕이 강해 가려 줘야 해요." }
+              - { text: "털실 모자", look: "head-knit", fit: true, why: "쌀쌀한 아침저녁에 머리를 따뜻하게 해 줘요." }
+              - { text: "털이 달린 후드", look: "head-hood", fit: false, why: "북극처럼 아주 추운 곳에서 쓰는 모자예요." }
+        explain: 비밀 도시는 에콰도르의 키토예요.
+      - type: multi
+        lv: A
+        std: 6사10-02
+        cat: 지식·이해
+        charts: [nuuk, quito]
+        q: 누크와 키토의 옷차림을 비교해 분석한 것으로 알맞은 것을 모두 고르세요.
+        options:
+          - 누크는 일 년 내내 추워서 두꺼운 털옷과 가죽옷을 입는다
+          - 키토는 일 년 내내 기온이 비슷하고 아침저녁만 쌀쌀해 걸치는 판초를 입는다
+          - 키토는 높은 곳이라 햇볕이 강해 모자로 가린다
+          - 두 도시 사람들은 똑같은 옷을 입는다
+        answers:
+          - 누크는 일 년 내내 추워서 두꺼운 털옷과 가죽옷을 입는다
+          - 키토는 일 년 내내 기온이 비슷하고 아침저녁만 쌀쌀해 걸치는 판초를 입는다
+          - 키토는 높은 곳이라 햇볕이 강해 모자로 가린다
+      - type: choice
+        lv: A
+        std: 6사10-02
+        cat: 지식·이해
+        q: 열대부터 고산까지 집과 옷을 꾸려 보았어요. 기후와 사람들의 생활의 관계를 가장 알맞게 정리한 것은?
+        options:
+          - 사람들은 기온·강수량·햇볕 같은 기후 환경에 맞추어 집의 모양과 재료, 옷의 두께와 모양을 다르게 하며 살아간다
+          - 기후는 옷에만 영향을 주고 집과는 관계가 없다
+          - 모든 기후 지역의 사람들은 같은 집과 옷을 쓴다
+        answer: 사람들은 기온·강수량·햇볕 같은 기후 환경에 맞추어 집의 모양과 재료, 옷의 두께와 모양을 다르게 하며 살아간다

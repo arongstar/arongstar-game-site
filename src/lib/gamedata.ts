@@ -180,3 +180,33 @@ export function stepCounts(game: Game) {
   }
   return out;
 }
+
+export function zoomoutData(game: Game, unit: Unit) {
+  if (game.data.template !== 'zoomout') throw new Error('zoomout 게임이 아니에요');
+  const atlas = atlasFor(unit);
+  for (const r of game.data.rounds) if (!atlas[r.atlas]) throw new Error(`atlas 에 없는 지형: ${r.atlas}`);
+  return {
+    id: game.id,
+    title: game.data.title,
+    emoji: game.data.emoji,
+    rounds: game.data.rounds,
+    atlas,
+    map: { path: landPath(), viewBox: MAP_VIEWBOX },
+    unitUrl: url(`/u/${unit.id}/`),
+  };
+}
+
+export function bingoData(game: Game, unit: Unit) {
+  if (game.data.template !== 'bingo') throw new Error('bingo 게임이 아니에요');
+  const n = game.data.size * game.data.size;
+  if (game.data.words.length < n) throw new Error(`빙고 낱말이 ${n}개보다 적어요`);
+  return {
+    id: game.id,
+    title: game.data.title,
+    emoji: game.data.emoji,
+    size: game.data.size,
+    words: game.data.words,
+    unitUrl: url(`/u/${unit.id}/`),
+    cardUrl: url(`/bingo/${game.id}/`),
+  };
+}

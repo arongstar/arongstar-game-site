@@ -156,3 +156,29 @@ export function tierProgress(unit: string, game: string, stageIds: string[]) {
   for (const t of TIER_ORDER) out[t] = stageIds.filter((s) => getRun(unit, game, t, s)).length;
   return out;
 }
+
+// 세계 상점 기획자에서 만든 상품 카드
+export interface Product {
+  id: string;
+  unit: string;
+  customer: string;
+  name: string;
+  slogan: string;
+  when: string;
+  features: string[];
+  at: number;
+}
+export function getProducts(unit: string): Product[] {
+  return ((load() as any).products ?? []).filter((p: Product) => p.unit === unit);
+}
+export function addProduct(p: Omit<Product, 'id' | 'at'>) {
+  const d = load() as any;
+  d.products ??= [];
+  d.products.push({ ...p, id: Math.random().toString(36).slice(2, 10), at: Date.now() });
+  save();
+}
+export function deleteProduct(id: string) {
+  const d = load() as any;
+  d.products = (d.products ?? []).filter((p: Product) => p.id !== id);
+  save();
+}

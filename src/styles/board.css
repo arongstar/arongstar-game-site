@@ -64,3 +64,52 @@
 @media (max-width: 900px) {
   .bd-q-box.has-visual .bd-q-body { grid-template-columns: 1fr; }
 }
+
+/* ───── 줌아웃 ───── */
+.zo-points { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.zo-points span { background: var(--surface-2); border-radius: 999px; padding: 4px 12px; font-weight: 700; }
+.zo-round { font-family: Pretendard, sans-serif; font-size: 1.1rem; margin-left: 12px; background: rgb(255 255 255 / 0.15); border-radius: 999px; padding: 2px 12px; vertical-align: middle; }
+.zo-stage { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(320px, 1fr); gap: 18px; flex: 1; align-items: start; }
+.zo-frame { position: relative; overflow: hidden; border-radius: 22px; aspect-ratio: 3 / 2; background: #0b222b; border: 6px solid #fff; }
+.zo-img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s ease; }
+.zo-side { background: #fff; color: var(--text); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.zo-ask { font-family: var(--font-title); font-size: 1.9rem; margin: 0; line-height: 1.3; }
+.zo-steps { display: flex; gap: 6px; }
+.zo-step { flex: 1; text-align: center; font-weight: 800; padding: 6px 0; border-radius: 10px; background: var(--surface-2); color: var(--muted); }
+.zo-step.on { background: #f2a516; color: #fff; }
+.zo-step.past { text-decoration: line-through; opacity: 0.5; }
+.zo-now { font-weight: 800; font-size: 1.3rem; margin-top: 6px; }
+.zo-answer h2 { font-size: 2.2rem; margin: 6px 0 0; }
+.zo-type { display: inline-block; color: #fff; font-weight: 800; border-radius: 999px; padding: 2px 12px; background: var(--primary); }
+.zo-type.t-산지 { background: var(--t-mountain); }
+.zo-type.t-하천 { background: var(--t-river); }
+.zo-type.t-해안 { background: var(--t-coast); }
+.zo-type.t-사막 { background: var(--t-desert); }
+.zo-country { margin: 0; color: var(--muted); font-weight: 700; }
+.zo-answer p { font-size: 1.1rem; margin: 8px 0 0; }
+.zo-map { border-radius: 12px; margin-top: 8px; }
+.zo-awarded { font-weight: 800; font-size: 1.3rem; color: var(--ok); }
+.zo-talk { background: #fffaf0; border-radius: 14px; padding: 10px 14px; font-size: 1.05rem; }
+.zo-talk p { margin: 6px 0 0; }
+.zo-vote { display: flex; align-items: center; gap: 8px; font-weight: 800; flex-wrap: wrap; }
+.zo-vote b { font-family: var(--font-title); font-size: 1.6rem; min-width: 32px; text-align: center; }
+.zo-final .zo-rank { list-style: none; padding: 0; display: grid; gap: 8px; max-width: 420px; margin: 12px auto; }
+.zo-final .zo-rank li { display: flex; justify-content: space-between; border: 4px solid; border-radius: 14px; padding: 8px 14px; font-weight: 800; font-size: 1.2rem; }
+.zo-top { text-align: left; display: inline-block; font-size: 1.2rem; font-weight: 700; }
+@media (max-width: 1000px) { .zo-stage { grid-template-columns: 1fr; } }
+
+/* ───── 빙고 (전자칠판) ───── */
+.bg-howto { text-align: left; max-width: 560px; margin: 12px auto; font-size: 1.1rem; }
+.bg-stage { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 18px; flex: 1; }
+.bg-clue-box { background: #fff; color: var(--text); border-radius: 24px; padding: 28px 34px; display: flex; flex-direction: column; justify-content: center; min-height: 60vh; }
+.bg-no { font-weight: 800; color: var(--muted); font-size: 1.3rem; }
+.bg-clue { font-size: clamp(2rem, 3.6vw, 3.4rem); font-weight: 800; line-height: 1.35; margin: 14px 0; }
+.bg-word { font-family: var(--font-title); font-size: clamp(3rem, 7vw, 6rem); color: var(--ok); line-height: 1.1; animation: pop .35s ease-out; }
+@keyframes pop { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.bg-tip { font-size: 1.3rem; font-weight: 700; margin: 0; }
+.bg-called { background: rgb(255 255 255 / 0.1); border-radius: 20px; padding: 14px 16px; overflow: auto; max-height: 80vh; }
+.bg-called h2 { margin: 0; font-size: 1.4rem; }
+.bg-called .muted { color: #cfe3ea; }
+.bg-called ul { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.bg-called li { background: #fff; color: var(--text); border-radius: 999px; padding: 4px 12px; font-weight: 800; }
+@media (max-width: 1000px) { .bg-stage { grid-template-columns: 1fr; } }

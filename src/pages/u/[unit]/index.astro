@@ -1,6 +1,6 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import { allUnits, gamesOf, gamePath } from '../../../lib/content';
+import { allUnits, gamesOf, gamePath, bingoCardPath } from '../../../lib/content';
 import { url } from '../../../lib/url';
 import { landPath, MAP_VIEWBOX } from '../../../lib/worldmap';
 
@@ -16,7 +16,17 @@ const byId = Object.fromEntries(games.map((g) => [g.id, g]));
 function linksFor(lessonNo: string, ids: string[]) {
   return ids
     .filter((id) => byId[id])
-    .map((id) => {
+    .flatMap((id) => {
+      const g = byId[id];
+      const main = linkOne(lessonNo, id);
+      // 빙고는 학생용 빙고판 링크를 하나 더
+      if (g.data.template === 'bingo')
+        return [main, { href: url(bingoCardPath(g.id)), title: '내 빙고판', emoji: '🔢', mode: 'card', game: '', stages: '' }];
+      return [main];
+    });
+}
+function linkOne(lessonNo: string, id: string) {
+  return [id].map((id) => {
       const g = byId[id];
       const stage = g.data.template === 'mission' ? g.data.stages.find((s) => s.lesson === lessonNo) : undefined;
       const stages = g.data.template === 'mission' ? (stage ? [stage.id] : g.data.stages.map((s) => s.id)) : [];
@@ -28,7 +38,7 @@ function linksFor(lessonNo: string, ids: string[]) {
         game: g.id,
         stages: stages.join(','),
       };
-    });
+    })[0];
 }
 const totalCards = u.atlas.length;
 ---

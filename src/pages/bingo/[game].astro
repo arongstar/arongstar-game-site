@@ -1,0 +1,25 @@
+---
+import Base from '../../layouts/Base.astro';
+import { allGames, unitOf } from '../../lib/content';
+import { bingoData } from '../../lib/gamedata';
+import { url } from '../../lib/url';
+
+export async function getStaticPaths() {
+  const games = (await allGames()).filter((g) => g.data.template === 'bingo');
+  return games.map((g) => ({ params: { game: g.id }, props: { game: g } }));
+}
+const { game } = Astro.props;
+const unit = await unitOf(game);
+const data = bingoData(game, unit);
+---
+
+<Base title={`내 빙고판 — ${game.data.title}`}>
+  <a slot="head" class="btn ghost small" href={url(`/u/${unit.id}/`)}>🗺️ {unit.data.title}</a>
+  <div id="app"></div>
+  <script type="application/json" id="game-data" set:html={JSON.stringify(data)} />
+</Base>
+
+<script>
+  import { startBingoCard } from '../../lib/client/bingo';
+  startBingoCard();
+</script>

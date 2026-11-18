@@ -258,5 +258,50 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
     "alt": "야자나무 숲 사이에 흙벽돌로 두껍게 지은 리비아 가다메스 옛 마을의 집",
     "note": "Ghadames old town, Libya"
+  },
+  "clothes/tuareg": {
+    "src": "/images/clothes/tuareg.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:A_Tuareg_in_northern_Mali_prepares_a_fire_for_making_tea.jpg",
+    "author": "Ondřej Havelka",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "alt": "헐렁하고 긴 파란 옷을 입고 검은 천으로 머리와 얼굴 아래쪽을 감싼 투아레그족 남자가 사막 모래 위에 앉아 불을 피우고 있다",
+    "note": "말리 북부 사하라 사막"
+  },
+  "clothes/inuit": {
+    "src": "/images/clothes/inuit.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Netsilik-inuit_og_Rensdyr-inuit_-_Netsilik_Inuit_man_and_Caribou_Inuit_man_(15330293975).jpg",
+    "author": "Nationalmuseet - National Museum of Denmark",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "alt": "모자가 달린 두꺼운 털가죽 옷과 털 장화 차림의 이누이트 두 사람이 눈 덮인 땅 위에 뒤돌아 서 있다",
+    "note": "캐나다 베이커 호수 부근, 약 1921년 흑백 사진(제5차 툴레 탐험). 두 사람 모두 순록 가죽 옷을 입었다는 박물관 설명이 있음"
+  },
+  "clothes/andes": {
+    "src": "/images/clothes/andes.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Q'eros_Paqo_calling_Apu.jpg",
+    "author": "McKay Savage",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "alt": "알록달록한 무늬의 판초를 두르고 귀덮개와 방울 장식이 달린 털실 모자를 쓴 남자가 높은 산비탈을 배경으로 서 있다",
+    "note": "페루 오얀타이탐보 근처 안데스 산지의 케로스(Q'eros) 사람"
+  },
+  "clothes/malay": {
+    "src": "/images/clothes/malay.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Baju_Adat_Melayu_Pontianak.jpg",
+    "author": "Aliff12",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "alt": "얇고 헐렁한 윗옷에 무늬 있는 천을 허리에 두른 말레이 전통 옷차림의 사람들이 나무가 우거진 길가에 서 있다",
+    "note": "인도네시아 서칼리만탄(보르네오섬) 폰티아낙의 말레이 전통 의상(남자 텔룩 블랑아, 여자 바주 쿠룽). 위쪽 호텔 간판이 나오지 않도록 원본을 잘라 사용"
+  },
+  "clothes/sami": {
+    "src": "/images/clothes/sami.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Sámi_man_at_the_Jokkmokk_Market_redineer_parade.jpg",
+    "author": "Vicharkness",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "alt": "알록달록한 띠 장식이 있는 파란 사미 전통 옷(각티)에 털모자와 털장갑, 털신을 갖춘 남자가 눈 덮인 마을에서 순록 곁에 서 있다",
+    "note": "스웨덴 요크모크 겨울 시장(2025년 2월). 왼쪽 아래 작은 촬영자 표시가 보이지 않도록 아래쪽을 조금 잘라 사용"
   }
 }

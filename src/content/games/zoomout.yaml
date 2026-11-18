@@ -1,0 +1,29 @@
+template: zoomout
+unit: soc-6-2-1
+title: 줌아웃! 여기는 어디?
+emoji: 🔭
+summary: 아주 크게 확대된 지형 사진이 조금씩 넓어지면, 모둠끼리 어디인지 맞혀요. 빨리 맞힐수록 점수가 높아요.
+lessons: ['1']
+standards: [6사10-01]
+minutes: 15
+teacherGuide:
+  - 1차시 단원 도입에서 전자칠판에 띄워요. 탐험할 장소 수(5곳·8곳·전체 15곳)를 고르고 시작해요.
+  - 사진은 처음에 6배로 확대돼 있어요. [더 넓게 보기]를 누를 때마다 점수가 300 → 200 → 100 → 50점으로 줄어요.
+  - 정답을 공개하면 지형 이름·나라·특징과 세계 지도 위치가 나와요. "가 보고 싶은 사람?"으로 손을 든 학생 수를 세어 두면, 마지막에 우리 반이 가장 가 보고 싶은 곳이 나와요.
+  - 교과서 1차시 '가고 싶은 여행지 찾기', '탐구 질문 만들기'와 이어져요. 궁금한 점은 학생 태블릿의 탐험 질문 수첩에 적게 해 주세요.
+rounds:
+  - { atlas: "sognefjord", focus: [55, 62] }
+  - { atlas: "sahara", focus: [45, 55] }
+  - { atlas: "huanghe", focus: [45, 66], question: "강물은 왜 이런 색깔일까요?" }
+  - { atlas: "maunaloa", focus: [45, 42], question: "산의 모양이 다른 산과 어떻게 다른가요?" }
+  - { atlas: "elarco", focus: [57, 58], question: "이 바위의 구멍은 어떻게 생겼을까요?" }
+  - { atlas: "himalaya", focus: [55, 25] }
+  - { atlas: "abyssinia", focus: [60, 40], question: "이렇게 높고 평평한 곳에 사람들이 살까요?" }
+  - { atlas: "parinacota", focus: [50, 32] }
+  - { atlas: "amazon", focus: [62, 45], question: "이 강 주변 사람들은 어떻게 이동할까요?" }
+  - { atlas: "nile", focus: [25, 55], question: "강 주변만 초록색인 까닭은 무엇일까요?" }
+  - { atlas: "horseshoe", focus: [55, 45] }
+  - { atlas: "victoria", focus: [78, 60] }
+  - { atlas: "fundy", focus: [45, 66], question: "바위 아랫부분이 가늘게 깎인 까닭은 무엇일까요?" }
+  - { atlas: "makena", focus: [62, 76] }
+  - { atlas: "portcampbell", focus: [40, 50] }

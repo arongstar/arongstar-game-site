@@ -84,7 +84,16 @@ const stepBase = {
   charts: z.array(z.string()).optional(),
   hideChartName: z.boolean().default(false), // 그래프 위에 도시 이름을 숨길지 (맞히기 문제)
   collect: z.array(z.string()).default([]), // 맞히면 도감에 들어갈 지형 카드 id
+  sun: z.boolean().default(false), // 위도별 햇볕 시뮬레이터를 함께 보여 줄지
 };
+
+// 꾸미기(집·옷)와 상점 문제의 보기
+const fitOption = z.object({
+  text: z.string(),
+  fit: z.boolean(), // 이 기후·지형에 알맞은지
+  why: z.string(), // 고른 뒤 보여 줄 까닭
+  look: z.string().optional(), // 그림 모양 (예: roof-steep, body-fur)
+});
 
 const step = z.discriminatedUnion('type', [
   // 하나 고르기
@@ -106,6 +115,22 @@ const step = z.discriminatedUnion('type', [
   }),
   // 세계 지도에서 위치 고르기 (pins 는 atlas 의 id 또는 climate 도시 id)
   z.object({ type: z.literal('pin'), ...stepBase, pins: z.array(z.string()).min(2), answer: z.string() }),
+  // 기후에 맞는 집·옷 꾸미기: 부분마다 하나씩 고르기
+  z.object({
+    type: z.literal('build'),
+    ...stepBase,
+    target: z.enum(['house', 'clothes']),
+    scene: z.enum(['열대', '건조', '온대', '냉대', '한대', '고산']).optional(), // 배경 그림
+    parts: z.array(z.object({ label: z.string(), options: z.array(fitOption).min(2) })).min(1),
+  }),
+  // 세계 상점: 손님에게 알맞은 상품 기능을 모두 고르고 판매 계획 세우기
+  z.object({
+    type: z.literal('shop'),
+    ...stepBase,
+    customer: z.object({ emoji: z.string(), name: z.string(), place: z.string(), says: z.string() }),
+    features: z.array(fitOption).min(3),
+    plan: z.boolean().default(true), // 상품 이름·광고 문구 적기
+  }),
 ]);
 
 const stage = z.object({
@@ -148,7 +173,7 @@ const games = defineCollection({
       template: z.literal('mission'),
       mode: z.literal('solo').default('solo'),
       // dex = 지형 도감(카드 모으기 화면이 함께 보임)
-      style: z.enum(['dex', 'village', 'detective']).default('village'),
+      style: z.enum(['dex', 'village', 'detective', 'sun', 'builder', 'shop']).default('village'),
       ...gameBase,
       stages: z.array(stage).min(1),
     }),
@@ -159,6 +184,27 @@ const games = defineCollection({
       ...gameBase,
       categories: z.array(z.object({ name: z.string(), emoji: z.string(), items: z.array(quizItem).length(3) })),
       final: quizItem.optional(),
+    }),
+    // 전자칠판: 확대된 사진이 점점 넓어지며 어디인지 맞히기
+    z.object({
+      template: z.literal('zoomout'),
+      mode: z.literal('board').default('board'),
+      ...gameBase,
+      rounds: z.array(
+        z.object({
+          atlas: z.string(), // 단원 atlas 의 지형 id
+          focus: z.tuple([z.number(), z.number()]), // 처음 확대할 곳 (사진 왼쪽 위 기준 %)
+          question: z.string().optional(), // 정답 공개 뒤 함께 생각할 질문
+        }),
+      ).min(3),
+    }),
+    // 빙고: 전자칠판에 설명이 나오고, 학생은 태블릿 빙고판에 표시
+    z.object({
+      template: z.literal('bingo'),
+      mode: z.literal('board').default('board'),
+      ...gameBase,
+      size: z.number().int().min(3).max(5).default(4),
+      words: z.array(z.object({ word: z.string(), clue: z.string() })).min(12),
     }),
   ]),
 });

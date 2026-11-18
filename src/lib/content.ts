@@ -17,6 +17,9 @@ export async function unitOf(game: { data: { unit: { id: string } } }) {
   if (!u) throw new Error(`단원 없음: ${game.data.unit.id}`);
   return u;
 }
+// 빙고의 학생용 빙고판 주소
+export const bingoCardPath = (id: string) => `/bingo/${id}/`;
+
 // 게임 주소 (개인용은 /play, 전자칠판용은 /board)
 export function gamePath(g: { id: string; data: { mode: string } }, stage?: string) {
   return g.data.mode === 'board' ? `/board/${g.id}/` : `/play/${g.id}/${stage ? `?stage=${stage}` : ''}`;
