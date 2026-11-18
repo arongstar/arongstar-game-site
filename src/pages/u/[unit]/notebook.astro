@@ -1,0 +1,27 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { allUnits } from '../../../lib/content';
+import { reportData } from '../../../lib/reportdata';
+import { url } from '../../../lib/url';
+
+export async function getStaticPaths() {
+  return (await allUnits()).map((u) => ({ params: { unit: u.id }, props: { unit: u } }));
+}
+const { unit } = Astro.props;
+const data = await reportData(unit);
+---
+
+<Base title={`탐험 질문 수첩 — ${unit.data.title}`}>
+  <a slot="head" class="btn ghost small" href={url(`/u/${unit.id}/`)}>🗺️ 탐험 지도</a>
+  <div class="report">
+    <h1>📓 탐험 질문 수첩</h1>
+    <p class="muted">탐험하면서 궁금해진 것을 적고, 사회과 부도·교과서·검색으로 스스로 답을 찾아 적어 보세요.</p>
+    <div id="notebook"></div>
+  </div>
+  <script type="application/json" id="report-data" set:html={JSON.stringify(data)} />
+</Base>
+
+<script>
+  import { renderNotebook } from '../../../lib/client/report';
+  renderNotebook();
+</script>

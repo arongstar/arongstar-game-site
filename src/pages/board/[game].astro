@@ -1,0 +1,24 @@
+---
+import Base from '../../layouts/Base.astro';
+import { allGames, unitOf } from '../../lib/content';
+import { quizshowData } from '../../lib/gamedata';
+import '../../styles/board.css';
+
+export async function getStaticPaths() {
+  const games = (await allGames()).filter((g) => g.data.template === 'quizshow');
+  return games.map((g) => ({ params: { game: g.id }, props: { game: g } }));
+}
+const { game } = Astro.props;
+const unit = await unitOf(game);
+const data = quizshowData(game, unit);
+---
+
+<Base title={game.data.title} bare bodyClass="board-body" wide>
+  <div id="board"></div>
+  <script type="application/json" id="game-data" set:html={JSON.stringify(data)} />
+</Base>
+
+<script>
+  import { startBoard } from '../../lib/client/board';
+  startBoard();
+</script>

@@ -1,0 +1,125 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { allUnits, gamesOf, gamePath } from '../../../lib/content';
+import { url } from '../../../lib/url';
+import { landPath, MAP_VIEWBOX } from '../../../lib/worldmap';
+
+export async function getStaticPaths() {
+  const units = await allUnits();
+  return units.map((u) => ({ params: { unit: u.id }, props: { unit: u } }));
+}
+const { unit } = Astro.props;
+const u = unit.data;
+const games = await gamesOf(unit.id);
+const byId = Object.fromEntries(games.map((g) => [g.id, g]));
+
+function linksFor(lessonNo: string, ids: string[]) {
+  return ids
+    .filter((id) => byId[id])
+    .map((id) => {
+      const g = byId[id];
+      const stage = g.data.template === 'mission' ? g.data.stages.find((s) => s.lesson === lessonNo) : undefined;
+      const stages = g.data.template === 'mission' ? (stage ? [stage.id] : g.data.stages.map((s) => s.id)) : [];
+      return {
+        href: url(gamePath(g, stage && g.data.template === 'mission' && g.data.stages.length > 1 ? stage.id : undefined)),
+        title: g.data.title + (stage && g.data.template === 'mission' && g.data.stages.length > 1 ? ` — ${stage.title}` : ''),
+        emoji: g.data.emoji,
+        mode: g.data.mode,
+        game: g.id,
+        stages: stages.join(','),
+      };
+    });
+}
+const totalCards = u.atlas.length;
+---
+
+<Base title={`${u.grade}-${u.semester} ${u.subject} ${u.unitNo}. ${u.title}`}>
+  <a slot="head" class="btn ghost small" href={url(`/teacher/${unit.id}/`)}>👩‍🏫 선생님용</a>
+
+  <section class="unit-hero">
+    <svg class="hero-map" viewBox={MAP_VIEWBOX} aria-hidden="true"><path d={landPath()}></path></svg>
+    <div>
+      <div class="grade">{u.subject} · {u.grade}학년 {u.semester}학기 · {u.unitNo}단원</div>
+      <h1>{u.emoji} {u.title}</h1>
+      <p>{u.story}</p>
+      <div class="passport" id="passport">
+        <div class="pass-item"><b data-k="stamps">0</b><span>모은 탐험 도장</span></div>
+        {totalCards > 0 && <div class="pass-item"><b data-k="cards">0 / {totalCards}</b><span>지형 도감 카드</span></div>}
+        <a class="pass-item" href={url(`/u/${unit.id}/notebook/`)}><b data-k="notes">0</b><span>📓 탐험 질문 수첩</span></a>
+        <a class="pass-item" href={url(`/u/${unit.id}/report/`)}><b>📋</b><span>나의 탐험 리포트</span></a>
+      </div>
+    </div>
+  </section>
+
+  {
+    u.topics.map((t) => (
+      <section class="topic">
+        <div class="topic-head">
+          <span class="no">{t.no}</span>
+          <h2>{t.title}</h2>
+        </div>
+        <ol class="trail">
+          {t.lessons.map((l) => (
+            <li class="lesson">
+              <div class="lesson-box">
+                <span class="lesson-no">{l.no}차시</span>
+                <span class="lesson-title">{l.title}</span>
+                {(l.games.length > 0 || l.soon.length > 0) && (
+                  <div class="game-links">
+                    {linksFor(l.no, l.games).map((g) => (
+                      <a class={`game-link ${g.mode}`} href={g.href} data-game={g.game} data-stages={g.stages}>
+                        <span class="gl-emoji" aria-hidden="true">{g.emoji}</span>
+                        <span>{g.title}</span>
+                        <span class="gl-mode">{g.mode === 'board' ? '🖥 전자칠판' : '📱 개인'}</span>
+                        {g.mode === 'solo' && (
+                          <span class="gl-stamps" aria-hidden="true">
+                            <span data-t="C" class="off">🧭</span>
+                            <span data-t="B" class="off">🔎</span>
+                            <span data-t="A" class="off">🏅</span>
+                          </span>
+                        )}
+                      </a>
+                    ))}
+                    {l.soon.map((s) => (
+                      <span class="game-link soon" title="2차 제작 예정">
+                        <span class="gl-emoji" aria-hidden="true">{s.emoji}</span>
+                        <span>{s.title}</span>
+                        <span class="gl-mode">곧 열려요</span>
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))
+  }
+  <script type="application/json" id="unit-data" set:html={JSON.stringify({ id: unit.id })} />
+</Base>
+
+<script>
+  import { readJSON } from '../../../lib/client/dom';
+  import * as store from '../../../lib/client/store';
+  const { id } = readJSON('unit-data');
+  let stamps = 0;
+  document.querySelectorAll<HTMLElement>('.game-link[data-game]').forEach((el) => {
+    const game = el.dataset.game!;
+    const stages = (el.dataset.stages || '').split(',').filter(Boolean);
+    if (!stages.length) return;
+    for (const t of store.TIER_ORDER) {
+      const done = stages.every((s) => store.getRun(id, game, t, s));
+      if (done) el.querySelector(`[data-t="${t}"]`)?.classList.remove('off');
+    }
+  });
+  for (const r of store.runsFor(id)) if (r.run) stamps++;
+  const set = (k: string, v: string) => {
+    const el = document.querySelector(`#passport [data-k="${k}"]`);
+    if (el) el.textContent = v;
+  };
+  set('stamps', String(stamps));
+  const cardsEl = document.querySelector('#passport [data-k="cards"]');
+  if (cardsEl) cardsEl.textContent = `${store.getCards(id).length} / ${cardsEl.textContent!.split('/')[1].trim()}`;
+  set('notes', String(store.getNotes(id).length));
+</script>

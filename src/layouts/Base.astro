@@ -1,0 +1,60 @@
+---
+import '../styles/global.css';
+import { SITE } from '../site.config';
+import { url } from '../lib/url';
+
+interface Props {
+  title?: string;
+  description?: string;
+  bodyClass?: string;
+  wide?: boolean;
+  bare?: boolean; // 머리글 없이 (전자칠판 화면)
+}
+const { title, description = SITE.description, bodyClass = '', wide = false, bare = false } = Astro.props;
+const fullTitle = title ? `${title} · ${SITE.title}` : SITE.title;
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#1f6f8b" />
+    <title>{fullTitle}</title>
+    <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&display=swap" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+    />
+  </head>
+  <body class={bodyClass}>
+    {
+      !bare && (
+        <header class="site-head">
+          <a class="brand" href={url('/')}>
+            <span class="brand-mark" aria-hidden="true">🎲</span>
+            {SITE.title}
+          </a>
+          <slot name="head" />
+        </header>
+      )
+    }
+    <main class={wide ? 'wrap wide' : 'wrap'}>
+      <slot />
+    </main>
+    {
+      !bare && (
+        <footer class="site-foot">
+          <p>
+            학생 기록은 이 기기 안에만 저장돼요. 이름·학번은 저장하지 않아요. ·{' '}
+            <a href={url('/credits/')}>사진·자료 출처</a>
+          </p>
+        </footer>
+      )
+    }
+  </body>
+</html>

@@ -1,0 +1,167 @@
+---
+import Base from '../../layouts/Base.astro';
+import { allUnits, gamesOf, gamePath } from '../../lib/content';
+import { stepCounts } from '../../lib/gamedata';
+import { url } from '../../lib/url';
+import { TIERS } from '../../site.config';
+
+export async function getStaticPaths() {
+  return (await allUnits()).map((u) => ({ params: { unit: u.id }, props: { unit: u } }));
+}
+const { unit } = Astro.props;
+const u = unit.data;
+const games = await gamesOf(unit.id);
+const byId = Object.fromEntries(games.map((g) => [g.id, g]));
+const studentPath = url(`/u/${unit.id}/`);
+const tiers = ['C', 'B', 'A'] as const;
+const VERBS = {
+  C: '제시하다 · 말하다 · 자료를 살펴보다',
+  B: '조사하다 · 설명하다',
+  A: '분석하다 · 탐구하다',
+};
+const cats = ['지식·이해', '과정·기능', '가치·태도'] as const;
+---
+
+<Base title={`선생님용 — ${u.title}`}>
+  <a slot="head" class="btn ghost small" href={studentPath}>🗺️ 학생 화면</a>
+  <div class="teacher">
+    <p class="muted">{u.subject} · {u.grade}학년 {u.semester}학기 · {u.unitNo}단원</p>
+    <h1>👩‍🏫 {u.title} — 선생님용 안내</h1>
+
+    <section class="card qr-box">
+      <canvas id="qr" width="200" height="200" aria-label="학생용 주소 QR 코드"></canvas>
+      <div>
+        <h2 style="margin-top:0">학생에게 나눠 줄 주소</h2>
+        <p class="qr-url" id="qr-url" data-path={studentPath}>{studentPath}</p>
+        <p class="muted">학생은 이 주소(QR)로 들어와 차시별 게임을 골라요. 로그인이 없고, 기록은 학생 기기 안에만 저장돼요.</p>
+        <button class="btn small" id="copy-url">주소 복사</button>
+      </div>
+    </section>
+
+    <h2>🎮 게임 단계 = 성취수준</h2>
+    <p>평가원 성취수준(A·B·C)을 가르는 동사에 맞추어 게임 단계를 나눴어요. 학생 화면에는 A·B·C 대신 단계 이름만 보여요.</p>
+    <div class="tbl-scroll">
+      <table class="tbl">
+        <thead><tr><th>게임 단계</th><th>성취수준</th><th>핵심 동사</th><th>게임에서 하는 일</th></tr></thead>
+        <tbody>
+          {tiers.map((t) => (
+            <tr><td>{TIERS[t].emoji} <b>{TIERS[t].name}</b></td><td><span class={`tier-tag ${t}`}>{t}</span></td><td>{VERBS[t]}</td><td>{TIERS[t].desc}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2>📅 차시별 게임</h2>
+    <p class="muted">{u.textbookNote}</p>
+    <div class="tbl-scroll">
+      <table class="tbl">
+        <thead><tr><th>차시</th><th>차시명</th><th>게임</th></tr></thead>
+        <tbody>
+          {u.topics.flatMap((t) => t.lessons.map((l) => (
+            <tr>
+              <td style="white-space:nowrap"><b>{l.no}</b></td>
+              <td>{l.title}</td>
+              <td>
+                {l.games.filter((id) => byId[id]).map((id) => {
+                  const g = byId[id];
+                  const stage = g.data.template === 'mission' ? g.data.stages.find((s) => s.lesson === l.no) : undefined;
+                  return (
+                    <div>
+                      <a href={url(gamePath(g, stage && g.data.template === 'mission' && g.data.stages.length > 1 ? stage.id : undefined))}>{g.data.emoji} {g.data.title}{stage && g.data.template === 'mission' && g.data.stages.length > 1 ? ` — ${stage.title}` : ''}</a>
+                      {' '}<span class="muted">({g.data.mode === 'board' ? '🖥 전자칠판' : '📱 개인'}, {g.data.minutes}분)</span>
+                    </div>
+                  );
+                })}
+                {l.soon.map((s) => <div class="muted">{s.emoji} {s.title} (2차 제작 예정)</div>)}
+              </td>
+            </tr>
+          )))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2>🎯 성취기준별 성취수준</h2>
+    <div class="tbl-scroll">
+      <table class="tbl">
+        <thead><tr><th style="width:28%">성취기준</th><th>수준</th><th>성취기준별 성취수준</th></tr></thead>
+        <tbody>
+          {u.standards.flatMap((s) => (['A', 'B', 'C'] as const).map((t, i) => (
+            <tr>
+              {i === 0 && <td rowspan="3"><b>[{s.code}]</b> {s.text}</td>}
+              <td><span class={`tier-tag ${t}`}>{t}</span> {TIERS[t].emoji}</td>
+              <td>{s.levels[t]}</td>
+            </tr>
+          )))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2>🧩 영역별 성취수준 — {u.domain}</h2>
+    <div class="tbl-scroll">
+      <table class="tbl">
+        <thead><tr><th>수준</th>{cats.map((c) => <th>{c}</th>)}</tr></thead>
+        <tbody>
+          {(['A', 'B', 'C'] as const).map((t) => (
+            <tr><td><span class={`tier-tag ${t}`}>{t}</span></td>{cats.map((c) => <td>{u.domainLevels[t][c]}</td>)}</tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted" style="font-size:0.85rem">출처: 한국교육과정평가원 「2022 개정 교육과정에 따른 초등학교 5~6학년군 성취 수준」</p>
+
+    <h2>📖 게임별 운영 안내</h2>
+    {games.map((g) => {
+      const counts = stepCounts(g);
+      return (
+        <section class="card" style="margin-bottom:14px">
+          <h3 style="margin:0 0 4px; font-size:1.35rem">{g.data.emoji} {g.data.title}</h3>
+          <p style="margin:0">{g.data.summary}</p>
+          <p class="muted" style="margin:4px 0 0">
+            {g.data.lessons.map((l) => `${l}차시`).join(' · ')} · {g.data.mode === 'board' ? '🖥 전자칠판' : '📱 개인 태블릿'} · 약 {g.data.minutes}분 · 성취기준 {g.data.standards.map((s) => `[${s}]`).join(' ')}
+          </p>
+          <ul class="guide-list">{g.data.teacherGuide.map((t) => <li>{t}</li>)}</ul>
+          {g.data.template === 'mission' && (
+            <div class="tbl-scroll" style="margin-top:10px">
+              <table class="tbl">
+                <thead><tr><th>스테이지</th>{tiers.map((t) => <th>{TIERS[t].emoji} {TIERS[t].name}</th>)}</tr></thead>
+                <tbody>
+                  {g.data.stages.map((s) => (
+                    <tr>
+                      <td>{s.emoji} {s.title}{s.lesson ? ` (${s.lesson}차시)` : ''}</td>
+                      {tiers.map((t) => <td><a href={url(`/play/${g.id}/?stage=${s.id}&tier=${t}`)}>{counts[s.id][t]}문제</a></td>)}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+          <p style="margin:10px 0 0"><a class="btn small" href={url(gamePath(g))}>게임 열기</a></p>
+        </section>
+      );
+    })}
+
+    <h2>📋 탐험 리포트와 평가</h2>
+    <ul class="guide-list">
+      <li>학생 화면의 <b>📋 나의 탐험 리포트</b>에서 성취기준별로 도달한 탐험 단계를 볼 수 있어요. 한 단계의 문제를 3개 이상 풀고 처음에 70% 이상 맞히면 그 단계를 해냈다고 보여 줘요.</li>
+      <li>가치·태도는 <b>📓 탐험 질문 수첩</b>으로 보여 줘요. 질문 1개 이상은 '관심', 3개 이상은 '관심과 호기심', 스스로 조사한 답을 적으면 '탐구하려는 자세'로 봐요.</li>
+      <li>리포트는 인쇄하거나 PDF로 저장할 수 있어 6~7차시, 12차시 과정 중심 평가의 <b>관찰·포트폴리오 자료</b>로 쓸 수 있어요. 성취수준은 선생님의 관찰·발표·활동지와 함께 판단해 주세요.</li>
+      <li>기록은 학생 기기에만 남아요. 공용 태블릿이면 수업이 끝날 때 리포트를 인쇄하거나 화면을 캡처해 두세요.</li>
+    </ul>
+
+    <p style="margin-top:24px"><a href={url('/credits/')}>📷 사진·자료 출처 보기</a></p>
+  </div>
+</Base>
+
+<script>
+  import QRCode from 'qrcode';
+  const el = document.getElementById('qr-url')!;
+  const full = location.origin + el.dataset.path;
+  el.textContent = full;
+  QRCode.toCanvas(document.getElementById('qr') as HTMLCanvasElement, full, { width: 200, margin: 1 }).catch(() => {});
+  document.getElementById('copy-url')!.addEventListener('click', async (e) => {
+    try {
+      await navigator.clipboard.writeText(full);
+      (e.target as HTMLElement).textContent = '복사했어요!';
+    } catch {}
+  });
+</script>

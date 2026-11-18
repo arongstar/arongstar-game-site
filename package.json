@@ -1,0 +1,21 @@
+{
+  "name": "arongstar-game-site",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^7.4.12",
+    "d3-geo": "^3.1.2",
+    "qrcode": "^1.5.4",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  }
+}

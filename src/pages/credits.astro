@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import { rawPhotos, climate } from '../lib/gamedata';
+import { url } from '../lib/url';
+const photos = Object.entries(rawPhotos());
+---
+
+<Base title="사진·자료 출처">
+  <h1>📷 사진·자료 출처</h1>
+  <p class="muted">이 사이트의 사진은 위키미디어 공용(Wikimedia Commons)에서 자유 이용 허락(CC0·퍼블릭 도메인·CC BY·CC BY-SA)된 것만 썼어요. 크기를 줄여 사용했어요.</p>
+  <div class="tbl-scroll">
+    <table class="tbl">
+      <thead><tr><th>사진</th><th>설명</th><th>작가</th><th>라이선스</th></tr></thead>
+      <tbody>
+        {photos.map(([k, p]) => (
+          <tr>
+            <td style="width:120px"><img src={url(p.src)} alt="" width="110" loading="lazy" style="border-radius:8px" /></td>
+            <td>{p.alt}{p.note ? <div class="muted" style="font-size:0.85rem">{p.note}</div> : null}<div><a href={p.commons}>원본 보기</a></div></td>
+            <td>{p.author}</td>
+            <td>{p.licenseUrl ? <a href={p.licenseUrl}>{p.license}</a> : p.license}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <h2 class="sec-title">📊 기후 그래프 자료</h2>
+  <p class="muted">위키백과 각 도시 문서의 기후 표(세계기상기구 기준 평년값, 대부분 1991~2020년)에서 월평균 기온과 강수량을 옮겼어요.</p>
+  <ul>
+    {Object.entries(climate).map(([, c]) => (
+      <li>{c.name}({c.country}) — <a href={c.sourceUrl}>{c.source}</a></li>
+    ))}
+  </ul>
+  <h2 class="sec-title">🗺️ 지도</h2>
+  <p>Natural Earth 1:110m (퍼블릭 도메인), world-atlas 패키지</p>
+</Base>

@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import { allGames, unitOf } from '../../lib/content';
+import { missionData } from '../../lib/gamedata';
+import { url } from '../../lib/url';
+
+export async function getStaticPaths() {
+  const games = (await allGames()).filter((g) => g.data.template === 'mission');
+  return games.map((g) => ({ params: { game: g.id }, props: { game: g } }));
+}
+const { game } = Astro.props;
+const unit = await unitOf(game);
+const data = missionData(game, unit);
+---
+
+<Base title={game.data.title} wide>
+  <a slot="head" class="btn ghost small" href={url(`/u/${unit.id}/`)}>🗺️ {unit.data.title}</a>
+  <div id="app">
+    <noscript>이 게임은 자바스크립트가 켜져 있어야 해요.</noscript>
+  </div>
+  <script type="application/json" id="game-data" set:html={JSON.stringify(data)} />
+</Base>
+
+<script>
+  import { startMission } from '../../lib/client/mission';
+  startMission();
+</script>
