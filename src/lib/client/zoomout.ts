@@ -142,7 +142,7 @@ export function startZoomout() {
             h('button', { class: 'btn small', onclick: () => vote(1), 'aria-label': '한 명 더하기' }, '＋')),
           h('p', null, '💬 ', r.question ?? '이곳에 대해 더 알고 싶은 것을 말해 보세요. 탐험 질문 수첩에 적어 두어요!'),
         ),
-        h('button', { class: 'btn primary big', onclick: () => { s0.idx++; save(); round(); } }, s0.idx + 1 >= s0.order.length ? '결과 보기 ▶' : '다음 장소 ▶'),
+        h('button', { class: 'btn primary big', onclick: () => { s0.idx++; save(); round(); } }, s0.idx + 1 >= s0.order.length ? '결과 보기 ▶' : '다음 사진 ▶'),
       );
     }
 

@@ -303,5 +303,113 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
     "alt": "알록달록한 띠 장식이 있는 파란 사미 전통 옷(각티)에 털모자와 털장갑, 털신을 갖춘 남자가 눈 덮인 마을에서 순록 곁에 서 있다",
     "note": "스웨덴 요크모크 겨울 시장(2025년 2월). 왼쪽 아래 작은 촬영자 표시가 보이지 않도록 아래쪽을 조금 잘라 사용"
+  },
+  "economy/market": {
+    "src": "/images/economy/market.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Gwangjang_Market.JPG",
+    "author": "ChongDae",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "alt": "천막 아래 여러 가게에서 상인들이 김이 나는 음식과 물건을 펼쳐 놓고 파는 시장의 모습",
+    "note": "Gwangjang Market, Jongno-gu, Seoul, 16 Feb 2013 · 위쪽 간판 부분을 잘라 냈어요."
+  },
+  "economy/mart": {
+    "src": "/images/economy/mart.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Aisle_in_L_Intermarche_supermarket_in_Quebec_City.jpg",
+    "author": "Wilfredor",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "alt": "긴 통로 양옆 진열대와 냉장고에 병, 상자, 포장 식품 같은 여러 상품이 빼곡히 놓인 대형 마트 내부",
+    "note": "Intermarché supermarket, Rue Saint-Jean, Quebec City, Canada, Feb 2019 (Korean supermarket photos found were low-res; substituted)"
+  },
+  "economy/factory": {
+    "src": "/images/economy/factory.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:BMW_Leipzig_MEDIA_050719_Download_Karosseriebau_max.jpg",
+    "author": "BMW Werk Leipzig",
+    "license": "CC BY-SA 2.0 DE",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/de/",
+    "alt": "주황색 로봇 팔 여러 대가 생산 라인 위의 은색 자동차 차체를 둘러싸고 용접하는 자동차 공장 내부",
+    "note": "BMW plant Leipzig, Germany, body shop with KUKA robots, 19 Jul 2005"
+  },
+  "economy/port": {
+    "src": "/images/economy/port.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Busan_Container_Terminal_2006.jpg",
+    "author": "Niels Johannes",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "alt": "바닷가 부두에 빨간 대형 크레인들이 줄지어 서 있고, 알록달록한 컨테이너를 가득 실은 큰 배들이 정박해 있는 항구",
+    "note": "Busan container terminal, South Korea, 29 Mar 2006"
+  },
+  "economy/chip": {
+    "src": "/images/economy/chip.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Semiconductor_Wafer_of_Microelectronics.jpg",
+    "author": "DrHughManning",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "alt": "둥글고 반짝이는 원판 위에 작은 네모 칸 모양의 반도체 칩들이 바둑판처럼 빼곡히 새겨진 반도체 웨이퍼",
+    "note": "12-inch wafer of microelectronic test structures, Dublin, Ireland, Jan 2017"
+  },
+  "economy/shipyard": {
+    "src": "/images/economy/shipyard.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:LNG_Carrier_DSME.jpg",
+    "author": "Towel401 at English Wikipedia",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "alt": "높은 크레인들이 서 있는 조선소 바닷가에 초록색과 흰색으로 칠해진 거대한 배가 만들어지고 있는 모습",
+    "note": "LNG carriers (LNG Kano, LNG Lokoja) under construction at DSME Okpo shipyard, Geoje, South Korea, 2007"
+  },
+  "economy/textile1960s": {
+    "src": "/images/economy/textile1960s.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:태창방직의_작업_광경.jpg",
+    "author": "한국정책방송원",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "alt": "넓은 공장 안에 천을 짜는 기계가 끝없이 줄지어 놓여 있고, 노동자들이 그 사이에서 일하는 옛날 흑백 사진",
+    "note": "Taechang Spinning (태창방직) mill, South Korea, 1960; via 공유마당. Original is only 512x390 px (served at 500 px); no larger free-license 1960s-70s Korean light-industry photo found"
+  },
+  "economy/expressway": {
+    "src": "/images/economy/expressway.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:경부고속도로-수원-오산간_개통4-1968.jpg",
+    "author": "경기도청",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "alt": "새로 뚫린 넓은 고속도로 위에 개통을 알리는 아치형 간판이 세워져 있고, 길가로 사람들이 걸어가는 옛날 흑백 사진",
+    "note": "Opening of the Seoul–Suwon–Osan section of the Gyeongbu Expressway, 30 Dec 1968 (PD-South Korea: photo published before 1977)"
+  },
+  "economy/coffee": {
+    "src": "/images/economy/coffee.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Café_cultura_altinópolis.jpg",
+    "author": "Jonathan Wilkins",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "alt": "푸른 하늘 아래 짙은 초록색 커피나무가 끝없이 줄지어 심어진 넓은 커피 농장",
+    "note": "Coffee plantation (two-year-old plants), Altinópolis, São Paulo, Brazil, 12 Aug 2012"
+  },
+  "economy/oil": {
+    "src": "/images/economy/oil.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Dunst_Oman_scan0321_-_Ölfeld_Marmul.jpg",
+    "author": "Bernhard Dunst",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "alt": "메마른 사막 한가운데에 석유를 퍼 올리는 펌프 기계가 서 있고, 앞쪽으로 굵은 송유관 여러 개가 지나가는 유전",
+    "note": "Marmul oil field, Oman, Feb 2001 (film scan)"
+  },
+  "economy/ironore": {
+    "src": "/images/economy/ironore.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Mount_Whaleback_mine,_2016_(02).JPG",
+    "author": "Bahnfrend",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "alt": "붉은 흙으로 된 땅을 계단처럼 층층이 깊게 파 내려간 거대한 노천 광산",
+    "note": "Mount Whaleback iron ore mine, Newman, Pilbara, Western Australia, 11 Apr 2016"
+  },
+  "economy/banana": {
+    "src": "/images/economy/banana.jpg",
+    "commons": "https://commons.wikimedia.org/wiki/File:Banana_Plantation_Panabo_City.jpg",
+    "author": "Shubert Ciencia",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "alt": "흙길 양옆으로 큰 잎의 바나나 나무가 줄지어 서 있고, 바나나 송이마다 파란 봉지가 씌워진 농장 사이를 두 사람이 자전거로 달리는 모습",
+    "note": "Banana plantation, Panabo City, Davao region, Mindanao, Philippines, 11 Feb 2010"
   }
 }

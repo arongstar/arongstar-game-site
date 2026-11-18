@@ -20,55 +20,49 @@ rounds:
     name: 전통 시장
     tag: 시장
     desc: 물건을 사고파는 곳이에요. 가계는 필요한 물건을 사고, 상인은 물건을 팔아 소득을 얻어요. (소주제 1)
-    focus: [50, 55]
+    focus: [48, 62]
     question: 시장에는 어떤 종류가 있을까요? 눈에 보이지 않는 시장도 있을까요?
   - photo: economy/mart
     name: 대형 마트
     tag: 시장
     desc: 여러 기업이 만든 상품이 모여 있어요. 가계는 가격과 품질을 비교해 합리적으로 선택해요. (소주제 1)
-    focus: [50, 50]
+    focus: [86, 78]
     question: 물건을 살 때 무엇을 비교하나요?
   - photo: economy/factory
     name: 자동차 공장
     tag: 기업
     desc: 기업은 이윤을 얻기 위해 무엇을, 얼마나, 어떻게 만들지 선택해요. 사람과 로봇이 함께 자동차를 만들어요. (소주제 1)
-    focus: [50, 50]
+    focus: [55, 22]
     question: 이곳에서 일하는 사람들에게는 어떤 권리가 있을까요?
-  - photo: economy/textile1960s
-    name: 1960~70년대 경공업 공장
-    tag: 경제성장
-    desc: 우리나라는 1960년대에 옷·신발·가발 같은 가벼운 물건을 만드는 경공업부터 발달했어요. (소주제 2)
-    focus: [50, 50]
-    question: 그때와 지금 공장의 모습은 어떻게 다를까요?
   - photo: economy/shipyard
     name: 조선소
     tag: 경제성장
     desc: 1970년대부터 발달한 중화학 공업의 하나로, 큰 배를 만들어 다른 나라에 팔아요. (소주제 2)
-    focus: [50, 50]
+    focus: [58, 58]
   - photo: economy/chip
     name: 반도체
     tag: 수출
     desc: 오늘날 우리나라에서 가장 많이 수출하는 상품 가운데 하나예요. (소주제 2·3)
-    focus: [50, 50]
+    focus: [38, 60]
     question: 반도체는 우리 생활 속 어디에 쓰일까요?
   - photo: economy/port
     name: 컨테이너 항구
     tag: 무역
     desc: 다른 나라와 사고파는 상품이 컨테이너에 실려 배로 오가요. (소주제 3)
-    focus: [50, 50]
+    focus: [80, 63]
     question: 컨테이너 안에는 어떤 물건이 들어 있을까요?
   - photo: economy/coffee
     name: 커피 농장
     tag: 수입
     desc: 커피는 덥고 비가 많은 곳에서 잘 자라서, 우리나라는 브라질·베트남 같은 나라에서 수입해요. (소주제 3)
-    focus: [50, 50]
+    focus: [40, 72]
   - photo: economy/oil
     name: 석유
     tag: 수입
     desc: 우리나라에는 석유가 거의 나지 않아 사우디아라비아 같은 나라에서 수입해요. (소주제 3)
-    focus: [50, 50]
+    focus: [55, 40]
   - photo: economy/banana
     name: 바나나 농장
     tag: 수입
     desc: 우리나라가 먹는 바나나는 대부분 필리핀처럼 덥고 비가 많은 나라에서 수입해요. (소주제 3)
-    focus: [50, 50]
+    focus: [11, 68]
