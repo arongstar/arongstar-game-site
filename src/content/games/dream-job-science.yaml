@@ -20,6 +20,7 @@ stages:
     intro: 여러 직업에서 쓰이는 과학을 찾아요.
     steps:
       - type: shop
+        photo: illust/chef
         lv: C
         std: 6과16-02
         cat: 지식·이해
@@ -32,6 +33,7 @@ stages:
           - { text: "별자리를 보고 계절을 아는 방법", fit: false, why: "요리사의 일과는 관계가 적어요." }
         planLabels: { title: "🧭 진로 카드 만들기 (선택)", name: "직업 이름", slogan: "이 직업 속 과학 한 줄 정리", when: "이 직업을 위해 지금 할 수 있는 준비", save: "진로 카드 저장", emoji: "🧭" }
       - type: shop
+        photo: illust/firefighter
         lv: C
         std: 6과16-02
         cat: 지식·이해
@@ -57,6 +59,7 @@ stages:
           - { text: "계절에 따라 달라지는 기온과 낮의 길이", bin: "농부" }
           - { text: "식물이 잘 자라는 조건(식물의 구조와 기능)", bin: "농부" }
       - type: shop
+        photo: illust/singer
         lv: B
         std: 6과16-02
         cat: 지식·이해

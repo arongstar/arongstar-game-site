@@ -501,5 +501,100 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
     "alt": "산비탈을 계단처럼 깎아 만든 논이 겹겹이 이어지고, 그 사이에 지붕을 맞댄 집들이 오밀조밀 모여 있는 마을",
     "note": "Batad village and rice terraces, Banaue, Ifugao, Philippines, November 2008. Substitution: Philippines instead of Java/Bangladesh/Vietnam delta — no suitable aerial of lowland paddies with villages found; Batad shows paddies tightly surrounding a village."
+  },
+  "illust/sun-measure": {
+    "src": "/images/illust/sun-measure.webp",
+    "alt": "운동장에 수직으로 세운 막대와 그림자, 막대 꼭대기와 그림자 끝을 이은 실, 각도기로 각을 재는 학생들",
+    "ai": true
+  },
+  "illust/baking-soda": {
+    "src": "/images/illust/baking-soda.webp",
+    "alt": "베이킹 소다가 든 그릇에 식초를 붓자 거품이 부글부글 생기는 모습",
+    "ai": true
+  },
+  "illust/paper-cut": {
+    "src": "/images/illust/paper-cut.webp",
+    "alt": "색종이를 가위로 잘게 자른 모습",
+    "ai": true
+  },
+  "illust/sugar-water": {
+    "src": "/images/illust/sugar-water.webp",
+    "alt": "설탕이 녹은 투명한 설탕물과, 물을 증발시킨 뒤 하얀 알갱이가 남은 증발 접시",
+    "ai": true
+  },
+  "illust/bread": {
+    "src": "/images/illust/bread.webp",
+    "alt": "오븐에 들어가기 전의 반죽과 부풀어 갈색으로 구워진 빵",
+    "ai": true
+  },
+  "illust/candle-alcohol": {
+    "src": "/images/illust/candle-alcohol.webp",
+    "alt": "실험대 위에서 타고 있는 양초와 알코올램프",
+    "ai": true
+  },
+  "illust/iron-plate": {
+    "src": "/images/illust/iron-plate.webp",
+    "alt": "철판 가운데를 알코올램프로 가열하고, 같은 거리에 올려놓은 성냥 머리와 나무 조각",
+    "ai": true
+  },
+  "illust/limewater": {
+    "src": "/images/illust/limewater.webp",
+    "alt": "촛불이 꺼진 뒤 비커에 석회수를 넣고 흔들자 뿌옇게 흐려진 모습",
+    "ai": true
+  },
+  "illust/cobalt": {
+    "src": "/images/illust/cobalt.webp",
+    "alt": "촛불이 꺼진 비커 안쪽 벽에 붙인 염화 코발트 종이가 푸른색에서 붉은색으로 변한 모습",
+    "ai": true
+  },
+  "illust/oil-fire": {
+    "src": "/images/illust/oil-fire.webp",
+    "alt": "프라이팬 기름에 붙은 불을 뚜껑으로 덮어 끄는 모습",
+    "ai": true
+  },
+  "illust/multitap": {
+    "src": "/images/illust/multitap.webp",
+    "alt": "멀티탭 하나에 여러 전기 제품 플러그를 한꺼번에 꽂은 모습",
+    "ai": true
+  },
+  "illust/empty-classroom": {
+    "src": "/images/illust/empty-classroom.webp",
+    "alt": "점심시간 빈 교실에 전등과 컴퓨터 화면이 켜져 있고, 창문을 연 채 난방기가 돌아가는 모습",
+    "ai": true
+  },
+  "illust/scrapyard": {
+    "src": "/images/illust/scrapyard.webp",
+    "alt": "커다란 전자석 기중기가 고철 더미를 들어 올려 트럭에 옮기는 모습",
+    "ai": true
+  },
+  "illust/chef": {
+    "src": "/images/illust/chef.webp",
+    "alt": "주방에서 불 세기를 조절하며 요리하는 요리사",
+    "ai": true
+  },
+  "illust/firefighter": {
+    "src": "/images/illust/firefighter.webp",
+    "alt": "방화복을 입고 소화기와 소방 호스를 다루는 소방관",
+    "ai": true
+  },
+  "illust/singer": {
+    "src": "/images/illust/singer.webp",
+    "alt": "무대에서 마이크와 스피커를 쓰며 노래하는 가수",
+    "ai": true
+  },
+  "illust/smoke": {
+    "src": "/images/illust/smoke.webp",
+    "alt": "공장 굴뚝과 화력 발전소, 자동차에서 연기가 나오는 도시",
+    "ai": true
+  },
+  "illust/bathroom-dryer": {
+    "src": "/images/illust/bathroom-dryer.webp",
+    "alt": "물이 고인 욕실 바닥에 서서 헤어드라이어를 쓰려는 동생",
+    "ai": true
+  },
+  "illust/maglev": {
+    "src": "/images/illust/maglev.webp",
+    "alt": "선로 위에 살짝 떠서 달리는 자기 부상 열차",
+    "ai": true
   }
 }

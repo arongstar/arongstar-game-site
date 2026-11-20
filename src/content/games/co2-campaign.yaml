@@ -20,6 +20,7 @@ stages:
     intro: 피해 사례를 분석하고 해결책을 제안해요.
     steps:
       - type: choice
+        photo: illust/smoke
         lv: C
         std: 6과14-04
         cat: 지식·이해

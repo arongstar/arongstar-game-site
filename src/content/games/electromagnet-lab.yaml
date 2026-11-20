@@ -133,6 +133,7 @@ stages:
         options: [고철을 옮기는 전자석 기중기, 스피커, 선풍기 속 전동기, 나무 숟가락]
         answers: [고철을 옮기는 전자석 기중기, 스피커, 선풍기 속 전동기]
       - type: choice
+        photo: illust/scrapyard
         lv: B
         std: 6과15-03
         cat: 지식·이해
@@ -144,6 +145,7 @@ stages:
           - 영구 자석은 철을 끌어당기지 못하기 때문에
         answer: 전기를 끊으면 자석의 성질이 사라져 원하는 곳에 고철을 내려놓을 수 있기 때문에
       - type: choice
+        photo: illust/maglev
         lv: A
         std: 6과15-03
         cat: 지식·이해

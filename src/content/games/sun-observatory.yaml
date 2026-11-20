@@ -48,6 +48,7 @@ stages:
         options: [태양을 맨눈으로 직접 보지 않는다, 태양을 오랫동안 바라본다, 그늘에서만 관측한다]
         answer: 태양을 맨눈으로 직접 보지 않는다
       - type: order
+        photo: illust/sun-measure
         lv: B
         std: 6과13-01
         cat: 과정·기능

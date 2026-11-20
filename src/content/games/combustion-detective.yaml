@@ -20,6 +20,7 @@ stages:
     intro: 양초와 알코올이 탈 때 나타나는 현상을 비교해요.
     steps:
       - type: multi
+        photo: illust/candle-alcohol
         lv: C
         std: 6과14-02
         cat: 과정·기능
@@ -106,6 +107,7 @@ stages:
     intro: 발화점과 연소의 세 가지 조건을 찾아요.
     steps:
       - type: choice
+        photo: illust/iron-plate
         lv: C
         std: 6과14-02
         cat: 과정·기능
@@ -129,6 +131,7 @@ stages:
         options: [탈 물질, 산소, 발화점 이상의 온도, 물]
         answers: [탈 물질, 산소, 발화점 이상의 온도]
       - type: sort
+        photo: illust/oil-fire
         lv: A
         std: 6과14-02
         cat: 지식·이해
@@ -159,6 +162,7 @@ stages:
     intro: 연소 후에 생기는 물질을 확인하는 실험을 해석해요.
     steps:
       - type: choice
+        photo: illust/limewater
         lv: C
         std: 6과14-03
         cat: 과정·기능
@@ -167,6 +171,7 @@ stages:
         options: [이산화 탄소, 산소, 질소]
         answer: 이산화 탄소
       - type: choice
+        photo: illust/cobalt
         lv: C
         std: 6과14-03
         cat: 과정·기능

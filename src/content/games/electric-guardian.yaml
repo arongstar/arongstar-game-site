@@ -32,6 +32,7 @@ stages:
           - { text: "전선을 잡아당겨 플러그를 뽑는다", bin: "위험해요" }
           - { text: "콘센트 구멍에 젓가락을 넣는다", bin: "위험해요" }
       - type: choice
+        photo: illust/multitap
         lv: B
         std: 6과15-04
         cat: 지식·이해
@@ -39,6 +40,7 @@ stages:
         options: [전선이 지나치게 뜨거워져 불이 날 수 있기 때문에, 전기 제품이 더 잘 작동하기 때문에, 전기 요금이 줄어들기 때문에]
         answer: 전선이 지나치게 뜨거워져 불이 날 수 있기 때문에
       - type: choice
+        photo: illust/bathroom-dryer
         lv: A
         std: 6과15-04
         cat: 지식·이해
@@ -80,6 +82,7 @@ stages:
           - { text: "휴대폰을 다 충전한 뒤에도 충전기를 계속 꽂아 두기", fit: false, why: "대기 전력이 낭비돼요." }
         planLabels: { title: "🔌 전기 절약 실천 계획 카드 (선택)", name: "계획 이름", slogan: "우리 가족 약속", when: "언제·어떻게 실천을 확인할까?", save: "실천 계획 카드 저장", emoji: "🔌" }
       - type: shop
+        photo: illust/empty-classroom
         lv: A
         std: 6과15-04
         cat: 과정·기능

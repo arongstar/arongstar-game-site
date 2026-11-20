@@ -20,6 +20,7 @@ stages:
     intro: 변화 전과 후를 비교해 물질의 성질이 달라졌는지 판단해요.
     steps:
       - type: choice
+        photo: illust/baking-soda
         lv: C
         std: 6과14-01
         cat: 과정·기능
@@ -28,6 +29,7 @@ stages:
         options: [성질이 다른 새로운 물질(기체)이 생겼다, 성질이 전혀 달라지지 않았다, 물질이 모두 사라졌다]
         answer: 성질이 다른 새로운 물질(기체)이 생겼다
       - type: choice
+        photo: illust/paper-cut
         lv: C
         std: 6과14-01
         cat: 과정·기능
@@ -50,6 +52,7 @@ stages:
           - { text: "고무찰흙의 모양을 바꾸었다", bin: "성질이 달라지지 않는 변화" }
 
       - type: choice
+        photo: illust/sugar-water
         lv: B
         std: 6과14-01
         cat: 과정·기능
@@ -86,6 +89,7 @@ stages:
           - { text: "물이 얼어 얼음이 되었다", bin: "성질이 달라지지 않는 변화" }
 
       - type: choice
+        photo: illust/bread
         lv: A
         std: 6과14-01
         cat: 과정·기능
