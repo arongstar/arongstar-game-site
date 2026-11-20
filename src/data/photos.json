@@ -596,5 +596,95 @@
     "src": "/images/illust/maglev.webp",
     "alt": "선로 위에 살짝 떠서 달리는 자기 부상 열차",
     "ai": true
+  },
+  "illust/ab-solutions": {
+    "src": "/images/illust/ab-solutions.webp",
+    "alt": "실험대 위에 투명한 용액이 담긴 비커 여섯 개와 레몬, 식초, 탄산수, 유리 세정제, 비누, 석회수가 놓인 모습",
+    "ai": true
+  },
+  "illust/ab-marble": {
+    "src": "/images/illust/ab-marble.webp",
+    "alt": "묽은 염산에 넣은 대리석 조각과 달걀 껍데기에서 기포가 생기는 모습",
+    "ai": true
+  },
+  "illust/ab-tofu": {
+    "src": "/images/illust/ab-tofu.webp",
+    "alt": "왼쪽 비커의 두부와 달걀흰자는 그대로이고, 오른쪽 비커의 두부와 달걀흰자는 흐물흐물해지고 용액이 뿌옇게 된 모습",
+    "ai": true
+  },
+  "illust/ab-fish-lemon": {
+    "src": "/images/illust/ab-fish-lemon.webp",
+    "alt": "구운 생선에 레몬즙을 뿌리는 모습",
+    "ai": true
+  },
+  "illust/ab-drain": {
+    "src": "/images/illust/ab-drain.webp",
+    "alt": "고무장갑과 마스크를 끼고 창문을 연 채 막힌 세면대 하수구에 하수구 세정제를 붓는 모습",
+    "ai": true
+  },
+  "illust/ab-acidrain": {
+    "src": "/images/illust/ab-acidrain.webp",
+    "alt": "비를 맞아 겉면이 녹아내린 대리석 조각상과 잎이 누렇게 말라 가는 숲",
+    "ai": true
+  },
+  "illust/ab-ocean": {
+    "src": "/images/illust/ab-ocean.webp",
+    "alt": "왼쪽은 알록달록한 건강한 산호초, 오른쪽은 하얗게 변해 부서진 산호와 얇아진 조개껍데기",
+    "ai": true
+  },
+  "illust/mo-race": {
+    "src": "/images/illust/mo-race.webp",
+    "alt": "운동회에서 친구들이 나란히 달리고 선생님이 결승선에서 초시계로 시간을 재는 모습",
+    "ai": true
+  },
+  "illust/mo-seatbelt": {
+    "src": "/images/illust/mo-seatbelt.webp",
+    "alt": "어린이용 카시트에 앉은 아이, 안전띠를 매는 아이, 안전띠를 맨 운전자",
+    "ai": true
+  },
+  "illust/pl-microscope": {
+    "src": "/images/illust/pl-microscope.webp",
+    "alt": "현미경으로 관찰하는 학생과 양파, 핀셋으로 집은 양파 표피, 받침 유리와 덮개 유리",
+    "ai": true
+  },
+  "illust/pl-onion-roots": {
+    "src": "/images/illust/pl-onion-roots.webp",
+    "alt": "뿌리가 있는 양파를 올린 병은 물이 많이 줄었고, 뿌리를 자른 양파를 올린 병은 물이 거의 줄지 않은 모습",
+    "ai": true
+  },
+  "illust/pl-stem-dye": {
+    "src": "/images/illust/pl-stem-dye.webp",
+    "alt": "붉은 색소 물에 꽂아 둔 봉선화와, 가로로 자른 줄기 단면의 둥글게 늘어선 붉은 점, 세로로 자른 단면의 붉은 줄",
+    "ai": true
+  },
+  "illust/pl-iodine": {
+    "src": "/images/illust/pl-iodine.webp",
+    "alt": "아이오딘-아이오딘화 칼륨 용액을 떨어뜨린 뒤 청람색으로 변한 잎(빛을 받은 잎)과 색이 변하지 않은 잎(포일로 싼 잎)",
+    "ai": true
+  },
+  "illust/pl-transpiration": {
+    "src": "/images/illust/pl-transpiration.webp",
+    "alt": "잎이 있는 모종의 비닐봉지 안에는 물방울이 많이 맺히고, 잎을 딴 모종의 비닐봉지 안은 거의 마른 모습",
+    "ai": true
+  },
+  "illust/pl-seeds": {
+    "src": "/images/illust/pl-seeds.webp",
+    "alt": "바람에 날리는 민들레 씨, 개의 털에 붙은 도꼬마리 씨, 꼬투리가 터지며 튀어 나가는 봉선화 씨, 물에 떠 있는 연꽃 열매",
+    "ai": true
+  },
+  "illust/ea-globe-lamp": {
+    "src": "/images/illust/ea-globe-lamp.webp",
+    "alt": "어두운 교실에서 전등 빛을 받는 지구의의 한쪽은 밝고 반대쪽은 어두운 모습",
+    "ai": true
+  },
+  "illust/ea-planetarium": {
+    "src": "/images/illust/ea-planetarium.webp",
+    "alt": "밤에 학교 운동장에서 별이 가득한 남쪽 하늘을 바라보며 태블릿의 별자리 앱과 비교하는 학생들",
+    "ai": true
+  },
+  "illust/mo-schoolzone": {
+    "src": "/images/illust/mo-schoolzone.webp",
+    "alt": "붉게 칠한 어린이 보호 구역 도로, 과속 방지 턱, 횡단보도와 노란 울타리, 천천히 달리는 자동차와 횡단보도를 건너는 어린이들",
+    "ai": true
   }
 }

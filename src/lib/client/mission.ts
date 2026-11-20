@@ -4,6 +4,7 @@ import { climateChart, markMonth } from './chart';
 import { sunSim } from './sun';
 import { houseArt, clothesArt } from './art';
 import { sunDayLab, orbitLab, candleLab, magnetLab, circuitView } from './labs';
+import { indicatorLab, mixLab, trackLab, raceLab, microscopeLab, skyLab, rotationLab, starSeasonLab } from './labs61';
 import * as store from './store';
 import type { Tier, StepResult } from './store';
 
@@ -307,6 +308,14 @@ export function startMission() {
     if (st.orbit) visual.append(orbitLab());
     if (st.candle) visual.append(candleLab());
     if (st.magnet) visual.append(magnetLab());
+    if (st.indicator) visual.append(indicatorLab(st.indicator));
+    if (st.mix) visual.append(mixLab());
+    if (st.track) visual.append(trackLab(st.track));
+    if (st.race) visual.append(raceLab(st.race));
+    if (st.microscope) visual.append(microscopeLab());
+    if (st.sky) visual.append(skyLab(st.sky));
+    if (st.rotation) visual.append(rotationLab());
+    if (st.starseason) visual.append(starSeasonLab());
     if (st.card) visual.append(h('div', { class: 'sit-card' }, h('div', { class: 'sit-emoji', 'aria-hidden': 'true' }, st.card.emoji), h('div', null, h('div', { class: 'sit-title' }, st.card.title), h('p', null, st.card.text))));
     if (st.table) visual.append(tableView(st.table));
     if (st.bars) visual.append(barsView(st.bars));
@@ -496,7 +505,7 @@ export function startMission() {
   }
 
   function hasVisual(st: any) {
-    return !!(st.photo || st.photos || st.chart || st.charts || st.sun || st.sunday || st.orbit || st.candle || st.magnet || st.table || st.bars || st.agebars || st.card || st.type === 'pin' || st.type === 'build' || st.type === 'circuit');
+    return !!(st.photo || st.photos || st.chart || st.charts || st.sun || st.sunday || st.orbit || st.candle || st.magnet || st.indicator || st.mix || st.track || st.race || st.microscope || st.sky || st.rotation || st.starseason || st.table || st.bars || st.agebars || st.card || st.type === 'pin' || st.type === 'build' || st.type === 'circuit');
   }
 
   function chartFor(id: string, hiddenTitle?: string) {

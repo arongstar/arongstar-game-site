@@ -105,6 +105,17 @@ const stepBase = {
   orbit: z.boolean().default(false),
   candle: z.boolean().default(false),
   magnet: z.boolean().default(false),
+  // 6학년 1학기 과학 가상 실험실
+  indicator: z.union([z.boolean(), z.object({ solutions: z.array(z.string()) })]).optional(), // 지시약 실험실
+  mix: z.boolean().default(false), // 산성·염기성 용액 섞기
+  track: z
+    .object({ title: z.string().optional(), w: z.number().int(), h: z.number().int(), times: z.array(z.string()).min(2), items: z.array(z.object({ label: z.string(), emoji: z.string(), pos: z.array(z.tuple([z.number(), z.number()])) })).min(1) })
+    .optional(), // 좌표판 위 위치 변화
+  race: z.object({ title: z.string().optional(), unit: z.string().optional(), items: z.array(z.object({ label: z.string(), emoji: z.string(), dist: z.number(), time: z.number() })).min(2) }).optional(), // 달리기 경주
+  microscope: z.boolean().default(false), // 현미경으로 본 양파 표피 세포
+  sky: z.enum(['sun', 'star']).optional(), // 남쪽 하늘의 태양·별 위치 변화
+  rotation: z.boolean().default(false), // 자전과 낮·밤
+  starseason: z.boolean().default(false), // 공전과 계절별 별자리
   // 상황 카드 (그림 대신 이모지와 짧은 글)
   card: z.object({ emoji: z.string(), title: z.string(), text: z.string() }).optional(),
 };

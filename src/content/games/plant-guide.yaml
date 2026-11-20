@@ -1,0 +1,98 @@
+# 6학년 1학기 과학 — 자동 생성한 뒤 손으로 고쳐도 돼요.
+template: mission
+style: shop
+unit: sci-6-1-3
+title: 우리 반 식물 도감
+emoji: 📖
+summary: 여러 가지 식물의 구조와 기능의 특징을 조사하고, 특징이 잘 드러나는 식물 소개 카드를 만들어 공유해요.
+story: 우리 반 식물 도감이 텅 비어 있어요! 사막, 물가, 우리 학교 화단의 식물을 조사해 도감을 채워 보세요.
+lessons:
+- '9'
+standards:
+- 6과11-03
+minutes: 15
+teacherGuide:
+- 9차시에 써요. 식물 카드는 「나의 탐험 리포트」에 모여요.
+- 디지털 소양 교육과 연계해 학급 누리집에 식물 도감을 만들어 공유할 수 있어요.
+stages:
+- id: guide
+  title: 식물 도감 만들기
+  emoji: 🗂️
+  lesson: '9'
+  intro: 식물의 특징을 조사하고 소개 카드를 만들어요.
+  steps:
+  - type: shop
+    lv: C
+    std: 6과11-03
+    cat: 지식·이해
+    q: 선인장 소개 카드에 들어갈 알맞은 특징을 모두 골라 보세요.
+    customer:
+      emoji: 🌵
+      name: 사막의 선인장
+      place: 물이 아주 적은 사막
+      says: 비가 거의 오지 않는 곳에서도 살 수 있어요. 제 몸의 비밀을 소개해 주세요.
+    features:
+    - text: 굵은 줄기에 물을 많이 저장한다
+      fit: true
+      why: 비가 올 때 저장해 두었다가 오랫동안 써요.
+    - text: 잎이 가시 모양이라 물이 덜 빠져나간다
+      fit: true
+      why: 증산 작용으로 빠져나가는 물을 줄여요.
+    - text: 넓은 잎으로 물을 많이 내보낸다
+      fit: false
+      why: 사막에서는 물을 아껴야 해요.
+    - text: 물속에서만 살 수 있다
+      fit: false
+      why: 선인장은 메마른 곳에 사는 식물이에요.
+    planLabels: &id001
+      title: 📖 식물 소개 카드 만들기 (선택)
+      name: 식물 이름
+      slogan: 이 식물을 한 줄로 소개하면?
+      when: '어디에 어떻게 공유할까? (예: 학급 누리집, 식물 도감 게시판)'
+      save: 식물 카드 저장
+      emoji: 🌵
+  - type: shop
+    lv: B
+    std: 6과11-03
+    cat: 과정·기능
+    q: 부레옥잠을 조사했어요. 소개 카드에 들어갈 특징을 모두 골라 보세요.
+    customer:
+      emoji: 🪷
+      name: 연못의 부레옥잠
+      place: 물 위
+      says: 저는 물 위에 둥둥 떠서 살아요. 어떻게 뜰 수 있는지 소개해 주세요.
+    features:
+    - text: 잎자루가 볼록하고 속에 공기가 들어 있어 물에 뜬다
+      fit: true
+      why: 공기주머니 같은 잎자루 덕분에 물에 떠요.
+    - text: 뿌리가 물속에 늘어져 물을 흡수한다
+      fit: true
+      why: 물에 떠서도 뿌리로 물을 흡수해요.
+    - text: 줄기에 물을 저장하는 가시가 있다
+      fit: false
+      why: 선인장의 특징이에요.
+    planLabels: *id001
+  - type: shop
+    lv: A
+    std: 6과11-03
+    cat: 과정·기능
+    q: 내가 고른 식물의 소개 자료를 설득력 있게 만들려면 무엇을 갖추어야 할까요? 모두 골라 보세요.
+    customer:
+      emoji: 🧑‍🔬
+      name: 우리 반 식물 도감 편집장
+      place: 학급 누리집
+      says: 친구들이 읽고 그 식물을 직접 찾아보고 싶어지는 자료를 만들어 주세요.
+    features:
+    - text: 식물 기관의 구조와 하는 일을 연결하여 설명한다
+      fit: true
+      why: 왜 그런 모양인지 알 수 있어요.
+    - text: 다른 환경에 사는 식물과 비교한다
+      fit: true
+      why: 특징이 더 잘 드러나요.
+    - text: 직접 찍은 사진이나 그림을 넣고 자료의 출처를 밝힌다
+      fit: true
+      why: 믿을 수 있는 자료가 돼요.
+    - text: 확인하지 않은 소문을 사실처럼 쓴다
+      fit: false
+      why: 잘못된 정보는 도감을 믿지 못하게 해요.
+    planLabels: *id001
