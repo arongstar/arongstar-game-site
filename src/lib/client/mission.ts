@@ -3,6 +3,7 @@ import { h, s, shuffle, readJSON, photoFigure } from './dom';
 import { climateChart, markMonth } from './chart';
 import { sunSim } from './sun';
 import { houseArt, clothesArt } from './art';
+import { sunDayLab, orbitLab, candleLab, magnetLab, circuitView } from './labs';
 import * as store from './store';
 import type { Tier, StepResult } from './store';
 
@@ -302,6 +303,10 @@ export function startMission() {
 
     // 자료 보여 주기
     if (st.sun) visual.append(sunSim());
+    if (st.sunday) visual.append(sunDayLab(st.sunday));
+    if (st.orbit) visual.append(orbitLab());
+    if (st.candle) visual.append(candleLab());
+    if (st.magnet) visual.append(magnetLab());
     if (st.card) visual.append(h('div', { class: 'sit-card' }, h('div', { class: 'sit-emoji', 'aria-hidden': 'true' }, st.card.emoji), h('div', null, h('div', { class: 'sit-title' }, st.card.title), h('p', null, st.card.text))));
     if (st.table) visual.append(tableView(st.table));
     if (st.bars) visual.append(barsView(st.bars));
@@ -452,6 +457,22 @@ export function startMission() {
 
     if (st.type === 'order') orderView(st, panel, actions, judge, () => done);
 
+    if (st.type === 'circuit') {
+      const c = circuitView(st, () => {});
+      visual.prepend(c.el);
+      const goal = ['전구에 불이 켜지지 않게', '전구에 불이 켜지게', '전구가 더 밝게 켜지게'][st.target];
+      panel.append(h('p', { class: 'q-sub' }, `🎯 목표: ${goal} 회로를 꾸민 뒤 [확인]을 눌러요.`));
+      const confirm = h('button', { class: 'btn primary' }, '확인') as HTMLButtonElement;
+      confirm.onclick = () => {
+        const b = c.brightness();
+        judge(b === st.target, () => {
+          fb.append(h('p', { class: 'fb-detail' }, b === 0 ? '지금은 전구에 불이 켜지지 않아요. ' : b === 1 ? '지금은 전구가 켜져 있어요. ' : '지금은 전구가 아주 밝아요. ', '스위치, 연결한 물체, 전지 수를 다시 살펴보세요.'));
+        }, () => {});
+        if (done) { c.lock(); confirm.remove(); }
+      };
+      actions.append(confirm);
+    }
+
     if (st.type === 'budget') budgetView(st, panel, actions, fb, judge, () => done);
 
     panel.append(hintBtn ?? '', hintBox, fb, actions);
@@ -466,12 +487,16 @@ export function startMission() {
     if (st.type === 'build') return st.parts.map((p: any) => `${p.label} — ${p.options.filter((o: any) => o.fit).map((o: any) => o.text).join(' 또는 ')}`).join(' / ');
     if (st.type === 'shop') return st.features.filter((f: any) => f.fit).map((f: any) => f.text).join(' / ');
     if (st.type === 'order') return st.items.join(' → ');
+    if (st.type === 'circuit') {
+      const cond = st.materials.filter((m: any) => m.conductor).map((m: any) => m.text).join('·');
+      return st.target === 0 ? '스위치를 열거나, 전기가 통하지 않는 물체를 연결해요' : `스위치를 닫고 전기가 통하는 물체(${cond})를 연결해요${st.target === 2 ? ', 전지 2개를 직렬로 연결해요' : ''}`;
+    }
     if (st.type === 'budget') return `${st.budget.toLocaleString()}원 안에서, 꼭 필요한 것(${st.items.filter((i: any) => i.need).map((i: any) => i.text).join(', ')})을 먼저 고르기`;
     return '바구니에 바르게 옮겨 둔 카드를 확인해 보세요';
   }
 
   function hasVisual(st: any) {
-    return !!(st.photo || st.photos || st.chart || st.charts || st.sun || st.table || st.bars || st.agebars || st.card || st.type === 'pin' || st.type === 'build');
+    return !!(st.photo || st.photos || st.chart || st.charts || st.sun || st.sunday || st.orbit || st.candle || st.magnet || st.table || st.bars || st.agebars || st.card || st.type === 'pin' || st.type === 'build' || st.type === 'circuit');
   }
 
   function chartFor(id: string, hiddenTitle?: string) {

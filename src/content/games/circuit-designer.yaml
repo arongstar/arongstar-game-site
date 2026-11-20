@@ -1,0 +1,175 @@
+template: mission
+style: detective
+unit: sci-6-2-3
+title: 회로 설계사
+emoji: 💡
+summary: 가상 회로 설계실에서 스위치와 연결할 물체, 전지 수를 바꾸며 전구에 불이 켜지는 회로의 특징과 전지를 직렬연결했을 때의 변화를 찾아요.
+story: 과학 탐험대 전기 연구소의 불이 모두 꺼졌어요! 회로 설계실에서 전구에 불을 켜고, 더 밝게 만드는 방법을 찾아 연구소를 밝혀 주세요.
+lessons: ['2', '3', '4']
+standards: [6과15-01, 6과15-02]
+minutes: 12
+teacherGuide:
+  - 2차시 '불이 켜지는 회로', 3차시 '전기가 통하는 물체', 4차시 '전지의 직렬연결' 스테이지로 나뉘어 있어요.
+  - 회로 설계실에서 스위치, 빈 곳에 연결할 물체, 전지 수를 바꾸면 전구의 밝기가 바뀌어요. 목표대로 회로를 꾸민 뒤 [확인]을 눌러요.
+  - 교육과정에 따라 전구의 직렬·병렬연결은 다루지 않고, 전지는 직렬연결만 다뤄요. 실제 실험 때 전기 안전에 유의해 주세요.
+stages:
+  - id: light
+    title: 전구에 불을 켜라
+    emoji: 🔆
+    lesson: '2'
+    intro: 전구에 불이 켜지는 회로를 꾸며요.
+    steps:
+      - type: circuit
+        lv: C
+        std: 6과15-01
+        cat: 과정·기능
+        q: 전구에 불이 켜지도록 회로를 꾸며 보세요.
+        hint: 스위치를 닫고, 빈 곳에 전기가 통하는 물체를 연결해 보세요.
+        target: 1
+        allowCells: false
+        start: { cells: 1, on: false, material: 0 }
+        materials:
+          - { text: "철 클립", conductor: true, emoji: "📎" }
+        explain: 전지, 전선, 전구가 끊어진 곳 없이 하나로 이어지면 전구에 불이 켜져요.
+      - type: choice
+        lv: C
+        std: 6과15-01
+        cat: 지식·이해
+        q: 전지, 전선, 전구 등을 연결해 전기가 흐르도록 한 것을 무엇이라고 할까요?
+        options: [전기 회로, 전자석, 건전지]
+        answer: 전기 회로
+      - type: choice
+        lv: B
+        std: 6과15-01
+        cat: 지식·이해
+        q: 전구에 불이 켜지는 전기 회로의 특징으로 알맞은 것은?
+        options:
+          - 전지, 전선, 전구가 끊어진 곳 없이 하나로 이어져 있다
+          - 전지가 전구에만 닿아 있으면 된다
+          - 스위치가 열려 있어야 한다
+        answer: 전지, 전선, 전구가 끊어진 곳 없이 하나로 이어져 있다
+      - type: circuit
+        lv: B
+        std: 6과15-01
+        cat: 과정·기능
+        q: 전구가 켜져 있지 않게 회로를 꾸며 보세요. 스위치는 어떻게 해야 할까요?
+        target: 0
+        allowCells: false
+        start: { cells: 1, on: true, material: 0 }
+        materials:
+          - { text: "철 클립", conductor: true, emoji: "📎" }
+        explain: 스위치를 열면 회로가 끊어져 전기가 흐르지 않아요. 스위치는 회로를 이었다 끊었다 하는 역할을 해요.
+      - type: choice
+        lv: A
+        std: 6과15-01
+        cat: 지식·이해
+        q: 친구가 전지와 전구를 전선으로 이었는데 불이 켜지지 않았어요. 가장 먼저 확인할 것으로 알맞은 것은?
+        options:
+          - 전선이 전지의 양쪽 끝(+극, −극)과 전구에 끊어진 곳 없이 이어져 있는지
+          - 전선의 색깔이 같은지
+          - 전구가 예쁜지
+        answer: 전선이 전지의 양쪽 끝(+극, −극)과 전구에 끊어진 곳 없이 이어져 있는지
+
+  - id: materials
+    title: 전기가 통할까, 안 통할까?
+    emoji: 📎
+    lesson: '3'
+    intro: 여러 물체를 연결해 전기가 통하는지 알아봐요.
+    steps:
+      - type: circuit
+        lv: C
+        std: 6과15-01
+        cat: 과정·기능
+        q: 스위치를 닫고, 빈 곳에 여러 물체를 연결해 보세요. 전구에 불이 켜지게 하는 물체를 골라 회로를 완성해요.
+        target: 1
+        allowCells: false
+        start: { cells: 1, on: true, material: 0 }
+        materials:
+          - { text: "나무젓가락", conductor: false, emoji: "🥢" }
+          - { text: "지우개", conductor: false, emoji: "🧽" }
+          - { text: "알루미늄 포일", conductor: true, emoji: "🪙" }
+          - { text: "플라스틱 자", conductor: false, emoji: "📏" }
+      - type: sort
+        lv: B
+        std: 6과15-01
+        cat: 과정·기능
+        q: 회로에 연결했을 때 전구에 불이 켜지는 물체와 켜지지 않는 물체로 나누어 보세요.
+        bins: [불이 켜진다 (전기가 잘 통한다), 불이 켜지지 않는다 (전기가 잘 통하지 않는다)]
+        items:
+          - { text: "철 클립", bin: "불이 켜진다 (전기가 잘 통한다)" }
+          - { text: "알루미늄 포일", bin: "불이 켜진다 (전기가 잘 통한다)" }
+          - { text: "동전", bin: "불이 켜진다 (전기가 잘 통한다)" }
+          - { text: "나무젓가락", bin: "불이 켜지지 않는다 (전기가 잘 통하지 않는다)" }
+          - { text: "지우개", bin: "불이 켜지지 않는다 (전기가 잘 통하지 않는다)" }
+          - { text: "종이", bin: "불이 켜지지 않는다 (전기가 잘 통하지 않는다)" }
+      - type: choice
+        lv: B
+        std: 6과15-01
+        cat: 지식·이해
+        q: 전선의 겉을 고무나 플라스틱으로 싸 두는 까닭은?
+        options:
+          - 전기가 잘 통하지 않는 물질로 감싸 감전을 막기 위해
+          - 전기가 더 잘 통하게 하려고
+          - 전선을 무겁게 하려고
+        answer: 전기가 잘 통하지 않는 물질로 감싸 감전을 막기 위해
+      - type: circuit
+        lv: A
+        std: 6과15-01
+        cat: 과정·기능
+        q: 회로의 빈 곳에 어떤 물체를 연결해도 전구가 켜지지 않게 하는 방법이 있어요. 스위치와 물체를 바꿔 보며 '불이 꺼진 회로'를 만들어 보세요.
+        target: 0
+        allowCells: false
+        start: { cells: 1, on: true, material: 1 }
+        materials:
+          - { text: "나무젓가락", conductor: false, emoji: "🥢" }
+          - { text: "철 클립", conductor: true, emoji: "📎" }
+        explain: 스위치를 열거나, 전기가 잘 통하지 않는 물체를 연결하면 회로가 끊어진 것과 같아져요.
+
+  - id: series
+    title: 전지 두 개를 직렬로
+    emoji: 🔋
+    lesson: '4'
+    intro: 전지 한 개와 두 개를 직렬연결한 회로를 비교해요.
+    steps:
+      - type: circuit
+        lv: C
+        std: 6과15-02
+        cat: 과정·기능
+        q: 전구를 더 밝게 켜 보세요.
+        hint: 전지의 수를 바꿔 보세요.
+        target: 2
+        start: { cells: 1, on: true, material: 0 }
+        materials:
+          - { text: "철 클립", conductor: true, emoji: "📎" }
+      - type: choice
+        lv: B
+        std: 6과15-02
+        cat: 과정·기능
+        q: 전지 한 개를 연결한 회로와 전지 두 개를 직렬연결한 회로를 비교한 결과로 알맞은 것은?
+        options:
+          - 전지 두 개를 직렬연결하면 전구가 더 밝다
+          - 전지 한 개를 연결하면 전구가 더 밝다
+          - 두 회로의 전구 밝기는 같다
+        answer: 전지 두 개를 직렬연결하면 전구가 더 밝다
+      - type: choice
+        lv: B
+        std: 6과15-02
+        cat: 지식·이해
+        q: 전지의 직렬연결은 어떻게 연결하는 것일까요?
+        options:
+          - 한 전지의 (+)극을 다른 전지의 (−)극에 차례로 잇는 것
+          - 두 전지의 (+)극끼리, (−)극끼리 잇는 것
+          - 전지를 전선 없이 나란히 놓는 것
+        answer: 한 전지의 (+)극을 다른 전지의 (−)극에 차례로 잇는 것
+      - type: multi
+        lv: A
+        std: 6과15-02
+        cat: 과정·기능
+        q: 전지 한 개와 두 개를 직렬연결한 회로에 전구 대신 다른 전기 부품을 연결해 비교했어요. 전지 두 개일 때의 결과로 알맞게 예상한 것을 모두 고르세요.
+        options:
+          - 전동기(모터)가 더 빠르게 돈다
+          - 발광 다이오드(LED)가 더 밝게 빛난다
+          - 버저 소리가 더 크다
+          - 모든 부품의 움직임이 더 약해진다
+        answers: [전동기(모터)가 더 빠르게 돈다, 발광 다이오드(LED)가 더 밝게 빛난다, 버저 소리가 더 크다]
+        explain: 전기 부품은 알맞은 규격을 써야 해요. 너무 많은 전지를 연결하면 부품이 망가질 수 있어요.

@@ -534,3 +534,37 @@ textarea:focus, input[type='text']:focus { outline: none; border-color: var(--pr
 .seg.adult { background: #5a9ad6; }
 .seg.old { background: #d98d24; }
 .age-old { font-size: 0.85rem; color: #a2621a; text-align: right; }
+
+/* ───── 과학 가상 실험실 ───── */
+.lab { margin: 0; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 10px 12px; }
+.lab-svg { width: 100%; height: auto; display: block; border-radius: 12px; }
+.lab-t { font-size: 12px; font-weight: 800; fill: #3c4a4f; }
+.lab-t.light { fill: #fff; font-size: 10px; }
+.lab-t.dark { fill: #6b4a00; }
+.lab-t.pole { font-size: 18px; fill: #c0392b; }
+.lab-read { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 8px; font-size: 0.98rem; }
+.lab-read.col { flex-direction: column; }
+.lab-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; align-items: center; }
+.lab-months { display: flex; flex-wrap: wrap; gap: 6px; }
+.lab-mats { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-weight: 700; font-size: 0.92rem; }
+.lab-mats .btn.on { border-color: var(--primary); background: var(--primary-soft); }
+.lab-split { display: grid; grid-template-columns: 160px 1fr; gap: 12px; align-items: center; margin-top: 8px; }
+.lab-gauge { width: 160px; height: auto; background: #dff0fb; border-radius: 10px; }
+.lab-more { margin-top: 8px; }
+.lab-more summary { cursor: pointer; font-weight: 700; color: var(--primary-strong); }
+.lab-tbl { font-size: 0.9rem; margin-top: 6px; }
+.orbit-earth { cursor: pointer; }
+.orbit-earth.on circle { stroke: #ffcf3f; stroke-width: 4; }
+.lab-status { font-weight: 700; margin: 8px 0 0; }
+.candle-stage { position: relative; height: 190px; background: linear-gradient(#f6f3ea, #ebe5d4); border-radius: 12px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+.candle { position: relative; display: flex; flex-direction: column; align-items: center; margin-bottom: 14px; }
+.wax { width: 34px; height: 70px; background: #fff7e0; border: 2px solid #e6d9b0; border-radius: 6px 6px 2px 2px; }
+.flame { width: 18px; height: 30px; margin-bottom: 4px; border-radius: 50% 50% 45% 45%; background: radial-gradient(circle at 50% 70%, #fff6b0, #ffb703 55%, #e4572e); transform-origin: bottom center; transition: transform .4s; opacity: 0.25; }
+.flame.burning { opacity: 1; animation: flicker .25s infinite alternate; }
+.flame.out { opacity: 0; }
+@keyframes flicker { to { filter: brightness(1.15); } }
+.jar { position: absolute; bottom: 10px; border: 3px solid rgb(120 170 200 / 0.8); border-bottom: none; border-radius: 10px 10px 0 0; background: rgb(200 230 245 / 0.25); display: none; }
+.jar.small { display: block; width: 70px; height: 120px; }
+.jar.big { display: block; width: 120px; height: 170px; }
+.lab-clock-box { position: absolute; top: 10px; right: 12px; font-weight: 800; background: #fff; border-radius: 999px; padding: 2px 12px; }
+@media (max-width: 520px) { .lab-split { grid-template-columns: 1fr; } }

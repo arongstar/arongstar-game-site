@@ -100,6 +100,11 @@ const stepBase = {
   agebars: z
     .object({ title: z.string(), items: z.array(z.object({ label: z.string(), young: z.number(), adult: z.number(), old: z.number() })), note: z.string().optional() })
     .optional(),
+  // 과학 가상 실험실
+  sunday: z.object({ rows: z.array(z.object({ time: z.string(), alt: z.number(), shadow: z.number(), temp: z.number() })) }).optional(),
+  orbit: z.boolean().default(false),
+  candle: z.boolean().default(false),
+  magnet: z.boolean().default(false),
   // 상황 카드 (그림 대신 이모지와 짧은 글)
   card: z.object({ emoji: z.string(), title: z.string(), text: z.string() }).optional(),
 };
@@ -139,6 +144,15 @@ const step = z.discriminatedUnion('type', [
     target: z.enum(['house', 'clothes']),
     scene: z.enum(['열대', '건조', '온대', '냉대', '한대', '고산']).optional(), // 배경 그림
     parts: z.array(z.object({ label: z.string(), options: z.array(fitOption).min(2) })).min(1),
+  }),
+  // 전기 회로 꾸미기: 전구 밝기(0 꺼짐, 1 켜짐, 2 더 밝게)를 목표대로 맞추기
+  z.object({
+    type: z.literal('circuit'),
+    ...stepBase,
+    target: z.number().int().min(0).max(2),
+    materials: z.array(z.object({ text: z.string(), conductor: z.boolean(), emoji: z.string().optional() })).min(1),
+    start: z.object({ cells: z.number().int().min(1).max(2).default(1), on: z.boolean().default(false), material: z.number().int().default(0) }).optional(),
+    allowCells: z.boolean().default(true),
   }),
   // 순서대로 놓기
   z.object({ type: z.literal('order'), ...stepBase, items: z.array(z.string()).min(3) }), // items 는 정답 순서
