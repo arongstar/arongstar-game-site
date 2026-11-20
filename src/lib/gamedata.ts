@@ -27,6 +27,7 @@ type RawPhoto = {
   licenseUrl?: string;
   alt?: string;
   note?: string;
+  ai?: boolean; // AI로 만든 그림
 };
 
 let photosCache: Record<string, RawPhoto> | null = null;
@@ -52,7 +53,7 @@ export function photo(key: string | undefined, fallbackAlt = ''): PhotoInfo | nu
   return {
     src: url(p.src),
     alt: p.alt || fallbackAlt,
-    credit: credit ? `사진: ${credit}` : '',
+    credit: p.ai ? '그림: AI 생성' : credit ? `사진: ${credit}` : '',
     commons: p.commons,
     license: p.license,
     licenseUrl: p.licenseUrl,

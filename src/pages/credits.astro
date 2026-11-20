@@ -2,7 +2,8 @@
 import Base from '../layouts/Base.astro';
 import { rawPhotos, climate } from '../lib/gamedata';
 import { url } from '../lib/url';
-const photos = Object.entries(rawPhotos());
+const photos = Object.entries(rawPhotos()).filter(([, p]) => !p.ai);
+const aiPics = Object.entries(rawPhotos()).filter(([, p]) => p.ai);
 ---
 
 <Base title="사진·자료 출처">
@@ -15,7 +16,7 @@ const photos = Object.entries(rawPhotos());
         {photos.map(([k, p]) => (
           <tr>
             <td style="width:120px"><img src={url(p.src)} alt="" width="110" loading="lazy" style="border-radius:8px" /></td>
-            <td>{p.alt}{p.note ? <div class="muted" style="font-size:0.85rem">{p.note}</div> : null}<div><a href={p.commons}>원본 보기</a></div></td>
+            <td>{p.alt}{p.note ? <div class="muted" style="font-size:0.85rem">{p.note}</div> : null}{p.commons ? <div><a href={p.commons}>원본 보기</a></div> : null}</td>
             <td>{p.author}</td>
             <td>{p.licenseUrl ? <a href={p.licenseUrl}>{p.license}</a> : p.license}</td>
           </tr>
@@ -23,6 +24,25 @@ const photos = Object.entries(rawPhotos());
       </tbody>
     </table>
   </div>
+  {aiPics.length > 0 && (
+    <>
+      <h2 class="sec-title">🎨 AI로 만든 그림</h2>
+      <p class="muted">과학 게임의 상황 그림은 OpenAI 이미지 생성(ChatGPT·Codex)으로 만들었어요. 실제 사진이 아니라 이해를 돕는 그림이에요.</p>
+      <div class="tbl-scroll">
+        <table class="tbl">
+          <thead><tr><th>그림</th><th>설명</th></tr></thead>
+          <tbody>
+            {aiPics.map(([, p]) => (
+              <tr>
+                <td style="width:120px"><img src={url(p.src)} alt="" width="110" loading="lazy" style="border-radius:8px" /></td>
+                <td>{p.alt}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  )}
   <h2 class="sec-title">📊 기후 그래프 자료</h2>
   <p class="muted">위키백과 각 도시 문서의 기후 표(세계기상기구 기준 평년값, 대부분 1991~2020년)에서 월평균 기온과 강수량을 옮겼어요.</p>
   <ul>
