@@ -572,3 +572,13 @@ textarea:focus, input[type='text']:focus { outline: none; border-color: var(--pr
 /* 현미경 시야 */
 .lab-scope { display: flex; justify-content: center; }
 .lab-scope .lab-round { max-width: 300px; }
+
+/* 위선·경선, 지구본 실험실 */
+.map-svg .grid-line { stroke: #7fa6bb; stroke-width: 0.8; stroke-dasharray: 3 4; }
+.map-svg .grid-label { font-size: 19px; fill: #2e4a57; font-weight: 800; paint-order: stroke; stroke: #fff; stroke-width: 4px; }
+.map-svg .prime { stroke: #2f6fb3; stroke-width: 1.6; }
+.map-svg .prime-label { font-size: 20px; fill: #2f6fb3; font-weight: 800; paint-order: stroke; stroke: #fff; stroke-width: 4px; }
+.lab-globe { display: grid; grid-template-columns: 1fr 2fr; gap: 10px; align-items: center; }
+.lab-globe b { display: block; text-align: center; font-size: 0.9rem; }
+@media (max-width: 520px) { .lab-globe { grid-template-columns: 1fr; } }
+.map-svg.has-grid .equator-label { font-size: 19px; font-weight: 800; paint-order: stroke; stroke: #fff; stroke-width: 4px; }

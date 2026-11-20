@@ -116,6 +116,7 @@ const stepBase = {
   sky: z.enum(['sun', 'star']).optional(), // 남쪽 하늘의 태양·별 위치 변화
   rotation: z.boolean().default(false), // 자전과 낮·밤
   starseason: z.boolean().default(false), // 공전과 계절별 별자리
+  globe: z.boolean().default(false), // 지구본과 세계지도 비교 (사회)
   // 상황 카드 (그림 대신 이모지와 짧은 글)
   card: z.object({ emoji: z.string(), title: z.string(), text: z.string() }).optional(),
 };
@@ -147,7 +148,8 @@ const step = z.discriminatedUnion('type', [
     answer: z.array(z.number().int().min(1).max(12)).min(1),
   }),
   // 세계 지도에서 위치 고르기 (pins 는 atlas 의 id 또는 climate 도시 id)
-  z.object({ type: z.literal('pin'), ...stepBase, pins: z.array(z.string()).min(2), answer: z.string() }),
+  // grid: 위선·경선(30° 간격)과 적도·본초 자오선 그리기
+  z.object({ type: z.literal('pin'), ...stepBase, pins: z.array(z.string()).min(2), answer: z.string(), grid: z.boolean().default(false) }),
   // 기후에 맞는 집·옷 꾸미기: 부분마다 하나씩 고르기
   z.object({
     type: z.literal('build'),

@@ -7,6 +7,13 @@ import YAML from 'yaml';
 const dir = 'src/content/games';
 const problems = [];
 const text = (o) => (typeof o === 'string' ? o : o.text);
+// 지도 핀으로 쓸 수 있는 장소: 단원의 atlas·places 와 기후 도시
+const climateIds = new Set(Object.keys(JSON.parse(fs.readFileSync('src/data/climate.json', 'utf8'))));
+const unitPlaces = {};
+for (const f of fs.readdirSync('src/content/units').filter((f) => f.endsWith('.yaml'))) {
+  const u = YAML.parse(fs.readFileSync(path.join('src/content/units', f), 'utf8'));
+  unitPlaces[f.replace(/\.yaml$/, '')] = new Set([...(u.atlas ?? []), ...(u.places ?? [])].map((p) => p.id));
+}
 
 for (const file of fs.readdirSync(dir).filter((f) => f.endsWith('.yaml') && !f.startsWith('_'))) {
   const g = YAML.parse(fs.readFileSync(path.join(dir, file), 'utf8'));
@@ -21,6 +28,9 @@ for (const file of fs.readdirSync(dir).filter((f) => f.endsWith('.yaml') && !f.s
       if (st.type === 'multi') for (const a of st.answers) if (!opts.includes(a)) problems.push(`${where}: 정답 "${a}"이(가) 보기에 없어요.`);
       if (st.type === 'sort') for (const it of st.items) if (!st.bins.includes(it.bin)) problems.push(`${where}: "${it.text}"의 바구니 "${it.bin}"이(가) 없어요.`);
       if (st.type === 'pin' && !st.pins.includes(st.answer)) problems.push(`${where}: 정답 위치가 지도 핀에 없어요.`);
+      if (st.type === 'pin')
+        for (const pid of st.pins)
+          if (!unitPlaces[g.unit]?.has(pid) && !climateIds.has(pid)) problems.push(`${where}: 지도 핀 "${pid}"가 단원의 장소(places) 목록에 없어요.`);
       if (st.type === 'build') for (const p of st.parts) if (!p.options.some((o) => o.fit)) problems.push(`${where}: "${p.label}"에 알맞은 보기가 없어요.`);
       if (st.type === 'shop' && !st.features.some((f) => f.fit)) problems.push(`${where}: 알맞은 기능이 하나도 없어요.`);
       if (st.type === 'order' && new Set(st.items).size !== st.items.length) problems.push(`${where}: 같은 카드가 두 번 있어요.`);

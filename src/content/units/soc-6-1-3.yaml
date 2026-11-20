@@ -1,0 +1,97 @@
+# 6학년 1학기 사회 3단원 — 지구, 대륙 그리고 국가들
+# 성취기준: 교육부 고시 제2022-33호 「초등학교 교육과정」 (사회 5~6학년군) [6사09]
+# ⚠ 성취수준(levels, domainLevels)은 평가원 원문을 확인하지 못해 만든 초안이에요.
+subject: 사회
+subjectSlug: social
+grade: 6
+semester: 1
+unitNo: 3
+title: 지구, 대륙 그리고 국가들
+emoji: 🌐
+story: 탐험대가 세계 일주를 떠나기 전, 지구본과 세계지도를 챙겼어요! 위도와 경도로 위치를 읽는 법을 익히고, 여섯 대륙과 다섯 대양을 지나 세계 여러 나라의 위치와 영토의 특징을 탐험해 보세요.
+textbookNote: 차시 구성은 성취기준에 맞추어 제안한 9차시예요. 대륙은 아시아·유럽·아프리카·북아메리카·남아메리카·오세아니아의 6대륙, 대양은 태평양·대서양·인도양·북극해·남극해의 5대양으로 다뤄요.
+domain: 지구, 대륙 그리고 국가들
+levelsDraft: true
+standards:
+  - code: 6사09-01
+    short: 세계를 표현하는 공간 자료와 위치 표현 방법
+    text: 세계를 표현하는 다양한 공간 자료의 특징을 이해하고, 지구본과 세계지도에서 위치를 표현하는 방법을 익힌다.
+    levels:
+      A: 여러 공간 자료의 특징을 비교하여 목적에 알맞은 자료를 고르고, 위도와 경도를 이용하여 여러 장소의 위치를 정확하게 표현할 수 있다.
+      B: 지구본, 세계지도, 디지털 영상 지도의 특징을 설명하고, 위도와 경도를 이용하여 위치를 표현할 수 있다.
+      C: 지구본과 세계지도의 차이를 한 가지 이상 말하고, 적도와 본초 자오선을 찾을 수 있다.
+  - code: 6사09-02
+    short: 대륙과 대양, 여러 국가의 위치와 영토의 특징
+    text: 세계 주요 대륙과 대양을 파악하고, 우리나라 및 세계 여러 국가의 위치와 영토의 특징을 이해한다.
+    levels:
+      A: 세계 여러 국가의 위치와 영토의 크기·모양을 비교·분석하고, 영토의 특징이 그 나라 사람들의 생활에 주는 영향을 설명할 수 있다.
+      B: 세계의 대륙과 대양을 찾고, 우리나라와 여러 국가의 위치와 영토의 특징을 설명할 수 있다.
+      C: 세계의 대륙과 대양의 이름을 말하고 세계지도에서 우리나라의 위치를 찾을 수 있다.
+domainLevels:
+  A:
+    지식·이해: 공간 자료의 특징과 여러 국가의 위치·영토의 특징을 근거를 들어 설명할 수 있다.
+    과정·기능: 위도와 경도, 여러 공간 자료를 활용하여 위치를 정확하게 표현하고 영토의 특징을 분석할 수 있다.
+    가치·태도: 세계 여러 나라에 관심을 가지고 스스로 탐구를 이어 간다.
+  B:
+    지식·이해: 대륙과 대양, 여러 국가의 위치와 영토의 특징을 설명할 수 있다.
+    과정·기능: 지구본과 세계지도에서 위도와 경도로 위치를 찾을 수 있다.
+    가치·태도: 세계 여러 나라에 관심을 가진다.
+  C:
+    지식·이해: 대륙과 대양의 이름을 말할 수 있다.
+    과정·기능: 안내에 따라 지구본과 세계지도에서 위치를 찾을 수 있다.
+    가치·태도: 세계 지리 탐험에 즐겁게 참여한다.
+topics:
+  - no: 1
+    title: 세계를 표현하는 공간 자료
+    lessons:
+      - { no: '1', title: "단원 도입 — 세계 일주를 떠나요", games: [quizshow-world] }
+      - { no: '2', title: "지구본, 세계지도, 디지털 영상 지도의 특징", games: [map-explorer] }
+      - { no: '3', title: "위도와 경도로 위치를 나타내요", games: [map-explorer] }
+  - no: 2
+    title: 세계의 대륙과 대양
+    lessons:
+      - { no: '4', title: "세계의 대륙과 대양을 찾아볼까요", games: [continent-explorer] }
+      - { no: '5', title: "대륙별로 어떤 나라들이 있을까요", games: [continent-explorer] }
+  - no: 3
+    title: 여러 나라의 위치와 영토
+    lessons:
+      - { no: '6', title: "우리나라의 위치와 영토", games: [territory-explorer] }
+      - { no: '7', title: "여러 나라의 영토 크기와 모양을 비교해요", games: [territory-explorer] }
+      - { no: '8', title: "영토의 특징은 생활에 어떤 영향을 줄까요", games: [territory-explorer] }
+      - { no: '9', title: "1학기 사회 정리 — 교실 놀이", games: [social-bingo-6-1] }
+places:
+  - { id: asia, name: 아시아, lat: 45, lon: 90 }
+  - { id: europe, name: 유럽, lat: 52, lon: 15 }
+  - { id: africa, name: 아프리카, lat: 5, lon: 20 }
+  - { id: n-america, name: 북아메리카, lat: 45, lon: -100 }
+  - { id: s-america, name: 남아메리카, lat: -15, lon: -60 }
+  - { id: oceania, name: 오세아니아, lat: -25, lon: 134 }
+  - { id: pacific, name: 태평양, lat: 5, lon: -150 }
+  - { id: atlantic, name: 대서양, lat: 15, lon: -40 }
+  - { id: indian, name: 인도양, lat: -20, lon: 80 }
+  - { id: arctic, name: 북극해, lat: 80, lon: 5 }
+  - { id: southern, name: 남극해, lat: -56, lon: 60 }
+  - { id: korea, name: 대한민국, lat: 36.5, lon: 127.8 }
+  - { id: china, name: 중국, lat: 35, lon: 103 }
+  - { id: japan, name: 일본, lat: 36, lon: 138 }
+  - { id: russia, name: 러시아, lat: 60, lon: 95 }
+  - { id: usa, name: 미국, lat: 39, lon: -98 }
+  - { id: canada, name: 캐나다, lat: 56, lon: -106 }
+  - { id: brazil, name: 브라질, lat: -10, lon: -53 }
+  - { id: argentina, name: 아르헨티나, lat: -35, lon: -65 }
+  - { id: chile, name: 칠레, lat: -30, lon: -71 }
+  - { id: egypt, name: 이집트, lat: 26, lon: 30 }
+  - { id: kenya, name: 케냐, lat: 0.5, lon: 38 }
+  - { id: south-africa, name: 남아프리카 공화국, lat: -29, lon: 25 }
+  - { id: uk, name: 영국, lat: 53, lon: -1.5 }
+  - { id: france, name: 프랑스, lat: 46, lon: 2 }
+  - { id: italy, name: 이탈리아, lat: 42.5, lon: 12.5 }
+  - { id: switzerland, name: 스위스, lat: 46.8, lon: 8.2 }
+  - { id: mongolia, name: 몽골, lat: 47, lon: 104 }
+  - { id: india, name: 인도, lat: 22, lon: 79 }
+  - { id: indonesia, name: 인도네시아, lat: -2, lon: 118 }
+  - { id: philippines, name: 필리핀, lat: 12, lon: 122 }
+  - { id: australia, name: 오스트레일리아, lat: -25, lon: 134 }
+  - { id: new-zealand, name: 뉴질랜드, lat: -41, lon: 174 }
+  - { id: mexico, name: 멕시코, lat: 23, lon: -102 }
+  - { id: ecuador, name: 에콰도르, lat: -1.5, lon: -78 }

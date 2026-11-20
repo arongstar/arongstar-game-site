@@ -686,5 +686,65 @@
     "src": "/images/illust/mo-schoolzone.webp",
     "alt": "붉게 칠한 어린이 보호 구역 도로, 과속 방지 턱, 횡단보도와 노란 울타리, 천천히 달리는 자동차와 횡단보도를 건너는 어린이들",
     "ai": true
+  },
+  "illust/so-family": {
+    "src": "/images/illust/so-family.webp",
+    "alt": "오랫동안 헤어져 지내던 할머니와 할아버지가 다시 만나 끌어안고, 가족들이 눈물을 흘리며 지켜보는 모습",
+    "ai": true
+  },
+  "illust/so-dmz-nature": {
+    "src": "/images/illust/so-dmz-nature.webp",
+    "alt": "철책이 지나는 언덕 아래 습지에서 두루미가 날고 노루가 풀을 뜯는 비무장 지대의 자연",
+    "ai": true
+  },
+  "illust/so-peace-trail": {
+    "src": "/images/illust/so-peace-trail.webp",
+    "alt": "철책을 따라 난 평화의 길을 걸으며 평화를 바라는 리본과 쪽지를 매다는 가족들",
+    "ai": true
+  },
+  "illust/so-life-past": {
+    "src": "/images/illust/so-life-past.webp",
+    "alt": "1970년대 골목: 기와집과 흑백 텔레비전, 연탄을 나르는 어머니, 팽이와 구슬치기를 하는 아이들, 사람이 가득 탄 버스",
+    "ai": true
+  },
+  "illust/so-life-now": {
+    "src": "/images/illust/so-life-now.webp",
+    "alt": "오늘날 도시: 높은 아파트 단지, 지하철역 입구, 스마트폰을 보는 사람들, 강변 공원에서 자전거를 타는 가족",
+    "ai": true
+  },
+  "illust/so-vote": {
+    "src": "/images/illust/so-vote.webp",
+    "alt": "학교 체육관 투표소에서 신분을 확인하고, 기표소에서 도장을 찍고, 투표함에 투표용지를 넣는 시민들",
+    "ai": true
+  },
+  "illust/so-class-election": {
+    "src": "/images/illust/so-class-election.webp",
+    "alt": "교실 앞에서 회장 후보 세 명이 연설하고, 친구들이 투표용지를 들고 듣는 학급 회장 선거",
+    "ai": true
+  },
+  "illust/so-fakenews": {
+    "src": "/images/illust/so-fakenews.webp",
+    "alt": "놀라운 소식을 스마트폰으로 본 두 학생이 노트북으로 다른 자료와 비교하며 사실인지 확인하는 모습",
+    "ai": true
+  },
+  "illust/so-media": {
+    "src": "/images/illust/so-media.webp",
+    "alt": "텔레비전 뉴스, 신문, 라디오, 스마트폰 영상, 태블릿 웹툰, 광고판, 영상 누리집 같은 여러 가지 미디어",
+    "ai": true
+  },
+  "illust/so-globe-map": {
+    "src": "/images/illust/so-globe-map.webp",
+    "alt": "지구본을 돌려 보는 학생 뒤로 교실 벽에 세계지도가 걸려 있고, 책상 위 태블릿에 위성 지도가 보이는 모습",
+    "ai": true
+  },
+  "illust/so-satellite": {
+    "src": "/images/illust/so-satellite.webp",
+    "alt": "태블릿의 디지털 지도를 두 손가락으로 확대하며 거리와 건물을 자세히 살펴보는 학생",
+    "ai": true
+  },
+  "illust/so-court": {
+    "src": "/images/illust/so-court.webp",
+    "alt": "판사 세 명이 법대에 앉아 있고 양쪽에 검사와 피고인·변호인이 있는 법정의 재판 모습",
+    "ai": true
   }
 }

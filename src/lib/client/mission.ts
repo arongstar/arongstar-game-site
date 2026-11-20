@@ -5,6 +5,7 @@ import { sunSim } from './sun';
 import { houseArt, clothesArt } from './art';
 import { sunDayLab, orbitLab, candleLab, magnetLab, circuitView } from './labs';
 import { indicatorLab, mixLab, trackLab, raceLab, microscopeLab, skyLab, rotationLab, starSeasonLab } from './labs61';
+import { globeLab } from './labsSoc';
 import * as store from './store';
 import type { Tier, StepResult } from './store';
 
@@ -316,6 +317,7 @@ export function startMission() {
     if (st.sky) visual.append(skyLab(st.sky));
     if (st.rotation) visual.append(rotationLab());
     if (st.starseason) visual.append(starSeasonLab());
+    if (st.globe) visual.append(globeLab());
     if (st.card) visual.append(h('div', { class: 'sit-card' }, h('div', { class: 'sit-emoji', 'aria-hidden': 'true' }, st.card.emoji), h('div', null, h('div', { class: 'sit-title' }, st.card.title), h('p', null, st.card.text))));
     if (st.table) visual.append(tableView(st.table));
     if (st.bars) visual.append(barsView(st.bars));
@@ -505,7 +507,7 @@ export function startMission() {
   }
 
   function hasVisual(st: any) {
-    return !!(st.photo || st.photos || st.chart || st.charts || st.sun || st.sunday || st.orbit || st.candle || st.magnet || st.indicator || st.mix || st.track || st.race || st.microscope || st.sky || st.rotation || st.starseason || st.table || st.bars || st.agebars || st.card || st.type === 'pin' || st.type === 'build' || st.type === 'circuit');
+    return !!(st.photo || st.photos || st.chart || st.charts || st.sun || st.sunday || st.orbit || st.candle || st.magnet || st.indicator || st.mix || st.track || st.race || st.microscope || st.sky || st.rotation || st.starseason || st.globe || st.table || st.bars || st.agebars || st.card || st.type === 'pin' || st.type === 'build' || st.type === 'circuit');
   }
 
   function chartFor(id: string, hiddenTitle?: string) {
@@ -943,9 +945,25 @@ export function startMission() {
     const svg = s('svg', { viewBox: data.map.viewBox, class: 'map-svg', role: 'group', 'aria-label': '세계 지도' });
     svg.append(s('rect', { x: 0, y: 0, width: 1000, height: 500, class: 'sea' }));
     svg.append(s('path', { d: data.map.path, class: 'land' }));
+    // 위선·경선 (지도 x = 500 + 경도×1000/360, y = 250 − 위도×1000/360)
+    if (st.grid) {
+      svg.classList.add('has-grid');
+      const K = 1000 / 360;
+      for (const lat of [-30, 30, 60]) {
+        svg.append(s('line', { x1: 0, x2: 1000, y1: 250 - lat * K, y2: 250 - lat * K, class: 'grid-line' }));
+        svg.append(s('text', { x: 6, y: 250 - lat * K - 6, class: 'grid-label' }, `${lat > 0 ? '북위' : '남위'} ${Math.abs(lat)}°`));
+      }
+      for (let lon = -150; lon <= 180; lon += 30) {
+        if (lon === 0) continue;
+        svg.append(s('line', { x1: 500 + lon * K, x2: 500 + lon * K, y1: 0, y2: 500, class: 'grid-line' }));
+        if (lon % 60 === 0 && Math.abs(lon) < 180) svg.append(s('text', { x: 500 + lon * K, y: 406, 'text-anchor': 'middle', class: 'grid-label' }, `${lon > 0 ? '동경' : '서경'} ${Math.abs(lon)}°`));
+      }
+      svg.append(s('line', { x1: 500, x2: 500, y1: 0, y2: 500, class: 'prime' }));
+      svg.append(s('text', { x: 506, y: 36, class: 'prime-label' }, '본초 자오선 (경도 0°)'));
+    }
     // 적도
     svg.append(s('line', { x1: 0, x2: 1000, y1: 250, y2: 250, class: 'equator' }));
-    svg.append(s('text', { x: 6, y: 246, class: 'equator-label' }, '적도'));
+    svg.append(s('text', { x: 6, y: 246, class: 'equator-label' }, st.grid ? '적도 (위도 0°)' : '적도'));
     let finished = false;
     const pinEls: Record<string, SVGElement> = {};
     order.forEach((id, n) => {
