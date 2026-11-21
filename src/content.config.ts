@@ -295,6 +295,53 @@ const games = defineCollection({
         }),
       ).min(3),
     }),
+    // 영어 어드벤처: 캐릭터가 맵을 돌아다니며 친구(NPC)와 대화하고 미션을 해결
+    z.object({
+      template: z.literal('adventure'),
+      mode: z.literal('solo').default('solo'),
+      ...gameBase,
+      map: z.string(), // 배경 그림 (photos.json 키)
+      start: z.tuple([z.number(), z.number()]), // 처음 위치 (가로·세로 %)
+      avatars: z.array(z.string()).min(1), // 고를 수 있는 내 캐릭터 그림
+      std: z.object({ ask: z.string(), listen: z.string(), speak: z.string() }), // 묻기·듣기·말하기 문제의 성취기준
+      quests: z.array(z.object({ id: z.string(), title: z.string(), emoji: z.string(), need: z.number().int(), grade: z.string().optional() })).min(1),
+      npcs: z.array(z.object({
+        id: z.string(),
+        name: z.string(), // 단원 cast 의 이름 (목소리)
+        sprite: z.string(),
+        pos: z.tuple([z.number(), z.number()]),
+        grade: z.enum(['first', 'second', 'third', 'fourth', 'fifth', 'sixth']),
+        club: z.string(), // 예: art → I'm in the art club.
+        clubEmoji: z.string(),
+        hello: z.string(),
+      })).min(2),
+      stations: z.array(z.object({ id: z.string(), label: z.string(), emoji: z.string(), pos: z.tuple([z.number(), z.number()]), game: z.string() })).default([]),
+    }),
+    // 영어 미니게임: 들은 말이 적힌 길로 점프
+    z.object({
+      template: z.literal('jump'),
+      mode: z.literal('solo').default('solo'),
+      ...gameBase,
+      std: z.string(),
+      rounds: z.number().int().default(8),
+      items: z.array(z.object({ word: z.string(), emoji: z.string(), sentence: z.string() })).min(4),
+    }),
+    // 영어 미니게임: 낱말 블록으로 다리 놓기
+    z.object({
+      template: z.literal('bridge'),
+      mode: z.literal('solo').default('solo'),
+      ...gameBase,
+      std: z.string(),
+      sentences: z.array(z.object({ lv: level, text: z.string(), extra: z.array(z.string()).default([]), ko: z.string().optional() })).min(3),
+    }),
+    // 영어 단어 외우기: 낱말 카드 → 짝 맞추기 → 철자
+    z.object({
+      template: z.literal('words'),
+      mode: z.literal('solo').default('solo'),
+      ...gameBase,
+      std: z.object({ meaning: z.string(), spell: z.string() }),
+      words: z.array(z.object({ word: z.string(), ko: z.string(), emoji: z.string(), sentence: z.string().optional(), lv: level.default('C') })).min(6),
+    }),
     // 빙고: 전자칠판에 설명이 나오고, 학생은 태블릿 빙고판에 표시
     z.object({
       template: z.literal('bingo'),

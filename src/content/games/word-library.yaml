@@ -1,0 +1,112 @@
+# 6학년 영어 Lesson 1 — 재미 게임 (자동 생성한 뒤 손으로 고쳐도 돼요)
+template: words
+unit: eng-6-l01
+title: 단어 도서관 — Lesson 1 낱말 외우기
+emoji: 📚
+summary: 단원의 꼭 알아야 할 낱말을 낱말 카드로 익히고, 짝 맞추기와 철자 맞히기로 외워요. 잘 모르는 낱말은 복습 상자에 남아 다시 나와요.
+story: 도서관 사서 선생님이 낱말 카드 상자를 열어 주셨어요. 낱말을 모두 ⭐ 「외웠어요」 칸으로 옮겨 보세요!
+lessons:
+- '1'
+- '6'
+standards:
+- 6영01-03
+- 6영02-02
+minutes: 10
+std:
+  meaning: 6영01-03
+  spell: 6영02-02
+teacherGuide:
+- 지도서의 Lesson 1 신출 어휘(activity, child, club, cousin, first, food, grade, history, second, third)와 학년·동아리 낱말을 담았어요.
+- 🧭 단계 6개, 🔎 단계 12개, 🏅 단계 18개 낱말이 나와요. 🏅 단계의 짝 맞추기는 낱말과 우리말 뜻을 짝지어요.
+- 「복습 상자」는 학생 기기에 저장돼요. 1차시에 익히고 6차시에 다시 복습하면 좋아요.
+words:
+- word: first
+  ko: 첫 번째
+  emoji: 1️⃣
+  sentence: I'm in the first grade.
+  lv: C
+- word: second
+  ko: 두 번째
+  emoji: 2️⃣
+  sentence: My cousin is in the second grade.
+  lv: C
+- word: third
+  ko: 세 번째
+  emoji: 3️⃣
+  sentence: Ben is in the third grade.
+  lv: C
+- word: sixth
+  ko: 여섯 번째
+  emoji: 6️⃣
+  sentence: I'm in the sixth grade.
+  lv: C
+- word: grade
+  ko: 학년
+  emoji: 🏫
+  sentence: What grade are you in?
+  lv: C
+- word: club
+  ko: 동아리
+  emoji: 🎪
+  sentence: What club are you in?
+  lv: C
+- word: fourth
+  ko: 네 번째
+  emoji: 4️⃣
+  sentence: Ken is in the fourth grade.
+  lv: B
+- word: fifth
+  ko: 다섯 번째
+  emoji: 5️⃣
+  sentence: Amara is in the fifth grade.
+  lv: B
+- word: history
+  ko: 역사
+  emoji: 🏛️
+  sentence: Leo is in the history club.
+  lv: B
+- word: cousin
+  ko: 사촌
+  emoji: 👫
+  sentence: This is my cousin, Ben.
+  lv: B
+- word: food
+  ko: 음식
+  emoji: 🍱
+  sentence: I like Korean food.
+  lv: B
+- word: child
+  ko: 아이, 어린이
+  emoji: 🧒
+  sentence: She is a happy child.
+  lv: B
+- word: activity
+  ko: 활동
+  emoji: 🤸
+  sentence: Dancing is a fun activity.
+  lv: A
+- word: badminton
+  ko: 배드민턴
+  emoji: 🏸
+  sentence: Let's play badminton.
+  lv: A
+- word: guitar
+  ko: 기타
+  emoji: 🎸
+  sentence: I play the guitar.
+  lv: A
+- word: cooking
+  ko: 요리
+  emoji: 🍳
+  sentence: Mina likes cooking.
+  lv: A
+- word: dance
+  ko: 춤, 춤추다
+  emoji: 💃
+  sentence: Amara is in the dance club.
+  lv: A
+- word: soccer
+  ko: 축구
+  emoji: ⚽
+  sentence: Ken plays soccer every day.
+  lv: A

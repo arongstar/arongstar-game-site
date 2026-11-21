@@ -1,0 +1,62 @@
+# 6학년 영어 Lesson 1 — 재미 게임 (자동 생성한 뒤 손으로 고쳐도 돼요)
+template: bridge
+unit: eng-6-l01
+title: Word Bridge — 낱말 다리 놓기
+emoji: 🌉
+summary: 낱말 블록을 문장 순서대로 눌러 다리를 놓고 시냇물을 건너요. 대문자와 문장 부호 블록도 있어요.
+story: 시냇물 건너편에 친구들이 기다려요! 낱말 블록으로 튼튼한 다리를 만들어 건너가 보세요.
+lessons:
+- '3'
+standards:
+- 6영02-03
+minutes: 8
+std: 6영02-03
+teacherGuide:
+- 🧭 단계는 우리말 뜻과 소리를, 🔎 단계는 우리말 뜻만, 🏅 단계는 소리만 듣고 두 문장짜리 다리를 놓아요.
+- 틀린 블록을 세 번 누르면 다음 낱말을 알려 줘요.
+sentences:
+- lv: C
+  text: I'm in the sixth grade.
+  ko: 나는 6학년이야.
+- lv: C
+  text: What grade are you in?
+  ko: 너는 몇 학년이니?
+- lv: C
+  text: I'm in the book club.
+  ko: 나는 책 동아리야.
+- lv: B
+  text: What club are you in?
+  extra:
+  - what
+  - .
+  ko: 너는 무슨 동아리니?
+- lv: B
+  text: I'm in the fourth grade.
+  extra:
+  - i'm
+  - four
+  ko: 나는 4학년이야.
+- lv: B
+  text: Ken is in the soccer club.
+  extra:
+  - are
+  - '?'
+  ko: Ken은 축구 동아리야.
+- lv: A
+  text: Hi, I'm Sora. I'm in the art club.
+  extra:
+  - grade
+  - is
+  ko: 안녕, 나는 소라야. 나는 미술 동아리야.
+- lv: A
+  text: What grade are you in? I'm in the fifth grade.
+  extra:
+  - club
+  - five
+  ko: 너는 몇 학년이니? 나는 5학년이야.
+- lv: A
+  text: My cousin is in the second grade.
+  extra:
+  - two
+  - are
+  ko: 내 사촌은 2학년이야.

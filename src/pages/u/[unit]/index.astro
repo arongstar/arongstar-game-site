@@ -2,6 +2,7 @@
 import Base from '../../../layouts/Base.astro';
 import { allUnits, gamesOf, gamePath, bingoCardPath } from '../../../lib/content';
 import { url } from '../../../lib/url';
+import { recordStages } from '../../../lib/gamedata';
 import { landPath, MAP_VIEWBOX } from '../../../lib/worldmap';
 
 export async function getStaticPaths() {
@@ -31,7 +32,7 @@ function linkOne(lessonNo: string, id: string) {
       // 이 차시의 스테이지가 하나면 그 스테이지로 바로 가고, 여러 개면 게임 첫 화면에서 고르게 해요.
       const matching = g.data.template === 'mission' ? g.data.stages.filter((s) => s.lesson === lessonNo) : [];
       const stage = matching.length === 1 ? matching[0] : undefined;
-      const stages = g.data.template === 'mission' ? (matching.length ? matching.map((s) => s.id) : g.data.stages.map((s) => s.id)) : [];
+      const stages = g.data.template === 'mission' ? (matching.length ? matching.map((s) => s.id) : g.data.stages.map((s) => s.id)) : Object.keys(recordStages(g));
       return {
         href: url(gamePath(g, stage && g.data.template === 'mission' && g.data.stages.length > 1 ? stage.id : undefined)),
         title: g.data.title + (stage && g.data.template === 'mission' && g.data.stages.length > 1 ? ` — ${stage.title}` : ''),

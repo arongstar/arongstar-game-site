@@ -183,3 +183,22 @@ export function deleteProduct(id: string) {
   d.products = (d.products ?? []).filter((p: Product) => p.id !== id);
   save();
 }
+
+// ───────── 영어 재미 게임: 코인·꾸미기·친구 카드·단어 복습 상자 ─────────
+export interface Bag {
+  coins: number;
+  owned: string[]; // 산 꾸미기 아이템
+  wear: string | null; // 쓰고 있는 아이템
+  avatar: string | null; // 고른 내 캐릭터 그림 키
+  friends: Record<string, string[]>; // 게임별로 만난 친구(NPC) id
+  box: Record<string, Record<string, number>>; // 단원별 낱말 복습 상자 (1: 다시 보기, 2: 거의 알아요, 3: 외웠어요)
+}
+export function getBag(): Bag {
+  const d = load() as any;
+  d.bag ??= { coins: 0, owned: [], wear: null, avatar: null, friends: {}, box: {} };
+  d.bag.friends ??= {};
+  d.bag.box ??= {};
+  return d.bag;
+}
+export function saveBag() { save(); }
+export function addCoins(n: number) { const b = getBag(); b.coins = Math.max(0, b.coins + n); save(); return b.coins; }

@@ -1,0 +1,60 @@
+# 6학년 영어 Lesson 1 — 재미 게임 (자동 생성한 뒤 손으로 고쳐도 돼요)
+template: jump
+unit: eng-6-l01
+title: Listen & Jump — 듣고 점프!
+emoji: 🏃
+summary: 달리는 캐릭터 앞에 갈림길이 나타나요. 영어를 듣고 들은 말이 적힌 길을 눌러 점프해요.
+story: 운동장 트랙에서 달리기 대회가 열렸어요! 들리는 영어를 잘 듣고 알맞은 길로 점프해 결승선까지 달려 보세요.
+lessons:
+- '2'
+standards:
+- 6영01-03
+minutes: 8
+std: 6영01-03
+rounds: 8
+teacherGuide:
+- '🧭 단계는 길 2개에 그림과 낱말, 🔎 단계는 길 2개에 낱말만, 🏅 단계는 길 3개에 문장(예: I''m in the fifth grade.)을 들려줘요.'
+- 「다시 듣기」 버튼으로 여러 번 들어도 돼요.
+items:
+- word: first
+  emoji: 1️⃣
+  sentence: I'm in the first grade.
+- word: second
+  emoji: 2️⃣
+  sentence: I'm in the second grade.
+- word: third
+  emoji: 3️⃣
+  sentence: I'm in the third grade.
+- word: fourth
+  emoji: 4️⃣
+  sentence: I'm in the fourth grade.
+- word: fifth
+  emoji: 5️⃣
+  sentence: I'm in the fifth grade.
+- word: sixth
+  emoji: 6️⃣
+  sentence: I'm in the sixth grade.
+- word: book club
+  emoji: 📚
+  sentence: I'm in the book club.
+- word: history club
+  emoji: 🏛️
+  sentence: I'm in the history club.
+- word: art club
+  emoji: 🎨
+  sentence: I'm in the art club.
+- word: dance club
+  emoji: 💃
+  sentence: I'm in the dance club.
+- word: cooking club
+  emoji: 🍳
+  sentence: I'm in the cooking club.
+- word: soccer club
+  emoji: ⚽
+  sentence: I'm in the soccer club.
+- word: guitar club
+  emoji: 🎸
+  sentence: I'm in the guitar club.
+- word: badminton club
+  emoji: 🏸
+  sentence: I'm in the badminton club.

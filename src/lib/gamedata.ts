@@ -251,3 +251,82 @@ export function bingoData(game: Game, unit: Unit) {
     cardUrl: url(`/bingo/${game.id}/`),
   };
 }
+
+// ───────────── 영어 재미 게임 ─────────────
+const sentenceOf = { grade: (g: string) => `I'm in the ${g} grade.`, club: (c: string) => `I'm in the ${c} club.` };
+export const ASK = { grade: 'What grade are you in?', club: 'What club are you in?' };
+// 미니게임에서 쓰는 내 캐릭터 (어드벤처에서 고른 캐릭터가 이어져요)
+const AVATARS = ['sprite/sp-ava1', 'sprite/sp-ava2', 'sprite/sp-ava3', 'sprite/sp-ava4'];
+const avatarList = () => AVATARS.map((a) => ({ key: a, ...photo(a) }));
+
+export function adventureData(game: Game, unit: Unit, linked: Record<string, { title: string; emoji: string }>) {
+  if (game.data.template !== 'adventure') throw new Error('adventure 게임이 아니에요');
+  const g = game.data;
+  const vl = (l: { who?: string; text: string }) => voiceLine(unit, l);
+  return {
+    id: game.id,
+    unitId: unit.id,
+    title: g.title,
+    emoji: g.emoji,
+    story: g.story ?? g.summary,
+    map: photo(g.map),
+    start: g.start,
+    std: g.std,
+    quests: g.quests,
+    avatars: g.avatars.map((a) => ({ key: a, ...photo(a) })),
+    ask: { grade: vl({ text: ASK.grade }), club: vl({ text: ASK.club }) },
+    npcs: g.npcs.map((n) => ({
+      ...n,
+      sprite: photo(n.sprite),
+      emoji: unit.data.cast.find((c) => c.name === n.name)?.emoji ?? '🙂',
+      helloAudio: vl({ who: n.name, text: n.hello }),
+      gradeAudio: vl({ who: n.name, text: sentenceOf.grade(n.grade) }),
+      clubAudio: vl({ who: n.name, text: sentenceOf.club(n.club) }),
+      byeAudio: vl({ who: n.name, text: 'Nice to meet you!' }),
+    })),
+    clubs: [...new Map(g.npcs.map((n) => [n.club, n.clubEmoji])).entries()].map(([club, emoji]) => ({ club, emoji })),
+    stations: g.stations.map((s) => ({ ...s, href: url(`/play/${s.game}/`), title: linked[s.game]?.title ?? s.label })),
+    unitUrl: url(`/u/${unit.id}/`),
+  };
+}
+
+export function jumpData(game: Game, unit: Unit) {
+  if (game.data.template !== 'jump') throw new Error('jump 게임이 아니에요');
+  const g = game.data;
+  return {
+    id: game.id, unitId: unit.id, title: g.title, emoji: g.emoji, story: g.story ?? g.summary, std: g.std, rounds: g.rounds, avatars: avatarList(),
+    items: g.items.map((it) => ({ ...it, wordAudio: voiceLine(unit, { text: it.word }), sentenceAudio: voiceLine(unit, { text: it.sentence }) })),
+    unitUrl: url(`/u/${unit.id}/`),
+  };
+}
+
+export function bridgeData(game: Game, unit: Unit) {
+  if (game.data.template !== 'bridge') throw new Error('bridge 게임이 아니에요');
+  const g = game.data;
+  return {
+    id: game.id, unitId: unit.id, title: g.title, emoji: g.emoji, story: g.story ?? g.summary, std: g.std, avatars: avatarList(),
+    sentences: g.sentences.map((s) => ({ ...s, audio: voiceLine(unit, { text: s.text }) })),
+    unitUrl: url(`/u/${unit.id}/`),
+  };
+}
+
+export function wordsData(game: Game, unit: Unit) {
+  if (game.data.template !== 'words') throw new Error('words 게임이 아니에요');
+  const g = game.data;
+  return {
+    id: game.id, unitId: unit.id, title: g.title, emoji: g.emoji, story: g.story ?? g.summary, std: g.std,
+    words: g.words.map((w) => ({ ...w, audio: voiceLine(unit, { text: w.word }), sentenceAudio: w.sentence ? voiceLine(unit, { text: w.sentence }) : null })),
+    unitUrl: url(`/u/${unit.id}/`),
+  };
+}
+
+// 기록(스테이지) 이름: 리포트·단원 지도·선생님 페이지에서 써요
+export function recordStages(game: Game): Record<string, string> {
+  const d: any = game.data;
+  if (d.template === 'mission') return Object.fromEntries(d.stages.map((s: any) => [s.id, s.title]));
+  if (d.template === 'adventure') return Object.fromEntries(d.npcs.map((n: any) => [n.id, `${n.name}와 대화`]));
+  if (d.template === 'jump') return { run: '달리기' };
+  if (d.template === 'bridge') return { bridge: '다리 놓기' };
+  if (d.template === 'words') return { match: '짝 맞추기', spell: '철자 맞히기' };
+  return {};
+}

@@ -33,6 +33,19 @@ for (const f of fs.readdirSync('src/content/games').filter((f) => f.endsWith('.y
   if (g.template === 'quizshow') for (const c of g.categories) for (const it of c.items) add(u, undefined, it.say);
   if (g.template === 'quizshow' && g.final) add(u, undefined, g.final.say);
   if (g.template === 'bingo' && g.audio) for (const w of g.words) add(u, undefined, w.clue);
+  if (g.template === 'adventure') {
+    add(u, undefined, 'What grade are you in?');
+    add(u, undefined, 'What club are you in?');
+    for (const n of g.npcs) {
+      add(u, n.name, n.hello);
+      add(u, n.name, `I'm in the ${n.grade} grade.`);
+      add(u, n.name, `I'm in the ${n.club} club.`);
+      add(u, n.name, 'Nice to meet you!');
+    }
+  }
+  if (g.template === 'jump') for (const it of g.items) { add(u, undefined, it.word); add(u, undefined, it.sentence); }
+  if (g.template === 'bridge') for (const s of g.sentences) add(u, undefined, s.text);
+  if (g.template === 'words') for (const w of g.words) { add(u, undefined, w.word); add(u, undefined, w.sentence); }
 }
 const todo = [...want.values()].filter((w) => !fs.existsSync(path.join('public/audio/en', w.key + '.mp3')));
 fs.writeFileSync('.audio-todo.json', JSON.stringify(todo, null, 1));

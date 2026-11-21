@@ -1,5 +1,6 @@
 import type { Unit } from './gamedata';
 import { gamesOf } from './content';
+import { recordStages } from './gamedata';
 
 // 리포트·수첩 화면에 넘길 단원 요약
 export async function reportData(unit: Unit) {
@@ -15,7 +16,7 @@ export async function reportData(unit: Unit) {
         g.id,
         {
           title: g.data.title,
-          stages: g.data.template === 'mission' ? Object.fromEntries(g.data.stages.map((s) => [s.id, s.title])) : {},
+          stages: recordStages(g),
         },
       ]),
     ),

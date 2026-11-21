@@ -766,5 +766,65 @@
     "src": "/images/illust/en-profile.webp",
     "alt": "책상에 앉아 자신의 얼굴을 그린 영어 자기소개 카드를 쓰는 학생",
     "ai": true
+  },
+  "sprite/sp-amara": {
+    "src": "/images/sprites/sp-amara.webp",
+    "alt": "춤추는 Amara",
+    "ai": true
+  },
+  "sprite/sp-ava1": {
+    "src": "/images/sprites/sp-ava1.webp",
+    "alt": "파란 후드티를 입은 남자아이 캐릭터",
+    "ai": true
+  },
+  "sprite/sp-ava2": {
+    "src": "/images/sprites/sp-ava2.webp",
+    "alt": "노란 카디건을 입은 여자아이 캐릭터",
+    "ai": true
+  },
+  "sprite/sp-ava3": {
+    "src": "/images/sprites/sp-ava3.webp",
+    "alt": "안경을 쓴 곱슬머리 남자아이 캐릭터",
+    "ai": true
+  },
+  "sprite/sp-ava4": {
+    "src": "/images/sprites/sp-ava4.webp",
+    "alt": "분홍 맨투맨을 입은 단발머리 여자아이 캐릭터",
+    "ai": true
+  },
+  "sprite/sp-ben": {
+    "src": "/images/sprites/sp-ben.webp",
+    "alt": "그림책을 든 Ben",
+    "ai": true
+  },
+  "sprite/sp-ken": {
+    "src": "/images/sprites/sp-ken.webp",
+    "alt": "축구공을 든 Ken",
+    "ai": true
+  },
+  "sprite/sp-leo": {
+    "src": "/images/sprites/sp-leo.webp",
+    "alt": "역사책을 든 Leo",
+    "ai": true
+  },
+  "sprite/sp-mina": {
+    "src": "/images/sprites/sp-mina.webp",
+    "alt": "요리사 모자를 쓴 Mina",
+    "ai": true
+  },
+  "sprite/sp-mskim": {
+    "src": "/images/sprites/sp-mskim.webp",
+    "alt": "클립보드를 든 Ms. Kim 선생님",
+    "ai": true
+  },
+  "sprite/sp-sora": {
+    "src": "/images/sprites/sp-sora.webp",
+    "alt": "베레모와 물감 앞치마를 한 Sora",
+    "ai": true
+  },
+  "illust/map-school": {
+    "src": "/images/illust/map-school.webp",
+    "alt": "학교 건물, 책 모양 도서관, 꽃밭과 벤치, 연못과 시냇물, 달리기 트랙과 운동장, 교문이 있는 학교 지도",
+    "ai": true
   }
 }
