@@ -258,6 +258,16 @@ export const ASK = { grade: 'What grade are you in?', club: 'What club are you i
 // 미니게임에서 쓰는 내 캐릭터 (어드벤처에서 고른 캐릭터가 이어져요)
 const AVATARS = ['sprite/sp-ava1', 'sprite/sp-ava2', 'sprite/sp-ava3', 'sprite/sp-ava4'];
 const avatarList = () => AVATARS.map((a) => ({ key: a, ...photo(a) }));
+// sprite/sp-ava1 → sprite/sp-ava1-front-stand … (앞 front, 뒤 back, 옆 side × stand, walk)
+function walkFrames(key: string) {
+  const out: Record<string, string> = {};
+  for (const dir of ['front', 'back', 'side']) for (const pose of ['stand', 'walk']) {
+    const p = photo(`${key}-${dir}-${pose}`);
+    if (!p) return null;
+    out[`${dir}-${pose}`] = p.src;
+  }
+  return out;
+}
 
 export function adventureData(game: Game, unit: Unit, linked: Record<string, { title: string; emoji: string }>) {
   if (game.data.template !== 'adventure') throw new Error('adventure 게임이 아니에요');
@@ -367,7 +377,8 @@ export function regionData(game: Game, unit: Unit, others: { game: Game; unit: U
     walls: g.walls,
     exits: g.exits.map((e) => ({ ...e, href: e.to === 'world' ? url('/rpg/') : linked[e.to] ? url(`/play/${e.to}/`) : null })),
     fairyStd: g.fairyStd,
-    avatars: AVATARS.map((a) => ({ key: a, ...photo(a) })),
+    // 걷는 모습: 앞·뒤·옆 × 서 있기·걷기 (그림이 있을 때만)
+    avatars: AVATARS.map((a) => ({ key: a, ...photo(a), frames: walkFrames(a) })),
     monsters: [1, 2, 3, 4, 5, 6].map((i) => ({ key: `mon-${i}`, ...photo(`sprite/mon-${i}`) })),
     words: g.words.map((w) => wordOf(unit, w)),
     review: others.filter((o) => o.game.id !== game.id && o.game.data.template === 'region').flatMap((o: any) => o.game.data.words.map((w: any) => wordOf(o.unit, w))),

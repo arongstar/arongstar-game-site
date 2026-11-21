@@ -881,5 +881,125 @@
     "src": "/images/illust/map-food.webp",
     "alt": "피자 가게, 국숫집, 요리 무대, 아이스크림 가게, 빵집, 과일 가게가 있는 음식 거리",
     "ai": true
+  },
+  "sprite/sp-ava1-front-stand": {
+    "src": "/images/sprites/sp-ava1-front-stand.webp",
+    "alt": "파란 후드티를 입은 남자아이 캐릭터의 서 있는 앞모습",
+    "ai": true
+  },
+  "sprite/sp-ava1-front-walk": {
+    "src": "/images/sprites/sp-ava1-front-walk.webp",
+    "alt": "파란 후드티를 입은 남자아이 캐릭터의 걷는 앞모습",
+    "ai": true
+  },
+  "sprite/sp-ava1-back-stand": {
+    "src": "/images/sprites/sp-ava1-back-stand.webp",
+    "alt": "파란 후드티를 입은 남자아이 캐릭터의 서 있는 뒷모습",
+    "ai": true
+  },
+  "sprite/sp-ava1-back-walk": {
+    "src": "/images/sprites/sp-ava1-back-walk.webp",
+    "alt": "파란 후드티를 입은 남자아이 캐릭터의 걷는 뒷모습",
+    "ai": true
+  },
+  "sprite/sp-ava1-side-stand": {
+    "src": "/images/sprites/sp-ava1-side-stand.webp",
+    "alt": "파란 후드티를 입은 남자아이 캐릭터의 서 있는 옆모습",
+    "ai": true
+  },
+  "sprite/sp-ava1-side-walk": {
+    "src": "/images/sprites/sp-ava1-side-walk.webp",
+    "alt": "파란 후드티를 입은 남자아이 캐릭터의 걷는 옆모습",
+    "ai": true
+  },
+  "sprite/sp-ava2-front-stand": {
+    "src": "/images/sprites/sp-ava2-front-stand.webp",
+    "alt": "노란 카디건을 입은 여자아이 캐릭터의 서 있는 앞모습",
+    "ai": true
+  },
+  "sprite/sp-ava2-front-walk": {
+    "src": "/images/sprites/sp-ava2-front-walk.webp",
+    "alt": "노란 카디건을 입은 여자아이 캐릭터의 걷는 앞모습",
+    "ai": true
+  },
+  "sprite/sp-ava2-back-stand": {
+    "src": "/images/sprites/sp-ava2-back-stand.webp",
+    "alt": "노란 카디건을 입은 여자아이 캐릭터의 서 있는 뒷모습",
+    "ai": true
+  },
+  "sprite/sp-ava2-back-walk": {
+    "src": "/images/sprites/sp-ava2-back-walk.webp",
+    "alt": "노란 카디건을 입은 여자아이 캐릭터의 걷는 뒷모습",
+    "ai": true
+  },
+  "sprite/sp-ava2-side-stand": {
+    "src": "/images/sprites/sp-ava2-side-stand.webp",
+    "alt": "노란 카디건을 입은 여자아이 캐릭터의 서 있는 옆모습",
+    "ai": true
+  },
+  "sprite/sp-ava2-side-walk": {
+    "src": "/images/sprites/sp-ava2-side-walk.webp",
+    "alt": "노란 카디건을 입은 여자아이 캐릭터의 걷는 옆모습",
+    "ai": true
+  },
+  "sprite/sp-ava3-front-stand": {
+    "src": "/images/sprites/sp-ava3-front-stand.webp",
+    "alt": "안경을 쓴 곱슬머리 남자아이 캐릭터의 서 있는 앞모습",
+    "ai": true
+  },
+  "sprite/sp-ava3-front-walk": {
+    "src": "/images/sprites/sp-ava3-front-walk.webp",
+    "alt": "안경을 쓴 곱슬머리 남자아이 캐릭터의 걷는 앞모습",
+    "ai": true
+  },
+  "sprite/sp-ava3-back-stand": {
+    "src": "/images/sprites/sp-ava3-back-stand.webp",
+    "alt": "안경을 쓴 곱슬머리 남자아이 캐릭터의 서 있는 뒷모습",
+    "ai": true
+  },
+  "sprite/sp-ava3-back-walk": {
+    "src": "/images/sprites/sp-ava3-back-walk.webp",
+    "alt": "안경을 쓴 곱슬머리 남자아이 캐릭터의 걷는 뒷모습",
+    "ai": true
+  },
+  "sprite/sp-ava3-side-stand": {
+    "src": "/images/sprites/sp-ava3-side-stand.webp",
+    "alt": "안경을 쓴 곱슬머리 남자아이 캐릭터의 서 있는 옆모습",
+    "ai": true
+  },
+  "sprite/sp-ava3-side-walk": {
+    "src": "/images/sprites/sp-ava3-side-walk.webp",
+    "alt": "안경을 쓴 곱슬머리 남자아이 캐릭터의 걷는 옆모습",
+    "ai": true
+  },
+  "sprite/sp-ava4-front-stand": {
+    "src": "/images/sprites/sp-ava4-front-stand.webp",
+    "alt": "분홍 맨투맨을 입은 단발머리 여자아이 캐릭터의 서 있는 앞모습",
+    "ai": true
+  },
+  "sprite/sp-ava4-front-walk": {
+    "src": "/images/sprites/sp-ava4-front-walk.webp",
+    "alt": "분홍 맨투맨을 입은 단발머리 여자아이 캐릭터의 걷는 앞모습",
+    "ai": true
+  },
+  "sprite/sp-ava4-back-stand": {
+    "src": "/images/sprites/sp-ava4-back-stand.webp",
+    "alt": "분홍 맨투맨을 입은 단발머리 여자아이 캐릭터의 서 있는 뒷모습",
+    "ai": true
+  },
+  "sprite/sp-ava4-back-walk": {
+    "src": "/images/sprites/sp-ava4-back-walk.webp",
+    "alt": "분홍 맨투맨을 입은 단발머리 여자아이 캐릭터의 걷는 뒷모습",
+    "ai": true
+  },
+  "sprite/sp-ava4-side-stand": {
+    "src": "/images/sprites/sp-ava4-side-stand.webp",
+    "alt": "분홍 맨투맨을 입은 단발머리 여자아이 캐릭터의 서 있는 옆모습",
+    "ai": true
+  },
+  "sprite/sp-ava4-side-walk": {
+    "src": "/images/sprites/sp-ava4-side-walk.webp",
+    "alt": "분홍 맨투맨을 입은 단발머리 여자아이 캐릭터의 걷는 옆모습",
+    "ai": true
   }
 }

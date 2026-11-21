@@ -89,6 +89,7 @@ export function startRegion() {
     const map = h('div', { class: 'adv-map', role: 'application', tabindex: '0', 'aria-label': `${data.area} 지도. 방향키나 W·A·S·D 로 한 칸씩 움직이고, 스페이스 바나 엔터로 말을 걸어요. 가고 싶은 곳을 눌러도 걸어가요.` });
     map.append(h('img', { class: 'adv-bg', src: data.map.src, alt: data.map.alt ?? '', draggable: false }));
     const me = avatarImg(data.avatars, 'sprite me');
+    setupWalker(me);
     npcTiles = new Set(data.npcs.map((n: any) => key(toTile(n.pos))));
     if (!cur) {
       const enter = new URLSearchParams(location.search).get('enter');
@@ -213,6 +214,37 @@ export function startRegion() {
   let loop = 0, last = 0, leaving = false, lockedToast = 0;
   let actBtn: HTMLButtonElement | null = null, tip: HTMLElement | null = null, meEl: HTMLElement | null = null, mapEl: HTMLElement | null = null, viewEl: HTMLElement | null = null;
   let camX = 0, camY = 0;
+  // ───── 걷는 모습: 바라보는 방향(앞·뒤·옆)과 걸음 그림 ─────
+  // 앞·뒤는 걷는 그림을 좌우로 뒤집어 왼발·오른발을 번갈아 내고, 옆은 서 있기·걷기를 번갈아 보여 줘요.
+  let face = 'down';
+  let walkClock = 0;
+  let walkerImg: HTMLImageElement | null = null;
+  let frames: Record<string, string> | null = null;
+  let shown = '';
+  const FRAME = 0.13; // 한 걸음 그림이 바뀌는 시간(초)
+  function setupWalker(me: HTMLElement) {
+    const a = data.avatars.find((x: any) => x.key === bag.avatar) ?? data.avatars[0];
+    frames = a.frames ?? null;
+    walkerImg = me.querySelector('img');
+    shown = '';
+    if (frames) for (const src of Object.values(frames)) { const im = new Image(); im.src = src; } // 미리 불러오기
+    me.classList.toggle('has-frames', !!frames);
+  }
+  function drawWalker(moving: boolean) {
+    if (!frames || !walkerImg) {
+      if (face === 'left' || face === 'right') meEl?.classList.toggle('left', face === 'left');
+      return;
+    }
+    const dir = face === 'up' ? 'back' : face === 'down' ? 'front' : 'side';
+    const k = moving ? Math.floor(walkClock / FRAME) % 4 : 0; // 0 서기 → 1 걷기 → 2 서기 → 3 걷기(반대 발)
+    const pose = k % 2 === 1 ? 'walk' : 'stand';
+    const flip = dir === 'side' ? face === 'left' : pose === 'walk' && k === 3;
+    const id = `${dir}-${pose}-${flip}`;
+    if (id === shown) return;
+    shown = id;
+    walkerImg.src = frames[`${dir}-${pose}`];
+    walkerImg.style.transform = flip ? 'scaleX(-1)' : '';
+  }
   const dirs: string[] = []; // 누르고 있는 방향 (마지막에 누른 것이 먼저)
   let tapDir: string | null = null; // 짧게 톡 누른 방향도 한 칸 걷게
   const key = (t: T) => `${t[0]},${t[1]}`;
@@ -328,13 +360,12 @@ export function startRegion() {
       let next: T | null = null;
       if (d) {
         path = []; pathThen = null;
-        meEl.classList.toggle('left', d === 'left' ? true : d === 'right' ? false : meEl.classList.contains('left'));
-        meEl.dataset.face = d;
+        face = d;
         const n: T = [cur[0] + DIR[d][0], cur[1] + DIR[d][1]];
         if (free(n)) { next = n; byHand = true; }
       } else if (path.length) {
         const n = path[0];
-        if (free(n)) { next = path.shift()!; if (n[0] !== cur[0]) meEl.classList.toggle('left', n[0] < cur[0]); }
+        if (free(n)) { next = path.shift()!; face = n[0] < cur[0] ? 'left' : n[0] > cur[0] ? 'right' : n[1] < cur[1] ? 'up' : 'down'; }
         else { path = []; pathThen = null; }
       } else if (pathThen) { const then = pathThen; pathThen = null; then(); }
       if (next) step = { from: cur, to: next, t: 0 };
@@ -344,6 +375,8 @@ export function startRegion() {
     pos = [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k];
     place(meEl, pos);
     meEl.classList.toggle('walking', !!step);
+    walkClock = step ? walkClock + dt : 0;
+    drawWalker(!!step);
     camera();
     // 가장 가까운 주민·장소·요정
     const here = step ? step.to : cur;
