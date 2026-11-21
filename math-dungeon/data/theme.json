@@ -1,0 +1,52 @@
+{
+  "gameName": "수학 던전 런",
+  "tagline": "오늘 배운 차시로 열리는 카드 던전",
+  "mascot": {
+    "name": "카드 마법사 루미",
+    "emoji": "🧙"
+  },
+  "colors": {
+    "bg": "#1f2340",
+    "panel": "#2b3160",
+    "card": "#fff8e7",
+    "accent": "#ffb703",
+    "good": "#2a9d8f",
+    "bad": "#e76f51",
+    "text": "#fdfdfd",
+    "ink": "#1d2433"
+  },
+  "icons": {
+    "dungeon": "🏰",
+    "easy": "🟢",
+    "normal": "🟡",
+    "hard": "🔴",
+    "target": "🎯",
+    "max": "⬆️",
+    "min": "⬇️",
+    "joker": "🃏",
+    "boss": "🐲",
+    "score": "⭐",
+    "hint": "💡",
+    "correct": "✅",
+    "wrong": "❌",
+    "retry": "🔁",
+    "teacher": "📊"
+  },
+  "words": {
+    "enter": "던전 입장",
+    "quest": "의뢰",
+    "boss": "던전 보스",
+    "bossVerb": "수사",
+    "joker": "개념 조커",
+    "levels": {
+      "easy": "쉬움",
+      "normal": "보통",
+      "hard": "도전"
+    },
+    "goals": {
+      "target": "몫이 ○가 되는 식",
+      "max": "몫이 가장 큰 식",
+      "min": "몫이 가장 작은 식"
+    }
+  }
+}

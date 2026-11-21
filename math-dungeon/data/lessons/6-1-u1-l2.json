@@ -1,0 +1,120 @@
+{
+  "id": "6-1-u1-l2",
+  "unit": "6-1 1단원 분수의 나눗셈",
+  "lesson": 2,
+  "title": "(자연수)÷(자연수)의 몫을 분수로 나타내 볼까요 (2)",
+  "summary": "몫이 1보다 큰 나눗셈 a÷b (a>b), 대분수로 답하기",
+  "standardNote": "[6수01-10] '(자연수)÷(자연수)'에서 나눗셈의 몫을 분수로 나타낼 수 있다. — 2022 개정 수학과 교육과정(교육부 고시 제2022-33호) 5~6학년군 성취기준. 공식 원문 사이트가 이 환경에서 열리지 않아 2차 자료 두 곳(교육 정보 사이트, 성취기준 정리 자료)에서 같은 문구를 확인했어요. TODO 교사 확인: 지도서의 차시별 성취기준과 대조",
+  "standards": [
+    {
+      "code": "6수01-10",
+      "text": "'(자연수)÷(자연수)'에서 나눗셈의 몫을 분수로 나타낼 수 있다."
+    }
+  ],
+  "mode": "cardAssembly",
+  "expression": "nat_div_nat",
+  "quests": [
+    {
+      "level": "easy",
+      "type": "target"
+    },
+    {
+      "level": "normal",
+      "type": "min"
+    },
+    {
+      "level": "hard",
+      "type": "max"
+    }
+  ],
+  "constraints": {
+    "order": "greater",
+    "nonInteger": true
+  },
+  "answerForm": "mixed",
+  "conversion": false,
+  "estimate": {
+    "compareTo": "one",
+    "question": "몫은 1보다 클까요, 작을까요?"
+  },
+  "concepts": [
+    {
+      "id": "mixed",
+      "name": "대분수 조커",
+      "emoji": "🍰",
+      "description": "1보다 큰 몫을 대분수로 바르게 나타내면 +20",
+      "unlock": [
+        "answerMixed"
+      ],
+      "effect": {
+        "type": "bonusFlat",
+        "value": 20,
+        "when": [
+          "answerMixed"
+        ]
+      }
+    },
+    {
+      "id": "reduce",
+      "name": "약분 조커",
+      "emoji": "✂️",
+      "description": "약분해서 기약분수로 답하면 그 의뢰 점수 ×2",
+      "unlock": [
+        "answerReduced",
+        "requiredReduction"
+      ],
+      "effect": {
+        "type": "multiplier",
+        "value": 2,
+        "when": [
+          "answerReduced"
+        ]
+      }
+    },
+    {
+      "id": "estimate",
+      "name": "몫 어림 조커",
+      "emoji": "🔭",
+      "description": "답을 쓰기 전에 몫의 크기를 맞게 어림하면 +20",
+      "unlock": [
+        "estimateCorrect"
+      ],
+      "effect": {
+        "type": "bonusFlat",
+        "value": 20,
+        "when": [
+          "estimateCorrect"
+        ]
+      }
+    }
+  ],
+  "misconceptions": [
+    {
+      "tag": "mixed_whole_only",
+      "pattern": "몫의 자연수 부분만 쓰고 남은 부분(나머지)을 빠뜨렸어요",
+      "hint": "나누고 남은 것도 똑같이 나누어야 해요. 나머지를 나누는 수로 나눈 분수를 자연수 옆에 붙여 보세요."
+    },
+    {
+      "tag": "reverse_fraction",
+      "pattern": "나누어지는 수와 나누는 수의 자리를 바꿔 분자와 분모가 거꾸로 되었어요",
+      "hint": "a÷b는 1÷b, 곧 1/b이 a개예요. 나누어지는 수 a가 분자로 가요!"
+    }
+  ],
+  "hints": {
+    "general": "식을 그림으로 생각해 보세요. 똑같이 나누면 한 몫은 처음보다 작아져요.",
+    "notTarget": "만든 식의 몫이 목표와 달라요. 어떤 카드를 어디에 놓으면 몫이 커지고 작아지는지 생각해 보세요.",
+    "notMax": "더 큰 몫을 만들 수 있어요. 나누어지는 수는 크게, 나누는 수는 작게!",
+    "notMin": "더 작은 몫을 만들 수 있어요. 나누어지는 수는 작게, 나누는 수는 크게!",
+    "notMixed": "몫이 1보다 커요. 대분수로 나타내 볼까요?",
+    "conversion": "÷c는 ×1/c과 같아요. 곱셈식을 다시 확인해 보세요."
+  },
+  "bossQuiz": {
+    "type": "findWrongLine",
+    "count": 1,
+    "distractors": [
+      "약분을 잘못했어요",
+      "곱셈 계산을 틀렸어요",
+      "분모끼리 더했어요"
+    ]
+  }
+}

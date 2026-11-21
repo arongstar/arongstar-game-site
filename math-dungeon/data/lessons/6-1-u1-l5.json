@@ -1,0 +1,119 @@
+{
+  "id": "6-1-u1-l5",
+  "unit": "6-1 1단원 분수의 나눗셈",
+  "lesson": 5,
+  "title": "(대분수)÷(자연수)를 알아볼까요",
+  "summary": "(w a/b)÷c — 대분수를 가분수로 바꾸어 계산하기",
+  "standardNote": "[6수01-11] 분수의 나눗셈의 계산 원리를 탐구하고 그 계산을 할 수 있다. — 2022 개정 수학과 교육과정(교육부 고시 제2022-33호) 5~6학년군 성취기준. 공식 원문 사이트가 이 환경에서 열리지 않아 2차 자료 두 곳(교육 정보 사이트, 성취기준 정리 자료)에서 같은 문구를 확인했어요. TODO 교사 확인: 지도서의 차시별 성취기준과 대조",
+  "standards": [
+    {
+      "code": "6수01-11",
+      "text": "분수의 나눗셈의 계산 원리를 탐구하고 그 계산을 할 수 있다."
+    }
+  ],
+  "mode": "cardAssembly",
+  "expression": "mixed_div_nat",
+  "quests": [
+    {
+      "level": "easy",
+      "type": "target"
+    },
+    {
+      "level": "normal",
+      "type": "min"
+    },
+    {
+      "level": "hard",
+      "type": "max"
+    }
+  ],
+  "constraints": {
+    "divisorMin": 2
+  },
+  "answerForm": "any",
+  "conversion": false,
+  "estimate": {
+    "compareTo": "dividend",
+    "question": "몫은 처음 대분수보다 클까요, 작을까요?"
+  },
+  "concepts": [
+    {
+      "id": "mixed",
+      "name": "대분수 조커",
+      "emoji": "🍰",
+      "description": "1보다 큰 몫을 대분수로 바르게 나타내면 +20",
+      "unlock": [
+        "answerMixed"
+      ],
+      "effect": {
+        "type": "bonusFlat",
+        "value": 20,
+        "when": [
+          "answerMixed"
+        ]
+      }
+    },
+    {
+      "id": "reduce",
+      "name": "약분 조커",
+      "emoji": "✂️",
+      "description": "약분해서 기약분수로 답하면 그 의뢰 점수 ×2",
+      "unlock": [
+        "answerReduced",
+        "requiredReduction"
+      ],
+      "effect": {
+        "type": "multiplier",
+        "value": 2,
+        "when": [
+          "answerReduced"
+        ]
+      }
+    },
+    {
+      "id": "estimate",
+      "name": "몫 어림 조커",
+      "emoji": "🔭",
+      "description": "답을 쓰기 전에 몫의 크기를 맞게 어림하면 +20",
+      "unlock": [
+        "estimateCorrect"
+      ],
+      "effect": {
+        "type": "bonusFlat",
+        "value": 20,
+        "when": [
+          "estimateCorrect"
+        ]
+      }
+    }
+  ],
+  "misconceptions": [
+    {
+      "tag": "mixed_whole_only",
+      "pattern": "대분수의 자연수 부분만 나누고 분수 부분은 그대로 두었어요",
+      "hint": "자연수 부분만 나누면 안 돼요. 대분수를 가분수로 바꾼 다음 전체를 나누어 보세요."
+    },
+    {
+      "tag": "forgot_reciprocal",
+      "pattern": "÷c를 ×1/c이 아니라 ×c로 바꾸었어요",
+      "hint": "c로 나누는 것은 1/c을 곱하는 것과 같아요. ×c가 아니라 ×1/c이에요!"
+    }
+  ],
+  "hints": {
+    "general": "식을 그림으로 생각해 보세요. 똑같이 나누면 한 몫은 처음보다 작아져요.",
+    "notTarget": "만든 식의 몫이 목표와 달라요. 어떤 카드를 어디에 놓으면 몫이 커지고 작아지는지 생각해 보세요.",
+    "notMax": "더 큰 몫을 만들 수 있어요. 대분수는 크게, 나누는 수는 작게!",
+    "notMin": "더 작은 몫을 만들 수 있어요. 대분수는 작게, 나누는 수는 크게!",
+    "notMixed": "몫이 1보다 커요. 대분수로 나타내 볼까요?",
+    "conversion": "÷c는 ×1/c과 같아요. 곱셈식을 다시 확인해 보세요."
+  },
+  "bossQuiz": {
+    "type": "findWrongLine",
+    "count": 1,
+    "distractors": [
+      "약분을 잘못했어요",
+      "곱셈 계산을 틀렸어요",
+      "분모끼리 더했어요"
+    ]
+  }
+}
