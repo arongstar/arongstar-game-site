@@ -1,21 +1,23 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { allGames, unitOf } from '../../lib/content';
-import { missionData, adventureData, jumpData, bridgeData, wordsData } from '../../lib/gamedata';
+import { missionData, adventureData, jumpData, bridgeData, wordsData, regionData } from '../../lib/gamedata';
 import { url } from '../../lib/url';
 
 export async function getStaticPaths() {
-  const SOLO = ['mission', 'adventure', 'jump', 'bridge', 'words'];
+  const SOLO = ['mission', 'adventure', 'jump', 'bridge', 'words', 'region'];
   const all = await allGames();
   const games = all.filter((g) => SOLO.includes(g.data.template));
   const linked = Object.fromEntries(all.map((g) => [g.id, { title: g.data.title, emoji: g.data.emoji }]));
-  return games.map((g) => ({ params: { game: g.id }, props: { game: g, linked } }));
+  const regions = await Promise.all(all.filter((g) => g.data.template === 'region').map(async (g) => ({ game: g, unit: await unitOf(g) })));
+  return games.map((g) => ({ params: { game: g.id }, props: { game: g, linked, regions } }));
 }
-const { game, linked } = Astro.props;
+const { game, linked, regions } = Astro.props;
 const unit = await unitOf(game);
 const t = game.data.template;
 const data =
-  t === 'adventure' ? adventureData(game, unit, linked)
+  t === 'region' ? regionData(game, unit, regions, linked)
+  : t === 'adventure' ? adventureData(game, unit, linked)
   : t === 'jump' ? jumpData(game, unit)
   : t === 'bridge' ? bridgeData(game, unit)
   : t === 'words' ? wordsData(game, unit)
@@ -36,8 +38,10 @@ const data =
   import { startJump } from '../../lib/client/jump';
   import { startBridge } from '../../lib/client/bridge';
   import { startWords } from '../../lib/client/words';
+  import { startRegion } from '../../lib/client/rpg';
   const t = document.getElementById('app')?.dataset.template;
-  if (t === 'adventure') startAdventure();
+  if (t === 'region') startRegion();
+  else if (t === 'adventure') startAdventure();
   else if (t === 'jump') startJump();
   else if (t === 'bridge') startBridge();
   else if (t === 'words') startWords();

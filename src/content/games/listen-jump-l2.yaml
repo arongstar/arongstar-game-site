@@ -1,0 +1,27 @@
+# 6학년 영어 Lesson 2 — 영어 RPG 음식 거리의 미니게임
+template: jump
+unit: eng-6-l02
+title: Listen & Jump — 주문을 듣고 점프!
+emoji: 🏃
+summary: 달리는 캐릭터 앞에 갈림길이 나타나요. 음식과 맛을 나타내는 영어를 듣고 알맞은 길을 눌러 점프해요.
+story: 음식 거리 배달 달리기 대회! 손님의 주문을 잘 듣고 알맞은 길로 점프해 음식을 배달해요.
+lessons: ['2']
+standards: [6영01-03]
+minutes: 8
+std: 6영01-03
+rounds: 8
+teacherGuide:
+  - "🧭 단계는 길 2개에 그림과 낱말, 🔎 단계는 길 2개에 낱말만, 🏅 단계는 길 3개에 주문 문장(예: I'd like to have a fruit salad, please.)을 들려줘요."
+items:
+  - { word: pizza, emoji: 🍕, sentence: "I'd like to have a potato pizza, please." }
+  - { word: salad, emoji: 🥗, sentence: "I'd like to have a fruit salad, please." }
+  - { word: sandwich, emoji: 🥪, sentence: "I'd like to have a chicken sandwich, please." }
+  - { word: spaghetti, emoji: 🍝, sentence: "I'd like to have tomato spaghetti, please." }
+  - { word: steak, emoji: 🥩, sentence: "I'd like to have a beef steak, please." }
+  - { word: juice, emoji: 🧃, sentence: "I'd like to have lemon juice, please." }
+  - { word: sweet, emoji: 🍬, sentence: "It's sweet." }
+  - { word: salty, emoji: 🧂, sentence: "It's salty." }
+  - { word: sour, emoji: 🍋, sentence: "It's sour." }
+  - { word: spicy, emoji: 🌶️, sentence: "It's spicy." }
+  - { word: cheese, emoji: 🧀, sentence: "I like cheese." }
+  - { word: chocolate, emoji: 🍫, sentence: "Chocolate is sweet." }

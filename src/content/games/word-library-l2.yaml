@@ -1,0 +1,59 @@
+# 6학년 영어 Lesson 2 — 영어 RPG 음식 거리의 미니게임
+template: words
+unit: eng-6-l02
+title: 단어 도서관 — Lesson 2 낱말 외우기
+emoji: 📚
+summary: 음식·맛·주문 낱말을 낱말 카드로 익히고, 짝 맞추기와 철자 맞히기로 외워요. 잘 모르는 낱말은 복습 상자에 남아 다시 나와요.
+story: 음식 거리 도서관에 요리책 낱말 카드가 도착했어요. 낱말을 모두 ⭐ 「외웠어요」 칸으로 옮겨 보세요!
+lessons: ['1', '6']
+standards: [6영01-03, 6영02-02]
+minutes: 10
+std:
+  meaning: 6영01-03
+  spell: 6영02-02
+teacherGuide:
+  - 지도서의 Lesson 2 신출 어휘(after, ahead, arrive, beef, cream, fruit, ice, restaurant, salty, sour, spaghetti, sweet, would)와 핵심 표현 낱말(steak, pizza, sandwich, salad, juice …), ch 소리 낱말을 담았어요.
+  - 🧭 단계 15개, 🔎 단계 30개, 🏅 단계 42개 낱말이 나와요(영어 RPG 음식 거리의 낱말과 같아요).
+words:
+  - { word: "pizza", ko: "피자", emoji: 🍕, lv: C, sentence: "I'd like to have a potato pizza, please." }
+  - { word: "salad", ko: "샐러드", emoji: 🥗, lv: C, sentence: "I'd like to have a fruit salad." }
+  - { word: "sandwich", ko: "샌드위치", emoji: 🥪, lv: C, sentence: "I'd like to have a chicken sandwich." }
+  - { word: "juice", ko: "주스", emoji: 🧃, lv: C, sentence: "Lemon juice, please." }
+  - { word: "chicken", ko: "닭고기", emoji: 🍗, lv: C, sentence: "The chicken sandwich is good." }
+  - { word: "potato", ko: "감자", emoji: 🥔, lv: C, sentence: "I like potato pizza." }
+  - { word: "tomato", ko: "토마토", emoji: 🍅, lv: C, sentence: "Tomato spaghetti, please." }
+  - { word: "lemon", ko: "레몬", emoji: 🍋, lv: C, sentence: "The lemon is sour." }
+  - { word: "sweet", ko: "달콤한", emoji: 🍬, lv: C, sentence: "It's sweet." }
+  - { word: "salty", ko: "짠", emoji: 🧂, lv: C, sentence: "The chips are salty." }
+  - { word: "sour", ko: "신", emoji: 😖, lv: C, sentence: "Lemon juice is sour." }
+  - { word: "spicy", ko: "매운", emoji: 🌶️, lv: C, sentence: "Tteokbokki is spicy." }
+  - { word: "water", ko: "물", emoji: 💧, lv: C, sentence: "Can I have some water?" }
+  - { word: "cake", ko: "케이크", emoji: 🍰, lv: C, sentence: "The cake is sweet." }
+  - { word: "menu", ko: "메뉴, 차림표", emoji: 📋, lv: C, sentence: "Here's the menu." }
+  - { word: "beef", ko: "소고기", emoji: 🥩, lv: B, sentence: "I'd like to have a beef steak." }
+  - { word: "steak", ko: "스테이크", emoji: 🍖, lv: B, sentence: "The beef steak is delicious." }
+  - { word: "spaghetti", ko: "스파게티", emoji: 🍝, lv: B, sentence: "I'd like to have tomato spaghetti." }
+  - { word: "fruit", ko: "과일", emoji: 🍎, lv: B, sentence: "I like fruit salad." }
+  - { word: "cream", ko: "크림", emoji: 🍦, lv: B, sentence: "Ice cream is sweet." }
+  - { word: "restaurant", ko: "식당", emoji: 🍽️, lv: B, sentence: "Let's go to the restaurant." }
+  - { word: "cheese", ko: "치즈", emoji: 🧀, lv: B, sentence: "I like cheese pizza." }
+  - { word: "chocolate", ko: "초콜릿", emoji: 🍫, lv: B, sentence: "Chocolate is sweet." }
+  - { word: "bread", ko: "빵", emoji: 🍞, lv: B, sentence: "The bread is warm." }
+  - { word: "soup", ko: "수프", emoji: 🥣, lv: B, sentence: "The soup is salty." }
+  - { word: "delicious", ko: "아주 맛있는", emoji: 😋, lv: B, sentence: "It's delicious!" }
+  - { word: "hungry", ko: "배고픈", emoji: 🤤, lv: B, sentence: "I'm hungry." }
+  - { word: "order", ko: "주문하다", emoji: 📝, lv: B, sentence: "May I take your order?" }
+  - { word: "lunch", ko: "점심", emoji: 🍱, lv: B, sentence: "Let's have lunch." }
+  - { word: "cookie", ko: "쿠키", emoji: 🍪, lv: B, sentence: "Mina makes cookies." }
+  - { word: "would", ko: "~하고 싶다(would like)", emoji: 🙋, lv: A, sentence: "What would you like to have?" }
+  - { word: "after", ko: "~ 후에", emoji: ⏭️, lv: A, sentence: "Let's eat after school." }
+  - { word: "ahead", ko: "앞으로, 앞에", emoji: ⬆️, lv: A, sentence: "Go ahead." }
+  - { word: "arrive", ko: "도착하다", emoji: 🛬, lv: A, sentence: "Your pizza will arrive soon." }
+  - { word: "ice", ko: "얼음", emoji: 🧊, lv: A, sentence: "No ice, please." }
+  - { word: "bitter", ko: "쓴", emoji: 😝, lv: A, sentence: "The medicine is bitter." }
+  - { word: "peach", ko: "복숭아", emoji: 🍑, lv: A, sentence: "Peach juice is sweet." }
+  - { word: "chips", ko: "감자칩", emoji: 🥔, lv: A, sentence: "The chips are salty." }
+  - { word: "snack", ko: "간식", emoji: 🍿, lv: A, sentence: "What's your favorite snack?" }
+  - { word: "dessert", ko: "후식", emoji: 🍨, lv: A, sentence: "Ice cream for dessert, please." }
+  - { word: "kitchen", ko: "부엌", emoji: 🍳, lv: A, sentence: "The chef is in the kitchen." }
+  - { word: "chef", ko: "요리사", emoji: 👨‍🍳, lv: A, sentence: "Chef Tony makes great pizza." }

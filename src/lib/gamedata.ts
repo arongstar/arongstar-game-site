@@ -328,5 +328,52 @@ export function recordStages(game: Game): Record<string, string> {
   if (d.template === 'jump') return { run: '달리기' };
   if (d.template === 'bridge') return { bridge: '다리 놓기' };
   if (d.template === 'words') return { match: '짝 맞추기', spell: '철자 맞히기' };
+  if (d.template === 'region') return { ...Object.fromEntries(d.quests.map((q: any) => [q.id, `${q.emoji} ${q.title}`])), fairy: '🧚 낱말 요정', boss: `${d.boss.emoji} ${d.boss.title}` };
   return {};
+}
+
+// ───────────── 영어 RPG ─────────────
+function rpgStepData(unit: Unit, st: any) {
+  const vl = (l: { who?: string; text: string }) => voiceLine(unit, l);
+  const o: any = { ...st };
+  if (st.t === 'talk') o.audio = vl({ who: st.who, text: st.text });
+  if (st.t === 'read') o.lines = st.lines.map(vl);
+  if (st.t === 'choose') {
+    if (st.say) o.say = st.say.map(vl);
+    if (st.optionsAudio) o.optionAudio = st.options.map((x: string) => vl({ text: x }));
+  }
+  if (st.t === 'build') o.answerAudio = vl({ text: st.answer });
+  if (st.t === 'spell') o.wordAudio = vl({ text: st.word });
+  if (st.t === 'speak') o.targetAudio = vl({ who: st.who, text: st.target });
+  return o;
+}
+
+export function regionData(game: Game, unit: Unit, others: { game: Game; unit: Unit }[], linked: Record<string, { title: string; emoji: string }>) {
+  if (game.data.template !== 'region') throw new Error('region 게임이 아니에요');
+  const g = game.data;
+  const castOf = (name: string) => unit.data.cast.find((c) => c.name === name);
+  const wordOf = (u: Unit, w: any) => ({ ...w, unit: u.id, audio: voiceLine(u, { text: w.word }), sentenceAudio: w.sentence ? voiceLine(u, { text: w.sentence }) : null });
+  return {
+    id: game.id,
+    unitId: unit.id,
+    title: g.title,
+    emoji: g.emoji,
+    order: g.order,
+    area: g.area,
+    story: g.story ?? g.summary,
+    map: photo(g.map),
+    start: g.start,
+    spots: g.spots,
+    fairyStd: g.fairyStd,
+    avatars: AVATARS.map((a) => ({ key: a, ...photo(a) })),
+    monsters: [1, 2, 3, 4, 5, 6].map((i) => ({ key: `mon-${i}`, ...photo(`sprite/mon-${i}`) })),
+    words: g.words.map((w) => wordOf(unit, w)),
+    review: others.filter((o) => o.game.id !== game.id && o.game.data.template === 'region').flatMap((o: any) => o.game.data.words.map((w: any) => wordOf(o.unit, w))),
+    npcs: g.npcs.map((n) => ({ ...n, sprite: photo(n.sprite), emoji: castOf(n.name)?.emoji ?? '🙂' })),
+    quests: g.quests.map((q) => ({ ...q, steps: q.steps.map((s) => rpgStepData(unit, s)) })),
+    stations: g.stations.map((s) => ({ ...s, href: url(`/play/${s.game}/`), title: linked[s.game]?.title ?? s.label })),
+    boss: { ...g.boss, steps: g.boss.steps.map((s) => rpgStepData(unit, s)) },
+    worldUrl: url('/rpg/'),
+    unitUrl: url(`/u/${unit.id}/`),
+  };
 }

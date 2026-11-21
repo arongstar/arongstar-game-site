@@ -1,0 +1,28 @@
+{
+  "lessons": [
+    { "no": 1, "area": "Lingo 학교", "emoji": "🏫", "title": "I'm in the Sixth Grade", "pos": [20, 16] },
+    { "no": 2, "area": "맛있는 음식 거리", "emoji": "🍕", "title": "What Would You Like to Have?", "pos": [39, 15] },
+    { "no": 3, "area": "튼튼 보건소", "emoji": "🏥", "title": "I Have a Runny Nose", "pos": [55, 12] },
+    { "no": 4, "area": "버스 터미널", "emoji": "🚌", "title": "When Is the Field Trip?", "pos": [72, 16] },
+    { "no": 5, "area": "초록 생태 숲", "emoji": "🌳", "title": "How About Turning Off the Water?", "pos": [88, 28] },
+    { "no": 6, "area": "전통 한옥 마을", "emoji": "🏯", "title": "Do You Know Anything About Yakgwa?", "pos": [85, 47] },
+    { "no": 7, "area": "튼튼 운동 공원", "emoji": "🏃", "title": "How Often Do You Exercise?", "pos": [86, 67] },
+    { "no": 8, "area": "마음 열기구 언덕", "emoji": "🎈", "title": "Why Are You Happy?", "pos": [62, 69] },
+    { "no": 9, "area": "기차역", "emoji": "🚆", "title": "I'm Going to Walk the Dog", "pos": [40, 76] },
+    { "no": 10, "area": "별빛 경기장", "emoji": "🏟️", "title": "I'm Taller Than You", "pos": [19, 70] },
+    { "no": 11, "area": "반짝 도심", "emoji": "🏙️", "title": "How Can I Get to the Library?", "pos": [13, 52] },
+    { "no": 12, "area": "겨울 축제 광장", "emoji": "⛄", "title": "What Do You Think?", "pos": [15, 34] }
+  ],
+  "gates": [
+    { "no": 1, "after": 2, "label": "Review 1 관문", "pos": [32, 20] },
+    { "no": 2, "after": 4, "label": "Review 2 관문", "pos": [80, 20] },
+    { "no": 3, "after": 6, "label": "Review 3 관문", "pos": [74, 35] },
+    { "no": 4, "after": 8, "label": "Review 4 관문", "pos": [49, 78] },
+    { "no": 5, "after": 10, "label": "Review 5 관문", "pos": [10, 63] },
+    { "no": 6, "after": 12, "label": "Review 6 관문", "pos": [26, 28] }
+  ],
+  "festivals": [
+    { "no": 1, "label": "1학기 섬 축제", "emoji": "🎪", "pos": [44, 40] },
+    { "no": 2, "label": "2학기 섬 축제", "emoji": "🎆", "pos": [57, 55] }
+  ]
+}

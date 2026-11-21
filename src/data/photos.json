@@ -826,5 +826,60 @@
     "src": "/images/illust/map-school.webp",
     "alt": "학교 건물, 책 모양 도서관, 꽃밭과 벤치, 연못과 시냇물, 달리기 트랙과 운동장, 교문이 있는 학교 지도",
     "ai": true
+  },
+  "sprite/mon-1": {
+    "src": "/images/sprites/mon-1.webp",
+    "alt": "날개 달린 노란 별 모양 꼬마 요정",
+    "ai": true
+  },
+  "sprite/mon-2": {
+    "src": "/images/sprites/mon-2.webp",
+    "alt": "나비넥타이를 맨 파란 물방울 꼬마 요정",
+    "ai": true
+  },
+  "sprite/mon-3": {
+    "src": "/images/sprites/mon-3.webp",
+    "alt": "토끼 귀가 달린 분홍 솜뭉치 꼬마 요정",
+    "ai": true
+  },
+  "sprite/mon-4": {
+    "src": "/images/sprites/mon-4.webp",
+    "alt": "머리에 나뭇잎을 얹은 주황 여우 꼬마 요정",
+    "ai": true
+  },
+  "sprite/mon-5": {
+    "src": "/images/sprites/mon-5.webp",
+    "alt": "책을 든 보라색 젤리 꼬마 요정",
+    "ai": true
+  },
+  "sprite/mon-6": {
+    "src": "/images/sprites/mon-6.webp",
+    "alt": "빨간 버섯 모자를 쓴 꼬마 요정",
+    "ai": true
+  },
+  "sprite/sp-chef": {
+    "src": "/images/sprites/sp-chef.webp",
+    "alt": "국자를 든 요리사 캐릭터",
+    "ai": true
+  },
+  "sprite/sp-waiter": {
+    "src": "/images/sprites/sp-waiter.webp",
+    "alt": "수첩을 든 식당 직원 캐릭터",
+    "ai": true
+  },
+  "sprite/sp-icecream": {
+    "src": "/images/sprites/sp-icecream.webp",
+    "alt": "아이스크림을 든 가게 주인 캐릭터",
+    "ai": true
+  },
+  "illust/map-world": {
+    "src": "/images/illust/map-world.webp",
+    "alt": "학교, 음식 거리, 병원, 버스 터미널, 생태 숲, 한옥 마을, 운동 공원, 열기구 언덕, 기차역, 경기장, 도심, 겨울 축제 광장이 길로 이어진 섬 지도",
+    "ai": true
+  },
+  "illust/map-food": {
+    "src": "/images/illust/map-food.webp",
+    "alt": "피자 가게, 국숫집, 요리 무대, 아이스크림 가게, 빵집, 과일 가게가 있는 음식 거리",
+    "ai": true
   }
 }

@@ -1,0 +1,22 @@
+# 6학년 영어 Lesson 2 — 영어 RPG 음식 거리의 미니게임
+template: bridge
+unit: eng-6-l02
+title: Word Bridge — 주문 문장 다리 놓기
+emoji: 🌉
+summary: 낱말 블록을 문장 순서대로 눌러 다리를 놓아요. 대문자와 쉼표·마침표·물음표 블록도 있어요.
+story: 음식 거리 시냇물 건너편에 배고픈 손님이 기다려요! 주문 문장 다리를 놓아 건너가 보세요.
+lessons: ['3']
+standards: [6영02-03]
+minutes: 8
+std: 6영02-03
+teacherGuide:
+  - 🧭 단계는 우리말 뜻과 소리를, 🔎 단계는 우리말 뜻만, 🏅 단계는 소리만 듣고 다리를 놓아요.
+sentences:
+  - { lv: C, text: "What would you like to have?", ko: 무엇을 먹고 싶니? }
+  - { lv: C, text: "It's sweet.", ko: 달콤해요. }
+  - { lv: C, text: "Pizza, please.", ko: 피자 주세요. }
+  - { lv: B, text: "I'd like to have a potato pizza, please.", extra: [i'd, potatoes], ko: 감자 피자 주세요. }
+  - { lv: B, text: "The lemon juice is sour.", extra: [the, sweet], ko: 레몬주스는 시어요. }
+  - { lv: B, text: "I'd like to have a fruit salad, please.", extra: [fruits], ko: 과일 샐러드 주세요. }
+  - { lv: A, text: "I'd like to have a chicken sandwich, please. It's delicious!", extra: [i'd, chickens], ko: 치킨 샌드위치 주세요. 아주 맛있어요! }
+  - { lv: A, text: "What would you like to have? I'd like to have tomato spaghetti.", extra: [like, do], ko: 무엇을 먹고 싶니? 토마토 스파게티를 먹고 싶어. }

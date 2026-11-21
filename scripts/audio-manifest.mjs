@@ -43,6 +43,19 @@ for (const f of fs.readdirSync('src/content/games').filter((f) => f.endsWith('.y
       add(u, n.name, 'Nice to meet you!');
     }
   }
+  if (g.template === 'region') {
+    const step = (s) => {
+      if (s.t === 'talk') add(u, s.who, s.text);
+      if (s.t === 'read') for (const l of s.lines) add(u, l.who, l.text);
+      if (s.t === 'choose') { for (const l of s.say ?? []) add(u, l.who, l.text); if (s.optionsAudio) for (const o of s.options) add(u, undefined, o); }
+      if (s.t === 'build') add(u, undefined, s.answer);
+      if (s.t === 'spell') add(u, undefined, s.word);
+      if (s.t === 'speak') add(u, s.who, s.target);
+    };
+    for (const q of g.quests) q.steps.forEach(step);
+    g.boss.steps.forEach(step);
+    for (const w of g.words) { add(u, undefined, w.word); add(u, undefined, w.sentence); }
+  }
   if (g.template === 'jump') for (const it of g.items) { add(u, undefined, it.word); add(u, undefined, it.sentence); }
   if (g.template === 'bridge') for (const s of g.sentences) add(u, undefined, s.text);
   if (g.template === 'words') for (const w of g.words) { add(u, undefined, w.word); add(u, undefined, w.sentence); }

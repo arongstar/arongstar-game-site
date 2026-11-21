@@ -25,6 +25,7 @@ cast:
   - { name: Ms. Kim, voice: af_sarah, emoji: 👩‍🏫 }
   - { name: Mina, voice: af_nova, emoji: 👧 }
   - { name: Ben, voice: am_echo, emoji: 👦🏾 }
+  - { name: Max, voice: am_liam, emoji: 🧑 }
 standards:
   - code: 6영01-02
     short: 강세·리듬·억양에 맞게 소리 내어 읽기
@@ -127,15 +128,15 @@ topics:
   - no: 1
     title: 학년 묻고 답하기
     lessons:
-      - { no: '1', title: "Fun Talk 1 — 학년을 묻고 답해요", games: [english-town, word-library, grade-detective] }
+      - { no: '1', title: "Fun Talk 1 — 학년을 묻고 답해요", games: [rpg-l01, word-library, grade-detective] }
   - no: 2
     title: 동아리 묻고 답하기
     lessons:
-      - { no: '2', title: "Fun Talk 2 — 동아리를 묻고 답해요", games: [english-town, listen-jump, club-fair] }
-      - { no: '3', title: "Read and Do · Write and Do · Sounds and Letters", games: [word-bridge, sentence-lab] }
+      - { no: '2', title: "Fun Talk 2 — 동아리를 묻고 답해요", games: [rpg-l01, listen-jump, club-fair] }
+      - { no: '3', title: "Read and Do · Write and Do · Sounds and Letters", games: [rpg-l01, word-bridge, sentence-lab] }
   - no: 3
     title: 자신을 소개하는 글 읽고 쓰기
     lessons:
-      - { no: '4', title: "Read — 세계 친구들의 자기소개를 읽어요", games: [world-kids] }
-      - { no: '5', title: "Let's Write — 나를 소개하는 글을 써요", games: [my-profile] }
-      - { no: '6', title: "Wrap Up — 재미있게 확인해요", games: [quizshow-eng-l1, sound-bingo-l1, word-library] }
+      - { no: '4', title: "Read — 세계 친구들의 자기소개를 읽어요", games: [rpg-l01, world-kids] }
+      - { no: '5', title: "Let's Write — 나를 소개하는 글을 써요", games: [rpg-l01, my-profile] }
+      - { no: '6', title: "Wrap Up — 재미있게 확인해요", games: [rpg-l01, quizshow-eng-l1, sound-bingo-l1, word-library] }

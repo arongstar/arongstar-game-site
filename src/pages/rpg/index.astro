@@ -1,0 +1,108 @@
+---
+// 영어 RPG 「Lingo Island 대모험」 세계 지도: Lesson = 지역, Review = 관문, 보드게임 차시 = 섬 축제
+import Base from '../../layouts/Base.astro';
+import { allGames } from '../../lib/content';
+import { photo } from '../../lib/gamedata';
+import { url } from '../../lib/url';
+import world from '../../data/rpg-world.json';
+
+const regions = (await allGames()).filter((g) => g.data.template === 'region');
+const byOrder = new Map(regions.map((g: any) => [g.data.order, g]));
+const lessons = world.lessons.map((l) => {
+  const g: any = byOrder.get(l.no);
+  return { ...l, id: g?.id ?? null, href: g ? url(`/play/${g.id}/`) : null, unitHref: g ? url(`/u/${g.data.unit.id}/`) : null, quests: g ? g.data.quests.length : 0 };
+});
+const map = photo('illust/map-world')!;
+const data = { lessons, gates: world.gates, festivals: world.festivals, avatars: [1, 2, 3, 4].map((i) => ({ key: `sprite/sp-ava${i}`, ...photo(`sprite/sp-ava${i}`) })) };
+---
+
+<Base title="Lingo Island 대모험 — 영어 RPG" wide>
+  <a slot="head" class="btn ghost small" href={url('/')}>🏠 처음으로</a>
+  <div class="world">
+    <div class="world-head">
+      <h1>🏝️ Lingo Island 대모험</h1>
+      <p>6학년 영어 Lesson 1~12 가 섬의 12개 지역이에요. ⭐ 표시는 이야기 순서로 다음에 갈 곳이고, 열린 지역은 언제든 바로 갈 수 있어요.</p>
+      <div id="world-status" class="world-status" aria-live="polite"></div>
+    </div>
+    <div class="world-map">
+      <img class="adv-bg" src={map.src} alt={map.alt} draggable="false" />
+      {data.festivals.map((f) => (
+        <span class="world-fest" style={`left:${f.pos[0]}%;top:${f.pos[1]}%`} title={`${f.label} — 곧 열려요`}>{f.emoji}<small>{f.label}</small></span>
+      ))}
+      {data.gates.map((gt) => (
+        <span class="world-gate" style={`left:${gt.pos[0]}%;top:${gt.pos[1]}%`} title={`${gt.label} — 곧 열려요`}>⛩️<small>{gt.label}</small></span>
+      ))}
+      {lessons.map((l) => l.href ? (
+        <a class="world-pin open" data-id={l.id} data-no={l.no} href={l.href} style={`left:${l.pos[0]}%;top:${l.pos[1]}%`}>
+          <span class="wp-emoji" aria-hidden="true">{l.emoji}</span>
+          <span class="wp-name">L{l.no} {l.area}</span>
+          <span class="wp-prog" aria-hidden="true"></span>
+        </a>
+      ) : (
+        <span class="world-pin soon" style={`left:${l.pos[0]}%;top:${l.pos[1]}%`} title={`Lesson ${l.no} ${l.title} — 곧 열려요`}>
+          <span class="wp-emoji" aria-hidden="true">{l.emoji}</span>
+          <span class="wp-name">L{l.no} 🔒</span>
+        </span>
+      ))}
+    </div>
+
+    <div class="world-list">
+      {lessons.map((l) => (
+        <div class={'world-row' + (l.href ? '' : ' soon')} data-id={l.id ?? ''}>
+          <span class="wr-emoji" aria-hidden="true">{l.emoji}</span>
+          <div class="wr-body">
+            <b>Lesson {l.no}. {l.title}</b>
+            <small>{l.area}{l.href ? '' : ' · 곧 열려요'}</small>
+            <span class="wr-prog"></span>
+          </div>
+          {l.href ? <a class="btn primary small" href={l.href}>▶ 가기</a> : null}
+          {l.unitHref ? <a class="btn ghost small" href={l.unitHref}>📘 단원</a> : null}
+        </div>
+      ))}
+    </div>
+
+    <details class="lab-more world-settings">
+      <summary>⚙️ 처음부터 다시 하기</summary>
+      <p class="muted">이 기기에 저장된 영어 RPG 기록을 지워요. 사회·과학 같은 다른 교과의 기록은 지워지지 않아요. 한 지역만 다시 하려면 그 지역 화면의 ⚙️ 버튼을 눌러요.</p>
+      <button id="reset-all" class="btn danger" type="button">🗑️ 영어 RPG 전체 처음부터</button>
+    </details>
+  </div>
+  <script type="application/json" id="world-data" set:html={JSON.stringify(data)} />
+</Base>
+
+<script>
+  import { readJSON } from '../../lib/client/dom';
+  import * as store from '../../lib/client/store';
+  import { rpgSave, levelOf, titleOf, resetAll } from '../../lib/client/rpg';
+  import { HATS } from '../../lib/client/fun';
+
+  const data = readJSON<any>('world-data');
+  const rs = rpgSave();
+  const bag = store.getBag();
+  const cleared = (id: string) => { const r = rs.regions[id]; return !!r && (r.boss.C || r.boss.B || r.boss.A); };
+  const questsDone = (id: string) => { const r = rs.regions[id]; return r ? Math.max(r.q.C.length, r.q.B.length, r.q.A.length) : 0; };
+  const open = data.lessons.filter((l: any) => l.id);
+  const next = open.find((l: any) => !cleared(l.id));
+  for (const l of open) {
+    const prog = cleared(l.id) ? '🏆' : questsDone(l.id) ? `📜 ${questsDone(l.id)}/${l.quests}` : '';
+    document.querySelectorAll(`[data-id="${l.id}"]`).forEach((el) => {
+      const p = el.querySelector('.wp-prog, .wr-prog');
+      if (p) p.textContent = prog;
+      if (next && l.id === next.id) el.classList.add('next');
+    });
+  }
+  const pin = next && document.querySelector(`.world-pin[data-id="${next.id}"]`);
+  if (pin) pin.insertAdjacentHTML('afterbegin', '<span class="wp-star" aria-label="다음에 갈 곳">⭐</span>');
+  const lv = levelOf(rs.xp);
+  const ava = data.avatars.find((a: any) => a.key === bag.avatar);
+  const hat = HATS.find((x) => x.id === bag.wear);
+  const st = document.getElementById('world-status')!;
+  st.innerHTML = `${ava ? `<span class="ws-ava">${hat ? `<i>${hat.emoji}</i>` : ''}<img src="${ava.src}" alt="내 캐릭터"></span>` : ''}
+    <b>Lv.${lv} ${titleOf(lv)}</b> <span class="coin-badge">🪙 ${bag.coins}</span>
+    <span>🏆 지역 대장 ${open.filter((l: any) => cleared(l.id)).length} / 12</span>
+    <span>💕 몬스터 친구 ${Object.keys(rs.monsters).length} / 6</span>
+    ${next ? `<a class="btn primary small" href="${next.href}">⭐ 다음 모험: L${next.no} ${next.area}</a>` : ''}`;
+  document.getElementById('reset-all')!.onclick = () => {
+    if (confirm('영어 RPG의 레벨, 코인, 꾸미기, 도감, 모든 지역 기록을 지울까요? 되돌릴 수 없어요.') && confirm('정말 처음부터 다시 시작할까요?')) { resetAll(); location.reload(); }
+  };
+</script>

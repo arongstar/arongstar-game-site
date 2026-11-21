@@ -16,97 +16,49 @@ std:
   meaning: 6영01-03
   spell: 6영02-02
 teacherGuide:
-- 지도서의 Lesson 1 신출 어휘(activity, child, club, cousin, first, food, grade, history, second, third)와 학년·동아리 낱말을 담았어요.
-- 🧭 단계 6개, 🔎 단계 12개, 🏅 단계 18개 낱말이 나와요. 🏅 단계의 짝 맞추기는 낱말과 우리말 뜻을 짝지어요.
+- 지도서의 Lesson 1 신출 어휘(activity, child, club, cousin, first, food, grade, history, second, third)와 학년·동아리·학교생활 낱말, th 소리 낱말을 담았어요.
+- 🧭 단계 15개, 🔎 단계 30개, 🏅 단계 42개 낱말이 나와요(영어 RPG Lingo 학교의 낱말과 같아요). 🏅 단계의 짝 맞추기는 낱말과 우리말 뜻을 짝지어요.
 - 「복습 상자」는 학생 기기에 저장돼요. 1차시에 익히고 6차시에 다시 복습하면 좋아요.
 words:
-- word: first
-  ko: 첫 번째
-  emoji: 1️⃣
-  sentence: I'm in the first grade.
-  lv: C
-- word: second
-  ko: 두 번째
-  emoji: 2️⃣
-  sentence: My cousin is in the second grade.
-  lv: C
-- word: third
-  ko: 세 번째
-  emoji: 3️⃣
-  sentence: Ben is in the third grade.
-  lv: C
-- word: sixth
-  ko: 여섯 번째
-  emoji: 6️⃣
-  sentence: I'm in the sixth grade.
-  lv: C
-- word: grade
-  ko: 학년
-  emoji: 🏫
-  sentence: What grade are you in?
-  lv: C
-- word: club
-  ko: 동아리
-  emoji: 🎪
-  sentence: What club are you in?
-  lv: C
-- word: fourth
-  ko: 네 번째
-  emoji: 4️⃣
-  sentence: Ken is in the fourth grade.
-  lv: B
-- word: fifth
-  ko: 다섯 번째
-  emoji: 5️⃣
-  sentence: Amara is in the fifth grade.
-  lv: B
-- word: history
-  ko: 역사
-  emoji: 🏛️
-  sentence: Leo is in the history club.
-  lv: B
-- word: cousin
-  ko: 사촌
-  emoji: 👫
-  sentence: This is my cousin, Ben.
-  lv: B
-- word: food
-  ko: 음식
-  emoji: 🍱
-  sentence: I like Korean food.
-  lv: B
-- word: child
-  ko: 아이, 어린이
-  emoji: 🧒
-  sentence: She is a happy child.
-  lv: B
-- word: activity
-  ko: 활동
-  emoji: 🤸
-  sentence: Dancing is a fun activity.
-  lv: A
-- word: badminton
-  ko: 배드민턴
-  emoji: 🏸
-  sentence: Let's play badminton.
-  lv: A
-- word: guitar
-  ko: 기타
-  emoji: 🎸
-  sentence: I play the guitar.
-  lv: A
-- word: cooking
-  ko: 요리
-  emoji: 🍳
-  sentence: Mina likes cooking.
-  lv: A
-- word: dance
-  ko: 춤, 춤추다
-  emoji: 💃
-  sentence: Amara is in the dance club.
-  lv: A
-- word: soccer
-  ko: 축구
-  emoji: ⚽
-  sentence: Ken plays soccer every day.
-  lv: A
+  - { word: "first", ko: "첫 번째", emoji: 1️⃣, lv: C, sentence: "I'm in the first grade." }
+  - { word: "second", ko: "두 번째", emoji: 2️⃣, lv: C, sentence: "My cousin is in the second grade." }
+  - { word: "third", ko: "세 번째", emoji: 3️⃣, lv: C, sentence: "Ben is in the third grade." }
+  - { word: "fourth", ko: "네 번째", emoji: 4️⃣, lv: C, sentence: "Ken is in the fourth grade." }
+  - { word: "fifth", ko: "다섯 번째", emoji: 5️⃣, lv: C, sentence: "Amara is in the fifth grade." }
+  - { word: "sixth", ko: "여섯 번째", emoji: 6️⃣, lv: C, sentence: "I'm in the sixth grade." }
+  - { word: "grade", ko: "학년", emoji: 🏫, lv: C, sentence: "What grade are you in?" }
+  - { word: "club", ko: "동아리", emoji: 🎪, lv: C, sentence: "What club are you in?" }
+  - { word: "book", ko: "책", emoji: 📚, lv: C, sentence: "I'm in the book club." }
+  - { word: "art", ko: "미술", emoji: 🎨, lv: C, sentence: "Sora is in the art club." }
+  - { word: "dance", ko: "춤, 춤추다", emoji: 💃, lv: C, sentence: "Amara is in the dance club." }
+  - { word: "soccer", ko: "축구", emoji: ⚽, lv: C, sentence: "Ken plays soccer every day." }
+  - { word: "school", ko: "학교", emoji: 🏫, lv: C, sentence: "I like my school." }
+  - { word: "friend", ko: "친구", emoji: 🤝, lv: C, sentence: "Sora is my friend." }
+  - { word: "teacher", ko: "선생님", emoji: 👩‍🏫, lv: C, sentence: "Ms. Kim is my teacher." }
+  - { word: "history", ko: "역사", emoji: 🏛️, lv: B, sentence: "Leo is in the history club." }
+  - { word: "cousin", ko: "사촌", emoji: 👫, lv: B, sentence: "This is my cousin, Ben." }
+  - { word: "food", ko: "음식", emoji: 🍱, lv: B, sentence: "I like Korean food." }
+  - { word: "child", ko: "아이, 어린이", emoji: 🧒, lv: B, sentence: "She is a happy child." }
+  - { word: "activity", ko: "활동", emoji: 🤸, lv: B, sentence: "Dancing is a fun activity." }
+  - { word: "cooking", ko: "요리", emoji: 🍳, lv: B, sentence: "Mina is in the cooking club." }
+  - { word: "music", ko: "음악", emoji: 🎵, lv: B, sentence: "I'm in the music club." }
+  - { word: "science", ko: "과학", emoji: 🔬, lv: B, sentence: "I like science." }
+  - { word: "classroom", ko: "교실", emoji: 🚪, lv: B, sentence: "This is my classroom." }
+  - { word: "library", ko: "도서관", emoji: 📖, lv: B, sentence: "Ben is in the library." }
+  - { word: "student", ko: "학생", emoji: 🧑‍🎓, lv: B, sentence: "I'm a student." }
+  - { word: "name", ko: "이름", emoji: 🏷️, lv: B, sentence: "My name is Mina." }
+  - { word: "drawing", ko: "그림 그리기", emoji: 🖍️, lv: B, sentence: "Sora likes drawing." }
+  - { word: "Korea", ko: "한국", emoji: 🇰🇷, lv: B, sentence: "I live in Korea." }
+  - { word: "Canada", ko: "캐나다", emoji: 🇨🇦, lv: B, sentence: "Leo is from Canada." }
+  - { word: "math", ko: "수학", emoji: ➗, lv: A, sentence: "I like math." }
+  - { word: "think", ko: "생각하다", emoji: 🤔, lv: A, sentence: "I think so." }
+  - { word: "thank", ko: "감사하다", emoji: 🙏, lv: A, sentence: "Thank you!" }
+  - { word: "three", ko: "셋, 3", emoji: 3️⃣, lv: A, sentence: "I have three friends." }
+  - { word: "birthday", ko: "생일", emoji: 🎂, lv: A, sentence: "Happy birthday!" }
+  - { word: "badminton", ko: "배드민턴", emoji: 🏸, lv: A, sentence: "I'm in the badminton club." }
+  - { word: "guitar", ko: "기타", emoji: 🎸, lv: A, sentence: "I play the guitar." }
+  - { word: "member", ko: "회원, 구성원", emoji: 🙋, lv: A, sentence: "I'm a member of the book club." }
+  - { word: "country", ko: "나라", emoji: 🗺️, lv: A, sentence: "What country are you from?" }
+  - { word: "world", ko: "세계", emoji: 🌏, lv: A, sentence: "Kids around the world go to school." }
+  - { word: "favorite", ko: "가장 좋아하는", emoji: 💖, lv: A, sentence: "Art is my favorite subject." }
+  - { word: "introduce", ko: "소개하다", emoji: 🎤, lv: A, sentence: "Let me introduce myself." }

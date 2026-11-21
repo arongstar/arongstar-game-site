@@ -1,0 +1,358 @@
+# 영어 RPG 「Lingo Island 대모험」 — Lesson 2 지역: 맛있는 음식 거리
+# 대화·글·등장인물은 이 사이트에서 새로 썼어요. 의사소통 기능·낱말은 동아출판(정은숙 외) 6학년 Lesson 2 를 따랐어요.
+template: region
+unit: eng-6-l02
+order: 2
+title: 음식 거리 — 주문 왕을 찾아라
+emoji: 🍕
+area: 맛있는 음식 거리
+summary: 영어 RPG 두 번째 지역이에요. 식당에서 음식을 주문하고, 맛을 말하고, ch 소리와 세계 간식 이야기를 익힌 뒤 요리 대회의 「주문 왕」에 도전해요.
+story: 학교 옆 골목에 음식 거리가 열렸어요! 피자 가게, 아이스크림 가게, 빵집에서 주민들이 손님을 기다려요. 영어로 주문하고 맛을 말해 음식 거리의 주문 왕이 되어 보세요.
+lessons: ['1', '2', '3', '4', '5', '6']
+standards: [6영01-02, 6영01-03, 6영01-04, 6영01-05, 6영01-10, 6영02-01, 6영02-02, 6영02-03, 6영02-07, 6영02-08]
+minutes: 40
+teacherGuide:
+  - 차시마다 퀘스트가 하나씩 있어요(1차시 음식 주문 → 2차시 맛 표현 → 3차시 메뉴판 읽기·파닉스 ch → 4차시 세계 간식 글 → 5차시 주문 만화 쓰기). 6차시에는 Chef Tony 의 「요리 대회 — 주문 왕」(지역 대장)에 도전해요.
+  - 🧭 살펴보기는 대본·우리말 도움이 많고, 🔎 조사하기는 대본 없이 듣고 문장을 만들며, 🏅 분석하기는 소리만 듣고 철자·말하기까지 해요.
+  - ✨ 낱말 요정 문제에는 Lesson 1 에서 헷갈렸던 낱말도 복습으로 섞여 나와요.
+map: illust/map-food
+start: [50, 92]
+spots: [[46, 55], [56, 66], [44, 80], [60, 50], [38, 62], [58, 84]]
+fairyStd: 6영01-03
+words:
+  - { word: pizza, ko: 피자, emoji: 🍕, lv: C, sentence: "I'd like to have a potato pizza, please." }
+  - { word: salad, ko: 샐러드, emoji: 🥗, lv: C, sentence: "I'd like to have a fruit salad." }
+  - { word: sandwich, ko: 샌드위치, emoji: 🥪, lv: C, sentence: "I'd like to have a chicken sandwich." }
+  - { word: juice, ko: 주스, emoji: 🧃, lv: C, sentence: "Lemon juice, please." }
+  - { word: chicken, ko: 닭고기, emoji: 🍗, lv: C, sentence: "The chicken sandwich is good." }
+  - { word: potato, ko: 감자, emoji: 🥔, lv: C, sentence: "I like potato pizza." }
+  - { word: tomato, ko: 토마토, emoji: 🍅, lv: C, sentence: "Tomato spaghetti, please." }
+  - { word: lemon, ko: 레몬, emoji: 🍋, lv: C, sentence: "The lemon is sour." }
+  - { word: sweet, ko: 달콤한, emoji: 🍬, lv: C, sentence: "It's sweet." }
+  - { word: salty, ko: 짠, emoji: 🧂, lv: C, sentence: "The chips are salty." }
+  - { word: sour, ko: 신, emoji: 😖, lv: C, sentence: "Lemon juice is sour." }
+  - { word: spicy, ko: 매운, emoji: 🌶️, lv: C, sentence: "Tteokbokki is spicy." }
+  - { word: water, ko: 물, emoji: 💧, lv: C, sentence: "Can I have some water?" }
+  - { word: cake, ko: 케이크, emoji: 🍰, lv: C, sentence: "The cake is sweet." }
+  - { word: menu, ko: "메뉴, 차림표", emoji: 📋, lv: C, sentence: "Here's the menu." }
+  - { word: beef, ko: 소고기, emoji: 🥩, lv: B, sentence: "I'd like to have a beef steak." }
+  - { word: steak, ko: 스테이크, emoji: 🍖, lv: B, sentence: "The beef steak is delicious." }
+  - { word: spaghetti, ko: 스파게티, emoji: 🍝, lv: B, sentence: "I'd like to have tomato spaghetti." }
+  - { word: fruit, ko: 과일, emoji: 🍎, lv: B, sentence: "I like fruit salad." }
+  - { word: cream, ko: 크림, emoji: 🍦, lv: B, sentence: "Ice cream is sweet." }
+  - { word: restaurant, ko: 식당, emoji: 🍽️, lv: B, sentence: "Let's go to the restaurant." }
+  - { word: cheese, ko: 치즈, emoji: 🧀, lv: B, sentence: "I like cheese pizza." }
+  - { word: chocolate, ko: 초콜릿, emoji: 🍫, lv: B, sentence: "Chocolate is sweet." }
+  - { word: bread, ko: 빵, emoji: 🍞, lv: B, sentence: "The bread is warm." }
+  - { word: soup, ko: 수프, emoji: 🥣, lv: B, sentence: "The soup is salty." }
+  - { word: delicious, ko: 아주 맛있는, emoji: 😋, lv: B, sentence: "It's delicious!" }
+  - { word: hungry, ko: 배고픈, emoji: 🤤, lv: B, sentence: "I'm hungry." }
+  - { word: order, ko: 주문하다, emoji: 📝, lv: B, sentence: "May I take your order?" }
+  - { word: lunch, ko: 점심, emoji: 🍱, lv: B, sentence: "Let's have lunch." }
+  - { word: cookie, ko: 쿠키, emoji: 🍪, lv: B, sentence: "Mina makes cookies." }
+  - { word: would, ko: ~하고 싶다(would like), emoji: 🙋, lv: A, sentence: "What would you like to have?" }
+  - { word: after, ko: ~ 후에, emoji: ⏭️, lv: A, sentence: "Let's eat after school." }
+  - { word: ahead, ko: "앞으로, 앞에", emoji: ⬆️, lv: A, sentence: "Go ahead." }
+  - { word: arrive, ko: 도착하다, emoji: 🛬, lv: A, sentence: "Your pizza will arrive soon." }
+  - { word: ice, ko: 얼음, emoji: 🧊, lv: A, sentence: "No ice, please." }
+  - { word: bitter, ko: 쓴, emoji: 😝, lv: A, sentence: "The medicine is bitter." }
+  - { word: peach, ko: 복숭아, emoji: 🍑, lv: A, sentence: "Peach juice is sweet." }
+  - { word: chips, ko: 감자칩, emoji: 🥔, lv: A, sentence: "The chips are salty." }
+  - { word: snack, ko: 간식, emoji: 🍿, lv: A, sentence: "What's your favorite snack?" }
+  - { word: dessert, ko: 후식, emoji: 🍨, lv: A, sentence: "Ice cream for dessert, please." }
+  - { word: kitchen, ko: 부엌, emoji: 🍳, lv: A, sentence: "The chef is in the kitchen." }
+  - { word: chef, ko: 요리사, emoji: 👨‍🍳, lv: A, sentence: "Chef Tony makes great pizza." }
+npcs:
+  - { id: rosa, name: Rosa, sprite: sprite/sp-waiter, pos: [33, 44] }
+  - { id: joe, name: Mr. Joe, sprite: sprite/sp-icecream, pos: [68, 40] }
+  - { id: mina, name: Mina, sprite: sprite/sp-mina, pos: [80, 74] }
+  - { id: leo, name: Leo, sprite: sprite/sp-leo, pos: [64, 92] }
+  - { id: sora, name: Sora, sprite: sprite/sp-sora, pos: [32, 76] }
+  - { id: tony, name: Chef Tony, sprite: sprite/sp-chef, pos: [50, 34] }
+stations:
+  - { id: library, label: 단어 도서관, emoji: 📚, pos: [13, 92], game: word-library-l2 }
+  - { id: jump, label: Listen & Jump, emoji: 🏃, pos: [90, 52], game: listen-jump-l2 }
+  - { id: bridge, label: Word Bridge, emoji: 🌉, pos: [13, 58], game: word-bridge-l2 }
+quests:
+  - id: order
+    title: 피자 가게 첫 손님
+    emoji: 🍕
+    lesson: '1'
+    npc: rosa
+    steps:
+      - { t: talk, who: Rosa, text: "Welcome to Rosa's Pizza! Here's the menu." }
+      - { t: talk, who: Rosa, text: "What would you like to have?" }
+      - t: choose
+        lv: [C]
+        std: 6영01-03
+        cat: 지식·이해
+        q: Rosa 가 한 말 「What would you like to have?」의 뜻은 무엇인가요?
+        options: ['무엇을 먹고 싶니?', '무엇을 좋아하니?', '배가 고프니?']
+        answer: '무엇을 먹고 싶니?'
+      - t: build
+        lv: [B, A]
+        std: 6영02-07
+        q: 손님에게 먹고 싶은 음식을 묻는 질문을 만들어요.
+        answer: "What would you like to have?"
+        extra: [like, do]
+        ko: 무엇을 먹고 싶니?
+      - t: choose
+        std: 6영01-04
+        q: 🔊 Ken 이 주문했어요. Ken 이 먹고 싶은 음식은 무엇인가요?
+        say:
+          - { who: Rosa, text: "What would you like to have?" }
+          - { who: Ken, text: "I'd like to have a potato pizza, please." }
+        script: true
+        options: ['🥔🍕 감자 피자', '🍗🥪 치킨 샌드위치', '🍅🍝 토마토 스파게티']
+        answer: '🥔🍕 감자 피자'
+      - t: choose
+        lv: [B, A]
+        std: 6영01-04
+        q: 🔊 Sora 와 Leo 가 주문했어요. 두 사람이 주문한 음식을 바르게 고른 것은? (대본 없이 들어요)
+        say:
+          - { who: Rosa, text: "What would you like to have?" }
+          - { who: Sora, text: "I'd like to have a fruit salad, please." }
+          - { who: Leo, text: "I'd like to have a beef steak, please." }
+        options: ['Sora — 과일 샐러드, Leo — 소고기 스테이크', 'Sora — 소고기 스테이크, Leo — 과일 샐러드', 'Sora — 과일 샐러드, Leo — 치킨 샌드위치']
+        answer: 'Sora — 과일 샐러드, Leo — 소고기 스테이크'
+      - t: speak
+        std: 6영02-01
+        q: 이제 내 차례! Rosa 에게 치킨 샌드위치를 주문해요.
+        target: "I'd like to have a chicken sandwich, please."
+        who: Sora
+        stress: [chicken, sandwich]
+        tone: down
+        tip: please 앞에서 살짝 쉬고, 부드럽게 말해요.
+      - { t: spell, lv: [C], std: 6영02-02, word: pizza, emoji: 🍕 }
+      - { t: spell, lv: [B, A], std: 6영02-02, word: steak, emoji: 🍖 }
+      - { t: talk, who: Rosa, text: "Here you are. Enjoy your meal!" }
+  - id: taste
+    title: 아이스크림 맛 평가단
+    emoji: 🍦
+    lesson: '2'
+    npc: joe
+    steps:
+      - { t: talk, who: Mr. Joe, text: "Hello! I made new ice cream today." }
+      - { t: talk, who: Mr. Joe, text: "Can you try it? How does it taste?" }
+      - t: choose
+        std: 6영01-03
+        cat: 지식·이해
+        q: 🍋 레몬 아이스크림을 먹었어요. 알맞은 맛 표현을 골라요.
+        options: ["It's sour.", "It's salty.", "It's spicy."]
+        answer: "It's sour."
+        optionsAudio: true
+      - t: choose
+        std: 6영01-04
+        q: 🔊 Mina 가 맛을 말했어요. 초콜릿 아이스크림은 어떤 맛인가요?
+        say:
+          - { who: Mr. Joe, text: "How is the chocolate ice cream?" }
+          - { who: Mina, text: "Mmm, it's sweet. I love it!" }
+        options: ['😋 달콤해요', '🧂 짜요', '🌶️ 매워요']
+        answer: '😋 달콤해요'
+      - t: choose
+        lv: [B, A]
+        std: 6영01-04
+        q: 🔊 Ken 은 어떤 아이스크림을 먹었고, 맛이 어땠나요?
+        say:
+          - { who: Ken, text: "I tried the cheese ice cream." }
+          - { who: Ken, text: "It's a little salty, but it's delicious!" }
+        options: ['치즈 맛 — 조금 짜지만 맛있어요', '치즈 맛 — 너무 시어요', '복숭아 맛 — 달콤해요']
+        answer: '치즈 맛 — 조금 짜지만 맛있어요'
+      - t: build
+        lv: [B, A]
+        std: 6영02-02
+        q: 🌶️ 그림을 보고, 맛을 나타내는 문장을 만들어요.
+        answer: "It's spicy."
+        extra: [sweet]
+        ko: 매워요.
+        listen: false
+      - t: speak
+        std: 6영02-01
+        q: Mr. Joe 에게 맛을 말해 줘요.
+        target: "It's sweet. I love it!"
+        who: Mina
+        stress: [sweet, love]
+        tone: down
+      - { t: spell, lv: [C, B], std: 6영02-02, word: sour, emoji: 😖 }
+      - { t: spell, lv: [A], std: 6영02-02, word: salty, emoji: 🧂 }
+      - { t: talk, who: Mr. Joe, text: "Thank you! You are a great taster." }
+  - id: menu
+    title: 빵집 메뉴판과 ch 소리
+    emoji: 📋
+    lesson: '3'
+    npc: mina
+    steps:
+      - { t: talk, who: Mina, text: "I'm making a menu for the bakery. Can you read it?" }
+      - t: read
+        title: 📋 Mina's Bakery Menu
+        lines:
+          - { text: "Cheese bread — salty and soft" }
+          - { text: "Chocolate cookie — sweet" }
+          - { text: "Chicken sandwich — for lunch" }
+          - { text: "Peach juice — sweet and cold" }
+      - t: choose
+        std: 6영01-04
+        q: 메뉴판에서 점심으로 먹기 좋다고 한 음식은 무엇인가요?
+        options: ['🍗🥪 치킨 샌드위치', '🍫🍪 초콜릿 쿠키', '🍑🧃 복숭아 주스']
+        answer: '🍗🥪 치킨 샌드위치'
+      - t: choose
+        lv: [B, A]
+        std: 6영01-04
+        q: 치즈 빵은 어떤 맛이라고 했나요?
+        options: [salty and soft, sweet and cold, sour]
+        answer: salty and soft
+      - { t: talk, who: Mina, text: "Cheese, chocolate, chicken, lunch, peach. They all have the ch sound!" }
+      - t: choose
+        std: 6영01-02
+        q: 🔊 Mina 가 말한 낱말을 골라요.
+        say: [{ who: Mina, text: "chip" }]
+        options: [chip, ship, sip]
+        answer: chip
+        optionsAudio: true
+        explain: ch 는 「취」처럼 /tʃ/ 소리가 나요.
+      - t: choose
+        lv: [B, A]
+        std: 6영01-02
+        q: ch /tʃ/ 소리가 들어 있지 않은 낱말은 무엇일까요?
+        options: [lunch, peach, shop]
+        answer: shop
+        optionsAudio: true
+      - { t: spell, lv: [C], std: 6영02-02, word: lunch, emoji: 🍱 }
+      - { t: spell, lv: [B, A], std: 6영02-02, word: cheese, emoji: 🧀 }
+      - t: build
+        lv: [A]
+        std: 6영02-03
+        q: 대문자와 문장 부호에 주의하며 주문하는 문장을 만들어요.
+        answer: "I'd like to have a peach juice, please."
+        extra: [i'd, please.]
+        ko: 복숭아 주스 주세요.
+        listen: false
+  - id: snacks
+    title: 세계 간식 여행 엽서
+    emoji: 🌏
+    lesson: '4'
+    npc: leo
+    steps:
+      - { t: talk, who: Leo, text: "My uncle travels around the world. He sent me a postcard about snacks!" }
+      - t: read
+        title: 📮 Snacks Around the World
+        lines:
+          - { text: "Hi, Leo! I'm eating snacks around the world." }
+          - { text: "In Spain, I had churros. They're long and sweet." }
+          - { text: "In Canada, I had poutine. It's fries with cheese. It's salty." }
+          - { text: "In Korea, I had tteokbokki. It's spicy, but I love it!" }
+          - { text: "What's your favorite snack?" }
+      - t: choose
+        std: 6영01-05
+        q: 이 엽서는 무엇에 관한 글인가요?
+        options: ['세계 여러 나라의 간식', '세계 여러 나라의 학교', '세계 여러 나라의 운동']
+        answer: '세계 여러 나라의 간식'
+      - t: choose
+        std: 6영01-04
+        q: 떡볶이(tteokbokki)는 어떤 맛이라고 했나요?
+        options: ['🌶️ 매워요', '🍬 달콤해요', '😖 셔요']
+        answer: '🌶️ 매워요'
+      - t: choose
+        lv: [B, A]
+        std: 6영01-04
+        q: 감자튀김에 치즈를 얹은 짭짤한 간식(poutine)을 먹은 나라는?
+        options: [Canada, Spain, Korea]
+        answer: Canada
+      - t: choose
+        lv: [A]
+        std: 6영01-04
+        q: 츄러스(churros)를 설명한 말로 알맞은 것은?
+        options: [long and sweet, round and salty, hot and spicy]
+        answer: long and sweet
+      - t: choose
+        std: 6영01-10
+        cat: 가치·태도
+        q: 다른 나라 친구가 처음 보는 간식을 소개해 줬어요. 알맞은 태도는?
+        options: ['어떤 맛인지 궁금해하며 이야기를 들어요.', '이상한 음식이라고 놀려요.']
+        answer: '어떤 맛인지 궁금해하며 이야기를 들어요.'
+        explain: 나라마다 즐겨 먹는 간식이 달라요. 서로의 음식 문화를 존중해요.
+      - { t: talk, who: Leo, text: "My favorite snack is tteokbokki. What about you?" }
+  - id: comic
+    title: 주문 만화 완성하기
+    emoji: 💬
+    lesson: '5'
+    npc: sora
+    steps:
+      - { t: talk, who: Sora, text: "I'm drawing a comic about a restaurant. Can you help me write the words?" }
+      - t: read
+        title: 💬 Sora's Comic
+        lines:
+          - { who: Rosa, text: "What would you like to have?" }
+          - { who: Ken, text: "I'd like to have tomato spaghetti, please." }
+          - { who: Ken, text: "Wow, it's delicious!" }
+      - t: build
+        lv: [C, B]
+        std: 6영02-03
+        q: 만화 첫 칸의 질문을 대문자와 물음표에 주의하며 만들어요.
+        answer: "What would you like to have?"
+        extra: [what]
+        ko: 무엇을 먹고 싶니?
+      - t: write
+        std: 6영02-08
+        q: Sora 의 만화를 참고하여 나의 주문 만화 대사를 써요.
+        model: "What would you like to have? — I'd like to have tomato spaghetti, please. — Wow, it's delicious!"
+        frame: "What would you like to have? — I'd like to have {food}, please. — Wow, it's {taste}!"
+        title: 💬 나의 주문 만화
+        fields:
+          - { id: food, label: 주문할 음식, bank: [a potato pizza, a chicken sandwich, a beef steak, tomato spaghetti, a fruit salad, lemon juice] }
+          - { id: taste, label: 맛, bank: [sweet, salty, sour, spicy, delicious] }
+      - { t: talk, who: Sora, text: "Great! Our comic is finished." }
+boss:
+  title: 요리 대회 — 주문 왕
+  emoji: 👨‍🍳
+  npc: tony
+  intro: Chef Tony 의 요리 대회가 열렸어요! 손님들의 주문을 잘 듣고, 맛을 표현하고, 영어로 주문해서 음식 거리의 「주문 왕」이 되어 보세요. 하트 3개를 지켜요.
+  win: 👑 음식 거리의 주문 왕!
+  steps:
+    - { t: talk, who: Chef Tony, text: "Welcome to the cooking contest! Listen to the orders carefully." }
+    - t: choose
+      std: 6영01-04
+      q: 🔊 첫 번째 손님의 주문이에요. 무엇을 만들어야 할까요?
+      say: [{ who: Mina, text: "I'd like to have tomato spaghetti, please." }]
+      options: ['🍅🍝 토마토 스파게티', '🥔🍕 감자 피자', '🍎🥗 과일 샐러드']
+      answer: '🍅🍝 토마토 스파게티'
+    - t: choose
+      std: 6영01-04
+      q: 🔊 두 번째 손님의 주문이에요. 무엇을 만들어야 할까요?
+      say: [{ who: Leo, text: "I'd like to have lemon juice, please." }]
+      options: ['🍋🧃 레몬주스', '🍑🧃 복숭아 주스', '💧 물']
+      answer: '🍋🧃 레몬주스'
+    - t: choose
+      lv: [C]
+      std: 6영01-03
+      cat: 지식·이해
+      q: 손님이 「It's salty.」라고 말했어요. 무슨 뜻인가요?
+      options: ['짜요.', '달아요.', '셔요.']
+      answer: '짜요.'
+    - t: build
+      lv: [B, A]
+      std: 6영02-07
+      q: 요리사가 되어 손님에게 먹고 싶은 음식을 물어요.
+      answer: "What would you like to have?"
+      extra: [like, do]
+    - t: choose
+      std: 6영01-02
+      q: 🔊 들은 낱말을 골라요.
+      say: [{ who: Chef Tony, text: "cheese" }]
+      options: [cheese, she's, these]
+      answer: cheese
+      optionsAudio: true
+    - { t: spell, lv: [C], std: 6영02-02, word: salad, emoji: 🥗 }
+    - { t: spell, lv: [B], std: 6영02-02, word: sweet, emoji: 🍬 }
+    - { t: spell, lv: [A], std: 6영02-02, word: spaghetti, emoji: 🍝 }
+    - t: choose
+      lv: [A]
+      std: 6영01-04
+      q: 🔊 대화를 듣고, 맞는 것을 골라요.
+      say:
+        - { who: Chef Tony, text: "What would you like to have, Ken?" }
+        - { who: Ken, text: "I'd like to have a beef steak and a fruit salad, please." }
+        - { who: Ken, text: "The salad is sweet and sour. I like it!" }
+      options: ['Ken 은 스테이크와 과일 샐러드를 주문했고, 샐러드는 새콤달콤해요.', 'Ken 은 피자와 샐러드를 주문했고, 샐러드는 짜요.', 'Ken 은 스테이크만 주문했고, 샐러드를 싫어해요.']
+      answer: 'Ken 은 스테이크와 과일 샐러드를 주문했고, 샐러드는 새콤달콤해요.'
+    - { t: talk, who: Chef Tony, text: "Excellent! You are the king of orders!" }

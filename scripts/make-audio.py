@@ -16,7 +16,7 @@ if not todo:
 k = Kokoro(os.path.join(HOME, 'kokoro-v1.0.int8.onnx'), os.path.join(HOME, 'voices-v1.0.bin'))
 os.makedirs('public/audio/en', exist_ok=True)
 for i, w in enumerate(todo, 1):
-    samples, sr = k.create(w['text'], voice=w['voice'], speed=SPEED, lang='en-us')
+    samples, sr = k.create(w['text'], voice=w['voice'], speed=SPEED, lang='en-gb' if w['voice'].startswith('b') else 'en-us')
     out = f"public/audio/en/{w['key']}.mp3"
     with tempfile.NamedTemporaryFile(suffix='.wav') as tmp:
         sf.write(tmp.name, samples, sr)

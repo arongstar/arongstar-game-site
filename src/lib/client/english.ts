@@ -61,6 +61,7 @@ function playOne(l: Line, rate: number, my: number): Promise<void> {
 
 export async function playLines(lines: Line[], rate = 1, onLine?: (i: number) => void) {
   stopAudio();
+  (window as any).__lastSaid = lines[0]?.text; // 자동 테스트용
   const my = token;
   for (let i = 0; i < lines.length; i++) {
     if (my !== token) return;

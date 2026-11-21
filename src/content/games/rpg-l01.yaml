@@ -1,0 +1,364 @@
+# 영어 RPG 「Lingo Island 대모험」 — Lesson 1 지역: Lingo 학교
+# 대화·글·등장인물은 이 사이트에서 새로 썼어요. 의사소통 기능·낱말은 동아출판(정은숙 외) 6학년 Lesson 1 을 따랐어요.
+template: region
+unit: eng-6-l01
+order: 1
+title: Lingo 학교 — 새 학년 첫날
+emoji: 🏫
+area: Lingo 학교
+summary: 영어 RPG 첫 번째 지역이에요. 학교 친구들에게 퀘스트를 받아 학년·동아리를 묻고 답하고, 낱말 요정을 친구로 만들고, 학교 퀴즈 대회에 도전해요.
+story: Lingo 섬에 도착한 첫날! 학교 곳곳의 친구들이 도움을 기다리고 있어요. ❗ 표시가 있는 친구에게 말을 걸어 퀘스트를 해결해 보세요.
+lessons: ['1', '2', '3', '4', '5', '6']
+standards: [6영01-02, 6영01-03, 6영01-04, 6영01-05, 6영01-10, 6영02-01, 6영02-02, 6영02-03, 6영02-07, 6영02-08]
+minutes: 40
+teacherGuide:
+  - 차시마다 퀘스트가 하나씩 있어요(1차시 학년 → 2차시 동아리 → 3차시 읽기·파닉스 th → 4차시 세계 친구 글 → 5차시 자기소개 글). 6차시에는 김 선생님의 「학교 퀴즈 대회」(지역 대장)에 도전해요.
+  - 🧭 살펴보기는 대본·우리말 도움이 많고, 🔎 조사하기는 대본 없이 듣고 문장을 만들며, 🏅 분석하기는 소리만 듣고 철자·말하기까지 해요. 단계마다 기록이 따로 저장돼요.
+  - ✨ 낱말 요정은 지도 곳곳에 나타나요. 세 문제 중 두 개를 맞히면 친구가 돼 도감에 모여요. 다른 지역의 낱말도 복습 문제로 섞여 나와요.
+  - 학생 기기마다 기록이 저장돼요. ⚙️ 설정에서 이 지역만, 또는 영어 RPG 전체를 처음부터 다시 할 수 있어요(다른 교과 기록은 그대로).
+map: illust/map-school
+start: [52, 88]
+spots: [[50, 62], [30, 72], [58, 34], [72, 86], [45, 40], [88, 70]]
+fairyStd: 6영01-03
+words:
+  - { word: first, ko: 첫 번째, emoji: 1️⃣, lv: C, sentence: "I'm in the first grade." }
+  - { word: second, ko: 두 번째, emoji: 2️⃣, lv: C, sentence: "My cousin is in the second grade." }
+  - { word: third, ko: 세 번째, emoji: 3️⃣, lv: C, sentence: "Ben is in the third grade." }
+  - { word: fourth, ko: 네 번째, emoji: 4️⃣, lv: C, sentence: "Ken is in the fourth grade." }
+  - { word: fifth, ko: 다섯 번째, emoji: 5️⃣, lv: C, sentence: "Amara is in the fifth grade." }
+  - { word: sixth, ko: 여섯 번째, emoji: 6️⃣, lv: C, sentence: "I'm in the sixth grade." }
+  - { word: grade, ko: 학년, emoji: 🏫, lv: C, sentence: "What grade are you in?" }
+  - { word: club, ko: 동아리, emoji: 🎪, lv: C, sentence: "What club are you in?" }
+  - { word: book, ko: 책, emoji: 📚, lv: C, sentence: "I'm in the book club." }
+  - { word: art, ko: 미술, emoji: 🎨, lv: C, sentence: "Sora is in the art club." }
+  - { word: dance, ko: "춤, 춤추다", emoji: 💃, lv: C, sentence: "Amara is in the dance club." }
+  - { word: soccer, ko: 축구, emoji: ⚽, lv: C, sentence: "Ken plays soccer every day." }
+  - { word: school, ko: 학교, emoji: 🏫, lv: C, sentence: "I like my school." }
+  - { word: friend, ko: 친구, emoji: 🤝, lv: C, sentence: "Sora is my friend." }
+  - { word: teacher, ko: 선생님, emoji: 👩‍🏫, lv: C, sentence: "Ms. Kim is my teacher." }
+  - { word: history, ko: 역사, emoji: 🏛️, lv: B, sentence: "Leo is in the history club." }
+  - { word: cousin, ko: 사촌, emoji: 👫, lv: B, sentence: "This is my cousin, Ben." }
+  - { word: food, ko: 음식, emoji: 🍱, lv: B, sentence: "I like Korean food." }
+  - { word: child, ko: "아이, 어린이", emoji: 🧒, lv: B, sentence: "She is a happy child." }
+  - { word: activity, ko: 활동, emoji: 🤸, lv: B, sentence: "Dancing is a fun activity." }
+  - { word: cooking, ko: 요리, emoji: 🍳, lv: B, sentence: "Mina is in the cooking club." }
+  - { word: music, ko: 음악, emoji: 🎵, lv: B, sentence: "I'm in the music club." }
+  - { word: science, ko: 과학, emoji: 🔬, lv: B, sentence: "I like science." }
+  - { word: classroom, ko: 교실, emoji: 🚪, lv: B, sentence: "This is my classroom." }
+  - { word: library, ko: 도서관, emoji: 📖, lv: B, sentence: "Ben is in the library." }
+  - { word: student, ko: 학생, emoji: 🧑‍🎓, lv: B, sentence: "I'm a student." }
+  - { word: name, ko: 이름, emoji: 🏷️, lv: B, sentence: "My name is Mina." }
+  - { word: drawing, ko: 그림 그리기, emoji: 🖍️, lv: B, sentence: "Sora likes drawing." }
+  - { word: Korea, ko: 한국, emoji: 🇰🇷, lv: B, sentence: "I live in Korea." }
+  - { word: Canada, ko: 캐나다, emoji: 🇨🇦, lv: B, sentence: "Leo is from Canada." }
+  - { word: math, ko: 수학, emoji: ➗, lv: A, sentence: "I like math." }
+  - { word: think, ko: 생각하다, emoji: 🤔, lv: A, sentence: "I think so." }
+  - { word: thank, ko: 감사하다, emoji: 🙏, lv: A, sentence: "Thank you!" }
+  - { word: three, ko: "셋, 3", emoji: 3️⃣, lv: A, sentence: "I have three friends." }
+  - { word: birthday, ko: 생일, emoji: 🎂, lv: A, sentence: "Happy birthday!" }
+  - { word: badminton, ko: 배드민턴, emoji: 🏸, lv: A, sentence: "I'm in the badminton club." }
+  - { word: guitar, ko: 기타, emoji: 🎸, lv: A, sentence: "I play the guitar." }
+  - { word: member, ko: "회원, 구성원", emoji: 🙋, lv: A, sentence: "I'm a member of the book club." }
+  - { word: country, ko: 나라, emoji: 🗺️, lv: A, sentence: "What country are you from?" }
+  - { word: world, ko: 세계, emoji: 🌏, lv: A, sentence: "Kids around the world go to school." }
+  - { word: favorite, ko: 가장 좋아하는, emoji: 💖, lv: A, sentence: "Art is my favorite subject." }
+  - { word: introduce, ko: 소개하다, emoji: 🎤, lv: A, sentence: "Let me introduce myself." }
+npcs:
+  - { id: ken, name: Ken, sprite: sprite/sp-ken, pos: [69, 70] }
+  - { id: amara, name: Amara, sprite: sprite/sp-amara, pos: [63, 50] }
+  - { id: ben, name: Ben, sprite: sprite/sp-ben, pos: [25, 54] }
+  - { id: leo, name: Leo, sprite: sprite/sp-leo, pos: [33, 36] }
+  - { id: mina, name: Mina, sprite: sprite/sp-mina, pos: [79, 31] }
+  - { id: sora, name: Sora, sprite: sprite/sp-sora, pos: [40, 52] }
+  - { id: mskim, name: Ms. Kim, sprite: sprite/sp-mskim, pos: [52, 22] }
+stations:
+  - { id: library, label: 단어 도서관, emoji: 📚, pos: [15, 30], game: word-library }
+  - { id: track, label: Listen & Jump, emoji: 🏃, pos: [85, 46], game: listen-jump }
+  - { id: stream, label: Word Bridge, emoji: 🌉, pos: [12, 64], game: word-bridge }
+quests:
+  - id: grade
+    title: 새 친구의 학년 알아내기
+    emoji: 🔍
+    lesson: '1'
+    npc: ken
+    steps:
+      - { t: talk, who: Ken, text: "Hi! I'm Ken. I'm new here." }
+      - { t: talk, who: Ken, text: "I want to make friends. Can you help me?" }
+      - t: choose
+        lv: [C]
+        std: 6영01-03
+        cat: 지식·이해
+        q: Ken 이 어떤 말을 배우고 싶어 해요. 「너는 몇 학년이니?」에 알맞은 영어를 골라요.
+        options: ["What grade are you in?", "What club are you in?", "How are you?"]
+        answer: "What grade are you in?"
+        optionsAudio: true
+      - t: build
+        lv: [B, A]
+        std: 6영02-07
+        q: 낱말 블록으로 학년을 묻는 질문을 만들어요.
+        answer: "What grade are you in?"
+        extra: [club]
+        ko: 너는 몇 학년이니?
+      - t: choose
+        std: 6영01-04
+        q: 질문하자 Ken 이 대답했어요. Ken 은 몇 학년인가요?
+        say: [{ who: Ken, text: "I'm in the fourth grade." }]
+        options: ['3학년', '4학년', '6학년']
+        answer: '4학년'
+      - t: choose
+        lv: [B, A]
+        std: 6영01-04
+        q: 이번에는 Sora 와 Ben 의 대화예요. Ben 은 몇 학년인가요?
+        say:
+          - { who: Sora, text: "What grade are you in, Ben?" }
+          - { who: Ben, text: "I'm in the third grade. What about you?" }
+          - { who: Sora, text: "I'm in the sixth grade." }
+        options: ['2학년', '3학년', '6학년']
+        answer: '3학년'
+      - t: speak
+        std: 6영02-01
+        q: 나의 학년을 Ken 에게 말해 봐요. 들어 보고 따라 말해요.
+        target: "I'm in the sixth grade."
+        who: Sora
+        stress: [sixth, grade]
+        tone: down
+        tip: sixth 의 th 는 혀끝을 이 사이에 살짝 물고 바람을 내보내요.
+      - { t: spell, lv: [B, A], std: 6영02-02, word: sixth, emoji: 6️⃣ }
+      - { t: talk, who: Ken, text: "Thank you! Now I know my new friends." }
+  - id: club
+    title: 동아리 박람회 안내하기
+    emoji: 🎪
+    lesson: '2'
+    npc: amara
+    steps:
+      - { t: talk, who: Amara, text: "Welcome to the club fair!" }
+      - { t: talk, who: Amara, text: "Let's find out what club everyone is in." }
+      - t: choose
+        std: 6영01-04
+        q: Amara 는 무슨 동아리인가요?
+        say:
+          - { who: Leo, text: "What club are you in, Amara?" }
+          - { who: Amara, text: "I'm in the dance club." }
+        script: true
+        options: ['💃 춤 동아리', '⚽ 축구 동아리', '📚 책 동아리']
+        answer: '💃 춤 동아리'
+      - t: choose
+        lv: [C, B]
+        std: 6영01-03
+        cat: 지식·이해
+        q: 🎨 그림에 알맞은 동아리를 골라요.
+        options: [art club, book club, soccer club]
+        answer: art club
+        optionsAudio: true
+      - t: choose
+        lv: [B, A]
+        std: 6영01-04
+        q: Mina 는 무슨 동아리인가요? (대본 없이 들어요)
+        say:
+          - { who: Ben, text: "Mina, what club are you in?" }
+          - { who: Mina, text: "I'm in the cooking club. I make cookies." }
+        options: ['🍳 요리 동아리', '🎵 음악 동아리', '🏸 배드민턴 동아리']
+        answer: '🍳 요리 동아리'
+      - t: build
+        std: 6영02-07
+        q: 동아리를 묻는 질문을 만들어요.
+        answer: "What club are you in?"
+        extra: [grade]
+        ko: 너는 무슨 동아리니?
+      - t: build
+        lv: [A]
+        std: 6영02-07
+        q: 소리만 듣고, Leo 가 동아리를 대답하는 문장을 만들어요.
+        answer: "I'm in the history club."
+        extra: [art]
+      - t: speak
+        std: 6영02-01
+        q: Amara 에게 동아리를 물어봐요. 끝을 내려 말해요.
+        target: "What club are you in?"
+        who: Leo
+        stress: [club]
+        tone: down
+      - { t: talk, who: Amara, text: "Great job! The club fair is so much fun." }
+  - id: thsound
+    title: 도서관 게시판과 th 소리
+    emoji: 📌
+    lesson: '3'
+    npc: ben
+    steps:
+      - { t: talk, who: Ben, text: "Look! There's a notice on the library board." }
+      - t: read
+        title: 📌 Book Club News
+        lines:
+          - { text: "Are you in the third grade or the fourth grade?" }
+          - { text: "Do you like books?" }
+          - { text: "Come to the book club!" }
+          - { text: "We meet in the library on Thursday." }
+      - t: choose
+        std: 6영01-04
+        q: 책 동아리는 어디에서 모이나요?
+        options: ['📖 도서관', '🚪 교실', '⚽ 운동장']
+        answer: '📖 도서관'
+      - t: choose
+        lv: [B, A]
+        std: 6영01-04
+        q: 책 동아리는 무슨 요일에 모이나요?
+        options: [Monday, Thursday, Friday]
+        answer: Thursday
+      - { t: talk, who: Ben, text: "Listen! Third, Thursday, thank you. They all have the th sound." }
+      - t: choose
+        std: 6영01-02
+        q: 🔊 Ben 이 말한 낱말을 골라요.
+        say: [{ who: Ben, text: "three" }]
+        options: [three, tree, free]
+        answer: three
+        optionsAudio: true
+        explain: three 는 혀끝을 이 사이에 두고 내는 th /θ/ 소리로 시작해요.
+      - t: choose
+        lv: [B, A]
+        std: 6영01-02
+        q: th /θ/ 소리가 들어 있지 않은 낱말은 무엇일까요?
+        options: [math, think, sing]
+        answer: sing
+        optionsAudio: true
+      - { t: spell, lv: [C], std: 6영02-02, word: math, emoji: ➗ }
+      - { t: spell, lv: [B, A], std: 6영02-02, word: third, emoji: 3️⃣ }
+      - t: build
+        lv: [A]
+        std: 6영02-03
+        q: 대문자와 문장 부호에 주의하며 게시판 문장을 완성해요.
+        answer: "We meet in the library on Thursday."
+        extra: [thursday, we]
+        listen: false
+        ko: 우리는 목요일에 도서관에서 만나요.
+  - id: letter
+    title: 세계 친구의 편지 읽기
+    emoji: ✉️
+    lesson: '4'
+    npc: leo
+    steps:
+      - { t: talk, who: Leo, text: "I got a letter from my cousin Max. Can you read it with me?" }
+      - t: read
+        title: ✉️ A Letter from Max
+        lines:
+          - { who: Max, text: "Hi, Leo! How are you?" }
+          - { who: Max, text: "I'm in the fifth grade now." }
+          - { who: Max, text: "In my school, fifth graders are the oldest students." }
+          - { who: Max, text: "I'm in the science club. We make small robots." }
+          - { who: Max, text: "What grade are you in? Write back soon!" }
+      - t: choose
+        std: 6영01-05
+        q: 이 편지는 무엇에 관한 글인가요?
+        options: ['Max 의 학교생활 소개', 'Max 의 여행 계획', 'Max 의 생일 초대']
+        answer: 'Max 의 학교생활 소개'
+      - t: choose
+        std: 6영01-04
+        q: Max 는 무슨 동아리인가요?
+        options: ['🔬 과학 동아리', '🎨 미술 동아리', '🏛️ 역사 동아리']
+        answer: '🔬 과학 동아리'
+      - t: choose
+        lv: [B, A]
+        std: 6영01-04
+        q: Max 는 동아리에서 무엇을 만드나요?
+        options: [robots, cookies, pictures]
+        answer: robots
+      - t: choose
+        std: 6영01-10
+        cat: 가치·태도
+        q: Max 의 학교에서는 몇 학년이 가장 높은 학년인가요?
+        options: ['5학년', '6학년']
+        answer: '5학년'
+        explain: 나라와 학교마다 초등학교에서 가장 높은 학년이 달라요. 우리와 다른 점을 알고 존중해요.
+      - t: build
+        lv: [B, A]
+        std: 6영02-07
+        q: Max 에게 답장을 써요. 학년을 묻는 질문에 대답하는 문장을 만들어요.
+        answer: "I'm in the sixth grade."
+        extra: [fifth]
+        ko: 나는 6학년이야.
+  - id: profile
+    title: 나를 소개하는 카드 만들기
+    emoji: 🪪
+    lesson: '5'
+    npc: mina
+    steps:
+      - { t: talk, who: Mina, text: "We're making name cards for the welcome party!" }
+      - { t: talk, who: Mina, text: "Hello! I'm Mina. I'm in the sixth grade. I'm in the cooking club. I like cookies." }
+      - t: choose
+        lv: [C]
+        std: 6영01-04
+        q: Mina 가 좋아하는 것은 무엇인가요?
+        options: ['🍪 쿠키', '⚽ 축구', '🎸 기타']
+        answer: '🍪 쿠키'
+      - t: build
+        lv: [B, A]
+        std: 6영02-03
+        q: 대문자와 문장 부호에 주의하며 문장을 만들어요.
+        answer: "I'm in the cooking club."
+        extra: [i'm, cooking.]
+        ko: 나는 요리 동아리야.
+        listen: false
+      - t: write
+        std: 6영02-08
+        q: Mina 의 카드를 참고하여 나를 소개하는 카드를 써요.
+        model: "Hello! I'm Mina. I'm in the sixth grade. I'm in the cooking club. I like cookies."
+        frame: "Hello! I'm {name}. I'm in the {grade} grade. I'm in the {club} club. I like {like}."
+        title: 🪪 나의 이름 카드
+        fields:
+          - { id: name, label: 이름 (영어로), bank: [] }
+          - { id: grade, label: 학년, bank: [fourth, fifth, sixth] }
+          - { id: club, label: 동아리, bank: [book, art, dance, soccer, cooking, music, science, history, badminton] }
+          - { id: like, label: 좋아하는 것, bank: [books, drawing, dancing, soccer, cookies, music, robots, math] }
+      - { t: talk, who: Mina, text: "What a nice card! See you at the party." }
+boss:
+  title: 학교 영어 퀴즈 대회
+  emoji: 🏆
+  npc: mskim
+  intro: 김 선생님이 여는 학교 영어 퀴즈 대회예요! 학년·동아리를 묻고 답하는 말, th 소리, 낱말 철자 문제가 나와요. 하트 3개를 지키며 끝까지 가 보세요.
+  win: 🏆 학교 퀴즈 대회 우승!
+  steps:
+    - { t: talk, who: Ms. Kim, text: "Welcome to the quiz show! Are you ready?" }
+    - t: choose
+      std: 6영01-04
+      q: 🔊 Leo 는 무슨 동아리인가요?
+      say: [{ who: Leo, text: "I'm in the history club." }]
+      options: ['🏛️ 역사 동아리', '🎵 음악 동아리', '🎨 미술 동아리']
+      answer: '🏛️ 역사 동아리'
+    - t: choose
+      std: 6영01-04
+      q: 🔊 Amara 는 몇 학년인가요?
+      say: [{ who: Amara, text: "I'm in the fifth grade." }]
+      options: ['4학년', '5학년', '6학년']
+      answer: '5학년'
+    - t: choose
+      lv: [C]
+      std: 6영01-03
+      cat: 지식·이해
+      q: 「What club are you in?」의 뜻은 무엇인가요?
+      options: ['너는 무슨 동아리니?', '너는 몇 학년이니?', '너는 어디에 사니?']
+      answer: '너는 무슨 동아리니?'
+    - t: build
+      lv: [B, A]
+      std: 6영02-07
+      q: 학년을 묻는 질문을 만들어요.
+      answer: "What grade are you in?"
+      extra: [club, are]
+    - t: choose
+      std: 6영01-02
+      q: 🔊 들은 낱말을 골라요.
+      say: [{ who: Ms. Kim, text: "think" }]
+      options: [think, sink, pink]
+      answer: think
+      optionsAudio: true
+    - { t: spell, lv: [C], std: 6영02-02, word: club, emoji: 🎪 }
+    - { t: spell, lv: [B], std: 6영02-02, word: grade, emoji: 🏫 }
+    - { t: spell, lv: [A], std: 6영02-02, word: history, emoji: 🏛️ }
+    - t: choose
+      lv: [A]
+      std: 6영01-04
+      q: 🔊 대화를 듣고, 동아리를 바르게 짝지은 것을 골라요.
+      say:
+        - { who: Ms. Kim, text: "Sora, what club are you in?" }
+        - { who: Sora, text: "I'm in the art club. Ben is in the book club." }
+      options: ['Sora — 미술, Ben — 책', 'Sora — 책, Ben — 미술', 'Sora — 춤, Ben — 책']
+      answer: 'Sora — 미술, Ben — 책'
+    - { t: talk, who: Ms. Kim, text: "Wonderful! You are the quiz champion!" }

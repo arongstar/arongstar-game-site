@@ -229,6 +229,19 @@ const stage = z.object({
   steps: z.array(step).min(1),
 });
 
+// ───────── 영어 RPG: 퀘스트·대장 도전의 한 장면 ─────────
+const tiers = z.array(level).default(['C', 'B', 'A']); // 이 장면이 나오는 단계
+const say = z.array(z.object({ who: z.string().optional(), text: z.string() }));
+const rpgStep = z.discriminatedUnion('t', [
+  z.object({ t: z.literal('talk'), who: z.string(), text: z.string(), lv: tiers }), // 주민이 말해요 (소리)
+  z.object({ t: z.literal('read'), lv: tiers, title: z.string().optional(), lines: say }), // 읽을 글 (소리와 함께)
+  z.object({ t: z.literal('choose'), lv: tiers, std: z.string(), cat: category.default('과정·기능'), q: z.string(), say: say.optional(), script: z.boolean().default(false), options: z.array(z.string()).min(2), answer: z.string(), optionsAudio: z.boolean().default(false), explain: z.string().optional() }),
+  z.object({ t: z.literal('build'), lv: tiers, std: z.string(), cat: category.default('과정·기능'), q: z.string(), answer: z.string(), extra: z.array(z.string()).default([]), ko: z.string().optional(), listen: z.boolean().default(true) }),
+  z.object({ t: z.literal('spell'), lv: tiers, std: z.string(), cat: category.default('과정·기능'), q: z.string().optional(), word: z.string(), emoji: z.string().optional() }),
+  z.object({ t: z.literal('speak'), lv: tiers, std: z.string(), cat: category.default('과정·기능'), q: z.string(), target: z.string(), who: z.string().optional(), stress: z.array(z.string()).default([]), tone: z.enum(['up', 'down']).optional(), tip: z.string().optional() }),
+  z.object({ t: z.literal('write'), lv: tiers, std: z.string(), cat: category.default('과정·기능'), q: z.string(), model: z.string(), frame: z.string(), fields: z.array(z.object({ id: z.string(), label: z.string(), bank: z.array(z.string()).default([]) })).min(1), title: z.string().default('✍️ 나의 글 카드') }),
+]);
+
 const quizItem = z.object({
   lv: level,
   q: z.string(),
@@ -316,6 +329,23 @@ const games = defineCollection({
         hello: z.string(),
       })).min(2),
       stations: z.array(z.object({ id: z.string(), label: z.string(), emoji: z.string(), pos: z.tuple([z.number(), z.number()]), game: z.string() })).default([]),
+    }),
+    // 영어 RPG 지역 (Lesson 하나 = 지역 하나)
+    z.object({
+      template: z.literal('region'),
+      mode: z.literal('solo').default('solo'),
+      ...gameBase,
+      order: z.number().int(), // Lesson 번호 (이야기 순서)
+      area: z.string(), // 지역 이름
+      map: z.string(),
+      start: z.tuple([z.number(), z.number()]),
+      spots: z.array(z.tuple([z.number(), z.number()])).min(3), // 낱말 요정이 나타나는 자리
+      fairyStd: z.string(),
+      words: z.array(z.object({ word: z.string(), ko: z.string(), emoji: z.string(), lv: level, sentence: z.string().optional() })).min(10),
+      npcs: z.array(z.object({ id: z.string(), name: z.string(), sprite: z.string(), pos: z.tuple([z.number(), z.number()]) })).min(1),
+      quests: z.array(z.object({ id: z.string(), title: z.string(), emoji: z.string(), lesson: z.string(), npc: z.string(), steps: z.array(rpgStep).min(1) })).min(1),
+      stations: z.array(z.object({ id: z.string(), label: z.string(), emoji: z.string(), pos: z.tuple([z.number(), z.number()]), game: z.string() })).default([]),
+      boss: z.object({ title: z.string(), emoji: z.string(), npc: z.string(), intro: z.string(), win: z.string(), steps: z.array(rpgStep).min(3) }),
     }),
     // 영어 미니게임: 들은 말이 적힌 길로 점프
     z.object({

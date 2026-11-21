@@ -26,6 +26,13 @@ const soon = SUBJECTS.filter((s) => !bySubject.has(s));
     [...bySubject.entries()].map(([subject, list]) => (
       <section class="subject-block">
         <h2>📘 {subject}</h2>
+        {subject === '영어' && (
+          <a class="rpg-banner" href={url('/rpg/')}>
+            <span class="rb-emoji" aria-hidden="true">🏝️</span>
+            <span><b>영어 RPG — Lingo Island 대모험</b><small>내 캐릭터로 섬을 여행하며 Lesson 1~12 를 공부해요. 퀘스트 · 낱말 요정 · 지역 대장 도전!</small></span>
+            <span class="btn primary small">▶ 모험 시작</span>
+          </a>
+        )}
         <div class="unit-grid">
           {list.map((u) => (
             <a class="unit-card" href={url(`/u/${u.id}/`)}>
