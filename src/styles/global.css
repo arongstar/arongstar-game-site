@@ -878,3 +878,20 @@ textarea:focus, input[type='text']:focus { outline: none; border-color: var(--pr
 .rpg .fun-top { padding: 6px 12px; }
 .rpg .adv-map { width: min(100%, calc((100vh - 250px) * 1.5)); }
 .npc.met .npc-mark { font-size: clamp(0.7rem, 1.6vw, 1.1rem); top: -8%; }
+/* 영어 RPG 직접 조작 */
+.rpg .adv-map { cursor: default; outline: none; }
+.rpg .adv-map:focus-visible { box-shadow: 0 0 0 4px var(--primary), 0 6px 20px rgb(0 0 0 / 0.12); }
+.rpg .me { transition: none; z-index: 4; }
+.npc.near img, .station.near, .fairy.near img { filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 10px #f2c14e); }
+.station.near { border-color: #e07b39; transform: translate(-50%, -50%) scale(1.08); }
+.near-tip { position: absolute; transform: translate(-50%, -260%); z-index: 200; background: #1d2a2f; color: #fff; font-weight: 800; font-size: clamp(0.65rem, 1.4vw, 0.95rem); padding: 3px 10px; border-radius: 999px; white-space: nowrap; pointer-events: none; }
+.near-tip::after { content: ''; position: absolute; left: 50%; bottom: -6px; transform: translateX(-50%); border: 6px solid transparent; border-bottom: 0; border-top-color: #1d2a2f; }
+.rpg-pad { position: absolute; inset: auto 0 0 0; height: 0; z-index: 201; pointer-events: none; }
+.joy { position: absolute; left: 3%; bottom: 14px; width: clamp(96px, 13vw, 150px); aspect-ratio: 1; border-radius: 50%; background: rgb(255 255 255 / 0.45); border: 3px solid rgb(255 255 255 / 0.85); box-shadow: 0 4px 14px rgb(0 0 0 / 0.2); pointer-events: auto; touch-action: none; display: flex; align-items: center; justify-content: center; }
+.joy-knob { width: 44%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff, #cfe3ef); border: 3px solid #5bb0e8; box-shadow: 0 3px 8px rgb(0 0 0 / 0.25); }
+.act-btn { position: absolute; right: 3%; bottom: 20px; width: clamp(70px, 9vw, 104px); aspect-ratio: 1; border-radius: 50%; font-size: clamp(1.8rem, 3.6vw, 2.8rem); background: #f2a516; border: 4px solid #fff; box-shadow: 0 5px 0 #b8770d, 0 6px 16px rgb(0 0 0 / 0.25); pointer-events: auto; cursor: pointer; touch-action: manipulation; }
+.act-btn:disabled { background: #d8d2c4; box-shadow: 0 5px 0 #a9a293; opacity: 0.75; cursor: default; }
+.act-btn:not(:disabled) { animation: glow 1s ease-in-out infinite alternate; }
+.act-btn:active:not(:disabled) { transform: translateY(4px); box-shadow: 0 1px 0 #b8770d; }
+@media not (any-pointer: coarse) { .joy { display: none; } }
+.adv-map, .world-map { isolation: isolate; }

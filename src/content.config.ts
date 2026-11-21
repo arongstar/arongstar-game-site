@@ -341,6 +341,7 @@ const games = defineCollection({
       start: z.tuple([z.number(), z.number()]),
       spots: z.array(z.tuple([z.number(), z.number()])).min(3), // 낱말 요정이 나타나는 자리
       fairyStd: z.string(),
+      walls: z.array(z.tuple([z.number(), z.number(), z.number(), z.number()])).default([]), // 걸어갈 수 없는 곳 [x1, y1, x2, y2] (발 위치, %)
       words: z.array(z.object({ word: z.string(), ko: z.string(), emoji: z.string(), lv: level, sentence: z.string().optional() })).min(10),
       npcs: z.array(z.object({ id: z.string(), name: z.string(), sprite: z.string(), pos: z.tuple([z.number(), z.number()]) })).min(1),
       quests: z.array(z.object({ id: z.string(), title: z.string(), emoji: z.string(), lesson: z.string(), npc: z.string(), steps: z.array(rpgStep).min(1) })).min(1),

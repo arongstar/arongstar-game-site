@@ -18,7 +18,9 @@ teacherGuide:
   - 학생 기기마다 기록이 저장돼요. ⚙️ 설정에서 이 지역만, 또는 영어 RPG 전체를 처음부터 다시 할 수 있어요(다른 교과 기록은 그대로).
 map: illust/map-school
 start: [52, 88]
-spots: [[50, 62], [30, 72], [58, 34], [72, 86], [45, 40], [88, 70]]
+spots: [[50, 62], [28, 60], [58, 26], [66, 78], [50, 51], [24, 44]]
+# 걸어갈 수 없는 곳 (건물·연못·시냇물·담장)
+walls: [[21, 0, 91, 23], [4, 8, 22, 32], [18, 67, 40, 86], [0, 53, 12, 60], [10, 60, 18, 79], [0, 89, 39, 100], [63, 89, 100, 100]]
 fairyStd: 6영01-03
 words:
   - { word: first, ko: 첫 번째, emoji: 1️⃣, lv: C, sentence: "I'm in the first grade." }
@@ -72,9 +74,9 @@ npcs:
   - { id: sora, name: Sora, sprite: sprite/sp-sora, pos: [40, 52] }
   - { id: mskim, name: Ms. Kim, sprite: sprite/sp-mskim, pos: [52, 22] }
 stations:
-  - { id: library, label: 단어 도서관, emoji: 📚, pos: [15, 30], game: word-library }
+  - { id: library, label: 단어 도서관, emoji: 📚, pos: [15, 37], game: word-library }
   - { id: track, label: Listen & Jump, emoji: 🏃, pos: [85, 46], game: listen-jump }
-  - { id: stream, label: Word Bridge, emoji: 🌉, pos: [12, 64], game: word-bridge }
+  - { id: stream, label: Word Bridge, emoji: 🌉, pos: [22, 62], game: word-bridge }
 quests:
   - id: grade
     title: 새 친구의 학년 알아내기

@@ -18,6 +18,8 @@ teacherGuide:
 map: illust/map-food
 start: [50, 92]
 spots: [[46, 55], [56, 66], [44, 80], [60, 50], [38, 62], [58, 84]]
+# 걸어갈 수 없는 곳 (가게·무대)
+walls: [[0, 0, 29, 37], [0, 40, 28, 78], [36, 0, 63, 30], [70, 0, 100, 33], [73, 33, 100, 62], [77, 66, 97, 90], [0, 82, 8, 100]]
 fairyStd: 6영01-03
 words:
   - { word: pizza, ko: 피자, emoji: 🍕, lv: C, sentence: "I'd like to have a potato pizza, please." }
@@ -65,14 +67,14 @@ words:
 npcs:
   - { id: rosa, name: Rosa, sprite: sprite/sp-waiter, pos: [33, 44] }
   - { id: joe, name: Mr. Joe, sprite: sprite/sp-icecream, pos: [68, 40] }
-  - { id: mina, name: Mina, sprite: sprite/sp-mina, pos: [80, 74] }
-  - { id: leo, name: Leo, sprite: sprite/sp-leo, pos: [64, 92] }
+  - { id: mina, name: Mina, sprite: sprite/sp-mina, pos: [75, 67] }
+  - { id: leo, name: Leo, sprite: sprite/sp-leo, pos: [61, 88] }
   - { id: sora, name: Sora, sprite: sprite/sp-sora, pos: [32, 76] }
   - { id: tony, name: Chef Tony, sprite: sprite/sp-chef, pos: [50, 34] }
 stations:
-  - { id: library, label: 단어 도서관, emoji: 📚, pos: [13, 92], game: word-library-l2 }
-  - { id: jump, label: Listen & Jump, emoji: 🏃, pos: [90, 52], game: listen-jump-l2 }
-  - { id: bridge, label: Word Bridge, emoji: 🌉, pos: [13, 58], game: word-bridge-l2 }
+  - { id: library, label: 단어 도서관, emoji: 📚, pos: [24, 93], game: word-library-l2 }
+  - { id: jump, label: Listen & Jump, emoji: 🏃, pos: [76, 95], game: listen-jump-l2 }
+  - { id: bridge, label: Word Bridge, emoji: 🌉, pos: [40, 95], game: word-bridge-l2 }
 quests:
   - id: order
     title: 피자 가게 첫 손님

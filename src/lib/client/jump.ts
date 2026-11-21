@@ -10,15 +10,19 @@ export function startJump() {
   const app = document.getElementById('app')!;
   let tier: Tier = readTier(data.id);
   const back = new URLSearchParams(location.search).get('from');
+  // 키보드: ↑↓ 또는 W·S 로 길 바꾸기, 1·2·3 으로 바로 고르기
+  let onKey: ((e: KeyboardEvent) => void) | null = null;
+  window.addEventListener('keydown', (e) => onKey?.(e));
 
   function intro() {
+    onKey = null;
     stopAudio();
     const { el: bar } = topBar(data, tier, (t) => { tier = t; intro(); });
     const how = tier === 'C' ? '길이 두 개예요. 그림과 낱말을 보고 골라요.' : tier === 'B' ? '길이 두 개예요. 낱말만 보고 골라요.' : '길이 세 개예요. 문장을 듣고 알맞은 낱말을 골라요. 더 빨라요!';
     app.replaceChildren(h('div', { class: 'fun-panel' }, bar,
       h('div', { class: 'jump-hero', 'aria-hidden': 'true' }, '🏃💨'),
       h('p', null, data.story),
-      h('ul', { class: 'guide-list' }, h('li', null, '🔊 영어를 잘 듣고, 들은 말이 적힌 길을 눌러요.'), h('li', null, `${TIERS[tier].emoji} ${how}`), h('li', null, '🔁 「다시 듣기」를 눌러도 괜찮아요.')),
+      h('ul', { class: 'guide-list' }, h('li', null, '🔊 영어를 잘 듣고, 들은 말이 적힌 길을 눌러요.'), h('li', null, `${TIERS[tier].emoji} ${how}`), h('li', null, '⌨️ 키보드: ↑↓ 방향키(또는 W·S)로 길을 바꿔요.'), h('li', null, '🔁 「다시 듣기」를 눌러도 괜찮아요.')),
       h('div', { class: 'note-actions' }, h('button', { class: 'btn primary big', type: 'button', onclick: run }, '▶ 출발!'), back ? h('a', { class: 'btn', href: back }, '🗺️ 지도로') : null)));
   }
 
@@ -43,6 +47,12 @@ export function startJump() {
     function laneTop(k: number) { return ((k + 0.5) / lanes) * 100; }
     function moveRunner(k: number) { lane = k; runner.style.top = `${laneTop(k)}%`; runner.classList.remove('hop'); void runner.offsetWidth; runner.classList.add('hop'); }
     moveRunner(lane);
+    onKey = (e) => {
+      const k = e.key.toLowerCase();
+      if (k === 'arrowup' || k === 'w') { moveRunner(Math.max(0, lane - 1)); e.preventDefault(); }
+      else if (k === 'arrowdown' || k === 's') { moveRunner(Math.min(lanes - 1, lane + 1)); e.preventDefault(); }
+      else if (/^[1-3]$/.test(k) && +k <= lanes) moveRunner(+k - 1);
+    };
 
     function round() {
       if (i >= order.length) return finish();
@@ -73,6 +83,7 @@ export function startJump() {
       raf = requestAnimationFrame(step);
     }
     function finish() {
+      onKey = null;
       stopAudio();
       const r = record(data.unitId, data.id, tier, 'run', results);
       if (r.stars === 3) confetti();
