@@ -84,18 +84,27 @@ export function startRegion() {
         h('button', { class: 'btn small ghost', type: 'button', onclick: dex }, '📒 도감'),
         h('button', { class: 'btn small ghost', type: 'button', onclick: shop }, '🛍️ 꾸미기'),
         h('button', { class: 'btn small ghost', type: 'button', onclick: settings }, '⚙️')));
-    const map = h('div', { class: 'adv-map', role: 'application', tabindex: '0', 'aria-label': `${data.area} 지도. 방향키나 W·A·S·D 로 움직이고, 스페이스 바나 엔터로 말을 걸어요. 가고 싶은 곳을 눌러도 걸어가요.` });
+    // 화면(카메라) 안에 큰 지도를 놓고, 내 캐릭터를 따라 지도가 움직여요
+    const view = h('div', { class: 'rpg-view' });
+    const map = h('div', { class: 'adv-map', role: 'application', tabindex: '0', 'aria-label': `${data.area} 지도. 방향키나 W·A·S·D 로 한 칸씩 움직이고, 스페이스 바나 엔터로 말을 걸어요. 가고 싶은 곳을 눌러도 걸어가요.` });
     map.append(h('img', { class: 'adv-bg', src: data.map.src, alt: data.map.alt ?? '', draggable: false }));
     const me = avatarImg(data.avatars, 'sprite me');
-    pos ??= [...data.start] as [number, number];
+    npcTiles = new Set(data.npcs.map((n: any) => key(toTile(n.pos))));
+    if (!cur) {
+      const enter = new URLSearchParams(location.search).get('enter');
+      const ex = enter && data.exits.find((e: any) => e.to === enter);
+      cur = nearestFree(toTile(ex ? ex.spawn ?? ex.at : data.start));
+    }
+    pos = center(cur);
+    step = null; path = []; pathThen = null;
     place(me, pos);
-    target = null;
     hot = [];
     near = null;
     map.addEventListener('click', (e: MouseEvent) => {
-      if ((e.target as HTMLElement).closest('.npc, .station, .fairy, .rpg-pad')) return;
+      if ((e.target as HTMLElement).closest('.npc, .station, .fairy, .exit-sign')) return;
       const r = map.getBoundingClientRect();
-      target = { p: [((e.clientX - r.left) / r.width) * 100, ((e.clientY - r.top) / r.height) * 100], r: 0.8 };
+      const t = toTile([((e.clientX - r.left) / r.width) * 100, ((e.clientY - r.top) / r.height) * 100]);
+      walkTo((c, rr) => c === t[0] && rr === t[1], null) || walkTo((c, rr) => Math.abs(c - t[0]) <= 1 && Math.abs(rr - t[1]) <= 1, null);
     });
     const done = save().q[tier];
     for (const n of data.npcs) {
@@ -109,7 +118,7 @@ export function startRegion() {
         h('span', { class: 'npc-name' }, n.name));
       place(el, n.pos);
       const it: Hot = { el, at: () => n.pos, label: `${n.name}에게 말 걸기`, act: () => npcMenu(n) };
-      el.onclick = () => (target = { p: n.pos, r: NEAR, then: it.act });
+      el.onclick = () => goNear(it);
       hot.push(it);
       map.append(el);
     }
@@ -117,13 +126,21 @@ export function startRegion() {
       const el = h('button', { class: 'station', type: 'button', tabindex: '-1', 'aria-label': s.label }, h('span', { class: 'station-emoji' }, s.emoji), h('span', { class: 'station-label' }, s.label));
       place(el, s.pos);
       const it: Hot = { el, at: () => s.pos, label: `${s.label} 들어가기`, act: () => goStation(s) };
-      el.onclick = () => (target = { p: s.pos, r: NEAR, then: it.act });
+      el.onclick = () => goNear(it);
       hot.push(it);
       map.append(el);
     }
-    // 낱말 요정: 정해진 자리 가운데 세 곳에 나타나 조금씩 옮겨 다녀요. 부딪히면 대결이 시작돼요.
+    // 지도 끝의 출구: 다른 지역이나 섬 지도로 이어져요
+    exits = data.exits.map((e: any) => {
+      const el = h('button', { class: 'exit-sign' + (e.href ? '' : ' locked'), type: 'button', tabindex: '-1', 'aria-label': e.label }, h('span', { 'aria-hidden': 'true' }, e.emoji), h('span', null, e.label));
+      place(el, e.at);
+      el.onclick = () => { const t = toTile(e.at); walkTo((c, r) => Math.abs(c - t[0]) <= 1 && Math.abs(r - t[1]) <= 1, () => leave(e)); };
+      map.append(el);
+      return { ...e, tile: toTile(e.at) };
+    });
+    // 낱말 요정: 정해진 자리 가운데 세 곳에 나타나 가끔 옮겨 다녀요. 부딪히면 대결이 시작돼요.
     const fairies: HTMLElement[] = [];
-    const far = (p: [number, number]) => dist(p, pos!) > 12;
+    const far = (p: [number, number]) => tdist(toTile(p), cur!) > 6;
     const spots = shuffle(data.spots as [number, number][]).sort((x, y) => Number(far(y)) - Number(far(x)));
     for (let k = 0; k < Math.min(3, spots.length); k++) {
       const m = data.monsters[Math.floor(Math.random() * data.monsters.length)];
@@ -131,7 +148,7 @@ export function startRegion() {
       (el as any).spot = k;
       place(el, spots[k]);
       const it: Hot = { el, fairy: true, at: () => spots[(el as any).spot], label: '낱말 요정과 대결', act: () => { if (!el.isConnected) return; hot = hot.filter((x) => x !== it); fairyBattle(m, () => el.remove()); } };
-      el.onclick = () => (target = { p: it.at(), r: NEAR, then: it.act });
+      el.onclick = () => goNear(it);
       hot.push(it);
       fairies.push(el);
       map.append(el);
@@ -140,11 +157,11 @@ export function startRegion() {
       if (overlayOpen()) return;
       const f = fairies[Math.floor(Math.random() * fairies.length)];
       if (!f?.isConnected) return;
-      const free = spots.map((_, i) => i).filter((i) => !fairies.some((x) => (x as any).spot === i) && dist(spots[i], pos!) > 8);
+      const free = spots.map((_, i) => i).filter((i) => !fairies.some((x) => (x as any).spot === i) && tdist(toTile(spots[i]), cur!) > 4);
       if (!free.length) return;
       (f as any).spot = free[Math.floor(Math.random() * free.length)];
       place(f, spots[(f as any).spot]);
-    }, 4500);
+    }, 5000);
     // 화면 조작판: 조이스틱(터치 기기) + 말 걸기 버튼
     const knob = h('span', { class: 'joy-knob' });
     const joyEl = h('div', { class: 'joy', 'aria-hidden': 'true' }, knob);
@@ -157,45 +174,121 @@ export function startRegion() {
       const r = joyEl.getBoundingClientRect();
       let x = (e.clientX - r.left - r.width / 2) / (r.width / 2), y = (e.clientY - r.top - r.height / 2) / (r.height / 2);
       const l = Math.hypot(x, y); if (l > 1) { x /= l; y /= l; }
-      joy = [Math.abs(x) < 0.15 ? 0 : x, Math.abs(y) < 0.15 ? 0 : y];
+      joy = [x, y];
       knob.style.transform = `translate(${x * 60}%, ${y * 60}%)`;
     }
     actBtn = h('button', { class: 'act-btn', type: 'button', disabled: true, onclick: (e: Event) => { e.stopPropagation(); interact(); } }, '💬') as HTMLButtonElement;
     tip = h('div', { class: 'near-tip', hidden: true });
-    map.append(me, tip, h('div', { class: 'rpg-pad' }, joyEl, actBtn));
-    meEl = me;
-    app.replaceChildren(h('div', { class: 'adv rpg' }, top, questBoard(), map,
-      h('p', { class: 'muted adv-tip' }, '⌨️ 방향키 또는 W·A·S·D 로 움직이고, 스페이스 바·엔터로 말을 걸어요. 📱 태블릿은 왼쪽 아래 조이스틱과 💬 버튼을 써요. 가고 싶은 곳을 눌러도 걸어가요. ✨ 낱말 요정에게 부딪히면 대결이 시작돼요!')));
+    map.append(me, tip);
+    view.append(map, h('div', { class: 'rpg-pad' }, joyEl, actBtn), h('div', { class: 'area-name', 'aria-hidden': 'true' }, `${data.emoji} ${data.area}`));
+    meEl = me; mapEl = map; viewEl = view;
+    app.replaceChildren(h('div', { class: 'adv rpg' }, top, questBoard(), view,
+      h('p', { class: 'muted adv-tip' }, '⌨️ 방향키 또는 W·A·S·D 로 한 칸씩 걷고, 스페이스 바·엔터로 말을 걸어요. 📱 태블릿은 왼쪽 아래 조이스틱과 💬 버튼을 써요. 가고 싶은 곳을 눌러도 걸어가요. 🚪 지도 끝의 표지판으로 가면 다른 지역으로 넘어가요. ✨ 낱말 요정에게 부딪히면 대결!')));
+    resize();
+    camera(true);
     map.focus({ preventScroll: true });
     last = 0;
     cancelAnimationFrame(loop);
     loop = requestAnimationFrame(tick);
   }
 
-  // ───── 직접 조작: 방향키·WASD·조이스틱 ─────
+  // ───── 칸(타일) 이동: 방향키·WASD·조이스틱·눌러서 걷기 ─────
+  // 지도를 가로 50칸 × 세로 33칸으로 나눠요. 한 칸은 가로 2%, 세로 3.03% (지도가 3:2 라서 화면에서 정사각형)
   type Hot = { el: HTMLElement; at: () => [number, number]; label: string; act: () => void; fairy?: boolean };
-  const NEAR = 7; // 말을 걸 수 있는 거리 (지도 너비 %)
-  const SPEED = 24; // 1초에 지도 너비의 몇 %
-  let pos: [number, number] | null = null;
-  let target: { p: [number, number]; r: number; then?: () => void; best?: number; since?: number } | null = null;
-  let turn = 1;
+  type T = [number, number];
+  const COLS = 50, ROWS = 33, TW = 100 / COLS, TH = 100 / ROWS;
+  const STEP = 0.16; // 한 칸을 걷는 시간(초)
+  const NEAR = 2.3; // 말을 걸 수 있는 거리(칸)
+  const ZOOM = () => (window.innerWidth < 700 ? 2.4 : 1.8); // 화면에 지도의 1/ZOOM 만큼 보여요
+  let cur: T | null = null;
+  let pos: [number, number] = [50, 50];
+  let step: { from: T; to: T; t: number } | null = null;
+  let path: T[] = [];
+  let pathThen: (() => void) | null = null;
+  let npcTiles = new Set<string>();
+  let exits: any[] = [];
   let hot: Hot[] = [];
   let near: Hot | null = null;
   let joy: [number, number] = [0, 0];
-  let loop = 0, last = 0;
-  let actBtn: HTMLButtonElement | null = null, tip: HTMLElement | null = null, meEl: HTMLElement | null = null;
-  const keys = new Set<string>();
-  // 지도는 가로:세로 = 3:2 라서 세로 % 를 가로 % 로 바꿀 때 2/3 을 곱해요
-  const dist = (a: [number, number], b: [number, number]) => Math.hypot(a[0] - b[0], (a[1] - b[1]) / 1.5);
+  let loop = 0, last = 0, leaving = false, lockedToast = 0;
+  let actBtn: HTMLButtonElement | null = null, tip: HTMLElement | null = null, meEl: HTMLElement | null = null, mapEl: HTMLElement | null = null, viewEl: HTMLElement | null = null;
+  let camX = 0, camY = 0;
+  const dirs: string[] = []; // 누르고 있는 방향 (마지막에 누른 것이 먼저)
+  let tapDir: string | null = null; // 짧게 톡 누른 방향도 한 칸 걷게
+  const key = (t: T) => `${t[0]},${t[1]}`;
+  const toTile = (p: [number, number]): T => [Math.max(0, Math.min(COLS - 1, Math.floor(p[0] / TW))), Math.max(0, Math.min(ROWS - 1, Math.floor(p[1] / TH)))];
+  const center = (t: T): [number, number] => [(t[0] + 0.5) * TW, (t[1] + 0.5) * TH];
+  const tdist = (a: T, b: T) => Math.hypot(a[0] - b[0], a[1] - b[1]);
   const overlayOpen = () => !!document.querySelector('.talk-overlay');
-  const blocked = (x: number, y: number) => x < 3 || x > 97 || y < 12 || y > 97 || (data.walls ?? []).some((w: number[]) => x > w[0] && x < w[2] && y > w[1] && y < w[3])
-    || data.npcs.some((n: any) => Math.hypot(x - n.pos[0], (y - n.pos[1]) / 1.5) < 2.2); // 주민과 겹치지 않게
-  const KEY: Record<string, [number, number]> = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1], a: [-1, 0], d: [1, 0], w: [0, -1], s: [0, 1], A: [-1, 0], D: [1, 0], W: [0, -1], S: [0, 1] };
+  const wall = (t: T) => {
+    const [x, y] = center(t);
+    return x < 3 || x > 97 || y < 12 || y > 97 || (data.walls ?? []).some((w: number[]) => x > w[0] && x < w[2] && y > w[1] && y < w[3]);
+  };
+  const free = (t: T) => t[0] >= 0 && t[1] >= 0 && t[0] < COLS && t[1] < ROWS && !wall(t) && !npcTiles.has(key(t));
+  function nearestFree(t: T): T {
+    if (free(t)) return t;
+    for (let r = 1; r < 20; r++) for (let dx = -r; dx <= r; dx++) for (let dy = -r; dy <= r; dy++) { const c: T = [t[0] + dx, t[1] + dy]; if (free(c)) return c; }
+    return t;
+  }
+  // 가장 가까운 길 찾기 (너비 우선 탐색)
+  function walkTo(goal: (c: number, r: number) => boolean, then: (() => void) | null) {
+    const start = step ? step.to : cur!;
+    if (goal(start[0], start[1])) { path = []; pathThen = null; then?.(); return true; }
+    const prev = new Map<string, string | null>([[key(start), null]]);
+    const q: T[] = [start];
+    while (q.length) {
+      const t = q.shift()!;
+      for (const d of [[1, 0], [-1, 0], [0, 1], [0, -1]] as T[]) {
+        const n: T = [t[0] + d[0], t[1] + d[1]];
+        if (prev.has(key(n)) || !free(n)) continue;
+        const isGoal = goal(n[0], n[1]);
+        if (!isGoal && exits.some((e) => tdist(e.tile, n) <= 1)) continue; // 길 찾기는 출구를 피해 가요
+        prev.set(key(n), key(t));
+        if (isGoal) {
+          const out: T[] = []; let k: string | null = key(n);
+          while (k && k !== key(start)) { const [a, b] = k.split(',').map(Number); out.unshift([a, b]); k = prev.get(k) ?? null; }
+          path = out; pathThen = then;
+          return true;
+        }
+        q.push(n);
+      }
+    }
+    return false;
+  }
+  function goNear(it: Hot) {
+    const t = toTile(it.at());
+    walkTo((c, r) => Math.hypot(c - t[0], r - t[1]) <= 1.5, it.act) || walkTo((c, r) => Math.hypot(c - t[0], r - t[1]) <= NEAR, it.act);
+  }
+  function leave(e: any) {
+    if (leaving) return;
+    if (!e.href) { if (Date.now() - lockedToast > 3000) { lockedToast = Date.now(); toast(`🔒 ${e.label} — 아직 길이 공사 중이에요. 곧 열려요!`); } return; }
+    leaving = true;
+    const fade = h('div', { class: 'rpg-fade' });
+    document.body.append(fade);
+    setTimeout(() => { location.href = `${e.href}?tier=${tier}&enter=${data.id}`; }, 380);
+  }
+  function resize() {
+    if (!viewEl || !mapEl) return;
+    mapEl.style.width = `${viewEl.clientWidth * ZOOM()}px`;
+  }
+  window.addEventListener('resize', () => { resize(); camera(true); });
+  function camera(force = false) {
+    if (!viewEl || !mapEl) return;
+    const vw = viewEl.clientWidth, vh = viewEl.clientHeight, mw = mapEl.offsetWidth, mh = mapEl.offsetHeight;
+    const px = (pos[0] / 100) * mw, py = (pos[1] / 100) * mh;
+    const tx = mw <= vw ? (vw - mw) / 2 : Math.min(0, Math.max(vw - mw, vw / 2 - px));
+    const ty = mh <= vh ? (vh - mh) / 2 : Math.min(0, Math.max(vh - mh, vh * 0.55 - py));
+    if (force || Math.abs(tx - camX) > 0.3 || Math.abs(ty - camY) > 0.3) { camX = tx; camY = ty; mapEl.style.transform = `translate3d(${Math.round(tx)}px, ${Math.round(ty)}px, 0)`; }
+  }
+
+  const KEY: Record<string, string> = { arrowleft: 'left', arrowright: 'right', arrowup: 'up', arrowdown: 'down', a: 'left', d: 'right', w: 'up', s: 'down' };
+  const DIR: Record<string, T> = { left: [-1, 0], right: [1, 0], up: [0, -1], down: [0, 1] };
   window.addEventListener('keydown', (e) => {
     if (!meEl?.isConnected || overlayOpen() || e.ctrlKey || e.metaKey || e.altKey) return;
     const tag = (document.activeElement as HTMLElement | null)?.tagName;
     if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
-    if (KEY[e.key]) { keys.add(e.key.toLowerCase().replace('arrow', '')); e.preventDefault(); return; }
+    const d = KEY[e.key.toLowerCase()];
+    if (d) { if (!dirs.includes(d)) dirs.unshift(d); if (!e.repeat) tapDir = d; e.preventDefault(); return; }
     if (e.key === ' ' || e.key === 'Enter') {
       // 지도 밖의 버튼에 초점이 있으면 그 버튼이 눌리게 둬요
       const a = document.activeElement as HTMLElement | null;
@@ -204,70 +297,75 @@ export function startRegion() {
       if (!e.repeat) interact();
     }
   });
-  window.addEventListener('keyup', (e) => { keys.delete(e.key.toLowerCase().replace('arrow', '')); });
-  window.addEventListener('blur', () => keys.clear());
-  const held = (...ks: string[]) => ks.some((k) => keys.has(k));
+  window.addEventListener('keyup', (e) => { const i = dirs.indexOf(KEY[e.key.toLowerCase()]); if (i >= 0) dirs.splice(i, 1); });
+  window.addEventListener('blur', () => (dirs.length = 0));
 
   function interact() {
-    if (overlayOpen()) return;
-    if (near) { keys.clear(); joy = [0, 0]; near.act(); }
+    if (overlayOpen() || leaving) return;
+    if (near) { dirs.length = 0; tapDir = null; joy = [0, 0]; path = []; near.act(); }
+  }
+  function inputDir(): string | null {
+    if (dirs.length) { tapDir = null; return dirs[0]; }
+    if (tapDir) { const d = tapDir; tapDir = null; return d; }
+    const [x, y] = joy;
+    if (Math.hypot(x, y) < 0.35) return null;
+    return Math.abs(x) > Math.abs(y) ? (x > 0 ? 'right' : 'left') : (y > 0 ? 'down' : 'up');
   }
 
   function tick(t: number) {
     loop = requestAnimationFrame(tick);
     const dt = last ? Math.min(0.05, (t - last) / 1000) : 0;
     last = t;
-    if (!meEl?.isConnected || !pos) return cancelAnimationFrame(loop);
-    if (overlayOpen()) { meEl.classList.remove('walking'); return; }
-    let vx = (held('right', 'd') ? 1 : 0) - (held('left', 'a') ? 1 : 0) + joy[0];
-    let vy = (held('down', 's') ? 1 : 0) - (held('up', 'w') ? 1 : 0) + joy[1];
-    if (vx || vy) target = null;
-    else if (target) {
-      const d = dist(target.p, pos);
-      if (d <= target.r) { const then = target.then; target = null; then?.(); return; }
-      vx = target.p[0] - pos[0]; vy = (target.p[1] - pos[1]) / 1.5;
+    if (!meEl?.isConnected || !cur) return cancelAnimationFrame(loop);
+    if (overlayOpen() || leaving) { meEl.classList.remove('walking'); return; }
+    let byHand = false;
+    if (step) {
+      step.t += dt / STEP;
+      if (step.t >= 1) { cur = step.to; step = null; arrived(); }
     }
-    const l = Math.hypot(vx, vy);
-    if (l > 1) { vx /= l; vy /= l; }
-    else if (target && l > 0) { vx /= l; vy /= l; }
-    const moving = l > 0.01;
-    if (moving) {
-      const sx = SPEED * dt, sy = SPEED * dt * 1.5;
-      const step = (ax: number, ay: number) => { const nx = pos![0] + ax * sx, ny = pos![1] + ay * sy; if (blocked(nx, ny)) return false; pos![0] = nx; pos![1] = ny; return true; };
-      // 막히면: 벽을 따라 미끄러지고, 그래도 막히면 조금씩 방향을 틀어 돌아가요
-      let ok = step(vx, vy) || (Math.abs(vx) > 0.05 && step(vx, 0)) || (Math.abs(vy) > 0.05 && step(0, vy));
-      for (const a of target ? [0.6, 1.2, 1.6] : []) { // 눌러서 걸어갈 때만 돌아가요
-        if (ok) break;
-        for (const sg of [turn, -turn]) {
-          const c = Math.cos(a * sg), sn = Math.sin(a * sg);
-          if (step(vx * c - vy * sn, vx * sn + vy * c)) { ok = true; turn = sg; break; }
-        }
-      }
-      if (target) {
-        const d = dist(target.p, pos);
-        if (d < (target.best ?? Infinity) - 0.05) { target.best = d; target.since = 0; } else target.since = (target.since ?? 0) + dt;
-        if (target.since > 1.2) { const tg = target; target = null; if (tg.then && d <= NEAR * 1.6) tg.then(); }
-      }
-      if (vx < -0.05) meEl.classList.add('left'); else if (vx > 0.05) meEl.classList.remove('left');
-      place(meEl, pos);
+    if (!step && !overlayOpen() && !leaving) {
+      const d = inputDir();
+      let next: T | null = null;
+      if (d) {
+        path = []; pathThen = null;
+        meEl.classList.toggle('left', d === 'left' ? true : d === 'right' ? false : meEl.classList.contains('left'));
+        meEl.dataset.face = d;
+        const n: T = [cur[0] + DIR[d][0], cur[1] + DIR[d][1]];
+        if (free(n)) { next = n; byHand = true; }
+      } else if (path.length) {
+        const n = path[0];
+        if (free(n)) { next = path.shift()!; if (n[0] !== cur[0]) meEl.classList.toggle('left', n[0] < cur[0]); }
+        else { path = []; pathThen = null; }
+      } else if (pathThen) { const then = pathThen; pathThen = null; then(); }
+      if (next) step = { from: cur, to: next, t: 0 };
+      (meEl as any).byHand = byHand;
     }
-    meEl.classList.toggle('walking', moving);
+    const a = center(step ? step.from : cur), b = center(step ? step.to : cur), k = step ? step.t : 0;
+    pos = [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k];
+    place(meEl, pos);
+    meEl.classList.toggle('walking', !!step);
+    camera();
     // 가장 가까운 주민·장소·요정
+    const here = step ? step.to : cur;
     let best: Hot | null = null, bd = NEAR;
-    for (const it of hot) { if (!it.el.isConnected) continue; const d = dist(it.at(), pos); if (d < bd) { bd = d; best = it; } }
+    for (const it of hot) { if (!it.el.isConnected) continue; const d = tdist(toTile(it.at()), here); if (d <= bd) { bd = d; best = it; } }
     if (best !== near) {
       near?.el.classList.remove('near');
       near = best;
       near?.el.classList.add('near');
       if (actBtn) { actBtn.disabled = !near; actBtn.setAttribute('aria-label', near ? near.label : '가까이 있는 것이 없어요'); }
-      if (tip) {
-        tip.hidden = !near;
-        if (near) { tip.textContent = `💬 ${near.label} · Space`; place(tip, near.at()); }
-      }
+      if (tip) { tip.hidden = !near; if (near) tip.textContent = `💬 ${near.label} · Space`; }
     }
     if (near && tip && !tip.hidden) place(tip, near.at());
-    // 요정과 부딪히면 대결 시작
-    if (near?.fairy && bd < 3.5 && moving && !target) interact();
+  }
+  // 한 칸 걸음을 마쳤을 때: 출구, 요정과 부딪히기
+  function arrived() {
+    const ex = exits.find((e) => tdist(e.tile, cur!) <= 1);
+    if (ex && ((meEl as any).byHand || !path.length)) return leave(ex);
+    if ((meEl as any)?.byHand) {
+      const f = hot.find((it) => it.fairy && it.el.isConnected && tdist(toTile(it.at()), cur!) <= 1.5);
+      if (f) { near = f; interact(); }
+    }
   }
 
   function place(el: HTMLElement, p: [number, number]) {

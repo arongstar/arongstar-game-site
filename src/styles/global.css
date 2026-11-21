@@ -895,3 +895,27 @@ textarea:focus, input[type='text']:focus { outline: none; border-color: var(--pr
 .act-btn:active:not(:disabled) { transform: translateY(4px); box-shadow: 0 1px 0 #b8770d; }
 @media not (any-pointer: coarse) { .joy { display: none; } }
 .adv-map, .world-map { isolation: isolate; }
+/* 영어 RPG 카메라: 큰 지도를 화면 창으로 보며 캐릭터를 따라가요 */
+.rpg-view { position: relative; width: 100%; height: clamp(320px, calc(100vh - 230px), 72vw); overflow: hidden; border-radius: 18px; background: #7cc576; box-shadow: 0 6px 20px rgb(0 0 0 / 0.15); isolation: isolate; touch-action: none; user-select: none; -webkit-user-select: none; }
+.rpg-view .adv-map { position: absolute; left: 0; top: 0; width: 200%; max-width: none; margin: 0; border-radius: 0; box-shadow: none; will-change: transform; }
+.rpg-view .adv-map:focus-visible { box-shadow: none; outline: none; }
+.rpg-view:focus-within { box-shadow: 0 0 0 3px var(--primary), 0 6px 20px rgb(0 0 0 / 0.15); }
+.rpg-view .sprite { width: 2.2%; }
+.rpg-view .npc { width: 2.1%; }
+.rpg-view .me { width: 2.2%; }
+.rpg-view .fairy { width: 1.9%; transform: translate(-50%, -85%); }
+.rpg-view .npc-name { font-size: clamp(0.6rem, 1.1vw, 0.85rem); bottom: -1.3em; }
+.rpg-view .npc-mark { font-size: clamp(0.9rem, 2vw, 1.5rem); top: -22%; }
+.rpg-view .station { padding: 2px 8px; border-width: 2px; }
+.rpg-view .station-emoji { font-size: clamp(1rem, 2.2vw, 1.7rem); }
+.rpg-view .station-label { font-size: clamp(0.55rem, 1.05vw, 0.8rem); }
+.rpg-view .sprite.walking img { animation: bob 0.16s ease-in-out infinite alternate; }
+.rpg-view .rpg-pad { position: absolute; inset: auto 0 0 0; }
+.exit-sign { position: absolute; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 4px; background: #fff7e0; border: 3px solid #8a5a2b; border-radius: 10px; padding: 2px 8px; font-weight: 900; font-size: clamp(0.6rem, 1.2vw, 0.9rem); white-space: nowrap; cursor: pointer; z-index: 150; box-shadow: 0 3px 0 #8a5a2b; }
+
+.exit-sign.locked { background: #eee; border-color: #999; box-shadow: 0 3px 0 #999; color: #777; }
+.exit-sign.locked::before { content: '🔒'; }
+.area-name { position: absolute; left: 12px; top: 10px; z-index: 202; background: rgb(255 255 255 / 0.92); border: 3px solid #5b4a2e; border-radius: 10px; padding: 4px 12px; font-weight: 900; font-size: clamp(0.9rem, 1.8vw, 1.2rem); animation: areaIn 3s ease forwards; pointer-events: none; }
+@keyframes areaIn { 0% { opacity: 0; transform: translateY(-10px); } 12%, 75% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+.rpg-fade { position: fixed; inset: 0; background: #000; z-index: 999; animation: fadeIn 0.38s ease forwards; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }

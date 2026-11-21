@@ -341,7 +341,9 @@ const games = defineCollection({
       start: z.tuple([z.number(), z.number()]),
       spots: z.array(z.tuple([z.number(), z.number()])).min(3), // 낱말 요정이 나타나는 자리
       fairyStd: z.string(),
-      walls: z.array(z.tuple([z.number(), z.number(), z.number(), z.number()])).default([]), // 걸어갈 수 없는 곳 [x1, y1, x2, y2] (발 위치, %)
+      walls: z.array(z.tuple([z.number(), z.number(), z.number(), z.number()])).default([]),
+      // 지도 끝의 출구: to = 다른 지역 게임 id, 'world' = 섬 지도, 아직 없는 지역이면 잠긴 표지판. spawn = 그쪽에서 들어왔을 때 서는 자리
+      exits: z.array(z.object({ to: z.string(), label: z.string(), emoji: z.string().default('🚪'), at: z.tuple([z.number(), z.number()]), spawn: z.tuple([z.number(), z.number()]).optional() })).default([]), // 걸어갈 수 없는 곳 [x1, y1, x2, y2] (발 위치, %)
       words: z.array(z.object({ word: z.string(), ko: z.string(), emoji: z.string(), lv: level, sentence: z.string().optional() })).min(10),
       npcs: z.array(z.object({ id: z.string(), name: z.string(), sprite: z.string(), pos: z.tuple([z.number(), z.number()]) })).min(1),
       quests: z.array(z.object({ id: z.string(), title: z.string(), emoji: z.string(), lesson: z.string(), npc: z.string(), steps: z.array(rpgStep).min(1) })).min(1),

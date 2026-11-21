@@ -365,6 +365,7 @@ export function regionData(game: Game, unit: Unit, others: { game: Game; unit: U
     start: g.start,
     spots: g.spots,
     walls: g.walls,
+    exits: g.exits.map((e) => ({ ...e, href: e.to === 'world' ? url('/rpg/') : linked[e.to] ? url(`/play/${e.to}/`) : null })),
     fairyStd: g.fairyStd,
     avatars: AVATARS.map((a) => ({ key: a, ...photo(a) })),
     monsters: [1, 2, 3, 4, 5, 6].map((i) => ({ key: `mon-${i}`, ...photo(`sprite/mon-${i}`) })),
