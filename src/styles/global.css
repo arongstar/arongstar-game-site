@@ -582,3 +582,47 @@ textarea:focus, input[type='text']:focus { outline: none; border-color: var(--pr
 .lab-globe b { display: block; text-align: center; font-size: 0.9rem; }
 @media (max-width: 520px) { .lab-globe { grid-template-columns: 1fr; } }
 .map-svg.has-grid .equator-label { font-size: 19px; font-weight: 800; paint-order: stroke; stroke: #fff; stroke-width: 4px; }
+
+/* ───────── 영어: 듣기 상자와 대화 말풍선 ───────── */
+.listen-box .talk { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.talk-line { display: flex; flex-direction: column; align-items: flex-start; }
+.talk-line.right { align-items: flex-end; }
+.talk-who { font-size: 0.85rem; font-weight: 800; color: var(--muted, #5b6a70); margin: 0 6px 2px; }
+.talk-bubble { display: flex; align-items: center; gap: 6px; max-width: 92%; background: #eef6fb; border: 1px solid #cfe3ef; border-radius: 16px; padding: 8px 10px 8px 14px; font-size: 1.1rem; line-height: 1.45; }
+.talk-line.right .talk-bubble { background: #fff6e3; border-color: #f1ddb0; }
+.talk-line.now .talk-bubble { outline: 3px solid var(--primary); }
+.say-btn { min-width: 44px; min-height: 40px; padding: 4px 8px; }
+.opt-row { display: flex; align-items: stretch; gap: 6px; }
+.opt-row .opt { flex: 1; }
+/* 따라 말하기 */
+.speak-box { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; }
+.speak-target { font-size: 1.6rem; line-height: 1.4; margin: 4px 0 6px; font-family: system-ui, sans-serif; }
+.speak-target .stress { color: #c0392b; font-size: 1.15em; }
+.speak-target .tone { color: var(--primary-strong); font-weight: 800; }
+.self-check { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 8px; font-weight: 700; }
+.asr-toggle { display: block; margin-top: 10px; font-size: 0.9rem; }
+.asr-toggle small { color: var(--muted, #5b6a70); }
+/* 낱말 카드 문장 만들기 */
+.sent-line { min-height: 64px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px; border: 2px dashed var(--line); border-radius: 14px; background: #fbfaf5; margin: 8px 0; }
+.sent-line.done { border-style: solid; border-color: #6fbf73; background: #effaf0; }
+.sort-card.word { font-size: 1.25rem; font-family: system-ui, sans-serif; padding: 10px 14px; min-width: 48px; }
+/* 철자 */
+.spell-slots { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0; }
+.spell-slot { width: 48px; height: 56px; border-radius: 10px; border: 2px dashed var(--line); background: #fbfaf5; font-size: 1.6rem; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; }
+.spell-slot.on { border-style: solid; border-color: var(--primary); background: #fff; cursor: pointer; }
+.spell-tray { display: flex; flex-wrap: wrap; gap: 8px; }
+.letter { width: 52px; height: 52px; border-radius: 12px; border: 2px solid var(--line); background: #fff; font-size: 1.5rem; font-weight: 800; cursor: pointer; }
+.letter:disabled { opacity: 0.35; }
+.big-emoji { font-size: 7rem; text-align: center; line-height: 1.2; padding: 10px 0; }
+/* 글쓰기 */
+.write-model { background: #fffaf0; border: 1px solid #f1ddb0; border-radius: 14px; padding: 10px 14px; margin-bottom: 8px; }
+.write-model p { font-size: 1.15rem; line-height: 1.6; margin: 4px 0 0; }
+.write-frame { font-size: 1.2rem; line-height: 2.3; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 8px 14px; }
+.write-frame .write-in { display: inline-block; font-size: 1.1rem; padding: 4px 8px; border: none; border-bottom: 2px solid var(--primary); background: #f3f8fb; border-radius: 6px 6px 0 0; width: 9em; max-width: 60vw; margin: 0 4px; line-height: 1.4; }
+.write-bank { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; font-size: 0.95rem; }
+.word-chip { border: 1px solid var(--line); background: #fff; color: var(--ink, #1d2a2f); border-radius: 999px; padding: 6px 12px; margin: 2px; font-size: 1rem; font-weight: 600; cursor: pointer; min-height: 40px; }
+.write-done { margin-top: 8px; font-size: 1.1rem; background: #effaf0; border-radius: 12px; padding: 8px 12px; }
+.bg-listen { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; }
+.bg-listen .bg-clue { flex-basis: 100%; text-align: center; }
+.self-check[hidden] { display: none; }
+.bg-listen .btn { font-size: 1.7rem; padding: 14px 30px; }

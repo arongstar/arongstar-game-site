@@ -1,0 +1,210 @@
+# 6학년 영어 Lesson 1 — 자동 생성한 뒤 손으로 고쳐도 돼요. (대화·글은 이 사이트에서 새로 쓴 것이에요)
+template: mission
+style: detective
+unit: eng-6-l01
+title: Grade Detective — 학년 탐정
+emoji: 🎧
+summary: 서수(first~sixth)를 듣고 익히고, 학년을 묻고 답하는 대화를 들으며 세부 정보와 순서를 찾은 뒤, 강세와 억양에 맞게 따라 말해요.
+story: 새 학년 첫날, 강당에 여러 학년 친구들이 모였어요! 탐정이 되어 누가 몇 학년인지 귀 기울여 알아내 보세요.
+lessons:
+- '1'
+standards:
+- 6영01-03
+- 6영01-04
+- 6영01-07
+- 6영02-02
+- 6영02-01
+- 6영02-07
+- 6영02-10
+minutes: 15
+teacherGuide:
+- 1차시(Fun Talk 1 · Listen and Do)에 써요. 「Key Words」, 「Listen and Do」, 「Speak Up」 세 스테이지예요.
+- 🔊 듣기는 미리 만든 영어 음성이에요. 🐢 천천히 버튼으로 느리게 들을 수 있어요. 대본은 답한 뒤에 볼 수 있어요.
+- 따라 말하기의 녹음은 학생 기기 안에서만 다시 듣고 저장하거나 보내지 않아요. 「말 알아듣기」는 기본으로 꺼져 있어요.
+stages:
+- id: words
+  title: Key Words — 순서를 나타내는 말
+  emoji: 🔢
+  lesson: '1'
+  intro: first부터 sixth까지 듣고 말해 봐요.
+  steps:
+  - type: choice
+    lv: C
+    std: 6영01-03
+    cat: 지식·이해
+    q: 잘 듣고 알맞은 것을 골라 보세요.
+    options:
+    - 6th
+    - 5th
+    - 1st
+    answer: 6th
+    say:
+    - text: sixth
+    script: after
+  - type: choice
+    lv: C
+    std: 6영01-03
+    cat: 지식·이해
+    q: 잘 듣고 몇 학년인지 골라 보세요.
+    options:
+    - 3학년
+    - 4학년
+    - 1학년
+    answer: 3학년
+    say:
+    - who: Sora
+      text: I'm in the third grade.
+    script: after
+  - type: spell
+    lv: B
+    std: 6영02-02
+    cat: 과정·기능
+    q: 잘 듣고 낱말의 철자를 맞혀 보세요.
+    word: sixth
+    extra: e
+    emoji: 6️⃣
+  - type: spell
+    lv: B
+    std: 6영02-02
+    cat: 과정·기능
+    q: 잘 듣고 낱말의 철자를 맞혀 보세요.
+    word: first
+    extra: a
+    emoji: 1️⃣
+  - type: order
+    lv: A
+    std: 6영01-03
+    cat: 지식·이해
+    q: 순서를 나타내는 낱말을 차례대로 놓아 보세요.
+    items:
+    - first
+    - second
+    - third
+    - fourth
+    - fifth
+    - sixth
+    hint: 1st, 2nd, 3rd, 4th, 5th, 6th 순서예요.
+- id: listen
+  title: Listen and Do — 누가 몇 학년?
+  emoji: 👂
+  lesson: '1'
+  intro: 대화를 듣고 학년을 찾아요.
+  steps:
+  - type: choice
+    lv: C
+    std: 6영01-04
+    cat: 과정·기능
+    q: 대화를 듣고 Amara가 몇 학년인지 골라 보세요.
+    options:
+    - 5학년
+    - 6학년
+    - 4학년
+    answer: 5학년
+    say: &id001
+    - who: Ms. Kim
+      text: Welcome, everyone! What grade are you in?
+    - who: Amara
+      text: I'm in the fifth grade.
+    - who: Ms. Kim
+      text: And you?
+    - who: Leo
+      text: I'm in the sixth grade. Amara is my neighbor.
+    - who: Ms. Kim
+      text: Nice to meet you both.
+    photo: illust/en-welcome
+  - type: multi
+    lv: B
+    std: 6영01-07
+    cat: 과정·기능
+    q: 대화를 다시 듣고(🐢 천천히 듣기도 해 보세요) 알맞은 것을 모두 골라 보세요.
+    options:
+    - Amara는 5학년이다
+    - Leo는 6학년이다
+    - Ms. Kim은 선생님이다
+    - Leo는 4학년이다
+    answers:
+    - Amara는 5학년이다
+    - Leo는 6학년이다
+    - Ms. Kim은 선생님이다
+    say: *id001
+  - type: order
+    lv: B
+    std: 6영01-04
+    cat: 과정·기능
+    q: 세 친구가 차례로 말해요. 들은 순서대로 학년을 놓아 보세요.
+    items:
+    - 2학년
+    - 6학년
+    - 3학년
+    say:
+    - who: Sora
+      text: I'm in the second grade.
+    - who: Ken
+      text: I'm in the sixth grade.
+    - who: Amara
+      text: I'm in the third grade.
+    script: after
+  - type: choice
+    lv: A
+    std: 6영01-05
+    cat: 과정·기능
+    q: 처음 들었던 강당 대화는 무엇에 관한 이야기인가요?
+    options:
+    - 처음 만난 사람들이 서로 몇 학년인지 묻고 답한다
+    - 친구들이 동아리를 고른다
+    - 선생님이 길을 알려 준다
+    answer: 처음 만난 사람들이 서로 몇 학년인지 묻고 답한다
+    say: *id001
+- id: speak
+  title: Speak Up — 학년 묻고 답하기
+  emoji: 🗣️
+  lesson: '1'
+  intro: 강세와 억양에 맞게 따라 말해요.
+  steps:
+  - type: speak
+    lv: C
+    std: 6영02-01
+    cat: 과정·기능
+    q: 본보기를 듣고 따라 말해 보세요.
+    target: What grade are you in?
+    who: Sora
+    stress:
+    - grade
+    tone: down
+    tip: What 같은 의문사로 묻는 말은 끝을 내려요. grade 를 힘주어 말해요.
+  - type: speak
+    lv: B
+    std: 6영02-01
+    cat: 과정·기능
+    q: 본보기를 듣고 따라 말해 보세요.
+    target: I'm in the sixth grade.
+    who: Leo
+    stress:
+    - sixth
+    tone: down
+    tip: 학년을 나타내는 sixth 를 힘주어 말해요. th 는 혀끝을 이 사이에 살짝 대요.
+  - type: choice
+    lv: A
+    std: 6영02-07
+    cat: 지식·이해
+    q: Leo가 물어요. 6학년인 내가 할 알맞은 대답은?
+    options:
+    - I'm in the sixth grade.
+    - I'm sixth grade.
+    - I'm in the six grade.
+    answer: I'm in the sixth grade.
+    say:
+    - who: Leo
+      text: What grade are you in?
+    script: show
+    explain: 학년은 순서를 나타내는 말(sixth)을 써서 완전한 문장 I'm in the ... grade. 로 말해요.
+  - type: speak
+    lv: A
+    std: 6영02-10
+    cat: 가치·태도
+    q: 이번에는 묻고 답하는 말을 자신 있게 이어서 말해 보세요.
+    target: What grade are you in? I'm in the sixth grade.
+    stress:
+    - grade
+    - sixth
+    tip: 묻는 말은 끝을 내리고, 잠깐 쉬었다가 대답해요.

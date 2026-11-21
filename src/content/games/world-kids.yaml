@@ -1,0 +1,191 @@
+# 6학년 영어 Lesson 1 — 자동 생성한 뒤 손으로 고쳐도 돼요. (대화·글은 이 사이트에서 새로 쓴 것이에요)
+template: mission
+style: detective
+unit: eng-6-l01
+title: World Kids Meeting — 세계 어린이 화상 모임
+emoji: 📖
+summary: 세 나라 어린이의 자기소개 글을 듣고 읽으며 세부 정보와 중심 내용을 파악하고, 다른 나라의 초등학교에 대해 알아봐요.
+story: 세계 어린이 화상 모임이 열렸어요! 케냐, 일본, 캐나다 친구들의 자기소개를 읽고 새 친구를 사귀어 보세요.
+lessons:
+- '4'
+standards:
+- 6영01-04
+- 6영01-05
+- 6영01-10
+minutes: 15
+teacherGuide:
+- 4차시(Before You Read · Read · After You Read)에 써요.
+- 읽기 글은 🔊 듣기로 들으며 따라 읽을 수 있어요. 읽는 줄에 테두리가 생겨요.
+- '문화: 나라마다 초등학교 학년 수가 달라요(우리나라·일본 6년, 프랑스 5년).'
+stages:
+- id: before
+  title: Before You Read — 읽기 전에
+  emoji: 🔍
+  lesson: '4'
+  intro: 그림을 보고 읽을 내용을 예측해요.
+  steps:
+  - type: choice
+    lv: C
+    std: 6영01-05
+    cat: 과정·기능
+    q: 그림 속 아이들은 무엇을 하고 있나요?
+    options:
+    - 화상 모임에서 서로 인사하고 자신을 소개한다
+    - 운동장에서 축구를 한다
+    - 도서관에서 책을 빌린다
+    answer: 화상 모임에서 서로 인사하고 자신을 소개한다
+    photo: illust/en-meeting
+  - type: choice
+    lv: B
+    std: 6영01-05
+    cat: 과정·기능
+    q: 이번 글에서 친구들이 무엇을 소개할지 예측해 보세요.
+    options:
+    - 이름, 나라, 학년, 동아리
+    - 좋아하는 음식의 요리법
+    - 학교로 가는 길
+    answer: 이름, 나라, 학년, 동아리
+    photo: illust/en-meeting
+  - type: choice
+    lv: A
+    std: 6영01-04
+    cat: 과정·기능
+    q: 자기소개 글을 읽을 때 쓰면 좋은 읽기 방법은?
+    options:
+    - 학년과 동아리를 나타내는 말을 찾아 밑줄을 그으며 읽는다
+    - 모르는 낱말이 나오면 읽기를 멈춘다
+    - 마지막 문장만 읽는다
+    answer: 학년과 동아리를 나타내는 말을 찾아 밑줄을 그으며 읽는다
+- id: read
+  title: Read — 자기소개 글 읽기
+  emoji: 📰
+  lesson: '4'
+  intro: 글을 듣고 읽으며 내용을 파악해요.
+  steps:
+  - type: choice
+    lv: C
+    std: 6영01-04
+    cat: 과정·기능
+    q: 글을 읽어 보세요. Ken is in the ____ grade.
+    options:
+    - fifth
+    - sixth
+    - fourth
+    answer: fifth
+    say: &id001
+    - who: Amara
+      text: Hello! I'm Amara from Kenya. I'm in the sixth grade. I'm in the music club. I like singing with my friends.
+    - who: Ken
+      text: Hi! I'm Ken from Japan. I'm in the fifth grade. I'm in the science club. I want to be a scientist.
+    - who: Leo
+      text: Hello, everyone! I'm Leo from Canada. I'm in the sixth grade. I'm in the hockey club. Hockey is very popular in my country.
+    script: show
+  - type: choice
+    lv: C
+    std: 6영01-04
+    cat: 과정·기능
+    q: 케냐(Kenya)에서 온 친구는 누구인가요?
+    options:
+    - Amara
+    - Ken
+    - Leo
+    answer: Amara
+    say: *id001
+    script: show
+  - type: sort
+    lv: B
+    std: 6영01-04
+    cat: 과정·기능
+    q: 친구와 동아리를 짝지어 보세요.
+    bins:
+    - Amara
+    - Ken
+    - Leo
+    items:
+    - text: 🎵 music club
+      bin: Amara
+    - text: 🔬 science club
+      bin: Ken
+    - text: 🏒 hockey club
+      bin: Leo
+    say: *id001
+    script: show
+  - type: multi
+    lv: B
+    std: 6영01-04
+    cat: 과정·기능
+    q: 글의 내용과 맞는 것을 모두 골라 보세요.
+    options:
+    - Amara와 Leo는 6학년이다
+    - Ken은 과학자가 되고 싶다
+    - Leo는 일본에서 왔다
+    answers:
+    - Amara와 Leo는 6학년이다
+    - Ken은 과학자가 되고 싶다
+    say: *id001
+    script: show
+  - type: choice
+    lv: A
+    std: 6영01-05
+    cat: 과정·기능
+    q: 이 글의 중심 내용으로 가장 알맞은 것은?
+    options:
+    - 세 나라의 어린이가 학년과 동아리 등을 들어 자신을 소개한다
+    - 하키를 잘하는 방법을 알려 준다
+    - 과학자가 하는 일을 설명한다
+    answer: 세 나라의 어린이가 학년과 동아리 등을 들어 자신을 소개한다
+    say: *id001
+    script: show
+  - type: choice
+    lv: A
+    std: 6영01-04
+    cat: 과정·기능
+    q: Leo가 'Hockey is very popular in my country.'라고 말한 까닭으로 알맞은 것은?
+    options:
+    - 자기 나라에서 많은 사람이 좋아하는 운동이라 자기 동아리를 더 소개하려고
+    - 하키를 싫어해서
+    - 일본의 운동을 소개하려고
+    answer: 자기 나라에서 많은 사람이 좋아하는 운동이라 자기 동아리를 더 소개하려고
+    say: *id001
+    script: show
+- id: after
+  title: After You Read · World — 읽은 뒤에
+  emoji: 🌏
+  lesson: '4'
+  intro: 읽은 내용을 확인하고 다른 나라의 학교를 알아봐요.
+  steps:
+  - type: choice
+    lv: C
+    std: 6영01-10
+    cat: 지식·이해
+    q: 글을 읽고 프랑스 초등학교의 가장 높은 학년을 골라 보세요.
+    options:
+    - 5학년
+    - 6학년
+    - 4학년
+    answer: 5학년
+    card:
+      emoji: 🏫
+      title: Schools Around the World
+      text: In Korea and Japan, elementary school has six grades. In France, elementary school has five grades.
+    explain: 나라마다 초등학교의 학년 수가 달라요. 프랑스는 5년, 우리나라와 일본은 6년이에요.
+  - type: choice
+    lv: B
+    std: 6영02-07
+    cat: 지식·이해
+    q: '읽은 글을 떠올려 대화를 완성해 보세요. Sora: Ken, what grade are you in?  Ken: I''m in the ____ grade.'
+    options:
+    - fifth
+    - sixth
+    - second
+    answer: fifth
+  - type: choice
+    lv: A
+    std: 6영01-10
+    cat: 가치·태도
+    q: 나라마다 초등학교의 학년 수가 다르다는 것을 알았을 때 가장 알맞은 태도는?
+    options:
+    - 서로 다른 학교생활을 존중하고, 다른 나라의 학교에 대해 더 알아본다
+    - 우리나라와 다르니 이상하다고 생각한다
+    - 나와 상관없으니 관심을 두지 않는다
+    answer: 서로 다른 학교생활을 존중하고, 다른 나라의 학교에 대해 더 알아본다

@@ -6,6 +6,7 @@ import { houseArt, clothesArt } from './art';
 import { sunDayLab, orbitLab, candleLab, magnetLab, circuitView } from './labs';
 import { indicatorLab, mixLab, trackLab, raceLab, microscopeLab, skyLab, rotationLab, starSeasonLab } from './labs61';
 import { globeLab } from './labsSoc';
+import { audioBox, speakerButton, stopAudio, speakView, sentenceView, sentenceText, spellView, writeView } from './english';
 import * as store from './store';
 import type { Tier, StepResult } from './store';
 
@@ -238,6 +239,8 @@ export function startMission() {
     let tries = 0;
     let hinted = false;
     let done = false;
+    let listen: ReturnType<typeof audioBox> | null = null;
+    stopAudio();
 
     // 그래프·사진이 3개면 자료를 위에 넓게, 문제를 아래에 둡니다.
     const wideVisual = (st.charts?.length ?? 0) >= 3 || (st.photos?.length ?? 0) >= 3;
@@ -283,6 +286,7 @@ export function startMission() {
 
     function finishStep(firstOk: boolean, correct: boolean) {
       done = true;
+      if (listen && st.script === 'after') listen.reveal();
       const added = record(firstOk, hinted);
       wrap.classList.add('is-done');
       const title = correct ? (firstOk ? '🎉 정답이에요!' : '👍 맞았어요!') : '💡 정답을 확인해 보세요';
@@ -298,12 +302,13 @@ export function startMission() {
             : null,
         ),
       );
-      actions.replaceChildren(h('button', { class: 'btn primary big', onclick: next }, '다음 ▶'));
+      actions.replaceChildren(h('button', { class: 'btn primary big', onclick: () => { stopAudio(); next(); } }, '다음 ▶'));
       (actions.firstChild as HTMLElement).focus({ preventScroll: true });
       fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
 
     // 자료 보여 주기
+    if (st.say) { listen = audioBox(st.say, st.script); visual.append(listen.el); }
     if (st.sun) visual.append(sunSim());
     if (st.sunday) visual.append(sunDayLab(st.sunday));
     if (st.orbit) visual.append(orbitLab());
@@ -371,7 +376,8 @@ export function startMission() {
           if (o.text === st.answer) b.classList.add('right');
           if (done) box.querySelectorAll('.opt').forEach((x) => x.setAttribute('disabled', ''));
         });
-        box.append(b);
+        const ai = st.optionAudio ? st.options.findIndex((x: any) => x.text === o.text) : -1;
+        box.append(ai >= 0 ? h('div', { class: 'opt-row' }, speakerButton(st.optionAudio[ai]), b) : b);
       }
       panel.append(box);
     }
@@ -486,6 +492,12 @@ export function startMission() {
 
     if (st.type === 'budget') budgetView(st, panel, actions, fb, judge, () => done);
 
+    // 영어
+    if (st.type === 'speak') speakView(st, panel, actions, fb, judge, () => done);
+    if (st.type === 'sentence') sentenceView(st, panel, actions, judge, () => done);
+    if (st.type === 'spell') spellView(st, visual, panel, actions, judge, () => done);
+    if (st.type === 'write') writeView(st, data.unitId, panel, actions, fb, judge, () => done);
+
     panel.append(hintBtn ?? '', hintBox, fb, actions);
     return wrap;
   }
@@ -498,6 +510,10 @@ export function startMission() {
     if (st.type === 'build') return st.parts.map((p: any) => `${p.label} — ${p.options.filter((o: any) => o.fit).map((o: any) => o.text).join(' 또는 ')}`).join(' / ');
     if (st.type === 'shop') return st.features.filter((f: any) => f.fit).map((f: any) => f.text).join(' / ');
     if (st.type === 'order') return st.items.join(' → ');
+    if (st.type === 'speak') return st.target;
+    if (st.type === 'sentence') return sentenceText(st);
+    if (st.type === 'spell') return st.word;
+    if (st.type === 'write') return '예시문을 참고해 빈칸을 채워요';
     if (st.type === 'circuit') {
       const cond = st.materials.filter((m: any) => m.conductor).map((m: any) => m.text).join('·');
       return st.target === 0 ? '스위치를 열거나, 전기가 통하지 않는 물체를 연결해요' : `스위치를 닫고 전기가 통하는 물체(${cond})를 연결해요${st.target === 2 ? ', 전지 2개를 직렬로 연결해요' : ''}`;
@@ -507,7 +523,7 @@ export function startMission() {
   }
 
   function hasVisual(st: any) {
-    return !!(st.photo || st.photos || st.chart || st.charts || st.sun || st.sunday || st.orbit || st.candle || st.magnet || st.indicator || st.mix || st.track || st.race || st.microscope || st.sky || st.rotation || st.starseason || st.globe || st.table || st.bars || st.agebars || st.card || st.type === 'pin' || st.type === 'build' || st.type === 'circuit');
+    return !!(st.photo || st.photos || st.chart || st.charts || st.sun || st.sunday || st.orbit || st.candle || st.magnet || st.indicator || st.mix || st.track || st.race || st.microscope || st.sky || st.rotation || st.starseason || st.globe || st.say || (st.type === 'spell' && st.emoji) || st.table || st.bars || st.agebars || st.card || st.type === 'pin' || st.type === 'build' || st.type === 'circuit');
   }
 
   function chartFor(id: string, hiddenTitle?: string) {

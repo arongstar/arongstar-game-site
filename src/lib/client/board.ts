@@ -1,6 +1,7 @@
 // 전자칠판용 모둠 대항 퀴즈쇼
 import { h, readJSON, photoFigure } from './dom';
 import { climateChart } from './chart';
+import { playLines } from './english';
 
 const TEAM_COLORS = ['#e4572e', '#2f6fb3', '#2f8f5b', '#b5651d', '#7b4bb3', '#d1397a'];
 const TEAM_EMOJI = ['🦊', '🐳', '🐢', '🦁', '🦉', '🐙'];
@@ -204,6 +205,7 @@ export function startBoard() {
           visual ? h('div', { class: 'bd-q-visual' }, visual) : null,
           h('div', { class: 'bd-q-main' },
             h('p', { class: 'bd-q' }, it.q),
+            it.sayAudio ? h('div', { class: 'bd-q-actions' }, h('button', { class: 'btn primary big', onclick: () => playLines([it.sayAudio]) }, '🔊 듣기'), h('button', { class: 'btn big ghost', onclick: () => playLines([it.sayAudio], 0.75) }, '🐢 천천히')) : null,
             h('div', { class: 'bd-q-actions' }, timeEl, timeBtn, reveal),
             answerBox,
           ),

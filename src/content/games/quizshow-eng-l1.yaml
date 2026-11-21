@@ -1,0 +1,69 @@
+# 6학년 영어 Lesson 1 — 자동 생성한 뒤 손으로 고쳐도 돼요. (대화·글은 이 사이트에서 새로 쓴 것이에요)
+template: quizshow
+unit: eng-6-l01
+title: English Quiz Show — Lesson 1
+emoji: 🎤
+summary: 전자칠판에 띄우고 모둠끼리 겨루는 퀴즈쇼예요. 🔊 듣기 문제는 전자칠판에서 영어 음성이 나와요.
+lessons:
+- '6'
+standards:
+- 6영01-03
+- 6영01-04
+- 6영02-07
+- 6영02-03
+minutes: 20
+teacherGuide:
+- 6차시(Wrap Up)에 써요. 🔊 듣기 문제는 전자칠판 스피커로 들려줘요.
+- 300점 문제는 완전한 문장으로 말하면 정답으로 인정해 주세요.
+categories:
+- name: Listen
+  emoji: 🎧
+  items:
+  - lv: C
+    q: 잘 듣고, 몇 학년이라고 했는지 말해 보세요.
+    say: I'm in the third grade.
+    answer: 3학년 (the third grade)
+  - lv: B
+    q: 잘 듣고, 무슨 동아리라고 했는지 말해 보세요.
+    say: What club are you in? I'm in the cooking club.
+    answer: 요리 동아리 (the cooking club)
+  - lv: A
+    q: 잘 듣고, Mia를 소개해 보세요. (학년, 동아리, 좋아하는 것)
+    say: Hi, I'm Mia. I'm in the fifth grade. I'm in the book club. I like reading stories.
+    answer: 5학년, 책 동아리, 이야기 읽기를 좋아해요.
+- name: Words
+  emoji: 🔢
+  items:
+  - lv: C
+    q: '''6학년''을 영어로 말해 보세요.'
+    answer: the sixth grade
+  - lv: B
+    q: third 의 철자를 말해 보세요.
+    answer: t-h-i-r-d
+  - lv: A
+    q: first 부터 sixth 까지 순서대로 말해 보세요.
+    answer: first, second, third, fourth, fifth, sixth
+- name: Talk
+  emoji: 💬
+  items:
+  - lv: C
+    q: 친구에게 몇 학년인지 묻는 말은?
+    answer: What grade are you in?
+  - lv: B
+    q: 친구에게 무슨 동아리인지 묻고, 나는 기타 동아리라고 답해 보세요.
+    answer: What club are you in? — I'm in the guitar club.
+  - lv: A
+    q: 처음 만난 친구에게 학년과 동아리를 넣어 세 문장으로 자기소개를 해 보세요.
+    answer: 예) Hi, I'm Sora. I'm in the sixth grade. I'm in the art club.
+- name: Write
+  emoji: ✍️
+  items:
+  - lv: C
+    q: 영어 문장의 첫 글자는 대문자일까요, 소문자일까요?
+    answer: 대문자
+  - lv: B
+    q: 묻는 문장 끝과 대답하는 문장 끝에 쓰는 부호는?
+    answer: 물음표(?)와 마침표(.)
+  - lv: A
+    q: '틀린 곳을 고쳐 보세요: i''m in the six grade'
+    answer: I'm in the sixth grade.

@@ -65,6 +65,8 @@ const units = defineCollection({
     // 성취수준이 평가원 원문이 아닌 초안이면 true (선생님용 페이지와 리포트에 안내가 보여요)
     levelsDraft: z.boolean().default(false),
     levelsSource: z.string().optional(),
+    // 영어: 등장인물과 목소리 (voice 는 Kokoro 목소리 이름, 예: af_heart)
+    cast: z.array(z.object({ name: z.string(), voice: z.string(), emoji: z.string().default('🙂') })).default([]),
     draft: z.boolean().default(false),
   }),
 });
@@ -117,6 +119,11 @@ const stepBase = {
   rotation: z.boolean().default(false), // 자전과 낮·밤
   starseason: z.boolean().default(false), // 공전과 계절별 별자리
   globe: z.boolean().default(false), // 지구본과 세계지도 비교 (사회)
+  // 영어 듣기: 차례대로 읽어 줄 문장 (who 는 단원 cast 의 이름)
+  say: z.array(z.object({ who: z.string().optional(), text: z.string() })).optional(),
+  // 대본 보이기: hide(답한 뒤에도 숨김) · after(답한 뒤 보임) · show(처음부터 보임, 대화창처럼)
+  script: z.enum(['hide', 'after', 'show']).default('after'),
+  optionsAudio: z.boolean().default(false), // 보기마다 🔊 읽어 주기
   // 상황 카드 (그림 대신 이모지와 짧은 글)
   card: z.object({ emoji: z.string(), title: z.string(), text: z.string() }).optional(),
 };
@@ -167,6 +174,29 @@ const step = z.discriminatedUnion('type', [
     start: z.object({ cells: z.number().int().min(1).max(2).default(1), on: z.boolean().default(false), material: z.number().int().default(0) }).optional(),
     allowCells: z.boolean().default(true),
   }),
+  // 영어: 따라 말하기 (듣기 → 녹음 → 비교, 스스로 확인)
+  z.object({
+    type: z.literal('speak'),
+    ...stepBase,
+    target: z.string(), // 말할 문장
+    who: z.string().optional(), // 본보기 목소리 (cast 이름)
+    stress: z.array(z.string()).default([]), // 강세를 주는 낱말 (굵게 표시)
+    tone: z.enum(['up', 'down']).optional(), // 문장 끝 억양 ↗ ↘
+    tip: z.string().optional(),
+  }),
+  // 영어: 낱말 카드로 문장 만들기 (대문자·문장 부호 포함)
+  z.object({ type: z.literal('sentence'), ...stepBase, answer: z.string(), extra: z.array(z.string()).default([]) }),
+  // 영어: 글자 카드로 철자 맞히기
+  z.object({ type: z.literal('spell'), ...stepBase, word: z.string(), extra: z.string().default(''), emoji: z.string().optional() }),
+  // 영어: 예시문을 보고 빈칸 틀에 맞춰 글쓰기 → 카드로 저장
+  z.object({
+    type: z.literal('write'),
+    ...stepBase,
+    model: z.string(), // 예시문
+    frame: z.string(), // {id} 자리에 학생이 써요. 예: My name is {name}.
+    fields: z.array(z.object({ id: z.string(), label: z.string(), bank: z.array(z.string()).default([]), hint: z.string().optional() })).min(1),
+    title: z.string().default('✍️ 나의 글 카드'),
+  }),
   // 순서대로 놓기
   z.object({ type: z.literal('order'), ...stepBase, items: z.array(z.string()).min(3) }), // items 는 정답 순서
   // 예산 안에서 고르기 (합리적 선택)
@@ -202,6 +232,7 @@ const stage = z.object({
 const quizItem = z.object({
   lv: level,
   q: z.string(),
+  say: z.string().optional(), // 영어: 전자칠판에서 읽어 줄 문장
   answer: z.string(),
   explain: z.string().optional(),
   photo: z.string().optional(),
@@ -270,7 +301,8 @@ const games = defineCollection({
       mode: z.literal('board').default('board'),
       ...gameBase,
       size: z.number().int().min(3).max(5).default(4),
-      words: z.array(z.object({ word: z.string(), clue: z.string() })).min(12),
+      words: z.array(z.object({ word: z.string(), clue: z.string(), emoji: z.string().optional() })).min(12),
+      audio: z.boolean().default(false), // 영어: 설명(clue)을 소리로 읽어 주기
     }),
   ]),
 });

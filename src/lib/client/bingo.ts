@@ -1,5 +1,6 @@
 // 탐험 빙고: 전자칠판(설명 보여 주기)과 학생 태블릿(빙고판)
 import { h, readJSON, shuffle } from './dom';
+import { playLines } from './english';
 
 // ───────────── 전자칠판: 설명을 하나씩 보여 주고 정답 공개 ─────────────
 export function startBingoBoard() {
@@ -70,7 +71,12 @@ export function startBingoBoard() {
         h('div', { class: 'bg-stage' },
           h('div', { class: 'bg-clue-box' },
             h('div', { class: 'bg-no' }, `설명 ${s0.idx + 1} / ${s0.order.length}`),
-            h('p', { class: 'bg-clue' }, w.clue),
+            w.audio
+              ? h('div', { class: 'bg-listen' },
+                  h('button', { class: 'btn primary big', onclick: () => playLines([w.audio]) }, '🔊 듣기'),
+                  h('button', { class: 'btn big ghost', onclick: () => playLines([w.audio], 0.75) }, '🐢 천천히'),
+                  s0.revealed ? h('p', { class: 'bg-clue', lang: 'en' }, w.clue) : h('p', { class: 'bg-clue muted' }, '잘 듣고 알맞은 낱말을 찾아보세요.'))
+              : h('p', { class: 'bg-clue' }, w.clue),
             s0.revealed
               ? h('div', { class: 'bg-word' }, w.word)
               : h('div', { class: 'bd-q-actions' }, time, h('button', { class: 'btn primary big', onclick: () => { s0.revealed = true; save(); main(); } }, '정답 공개')),

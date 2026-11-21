@@ -1,0 +1,69 @@
+# 6학년 영어 Lesson 1 — 자동 생성한 뒤 손으로 고쳐도 돼요. (대화·글은 이 사이트에서 새로 쓴 것이에요)
+template: bingo
+unit: eng-6-l01
+title: Sound Bingo — Lesson 1
+emoji: 🎯
+summary: 전자칠판이 영어 문장을 읽어 주면, 학생은 태블릿 빙고판에서 알맞은 학년이나 동아리를 찾아 표시해요.
+lessons:
+- '6'
+standards:
+- 6영01-03
+- 6영01-04
+minutes: 15
+size: 4
+audio: true
+teacherGuide:
+- 전자칠판에서 🔊 듣기를 누르면 문장을 읽어 줘요. 정답을 공개하면 문장과 낱말이 보여요.
+- 학생 태블릿에는 「내 빙고판」을 열어요.
+words:
+- word: first grade
+  clue: I'm in the first grade.
+  emoji: 1️⃣
+- word: second grade
+  clue: I'm in the second grade.
+  emoji: 2️⃣
+- word: third grade
+  clue: I'm in the third grade.
+  emoji: 3️⃣
+- word: fourth grade
+  clue: I'm in the fourth grade.
+  emoji: 4️⃣
+- word: fifth grade
+  clue: I'm in the fifth grade.
+  emoji: 5️⃣
+- word: sixth grade
+  clue: I'm in the sixth grade.
+  emoji: 6️⃣
+- word: book club
+  clue: I'm in the book club.
+  emoji: 📚
+- word: history club
+  clue: I'm in the history club.
+  emoji: 🏛️
+- word: badminton club
+  clue: I'm in the badminton club.
+  emoji: 🏸
+- word: guitar club
+  clue: I'm in the guitar club.
+  emoji: 🎸
+- word: dance club
+  clue: I'm in the dance club.
+  emoji: 💃
+- word: cooking club
+  clue: I'm in the cooking club.
+  emoji: 🍳
+- word: soccer club
+  clue: I'm in the soccer club.
+  emoji: ⚽
+- word: science club
+  clue: I'm in the science club.
+  emoji: 🔬
+- word: art club
+  clue: I'm in the art club.
+  emoji: 🎨
+- word: music club
+  clue: I'm in the music club.
+  emoji: 🎵
+- word: hockey club
+  clue: I'm in the hockey club.
+  emoji: 🏒

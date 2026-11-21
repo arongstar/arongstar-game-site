@@ -5,6 +5,7 @@ import type { CollectionEntry } from 'astro:content';
 import climateData from '../data/climate.json';
 import { landPath, project, MAP_VIEWBOX } from './worldmap';
 import { url } from './url';
+import { audioKey, NARRATOR } from './audiokey.mjs';
 
 export type Unit = CollectionEntry<'units'>;
 export type Game = CollectionEntry<'games'>;
@@ -101,6 +102,15 @@ function labelForPhoto(unit: Unit, key: string): string {
   return a?.name ?? '';
 }
 
+// 영어 듣기 문장 → { who, emoji, text, voice, src } (소리 파일이 없으면 src 가 null 이고, 화면에서 기기 음성으로 읽어요)
+export function voiceLine(unit: Unit, l: { who?: string; text: string }) {
+  const c = unit.data.cast.find((x) => x.name === l.who);
+  const voice = c?.voice ?? NARRATOR;
+  const key = audioKey(voice, l.text);
+  const has = fs.existsSync(path.resolve('public/audio/en', key + '.mp3'));
+  return { who: l.who ?? '', emoji: c?.emoji ?? '', text: l.text, voice, src: has ? url(`/audio/en/${key}.mp3`) : null };
+}
+
 export function missionData(game: Game, unit: Unit) {
   if (game.data.template !== 'mission') throw new Error('mission 게임이 아니에요');
   const g = game.data;
@@ -126,8 +136,16 @@ export function missionData(game: Game, unit: Unit) {
       }
       const withPhoto = (o: any) =>
         typeof o === 'string' ? { text: o } : { text: o.text, photo: photo(o.photo, o.text) };
+      const vl = (l: { who?: string; text: string }) => voiceLine(unit, l);
+      const audio: any = {};
+      if (st.say) audio.say = st.say.map(vl);
+      if (st.type === 'speak') audio.targetAudio = vl({ who: st.who, text: st.target });
+      if (st.type === 'spell') audio.wordAudio = vl({ text: st.word });
+      if (st.type === 'sentence') audio.answerAudio = vl({ text: st.answer });
+      if (st.optionsAudio && 'options' in st) audio.optionAudio = st.options.map((o: any) => vl({ text: typeof o === 'string' ? o : o.text }));
       return {
         ...st,
+        ...audio,
         key: `${s.id}-${i}`,
         photo: photo(st.photo, labelForPhoto(unit, st.photo ?? '')),
         photos: st.photos?.map((k) => ({ ...photo(k, labelForPhoto(unit, k)), label: labelForPhoto(unit, k) })),
@@ -160,7 +178,7 @@ export function quizshowData(game: Game, unit: Unit) {
   const ids = new Set<string>();
   const fix = (it: any) => {
     if (it.chart) ids.add(it.chart);
-    return { ...it, photo: photo(it.photo) };
+    return { ...it, photo: photo(it.photo), sayAudio: it.say ? voiceLine(unit, { text: it.say }) : null };
   };
   const categories = g.categories.map((c) => ({ ...c, items: c.items.map(fix) }));
   return {
@@ -227,7 +245,8 @@ export function bingoData(game: Game, unit: Unit) {
     title: game.data.title,
     emoji: game.data.emoji,
     size: game.data.size,
-    words: game.data.words,
+    words: game.data.words.map((w) => ({ ...w, audio: game.data.audio ? voiceLine(unit, { text: w.clue }) : null })),
+    audio: game.data.audio,
     unitUrl: url(`/u/${unit.id}/`),
     cardUrl: url(`/bingo/${game.id}/`),
   };

@@ -746,5 +746,25 @@
     "src": "/images/illust/so-court.webp",
     "alt": "판사 세 명이 법대에 앉아 있고 양쪽에 검사와 피고인·변호인이 있는 법정의 재판 모습",
     "ai": true
+  },
+  "illust/en-welcome": {
+    "src": "/images/illust/en-welcome.webp",
+    "alt": "새 학년 첫날 강당에서 선생님이 인사하고 여러 학년 아이들이 서로 악수하며 인사하는 모습",
+    "ai": true
+  },
+  "illust/en-club-fair": {
+    "src": "/images/illust/en-club-fair.webp",
+    "alt": "책, 기타, 배드민턴 라켓, 요리 도구, 축구공, 댄스 신발, 현미경이 놓인 동아리 박람회 부스와 아이들",
+    "ai": true
+  },
+  "illust/en-meeting": {
+    "src": "/images/illust/en-meeting.webp",
+    "alt": "노트북 화상 모임으로 케냐, 일본, 캐나다 친구들과 손을 흔들며 인사하는 학생",
+    "ai": true
+  },
+  "illust/en-profile": {
+    "src": "/images/illust/en-profile.webp",
+    "alt": "책상에 앉아 자신의 얼굴을 그린 영어 자기소개 카드를 쓰는 학생",
+    "ai": true
   }
 }

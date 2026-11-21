@@ -1,0 +1,185 @@
+# 6학년 영어 Lesson 1 — 자동 생성한 뒤 손으로 고쳐도 돼요. (대화·글은 이 사이트에서 새로 쓴 것이에요)
+template: mission
+style: village
+unit: eng-6-l01
+title: Club Fair — 동아리 박람회
+emoji: 💬
+summary: 동아리 이름을 듣고 익히고, 동아리 박람회 대화를 듣고 읽으며 동아리를 묻고 답하는 말을 연습해요.
+story: 오늘은 동아리 박람회 날! 여러 동아리 부스를 돌며 친구들에게 무슨 동아리인지 묻고, 나에게 맞는 동아리도 찾아보세요.
+lessons:
+- '2'
+standards:
+- 6영01-03
+- 6영02-02
+- 6영01-04
+- 6영02-01
+- 6영02-07
+- 6영02-03
+minutes: 15
+teacherGuide:
+- 2차시(Fun Talk 2 · Read and Talk · Play Together 2)에 써요.
+- 동아리 그림은 이모지로 보여 줘서 어떤 기기에서도 똑같이 보여요.
+stages:
+- id: clubs
+  title: Key Words — 동아리 이름
+  emoji: 🎨
+  lesson: '2'
+  intro: 동아리 이름을 듣고 익혀요.
+  steps:
+  - type: choice
+    lv: C
+    std: 6영02-02
+    cat: 지식·이해
+    q: 그림에 알맞은 동아리를 골라 보세요. 🔊를 눌러 들어 봐도 좋아요.
+    options:
+    - guitar club
+    - dance club
+    - book club
+    answer: guitar club
+    optionsAudio: true
+    card:
+      emoji: 🎸
+      title: What club is it?
+      text: ''
+  - type: choice
+    lv: C
+    std: 6영01-03
+    cat: 지식·이해
+    q: 잘 듣고 알맞은 동아리를 골라 보세요.
+    options:
+    - 🍳 cooking club
+    - 🏸 badminton club
+    - 🏛️ history club
+    answer: 🍳 cooking club
+    say:
+    - who: Amara
+      text: I'm in the cooking club.
+    photo: illust/en-club-fair
+  - type: spell
+    lv: B
+    std: 6영02-02
+    cat: 과정·기능
+    q: 잘 듣고 낱말의 철자를 맞혀 보세요.
+    word: history
+    extra: e
+    emoji: 🏛️
+  - type: sentence
+    lv: B
+    std: 6영02-03
+    cat: 과정·기능
+    q: 낱말 카드로 문장을 만들어 보세요.
+    answer: I'm in the history club.
+    extra:
+    - is
+  - type: choice
+    lv: A
+    std: 6영01-03
+    cat: 과정·기능
+    q: 글을 읽고 Sam이 무슨 동아리인지 알맞게 말한 것을 골라 보세요.
+    options:
+    - He's in the badminton club.
+    - He's in the book club.
+    - He's in the cooking club.
+    answer: He's in the badminton club.
+    card:
+      emoji: 🏸
+      title: Sam
+      text: Sam likes playing badminton. He plays it every day after school with his club friends.
+- id: talk
+  title: Fun Talk 2 — 무슨 동아리야?
+  emoji: 🗨️
+  lesson: '2'
+  intro: 동아리를 묻고 답하는 대화를 들어요.
+  steps:
+  - type: choice
+    lv: C
+    std: 6영01-04
+    cat: 과정·기능
+    q: 대화를 듣고 Amara가 무슨 동아리인지 골라 보세요.
+    options:
+    - 💃 dance club
+    - ⚽ soccer club
+    - 🎵 music club
+    answer: 💃 dance club
+    say:
+    - who: Ken
+      text: Hi, Amara. What club are you in?
+    - who: Amara
+      text: I'm in the dance club. How about you?
+    - who: Ken
+      text: I'm in the soccer club.
+    script: show
+  - type: choice
+    lv: B
+    std: 6영02-07
+    cat: 지식·이해
+    q: 친구가 「What club are you in?」 하고 물어요. 책 동아리인 내가 할 알맞은 대답은?
+    options:
+    - I'm in the book club.
+    - I like book club.
+    - I'm in the book.
+    answer: I'm in the book club.
+  - type: sentence
+    lv: B
+    std: 6영02-03
+    cat: 과정·기능
+    q: 친구에게 무슨 동아리인지 묻는 문장을 만들어 보세요.
+    answer: What club are you in?
+    extra:
+    - grade
+    - what
+  - type: choice
+    lv: A
+    std: 6영01-04
+    cat: 과정·기능
+    q: 대화를 듣고 두 사람에 대해 알맞게 말한 것을 골라 보세요.
+    options:
+    - Leo는 역사 동아리이고 옛날이야기를 좋아한다. Sora는 과학 동아리이다.
+    - Leo는 과학 동아리이고 Sora는 역사 동아리이다.
+    - 두 사람 모두 역사 동아리이다.
+    answer: Leo는 역사 동아리이고 옛날이야기를 좋아한다. Sora는 과학 동아리이다.
+    say:
+    - who: Sora
+      text: Leo, what club are you in?
+    - who: Leo
+      text: I'm in the history club. I love old stories.
+    - who: Sora
+      text: Cool! I'm in the science club.
+- id: speak
+  title: Speak Up — 동아리 묻고 답하기
+  emoji: 🗣️
+  lesson: '2'
+  intro: 강세와 억양에 맞게 따라 말해요.
+  steps:
+  - type: speak
+    lv: C
+    std: 6영02-01
+    cat: 과정·기능
+    q: 본보기를 듣고 따라 말해 보세요.
+    target: What club are you in?
+    who: Ken
+    stress:
+    - club
+    tone: down
+    tip: club 을 힘주어 말하고 끝을 내려요.
+  - type: speak
+    lv: B
+    std: 6영02-01
+    cat: 과정·기능
+    q: 본보기를 듣고 따라 말해 보세요.
+    target: I'm in the guitar club.
+    who: Amara
+    stress:
+    - guitar
+    tone: down
+    tip: 어떤 동아리인지 알려 주는 guitar 를 힘주어 말해요.
+  - type: speak
+    lv: A
+    std: 6영02-07
+    cat: 과정·기능
+    q: 나를 소개하듯 두 문장을 이어서 말해 보세요.
+    target: I'm in the sixth grade. I'm in the dance club.
+    stress:
+    - sixth
+    - dance
+    tip: 문장마다 중요한 낱말에 힘을 주고, 문장 사이에서 잠깐 쉬어요.
