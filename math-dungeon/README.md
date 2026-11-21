@@ -44,12 +44,12 @@ node --test tests/*.test.js
 | `standards`, `standardNote` | 성취기준 코드와 문구 |
 | `expression` | 식 유형. `nat_div_nat` a÷b, `frac_div_nat` (a/b)÷c, `mixed_div_nat` (w a/b)÷c |
 | `quests` | 의뢰 3칸: `{ "level": "easy", "type": "target" }` 처럼. `type` 은 `target`/`max`/`min` 또는 그중 몇 개의 배열(무작위) |
-| `constraints` | `order: "less"/"greater"` (a÷b 의 a와 b 크기), `nonInteger`, `properFractionOnly`, `divisorMin`, `numeratorMultipleOfDivisorBias` |
+| `constraints` | `order: "less"/"greater"` (a÷b 의 a와 b 크기), `nonInteger`, `properFractionOnly`, `divisorMin`, `numeratorMultipleOfDivisorBias`, `maxDenominator` (목표 몫·최적 몫의 기약분수 분모 상한, 3~5차시는 24) |
 | `answerForm` | `"mixed"` 면 1보다 큰 몫을 대분수로 써야 정답 |
 | `conversion` | `true` 면 ÷c 를 ×(1/c) 로 바꾸는 칸이 나와요 (4차시) |
-| `estimate` | 답을 쓰기 전 몫 어림 질문. `compareTo: "one"` 또는 `"dividend"` |
+| `estimate` | 답을 쓰기 전 몫 어림 질문(클까요/같을까요/작을까요). `compareTo`: 기준 분수 `{ "n": 1, "d": 2 }`, `"one"`, `"dividend"` |
 | `concepts` | 개념 조커. `unlock`(모두 참이면 열림), `effect: { "type": "multiplier" 또는 "bonusFlat", "value", "when": [...] }` |
-| `misconceptions` | 오개념 태그별 `pattern`(보스 이유 보기에도 쓰임)과 `hint`. 지원 태그: `reverse_fraction`, `mixed_whole_only`, `divide_denominator`, `multiply_to_numerator`, `forgot_reciprocal` |
+| `misconceptions` | 오개념 태그별 `pattern`(보스 이유 보기에도 쓰임)과 `hint`. 힌트에 `{a}` `{b}` `{c}` `{w}` 를 쓰면 학생이 만든 식의 수로 바뀌어요. 지원 태그: `reverse_fraction`, `mixed_whole_only`, `divide_denominator`, `multiply_to_numerator`, `forgot_reciprocal` |
 | `hints` | 일반 힌트와 식·대분수·곱셈 변환 힌트 |
 | `bossQuiz` | `findWrongLine`, 이유 보기에 섞을 `distractors` |
 
@@ -63,8 +63,8 @@ node --test tests/*.test.js
 ## 점수 규칙
 
 - 기본 100점 = 식 고르기 50 + 몫 계산 50.
-- 힌트를 보면 계산 점수 절반. 처음 제출이 틀리면 힌트가 나오고 한 번 더 도전할 수 있어요(두 번째 제출은 그 의뢰 점수 절반).
-  예) 두 번째에 맞히면 (50 + 25) × ½ = 37.5 → 38점.
+- 💡 힌트 버튼을 스스로 누르면 계산 점수 절반.
+- 처음 제출이 틀리면 무엇이 틀렸는지 도움말이 나오고 한 번 더 도전할 수 있어요. 두 번째 제출은 그 의뢰 점수의 절반이에요(도움말 때문에 더 깎이지는 않아요). 예) 두 번째에 맞히면 100 × ½ = 50점.
 - 개념 조커는 의뢰를 마친 뒤 조건을 채운 것 중 최대 3장이 제시되고, 1장을 골라요(최대 3장 보유). 덧셈 효과를 먼저, 곱셈 효과를 나중에 적용해요.
 - 시간 제한은 기본 꺼짐. ⚙️ 설정에서 의뢰마다 2·3·5분으로 켤 수 있어요(시간이 끝나면 그 의뢰는 0점).
 

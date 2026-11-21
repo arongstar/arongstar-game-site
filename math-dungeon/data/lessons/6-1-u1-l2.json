@@ -34,8 +34,11 @@
   "answerForm": "mixed",
   "conversion": false,
   "estimate": {
-    "compareTo": "one",
-    "question": "몫은 1보다 클까요, 작을까요?"
+    "compareTo": {
+      "n": 2,
+      "d": 1
+    },
+    "question": "몫은 2보다 클까요, 같을까요, 작을까요?"
   },
   "concepts": [
     {
@@ -75,7 +78,7 @@
       "id": "estimate",
       "name": "몫 어림 조커",
       "emoji": "🔭",
-      "description": "답을 쓰기 전에 몫의 크기를 맞게 어림하면 +20",
+      "description": "답을 쓰기 전에 몫의 크기를 기준 수와 바르게 비교하면 +20",
       "unlock": [
         "estimateCorrect"
       ],
@@ -92,12 +95,12 @@
     {
       "tag": "mixed_whole_only",
       "pattern": "몫의 자연수 부분만 쓰고 남은 부분(나머지)을 빠뜨렸어요",
-      "hint": "나누고 남은 것도 똑같이 나누어야 해요. 나머지를 나누는 수로 나눈 분수를 자연수 옆에 붙여 보세요."
+      "hint": "{a}÷{b} 계산에서 자연수 몫 뒤에 남는 수가 있어요. 남은 수도 똑같이 나누어 분수로 붙여 보세요."
     },
     {
       "tag": "reverse_fraction",
       "pattern": "나누어지는 수와 나누는 수의 자리를 바꿔 분자와 분모가 거꾸로 되었어요",
-      "hint": "a÷b는 1÷b, 곧 1/b이 a개예요. 나누어지는 수 a가 분자로 가요!"
+      "hint": "{a}÷{b} 계산은 1/{b}이 {a}개 있는 것과 같아요. 나누어지는 수가 분자 자리에 가요!"
     }
   ],
   "hints": {
@@ -106,7 +109,7 @@
     "notMax": "더 큰 몫을 만들 수 있어요. 나누어지는 수는 크게, 나누는 수는 작게!",
     "notMin": "더 작은 몫을 만들 수 있어요. 나누어지는 수는 작게, 나누는 수는 크게!",
     "notMixed": "몫이 1보다 커요. 대분수로 나타내 볼까요?",
-    "conversion": "÷c는 ×1/c과 같아요. 곱셈식을 다시 확인해 보세요."
+    "conversion": "÷{c} 계산은 ×1/{c} 계산과 같아요. 곱하는 분수의 분자와 분모를 다시 확인해 보세요."
   },
   "bossQuiz": {
     "type": "findWrongLine",

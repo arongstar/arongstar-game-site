@@ -1,6 +1,6 @@
 // One run: 3 rounds of (pick 1 of 3 quests → play → maybe take a joker), then the boss, then the summary.
 // Pure state machine: no DOM. The UI calls these methods and re-renders from `state`.
-import { generateQuest, judgeExpression, judgeAnswer, judgeConversion, estimateTruth, generateBoss, optimalSolutions, mulberry32, shuffled } from './quests.js';
+import { generateQuest, judgeExpression, judgeAnswer, judgeConversion, estimateTruth, generateBoss, optimalSolutions, mulberry32, shuffled, fillNumbers } from './quests.js';
 import { scoreQuest, unlockedConcepts, MAX_JOKERS } from './scoring.js';
 
 export const ROUNDS = 3;
@@ -31,11 +31,11 @@ export function createRun({ lesson, seed = Date.now(), nick = '', now = () => Da
   }
   newOptions();
 
-  const hintFor = (tag, fallbackKey) => {
+  const hintFor = (tag, fallbackKey, o) => {
     const m = (lesson.misconceptions ?? []).find((x) => x.tag === tag);
-    if (m) return m.hint;
-    if (tag === 'not_mixed') return lesson.hints?.notMixed ?? lesson.hints?.general;
-    return lesson.hints?.[fallbackKey] ?? lesson.hints?.general;
+    if (m) return fillNumbers(m.hint, o);
+    if (tag === 'not_mixed') return fillNumbers(lesson.hints?.notMixed ?? lesson.hints?.general, o);
+    return fillNumbers(lesson.hints?.[fallbackKey] ?? lesson.hints?.general, o);
   };
 
   function choose(i) {
@@ -82,8 +82,10 @@ export function createRun({ lesson, seed = Date.now(), nick = '', now = () => Da
       answerMixed: !!ja.answerMixed && answerCorrect, estimateCorrect, conversionCorrect: !!conv?.conversionCorrect, hintUsed: cur.hintUsed, retry,
     };
     // feedback for the expression and for the answer, separately
-    const exprFeedback = ej.expressionOptimal ? null : hintFor(null, q.type === 'target' ? 'notTarget' : q.type === 'max' ? 'notMax' : 'notMin');
-    const answerFeedback = answerCorrect ? null : hintFor(errorTag, conv && !conv.conversionCorrect ? 'conversion' : 'general');
+    const exprFeedback = ej.expressionOptimal ? null : hintFor(null, q.type === 'target' ? 'notTarget' : q.type === 'max' ? 'notMax' : 'notMin', input.ops);
+    // the conversion (lesson 4) and the answer get separate feedback
+    const convFeedback = conv && !conv.conversionCorrect ? hintFor(conv.errorTag, 'conversion', input.ops) : null;
+    const answerFeedback = ja.answerCorrect ? null : hintFor(ja.errorTag, 'general', input.ops);
 
     if (ok || retry) {
       const s = scoreQuest(flags, state.jokers);
@@ -95,12 +97,13 @@ export function createRun({ lesson, seed = Date.now(), nick = '', now = () => Da
       state.quests.push(record);
       cur.lastResult = record;
       state.phase = 'result';
-      return { done: true, ok, flags, score: s, exprFeedback, answerFeedback, errorTag, record };
+      return { done: true, ok, flags, score: s, exprFeedback, answerFeedback, convFeedback, errorTag, record };
     }
+    // The feedback after a wrong try is part of the retry (already worth half);
+    // only the voluntary hint button halves the calculation points.
     cur.attempt = 1;
-    cur.hintUsed = true; // the hint is shown after a wrong submission
-    cur.feedback = { exprFeedback, answerFeedback, errorTag };
-    return { done: false, ok: false, flags, exprFeedback, answerFeedback, errorTag };
+    cur.feedback = { exprFeedback, answerFeedback, convFeedback, errorTag };
+    return { done: false, ok: false, flags, answerOk: ja.answerCorrect, exprFeedback, answerFeedback, convFeedback, errorTag };
   }
 
   /** Time limit (optional setting) ran out: the quest ends with 0 points. */

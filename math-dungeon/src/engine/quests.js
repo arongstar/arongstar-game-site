@@ -150,10 +150,13 @@ export function generateQuest(lesson, slot, rng) {
     } else {
       hand = Array.from({ length: handSize }, () => randInt(rng, 1, 9));
     }
+    // keep the goal answer friendly: its reduced denominator may not exceed maxDenominator
+    if (target && constraints.maxDenominator && target.d > constraints.maxDenominator) continue;
     const solutions = enumerate(hand, expression, constraints);
     if (!solutions.length) continue;
     if (type !== 'target' && constraints.numeratorMultipleOfDivisorBias && rng() < 0.75 && !solutions.some((s) => s.ops.a % s.ops.c === 0)) continue;
     const best = type === 'target' ? null : extreme(solutions, type);
+    if (best && constraints.maxDenominator && best.d > constraints.maxDenominator) continue;
     // a quest where every placement is optimal teaches nothing
     if (type !== 'target' && solutions.every((s) => equals(s.q, best))) continue;
     return { level: slot.level, type, expression, pick: E.slots.length, hand, target, best, constraints, solutionCount: solutions.length };
@@ -240,9 +243,16 @@ export function judgeConversion(o, mult) {
 }
 
 /** 'bigger' | 'smaller' | 'same' — the quotient compared with 1 or with the dividend. */
+/** compareTo: 'one', 'dividend', or a benchmark fraction { n, d } such as 1/2. */
+export function estimateRef(expression, o, compareTo) {
+  if (compareTo === 'one') return frac(1);
+  if (compareTo === 'dividend') return expressionOf(expression).dividend(o);
+  if (compareTo && Number.isInteger(compareTo.n) && Number.isInteger(compareTo.d)) return frac(compareTo.n, compareTo.d);
+  throw new Error(`unknown estimate reference: ${JSON.stringify(compareTo)}`);
+}
 export function estimateTruth(expression, o, compareTo) {
   const q = quotient(expression, o);
-  const ref = compareTo === 'one' ? frac(1) : expressionOf(expression).dividend(o);
+  const ref = estimateRef(expression, o, compareTo);
   const c = compare(q, ref);
   return c > 0 ? 'bigger' : c < 0 ? 'smaller' : 'same';
 }
@@ -357,6 +367,11 @@ const BOSS = {
   },
 };
 
+/** Replace {a} {b} {c} {w} in a hint or reason with the numbers of this problem. */
+export function fillNumbers(text, o) {
+  return String(text ?? '').replace(/\{([abcw])\}/g, (m, k) => (o && o[k] !== undefined ? String(o[k]) : m));
+}
+
 export function bossTags(lesson) {
   const B = BOSS[lesson.expression];
   return (lesson.misconceptions ?? []).map((m) => m.tag).filter((t) => B?.tags[t]);
@@ -374,9 +389,10 @@ export function generateBoss(lesson, rng) {
     if (!E.valid(o, lesson.constraints ?? {}) || !B.tags[tag].ok(o)) continue;
     const { lines, wrong } = B.lines(o, tag);
     const mis = lesson.misconceptions.find((m) => m.tag === tag);
-    const others = [...lesson.misconceptions.filter((m) => m.tag !== tag).map((m) => m.pattern), ...(lesson.bossQuiz?.distractors ?? [])];
-    const reasons = shuffled(rng, [mis.pattern, ...shuffled(rng, [...new Set(others)]).slice(0, 2)]);
-    return { tag, ops: o, problem: B.problem(o), lines, wrongLine: wrong, reasons, answerReason: reasons.indexOf(mis.pattern), hint: mis.hint, correct: show(quotient(lesson.expression, o)) };
+    const right = fillNumbers(mis.pattern, o);
+    const others = [...lesson.misconceptions.filter((m) => m.tag !== tag).map((m) => fillNumbers(m.pattern, o)), ...(lesson.bossQuiz?.distractors ?? [])];
+    const reasons = shuffled(rng, [right, ...shuffled(rng, [...new Set(others)].filter((r) => r !== right)).slice(0, 2)]);
+    return { tag, ops: o, problem: B.problem(o), lines, wrongLine: wrong, reasons, answerReason: reasons.indexOf(right), hint: fillNumbers(mis.hint, o), correct: show(quotient(lesson.expression, o)) };
   }
   throw new Error('could not generate a boss puzzle');
 }

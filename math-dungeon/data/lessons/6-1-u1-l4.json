@@ -29,13 +29,17 @@
   ],
   "constraints": {
     "properFractionOnly": true,
-    "divisorMin": 2
+    "divisorMin": 2,
+    "maxDenominator": 24
   },
   "answerForm": "any",
   "conversion": true,
   "estimate": {
-    "compareTo": "dividend",
-    "question": "몫은 처음 분수보다 클까요, 작을까요?"
+    "compareTo": {
+      "n": 1,
+      "d": 4
+    },
+    "question": "몫은 1/4보다 클까요, 같을까요, 작을까요?"
   },
   "concepts": [
     {
@@ -75,7 +79,7 @@
       "id": "estimate",
       "name": "몫 어림 조커",
       "emoji": "🔭",
-      "description": "답을 쓰기 전에 몫의 크기를 맞게 어림하면 +20",
+      "description": "답을 쓰기 전에 몫의 크기를 기준 수와 바르게 비교하면 +20",
       "unlock": [
         "estimateCorrect"
       ],
@@ -92,12 +96,12 @@
     {
       "tag": "forgot_reciprocal",
       "pattern": "÷c를 ×1/c이 아니라 ×c로 바꾸었어요",
-      "hint": "c로 나누는 것은 1/c을 곱하는 것과 같아요. ×c가 아니라 ×1/c이에요!"
+      "hint": "÷{c} 계산은 ×1/{c} 계산과 같아요. 자연수를 그대로 곱하면 몫이 오히려 커져요!"
     },
     {
       "tag": "multiply_to_numerator",
       "pattern": "나누는 수를 분자에 곱했어요",
-      "hint": "나누면 양이 줄어야 해. 답이 처음보다 커졌어? ÷c는 1/c만큼이에요."
+      "hint": "나누면 양이 줄어야 해. 답이 처음 분수보다 커졌어? ÷{c} 계산은 ×1/{c} 계산과 같아요."
     }
   ],
   "hints": {
@@ -106,7 +110,7 @@
     "notMax": "더 큰 몫을 만들 수 있어요. 분자는 크게, 분모와 나누는 수는 작게!",
     "notMin": "더 작은 몫을 만들 수 있어요. 분자는 작게, 분모와 나누는 수는 크게!",
     "notMixed": "몫이 1보다 커요. 대분수로 나타내 볼까요?",
-    "conversion": "÷c는 ×1/c과 같아요. 곱셈식을 다시 확인해 보세요."
+    "conversion": "÷{c} 계산은 ×1/{c} 계산과 같아요. 곱하는 분수의 분자와 분모를 다시 확인해 보세요."
   },
   "bossQuiz": {
     "type": "findWrongLine",

@@ -28,13 +28,14 @@
     }
   ],
   "constraints": {
-    "divisorMin": 2
+    "divisorMin": 2,
+    "maxDenominator": 24
   },
   "answerForm": "any",
   "conversion": false,
   "estimate": {
-    "compareTo": "dividend",
-    "question": "몫은 처음 대분수보다 클까요, 작을까요?"
+    "compareTo": "one",
+    "question": "몫은 1보다 클까요, 같을까요, 작을까요?"
   },
   "concepts": [
     {
@@ -74,7 +75,7 @@
       "id": "estimate",
       "name": "몫 어림 조커",
       "emoji": "🔭",
-      "description": "답을 쓰기 전에 몫의 크기를 맞게 어림하면 +20",
+      "description": "답을 쓰기 전에 몫의 크기를 기준 수와 바르게 비교하면 +20",
       "unlock": [
         "estimateCorrect"
       ],
@@ -91,12 +92,12 @@
     {
       "tag": "mixed_whole_only",
       "pattern": "대분수의 자연수 부분만 나누고 분수 부분은 그대로 두었어요",
-      "hint": "자연수 부분만 나누면 안 돼요. 대분수를 가분수로 바꾼 다음 전체를 나누어 보세요."
+      "hint": "자연수 부분만 나누면 안 돼요. 대분수를 가분수로 바꾼 다음 전체를 나누어 보세요. (÷{c})"
     },
     {
       "tag": "forgot_reciprocal",
       "pattern": "÷c를 ×1/c이 아니라 ×c로 바꾸었어요",
-      "hint": "c로 나누는 것은 1/c을 곱하는 것과 같아요. ×c가 아니라 ×1/c이에요!"
+      "hint": "÷{c} 계산은 ×1/{c} 계산과 같아요. 자연수를 그대로 곱하면 몫이 오히려 커져요!"
     }
   ],
   "hints": {
@@ -105,7 +106,7 @@
     "notMax": "더 큰 몫을 만들 수 있어요. 대분수는 크게, 나누는 수는 작게!",
     "notMin": "더 작은 몫을 만들 수 있어요. 대분수는 작게, 나누는 수는 크게!",
     "notMixed": "몫이 1보다 커요. 대분수로 나타내 볼까요?",
-    "conversion": "÷c는 ×1/c과 같아요. 곱셈식을 다시 확인해 보세요."
+    "conversion": "÷{c} 계산은 ×1/{c} 계산과 같아요. 곱하는 분수의 분자와 분모를 다시 확인해 보세요."
   },
   "bossQuiz": {
     "type": "findWrongLine",

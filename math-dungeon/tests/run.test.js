@@ -52,9 +52,34 @@ test('wrong first try shows a hint, the retry is worth half', () => {
   const first = run.submit({ ops: o, answer: { n: o.a * o.c, d: o.b } });
   assert.equal(first.done, false);
   assert.ok(first.answerFeedback);
+  assert.ok(first.answerFeedback.includes(`÷${o.c}`), 'hint shows the real numbers');
+  assert.ok(!/\{[abcw]\}/.test(first.answerFeedback));
   const second = run.submit({ ops: o, answer: rightAnswer(lesson, o) });
   assert.equal(second.done, true);
-  assert.equal(second.score.base, 37.5);
+  // the automatic feedback does not count as a hint: the retry is worth exactly half
+  assert.equal(second.score.base, 50);
+  assert.equal(second.flags.hintUsed, false);
+});
+
+test('the voluntary hint still halves the calculation points', () => {
+  const lesson = lessons[2];
+  const run = createRun({ lesson, seed: 4 });
+  run.choose(0);
+  run.useHint();
+  const best = optimalSolutions(run.state.current.quest)[0];
+  const r = run.submit({ ops: best.ops, answer: rightAnswer(lesson, best.ops) });
+  assert.equal(r.score.base, 75);
+});
+
+test('lesson 4: a wrong conversion gets its own feedback', () => {
+  const lesson = lessons[3];
+  const run = createRun({ lesson, seed: 8 });
+  run.choose(1);
+  const o = optimalSolutions(run.state.current.quest)[0].ops;
+  const r = run.submit({ ops: o, answer: rightAnswer(lesson, o), conversion: { n: o.c, d: 1 } });
+  assert.equal(r.done, false);
+  assert.equal(r.answerOk, true);
+  assert.ok(r.convFeedback.includes(`×1/${o.c}`));
 });
 
 test('log: CSV and nickname', () => {

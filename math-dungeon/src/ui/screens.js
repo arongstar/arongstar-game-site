@@ -3,7 +3,7 @@
 import { h, fracView, mixedView, valueView, tokensView, numberCard, slotView } from './cards.js';
 import { fractionInput, smallFraction, keypad } from './fractionInput.js';
 import { createRun } from '../engine/run.js';
-import { expressionOf, opsFromCards, isValidExpression } from '../engine/quests.js';
+import { expressionOf, opsFromCards, isValidExpression, fillNumbers } from '../engine/quests.js';
 import { cleanNick, NICK_MAX } from '../engine/log.js';
 
 let timerId = 0;
@@ -203,7 +203,7 @@ function renderPlay(app) {
 
   const estRow = lesson.estimate ? h('div', { class: 'estimate' },
     h('span', null, `🔭 ${lesson.estimate.question} `),
-    ...[['bigger', '더 커요'], ['smaller', '더 작아요']].map(([k, label]) => h('button', { class: 'btn small est', type: 'button', 'data-k': k, 'aria-pressed': 'false', onclick: (e) => { estimate = estimate === k ? null : k; estRow.querySelectorAll('.est').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.k === estimate))); } }, label)),
+    ...[['bigger', '더 커요'], ['same', '같아요'], ['smaller', '더 작아요']].map(([k, label]) => h('button', { class: 'btn small est', type: 'button', 'data-k': k, 'aria-pressed': 'false', onclick: (e) => { estimate = estimate === k ? null : k; estRow.querySelectorAll('.est').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.k === estimate))); } }, label)),
     h('small', { class: 'muted' }, ' (선택: 맞히면 개념 조커가 열려요)')) : null;
 
   const hintBtn = h('button', { class: 'btn ghost', type: 'button', onclick: () => {
@@ -231,8 +231,9 @@ function renderPlay(app) {
     // first wrong try: show what went wrong and allow one retry
     feedback.replaceChildren(h('div', { class: 'fb wrong' },
       h('p', null, res.flags.expressionOptimal ? `${icon(app, 'correct')} 식: 목표에 맞아요.` : `${icon(app, 'wrong')} 식: ${res.exprFeedback}`),
-      h('p', null, res.flags.answerCorrect ? `${icon(app, 'correct')} 몫: 맞아요.` : `${icon(app, 'wrong')} 몫: ${res.answerFeedback}`),
-      h('p', { class: 'muted' }, `${icon(app, 'retry')} 한 번 더 도전할 수 있어요. 카드도 바꿀 수 있어요. (두 번째 제출은 점수 절반)`)));
+      res.convFeedback !== undefined && lesson.conversion ? h('p', null, res.convFeedback ? `${icon(app, 'wrong')} 곱셈식: ${res.convFeedback}` : `${icon(app, 'correct')} 곱셈식: 맞아요.`) : null,
+      h('p', null, res.answerOk ? `${icon(app, 'correct')} 몫: 맞아요.` : `${icon(app, 'wrong')} 몫: ${res.answerFeedback}`),
+      h('p', { class: 'muted' }, `${icon(app, 'retry')} 한 번 더 도전할 수 있어요. 카드도 바꿀 수 있어요. (두 번째 제출은 점수 절반, 이 도움말로는 더 깎이지 않아요)`)));
     submitBtn.textContent = `${icon(app, 'retry')} 다시 제출`;
     hintBtn.disabled = true;
     say('');
@@ -297,7 +298,7 @@ function renderResult(app) {
         rec.correctAnswer ? h('p', null, '바른 몫: ', valueView(rec.correctAnswer, { mixed })) : null,
         f.answerCorrect && !f.answerReduced ? h('p', { class: 'muted' }, '✂️ 약분하면 더 간단히 나타낼 수 있어요.') : null,
         rec.best ? h('p', null, `${f.expressionOptimal ? '목표에 맞는 식' : '이렇게 만들 수 있었어요'}: `, exprView(rec.quest.expression, rec.best.ops), ' = ', valueView(rec.best.q, { mixed })) : null,
-        rec.errorTag && rec.errorTag !== 'timeout' ? h('p', { class: 'fb-tip' }, `${icon(app, 'hint')} ${app.lesson.misconceptions.find((m) => m.tag === rec.errorTag)?.hint ?? app.lesson.hints?.notMixed ?? ''}`) : null),
+        rec.errorTag && rec.errorTag !== 'timeout' ? h('p', { class: 'fb-tip' }, `${icon(app, 'hint')} ${fillNumbers(app.lesson.misconceptions.find((m) => m.tag === rec.errorTag)?.hint ?? app.lesson.hints?.notMixed ?? '', rec.ops)}`) : null),
       h('section', { class: 'panel' },
         h('h2', null, `${icon(app, 'score')} 점수`),
         h('table', { class: 'score-table' }, ...rows.map(([k, v]) => h('tr', null, h('th', null, k), h('td', null, v))),

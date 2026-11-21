@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { frac, compare, equals, divide, fromMixed } from '../src/engine/fraction.js';
-import { mulberry32, generateQuest, enumerate, judgeExpression, judgeAnswer, matchMisconception, judgeConversion, generateBoss, quotient, optimalSolutions, EXPRESSIONS } from '../src/engine/quests.js';
+import { mulberry32, generateQuest, enumerate, judgeExpression, judgeAnswer, matchMisconception, judgeConversion, generateBoss, quotient, optimalSolutions, EXPRESSIONS, estimateTruth, fillNumbers } from '../src/engine/quests.js';
 
 const lessons = JSON.parse(readFileSync(new URL('../data/lessons/index.json', import.meta.url))).lessons
   .map((id) => JSON.parse(readFileSync(new URL(`../data/lessons/${id}.json`, import.meta.url))));
@@ -154,5 +154,39 @@ test('boss: exactly one wrong line, reasons include the right one', () => {
       assert.equal(new Set(b.reasons).size, 3);
       assert.equal(b.reasons[b.answerReason], lesson.misconceptions.find((m) => m.tag === b.tag).pattern);
     }
+  }
+});
+
+test('goal answers keep a friendly denominator (maxDenominator)', () => {
+  for (const lesson of lessons) {
+    const max = lesson.constraints.maxDenominator ?? 9;
+    const rng = mulberry32(31 + lesson.lesson);
+    for (let i = 0; i < 300; i++) {
+      const q = generateQuest(lesson, lesson.quests[i % 3], rng);
+      const goal = q.type === 'target' ? q.target : q.best;
+      assert.ok(goal.d <= max, `${lesson.id} ${q.type} goal ${goal.n}/${goal.d}`);
+    }
+  }
+});
+
+test('size estimate uses a benchmark, so the answer changes between quests', () => {
+  for (const lesson of lessons) {
+    const seen = new Set();
+    const rng = mulberry32(77);
+    for (let i = 0; i < 60; i++) {
+      const q = generateQuest(lesson, lesson.quests[i % 3], rng);
+      for (const s of enumerate(q.hand, q.expression, q.constraints)) seen.add(estimateTruth(q.expression, s.ops, lesson.estimate.compareTo));
+    }
+    assert.ok(seen.has('bigger') && seen.has('smaller'), `${lesson.id} estimate is always ${[...seen]}`);
+  }
+  assert.equal(estimateTruth('nat_div_nat', { a: 2, b: 4 }, { n: 1, d: 2 }), 'same');
+});
+
+test('hints show the real numbers', () => {
+  assert.equal(fillNumbers('÷{c}는 ×1/{c}', { a: 3, b: 4, c: 2 }), '÷2는 ×1/2');
+  assert.equal(fillNumbers('{w} 그대로', null), '{w} 그대로');
+  for (const lesson of lessons) {
+    const b = generateBoss(lesson, mulberry32(9));
+    assert.ok(!/\{[abcw]\}/.test(b.hint + b.reasons.join('')));
   }
 });
